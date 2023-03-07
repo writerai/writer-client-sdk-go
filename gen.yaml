@@ -8,5 +8,5 @@ generation:
   sdkClassName: writerai
   sdkFlattening: true
 go:
-  version: 0.2.0
+  version: 0.2.1
   packageName: github.com/writerai/writer-client-sdk-go

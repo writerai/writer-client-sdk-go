@@ -69,7 +69,7 @@ func WithClient(client HTTPClient) SDKOption {
 func New(opts ...SDKOption) *Writerai {
 	sdk := &Writerai{
 		_language:   "go",
-		_sdkVersion: "0.2.0",
+		_sdkVersion: "0.2.1",
 		_genVersion: "1.8.6",
 	}
 	for _, opt := range opts {
