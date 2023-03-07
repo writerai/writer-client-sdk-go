@@ -1,7 +1,7 @@
 configVersion: 1.0.0
 generation:
   telemetryEnabled: false
-  sdkClassName: writerai
+  sdkClassName: writer
   sdkFlattening: true
 go:
   version: 0.1.0
