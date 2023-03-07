@@ -5,7 +5,7 @@ management:
   speakeasyVersion: 1.8.6
 generation:
   telemetryEnabled: false
-  sdkClassName: writerai
+  sdkClassName: writer
   sdkFlattening: true
 go:
   version: 0.2.1
