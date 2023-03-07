@@ -1,8 +1,12 @@
 configVersion: 1.0.0
+management:
+  docChecksum: 28627d621492146a1a575363c9dd9235
+  docVersion: "1.6"
+  speakeasyVersion: 1.8.6
 generation:
   telemetryEnabled: false
   sdkClassName: writerai
   sdkFlattening: true
 go:
-  version: 0.1.0
+  version: 0.2.0
   packageName: github.com/writerai/writer-client-sdk-go
