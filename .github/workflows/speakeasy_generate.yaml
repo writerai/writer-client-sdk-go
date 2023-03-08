@@ -19,7 +19,7 @@ jobs:
         with:
           force: ${{ github.event.inputs.force }}
           speakeasy_version: latest
-          openapi_doc_location: https://raw.githubusercontent.com/writerai/swagger/main/enterprise-api.yaml?token=GHSAT0AAAAAAB7GJAT3OHON4WJCKOQFM6HIZAHYOVA
+          openapi_doc_location: https://raw.githubusercontent.com/writerai/swagger/main/enterprise-api.yaml
           languages: |-
             - go
           mode: pr
