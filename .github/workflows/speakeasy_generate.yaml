@@ -20,7 +20,6 @@ jobs:
         - go
       mode: pr
       force: ${{ github.event.inputs.force }}
-      openapi_doc_auth_header: Authorization
     secrets:
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
