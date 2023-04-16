@@ -11,8 +11,8 @@ import (
 	"net/http"
 )
 
-// snippet - Methods related to Snippets
-type snippet struct {
+// modelCustomization - Methods related to Model Customization
+type modelCustomization struct {
 	defaultClient  HTTPClient
 	securityClient HTTPClient
 	serverURL      string
@@ -22,8 +22,8 @@ type snippet struct {
 	globals        map[string]map[string]map[string]interface{}
 }
 
-func newSnippet(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, globals map[string]map[string]map[string]interface{}) *snippet {
-	return &snippet{
+func newModelCustomization(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, globals map[string]map[string]map[string]interface{}) *modelCustomization {
+	return &modelCustomization{
 		defaultClient:  defaultClient,
 		securityClient: securityClient,
 		serverURL:      serverURL,
@@ -34,10 +34,89 @@ func newSnippet(defaultClient, securityClient HTTPClient, serverURL, language, s
 	}
 }
 
-// Delete - Delete snippets
-func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsRequest) (*operations.DeleteSnippetsResponse, error) {
+// Create - Create model customization
+func (s *modelCustomization) Create(ctx context.Context, request operations.CreateModelCustomizationRequest) (*operations.CreateModelCustomizationResponse, error) {
 	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.globals)
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization", request, s.globals)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "CreateCustomizationRequest", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.securityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+	defer httpRes.Body.Close()
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.CreateModelCustomizationResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		res.Headers = httpRes.Header
+
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.ModelCustomization
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.ModelCustomization = out
+		}
+	case httpRes.StatusCode == 400:
+		fallthrough
+	case httpRes.StatusCode == 401:
+		fallthrough
+	case httpRes.StatusCode == 403:
+		fallthrough
+	case httpRes.StatusCode == 404:
+		fallthrough
+	case httpRes.StatusCode == 500:
+		res.Headers = httpRes.Header
+
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.FailResponse
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.FailResponse = out
+		}
+	}
+
+	return res, nil
+}
+
+// Delete - Delete Model customization
+func (s *modelCustomization) Delete(ctx context.Context, request operations.DeleteModelCustomizationRequest) (*operations.DeleteModelCustomizationResponse, error) {
+	baseURL := s.serverURL
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}", request, s.globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -47,12 +126,6 @@ func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsR
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	utils.PopulateHeaders(ctx, req, request)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, s.globals); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
-
 	client := s.securityClient
 
 	httpRes, err := client.Do(req)
@@ -66,7 +139,7 @@ func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsR
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.DeleteSnippetsResponse{
+	res := &operations.DeleteModelCustomizationResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -77,12 +150,12 @@ func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsR
 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.DeleteResponse
+			var out map[string]interface{}
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.DeleteResponse = out
+			res.DeleteModelCustomization200ApplicationJSONObject = out
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -109,10 +182,10 @@ func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsR
 	return res, nil
 }
 
-// Find - Find snippets
-func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsRequest) (*operations.FindSnippetsResponse, error) {
+// Get - Get model customization
+func (s *modelCustomization) Get(ctx context.Context, request operations.GetModelCustomizationRequest) (*operations.GetModelCustomizationResponse, error) {
 	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.globals)
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}", request, s.globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -122,10 +195,6 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request, s.globals); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
-
 	client := s.securityClient
 
 	httpRes, err := client.Do(req)
@@ -139,7 +208,7 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.FindSnippetsResponse{
+	res := &operations.GetModelCustomizationResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -150,12 +219,12 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.PaginatedResultSnippetWithUser
+			var out *shared.ModelCustomization
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.PaginatedResultSnippetWithUser = out
+			res.ModelCustomization = out
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -182,27 +251,18 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 	return res, nil
 }
 
-// Update - Update snippets
-func (s *snippet) Update(ctx context.Context, request operations.UpdateSnippetsRequest) (*operations.UpdateSnippetsResponse, error) {
+// List - List model customizations
+func (s *modelCustomization) List(ctx context.Context, request operations.ListModelCustomizationsRequest) (*operations.ListModelCustomizationsResponse, error) {
 	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.globals)
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization", request, s.globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "RequestBody", "json")
-	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-
-	req.Header.Set("Content-Type", reqContentType)
-
-	utils.PopulateHeaders(ctx, req, request)
 
 	client := s.securityClient
 
@@ -217,7 +277,7 @@ func (s *snippet) Update(ctx context.Context, request operations.UpdateSnippetsR
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.UpdateSnippetsResponse{
+	res := &operations.ListModelCustomizationsResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -228,12 +288,12 @@ func (s *snippet) Update(ctx context.Context, request operations.UpdateSnippetsR
 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out []shared.SnippetWithUser
+			var out *shared.CustomizationsResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.SnippetWithUsers = out
+			res.CustomizationsResponse = out
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough

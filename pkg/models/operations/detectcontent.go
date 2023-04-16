@@ -7,17 +7,17 @@ import (
 	"net/http"
 )
 
-type UploadFileRequest struct {
-	UploadModelFileRequest shared.UploadModelFileRequest `request:"mediaType=multipart/form-data"`
+type DetectContentRequest struct {
+	ContentDetectorRequest shared.ContentDetectorRequest `request:"mediaType=application/json"`
 	OrganizationID         *int64                        `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
-type UploadFileResponse struct {
-	ContentType string
+type DetectContentResponse struct {
+	ContentDetectorResponses []shared.ContentDetectorResponse
+	ContentType              string
 	// Bad Request
 	FailResponse *shared.FailResponse
 	Headers      map[string][]string
-	ModelFile    *shared.ModelFile
 	StatusCode   int
 	RawResponse  *http.Response
 }
