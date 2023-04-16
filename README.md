@@ -6,7 +6,6 @@
     <h1>Go SDK</h1>
    <p>AI for everyone.</p>
    <a href="https://dev.writer.com/docs"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000000&style=for-the-badge" /></a>
-   <a href="https://github.com/writerai/writer-client-sdk-go/actions"><img src="https://img.shields.io/github/actions/workflow/status/writerai/writer-client-sdk-go/speakeasy_generate.yaml?style=for-the-badge" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
   <a href="https://github.com/writerai/writer-client-sdk-go/releases"><img src="https://img.shields.io/github/v/release/writerai/writer-client-sdk-go?sort=semver&style=for-the-badge" /></a>
 </div>
