@@ -7,17 +7,16 @@ import (
 	"net/http"
 )
 
-type GetFileRequest struct {
-	FileID         string `pathParam:"style=simple,explode=false,name=fileId"`
+type ListFilesRequest struct {
 	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
-type GetFileResponse struct {
+type ListFilesResponse struct {
 	ContentType string
 	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	ModelFile    *shared.ModelFile
-	StatusCode   int
-	RawResponse  *http.Response
+	FailResponse       *shared.FailResponse
+	Headers            map[string][]string
+	ModelFilesResponse *shared.ModelFilesResponse
+	StatusCode         int
+	RawResponse        *http.Response
 }

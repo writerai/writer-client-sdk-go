@@ -11,22 +11,21 @@ import (
 )
 
 func main() {
-    s := writerai.New()
-    
-    req := operations.ContentDetectorAPIRequest{
-        PathParams: operations.ContentDetectorAPIPathParams{
-            OrganizationID: 548814,
-        },
-        Headers: operations.ContentDetectorAPIHeaders{
-            Authorization: "deserunt",
-        },
-        Request: shared.ContentDetectorRequest{
-            Input: "porro",
+    s := writer.New(
+        writer.WithSecurity(shared.Security{
+            APIKey: "YOUR_API_KEY_HERE",
+        }),
+        WithOrganizationID(548814),
+    )
+
+    ctx := context.Background()    
+    req := operations.DetectContentRequest{
+        ContentDetectorRequest: shared.ContentDetectorRequest{
+            Input: "provident",
         },
     }
 
-    ctx := context.Background()
-    res, err := s.AIContentDetector.ContentDetectorAPI(ctx, req)
+    res, err := s.AIContentDetector.Detect(ctx, req)
     if err != nil {
         log.Fatal(err)
     }

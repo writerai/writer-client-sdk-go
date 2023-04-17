@@ -7,18 +7,19 @@ import (
 	"net/http"
 )
 
-type ContentCheckRequest struct {
+type ContentCorrectRequest struct {
 	ContentRequest shared.ContentRequest `request:"mediaType=application/json"`
+	XRequestID     *string               `header:"style=simple,explode=false,name=X-Request-ID"`
 	OrganizationID *int64                `pathParam:"style=simple,explode=false,name=organizationId"`
 	TeamID         int64                 `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
-type ContentCheckResponse struct {
-	ContentType string
+type ContentCorrectResponse struct {
+	ContentType        string
+	CorrectionResponse *shared.CorrectionResponse
 	// Bad Request
-	FailResponse     *shared.FailResponse
-	Headers          map[string][]string
-	ProcessedContent *shared.ProcessedContent
-	StatusCode       int
-	RawResponse      *http.Response
+	FailResponse *shared.FailResponse
+	Headers      map[string][]string
+	StatusCode   int
+	RawResponse  *http.Response
 }
