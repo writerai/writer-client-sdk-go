@@ -16,6 +16,10 @@ const (
 	FullLinkedTermPosEnumAdjective FullLinkedTermPosEnum = "adjective"
 )
 
+func (e FullLinkedTermPosEnum) ToPointer() *FullLinkedTermPosEnum {
+	return &e
+}
+
 func (e *FullLinkedTermPosEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

@@ -14,6 +14,10 @@ const (
 	ContentDetectorResponseLabelEnumReal ContentDetectorResponseLabelEnum = "real"
 )
 
+func (e ContentDetectorResponseLabelEnum) ToPointer() *ContentDetectorResponseLabelEnum {
+	return &e
+}
+
 func (e *ContentDetectorResponseLabelEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

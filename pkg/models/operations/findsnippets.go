@@ -18,6 +18,10 @@ const (
 	FindSnippetsSortFieldEnumModificationTime FindSnippetsSortFieldEnum = "modificationTime"
 )
 
+func (e FindSnippetsSortFieldEnum) ToPointer() *FindSnippetsSortFieldEnum {
+	return &e
+}
+
 func (e *FindSnippetsSortFieldEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -43,6 +47,10 @@ const (
 	FindSnippetsSortOrderEnumAsc  FindSnippetsSortOrderEnum = "asc"
 	FindSnippetsSortOrderEnumDesc FindSnippetsSortOrderEnum = "desc"
 )
+
+func (e FindSnippetsSortOrderEnum) ToPointer() *FindSnippetsSortOrderEnum {
+	return &e
+}
 
 func (e *FindSnippetsSortOrderEnum) UnmarshalJSON(data []byte) error {
 	var s string

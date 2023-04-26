@@ -15,6 +15,7 @@ writer.go
 go.mod
 go.sum
 pkg/types/date.go
+pkg/types/datetime.go
 pkg/utils/contenttype.go
 pkg/utils/form.go
 pkg/utils/headers.go
@@ -115,4 +116,18 @@ pkg/models/shared/termupdate.go
 pkg/models/shared/paginatedresultuserpublicresponse.go
 pkg/models/shared/userpublicresponse.go
 pkg/models/shared/security.go
+docs/writer/README.md
+docs/aicontentdetector/README.md
+docs/billing/README.md
+docs/cowrite/README.md
+docs/completions/README.md
+docs/content/README.md
+docs/downloadthecustomizedmodel/README.md
+docs/files/README.md
+docs/modelcustomization/README.md
+docs/models/README.md
+docs/snippet/README.md
+docs/styleguide/README.md
+docs/terminology/README.md
+docs/user/README.md
 USAGE.md

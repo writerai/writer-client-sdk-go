@@ -15,6 +15,10 @@ const (
 	InputTypeEnumDropdown InputTypeEnum = "dropdown"
 )
 
+func (e InputTypeEnum) ToPointer() *InputTypeEnum {
+	return &e
+}
+
 func (e *InputTypeEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

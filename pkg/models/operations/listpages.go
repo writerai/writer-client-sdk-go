@@ -17,6 +17,10 @@ const (
 	ListPagesStatusEnumOffline ListPagesStatusEnum = "offline"
 )
 
+func (e ListPagesStatusEnum) ToPointer() *ListPagesStatusEnum {
+	return &e
+}
+
 func (e *ListPagesStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

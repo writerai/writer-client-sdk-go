@@ -15,6 +15,10 @@ const (
 	UserPublicResponseAccountStatusEnumSignedUp UserPublicResponseAccountStatusEnum = "signed_up"
 )
 
+func (e UserPublicResponseAccountStatusEnum) ToPointer() *UserPublicResponseAccountStatusEnum {
+	return &e
+}
+
 func (e *UserPublicResponseAccountStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

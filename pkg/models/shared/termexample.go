@@ -14,6 +14,10 @@ const (
 	TermExampleTypeEnumBad  TermExampleTypeEnum = "bad"
 )
 
+func (e TermExampleTypeEnum) ToPointer() *TermExampleTypeEnum {
+	return &e
+}
+
 func (e *TermExampleTypeEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

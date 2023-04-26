@@ -19,6 +19,10 @@ const (
 	FindTermsPartOfSpeechEnumAdjective FindTermsPartOfSpeechEnum = "adjective"
 )
 
+func (e FindTermsPartOfSpeechEnum) ToPointer() *FindTermsPartOfSpeechEnum {
+	return &e
+}
+
 func (e *FindTermsPartOfSpeechEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -49,6 +53,10 @@ const (
 	FindTermsSortFieldEnumType             FindTermsSortFieldEnum = "type"
 )
 
+func (e FindTermsSortFieldEnum) ToPointer() *FindTermsSortFieldEnum {
+	return &e
+}
+
 func (e *FindTermsSortFieldEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -77,6 +85,10 @@ const (
 	FindTermsSortOrderEnumDesc FindTermsSortOrderEnum = "desc"
 )
 
+func (e FindTermsSortOrderEnum) ToPointer() *FindTermsSortOrderEnum {
+	return &e
+}
+
 func (e *FindTermsSortOrderEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -101,6 +113,10 @@ const (
 	FindTermsTypeEnumBanned   FindTermsTypeEnum = "banned"
 	FindTermsTypeEnumPending  FindTermsTypeEnum = "pending"
 )
+
+func (e FindTermsTypeEnum) ToPointer() *FindTermsTypeEnum {
+	return &e
+}
 
 func (e *FindTermsTypeEnum) UnmarshalJSON(data []byte) error {
 	var s string

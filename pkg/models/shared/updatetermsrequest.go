@@ -16,6 +16,10 @@ const (
 	UpdateTermsRequestFailHandlingEnumValidateOnly UpdateTermsRequestFailHandlingEnum = "validateOnly"
 )
 
+func (e UpdateTermsRequestFailHandlingEnum) ToPointer() *UpdateTermsRequestFailHandlingEnum {
+	return &e
+}
+
 func (e *UpdateTermsRequestFailHandlingEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

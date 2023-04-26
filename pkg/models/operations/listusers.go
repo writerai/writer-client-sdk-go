@@ -22,6 +22,10 @@ const (
 	ListUsersSortFieldEnumLastSeen         ListUsersSortFieldEnum = "lastSeen"
 )
 
+func (e ListUsersSortFieldEnum) ToPointer() *ListUsersSortFieldEnum {
+	return &e
+}
+
 func (e *ListUsersSortFieldEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -55,6 +59,10 @@ const (
 	ListUsersSortOrderEnumAsc  ListUsersSortOrderEnum = "asc"
 	ListUsersSortOrderEnumDesc ListUsersSortOrderEnum = "desc"
 )
+
+func (e ListUsersSortOrderEnum) ToPointer() *ListUsersSortOrderEnum {
+	return &e
+}
 
 func (e *ListUsersSortOrderEnum) UnmarshalJSON(data []byte) error {
 	var s string

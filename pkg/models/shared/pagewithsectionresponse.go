@@ -15,6 +15,10 @@ const (
 	PageWithSectionResponseStatusEnumOffline PageWithSectionResponseStatusEnum = "offline"
 )
 
+func (e PageWithSectionResponseStatusEnum) ToPointer() *PageWithSectionResponseStatusEnum {
+	return &e
+}
+
 func (e *PageWithSectionResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

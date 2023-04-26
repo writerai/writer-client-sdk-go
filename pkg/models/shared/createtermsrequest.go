@@ -16,6 +16,10 @@ const (
 	CreateTermsRequestFailHandlingEnumValidateOnly CreateTermsRequestFailHandlingEnum = "validateOnly"
 )
 
+func (e CreateTermsRequestFailHandlingEnum) ToPointer() *CreateTermsRequestFailHandlingEnum {
+	return &e
+}
+
 func (e *CreateTermsRequestFailHandlingEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

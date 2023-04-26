@@ -14,6 +14,10 @@ const (
 	GenerationModelInfoResponseTypeEnumInstruct GenerationModelInfoResponseTypeEnum = "Instruct"
 )
 
+func (e GenerationModelInfoResponseTypeEnum) ToPointer() *GenerationModelInfoResponseTypeEnum {
+	return &e
+}
+
 func (e *GenerationModelInfoResponseTypeEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

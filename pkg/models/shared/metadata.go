@@ -16,6 +16,10 @@ const (
 	MetaDataTierEnumEnterprise4 MetaDataTierEnum = "enterprise-4"
 )
 
+func (e MetaDataTierEnum) ToPointer() *MetaDataTierEnum {
+	return &e
+}
+
 func (e *MetaDataTierEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

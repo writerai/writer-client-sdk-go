@@ -1,4 +1,19 @@
-<!-- Start SDK Example Usage -->
+# Models
+
+## Overview
+
+Methods related to Model
+
+### Available Operations
+
+* [List](#list) - List available LLM models
+
+## List
+
+List available LLM models
+
+### Example Usage
+
 ```go
 package main
 
@@ -7,7 +22,6 @@ import(
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
@@ -15,24 +29,19 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "YOUR_API_KEY_HERE",
         }),
-        writer.WithOrganizationID(548814),
+        writer.WithOrganizationID(653108),
     )
 
     ctx := context.Background()    
-    req := operations.DetectContentRequest{
-        ContentDetectorRequest: shared.ContentDetectorRequest{
-            Input: "provident",
-        },
-    }
+    req := operations.ListModelsRequest{}
 
-    res, err := s.AIContentDetector.Detect(ctx, req)
+    res, err := s.Models.List(ctx, req)
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.ContentDetectorResponses != nil {
+    if res.GenerationModelsResponse != nil {
         // handle response
     }
 }
 ```
-<!-- End SDK Example Usage -->

@@ -16,6 +16,10 @@ const (
 	TermCreatePosEnumAdjective TermCreatePosEnum = "adjective"
 )
 
+func (e TermCreatePosEnum) ToPointer() *TermCreatePosEnum {
+	return &e
+}
+
 func (e *TermCreatePosEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -43,6 +47,10 @@ const (
 	TermCreateTypeEnumBanned   TermCreateTypeEnum = "banned"
 	TermCreateTypeEnumPending  TermCreateTypeEnum = "pending"
 )
+
+func (e TermCreateTypeEnum) ToPointer() *TermCreateTypeEnum {
+	return &e
+}
 
 func (e *TermCreateTypeEnum) UnmarshalJSON(data []byte) error {
 	var s string

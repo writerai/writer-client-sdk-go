@@ -18,6 +18,10 @@ const (
 	SubscriptionPublicResponseAPIProductNameEnumLegacy     SubscriptionPublicResponseAPIProductNameEnum = "legacy"
 )
 
+func (e SubscriptionPublicResponseAPIProductNameEnum) ToPointer() *SubscriptionPublicResponseAPIProductNameEnum {
+	return &e
+}
+
 func (e *SubscriptionPublicResponseAPIProductNameEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -51,6 +55,10 @@ const (
 	SubscriptionPublicResponseAPIStatusEnumUnpaid            SubscriptionPublicResponseAPIStatusEnum = "unpaid"
 	SubscriptionPublicResponseAPIStatusEnumCanceled          SubscriptionPublicResponseAPIStatusEnum = "canceled"
 )
+
+func (e SubscriptionPublicResponseAPIStatusEnum) ToPointer() *SubscriptionPublicResponseAPIStatusEnum {
+	return &e
+}
 
 func (e *SubscriptionPublicResponseAPIStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string

@@ -17,6 +17,10 @@ const (
 	FullTermWithUserPosEnumAdjective FullTermWithUserPosEnum = "adjective"
 )
 
+func (e FullTermWithUserPosEnum) ToPointer() *FullTermWithUserPosEnum {
+	return &e
+}
+
 func (e *FullTermWithUserPosEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -44,6 +48,10 @@ const (
 	FullTermWithUserTypeEnumBanned   FullTermWithUserTypeEnum = "banned"
 	FullTermWithUserTypeEnumPending  FullTermWithUserTypeEnum = "pending"
 )
+
+func (e FullTermWithUserTypeEnum) ToPointer() *FullTermWithUserTypeEnum {
+	return &e
+}
 
 func (e *FullTermWithUserTypeEnum) UnmarshalJSON(data []byte) error {
 	var s string

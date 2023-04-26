@@ -15,6 +15,10 @@ const (
 	PagePublicAPIResponseStatusEnumOffline PagePublicAPIResponseStatusEnum = "offline"
 )
 
+func (e PagePublicAPIResponseStatusEnum) ToPointer() *PagePublicAPIResponseStatusEnum {
+	return &e
+}
+
 func (e *PagePublicAPIResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

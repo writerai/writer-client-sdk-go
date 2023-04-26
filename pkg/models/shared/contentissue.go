@@ -49,6 +49,10 @@ const (
 	ContentIssueServiceEnumGecGpt3            ContentIssueServiceEnum = "gec-gpt3"
 )
 
+func (e ContentIssueServiceEnum) ToPointer() *ContentIssueServiceEnum {
+	return &e
+}
+
 func (e *ContentIssueServiceEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

@@ -1,4 +1,19 @@
-<!-- Start SDK Example Usage -->
+# AIContentDetector
+
+## Overview
+
+Methods related to AI Content Detector
+
+### Available Operations
+
+* [Detect](#detect) - Content detector api
+
+## Detect
+
+Content detector api
+
+### Example Usage
+
 ```go
 package main
 
@@ -15,13 +30,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "YOUR_API_KEY_HERE",
         }),
-        writer.WithOrganizationID(548814),
+        writer.WithOrganizationID(715190),
     )
 
     ctx := context.Background()    
     req := operations.DetectContentRequest{
         ContentDetectorRequest: shared.ContentDetectorRequest{
-            Input: "provident",
+            Input: "quibusdam",
         },
     }
 
@@ -35,4 +50,3 @@ func main() {
     }
 }
 ```
-<!-- End SDK Example Usage -->

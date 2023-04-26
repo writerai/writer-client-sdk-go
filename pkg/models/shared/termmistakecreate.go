@@ -16,6 +16,10 @@ const (
 	TermMistakeCreatePosEnumAdjective TermMistakeCreatePosEnum = "adjective"
 )
 
+func (e TermMistakeCreatePosEnum) ToPointer() *TermMistakeCreatePosEnum {
+	return &e
+}
+
 func (e *TermMistakeCreatePosEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
