@@ -35,6 +35,7 @@ func newModelCustomization(defaultClient, securityClient HTTPClient, serverURL, 
 }
 
 // Create - Create model customization
+
 func (s *modelCustomization) Create(ctx context.Context, request operations.CreateModelCustomizationRequest) (*operations.CreateModelCustomizationResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization", request, s.globals)
@@ -114,6 +115,7 @@ func (s *modelCustomization) Create(ctx context.Context, request operations.Crea
 }
 
 // Delete - Delete Model customization
+
 func (s *modelCustomization) Delete(ctx context.Context, request operations.DeleteModelCustomizationRequest) (*operations.DeleteModelCustomizationResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}", request, s.globals)
@@ -183,6 +185,7 @@ func (s *modelCustomization) Delete(ctx context.Context, request operations.Dele
 }
 
 // Get - Get model customization
+
 func (s *modelCustomization) Get(ctx context.Context, request operations.GetModelCustomizationRequest) (*operations.GetModelCustomizationResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}", request, s.globals)
@@ -252,6 +255,7 @@ func (s *modelCustomization) Get(ctx context.Context, request operations.GetMode
 }
 
 // List - List model customizations
+
 func (s *modelCustomization) List(ctx context.Context, request operations.ListModelCustomizationsRequest) (*operations.ListModelCustomizationsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization", request, s.globals)

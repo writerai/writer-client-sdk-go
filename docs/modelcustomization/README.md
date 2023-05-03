@@ -36,8 +36,8 @@ func main() {
         writer.WithOrganizationID(653140),
     )
 
-    ctx := context.Background()    
-    req := operations.CreateModelCustomizationRequest{
+    ctx := context.Background()
+    res, err := s.ModelCustomization.Create(ctx, operations.CreateModelCustomizationRequest{
         CreateCustomizationRequest: shared.CreateCustomizationRequest{
             AdditionalHyperParameters: &shared.HyperParameters{
                 NumVirtualTokens: 670638,
@@ -52,9 +52,7 @@ func main() {
             ValidationDatasetFileID: writer.String("iure"),
         },
         ModelID: "culpa",
-    }
-
-    res, err := s.ModelCustomization.Create(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -89,13 +87,11 @@ func main() {
         writer.WithOrganizationID(988374),
     )
 
-    ctx := context.Background()    
-    req := operations.DeleteModelCustomizationRequest{
+    ctx := context.Background()
+    res, err := s.ModelCustomization.Delete(ctx, operations.DeleteModelCustomizationRequest{
         CustomizationID: "sapiente",
         ModelID: "architecto",
-    }
-
-    res, err := s.ModelCustomization.Delete(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -130,13 +126,11 @@ func main() {
         writer.WithOrganizationID(652790),
     )
 
-    ctx := context.Background()    
-    req := operations.GetModelCustomizationRequest{
+    ctx := context.Background()
+    res, err := s.ModelCustomization.Get(ctx, operations.GetModelCustomizationRequest{
         CustomizationID: "dolorem",
         ModelID: "culpa",
-    }
-
-    res, err := s.ModelCustomization.Get(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -171,12 +165,10 @@ func main() {
         writer.WithOrganizationID(161309),
     )
 
-    ctx := context.Background()    
-    req := operations.ListModelCustomizationsRequest{
+    ctx := context.Background()
+    res, err := s.ModelCustomization.List(ctx, operations.ListModelCustomizationsRequest{
         ModelID: "repellat",
-    }
-
-    res, err := s.ModelCustomization.List(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

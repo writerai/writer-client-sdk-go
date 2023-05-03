@@ -21,11 +21,11 @@ func (e TermUpdatePosEnum) ToPointer() *TermUpdatePosEnum {
 }
 
 func (e *TermUpdatePosEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "noun":
 		fallthrough
 	case "verb":
@@ -33,10 +33,10 @@ func (e *TermUpdatePosEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = TermUpdatePosEnum(s)
+		*e = TermUpdatePosEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermUpdatePosEnum: %s", s)
+		return fmt.Errorf("invalid value for TermUpdatePosEnum: %v", v)
 	}
 }
 
@@ -53,20 +53,20 @@ func (e TermUpdateTypeEnum) ToPointer() *TermUpdateTypeEnum {
 }
 
 func (e *TermUpdateTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "approved":
 		fallthrough
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = TermUpdateTypeEnum(s)
+		*e = TermUpdateTypeEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermUpdateTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for TermUpdateTypeEnum: %v", v)
 	}
 }
 

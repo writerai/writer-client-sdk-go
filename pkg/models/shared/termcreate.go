@@ -21,11 +21,11 @@ func (e TermCreatePosEnum) ToPointer() *TermCreatePosEnum {
 }
 
 func (e *TermCreatePosEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "noun":
 		fallthrough
 	case "verb":
@@ -33,10 +33,10 @@ func (e *TermCreatePosEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = TermCreatePosEnum(s)
+		*e = TermCreatePosEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermCreatePosEnum: %s", s)
+		return fmt.Errorf("invalid value for TermCreatePosEnum: %v", v)
 	}
 }
 
@@ -53,20 +53,20 @@ func (e TermCreateTypeEnum) ToPointer() *TermCreateTypeEnum {
 }
 
 func (e *TermCreateTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "approved":
 		fallthrough
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = TermCreateTypeEnum(s)
+		*e = TermCreateTypeEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermCreateTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for TermCreateTypeEnum: %v", v)
 	}
 }
 

@@ -34,8 +34,8 @@ func main() {
         writer.WithOrganizationID(149675),
     )
 
-    ctx := context.Background()    
-    req := operations.ContentCheckRequest{
+    ctx := context.Background()
+    res, err := s.Content.Check(ctx, operations.ContentCheckRequest{
         ContentRequest: shared.ContentRequest{
             Content: "iste",
             Settings: shared.ContentSettings{
@@ -58,9 +58,7 @@ func main() {
             },
         },
         TeamID: 222321,
-    }
-
-    res, err := s.Content.Check(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -96,8 +94,8 @@ func main() {
         writer.WithOrganizationID(616934),
     )
 
-    ctx := context.Background()    
-    req := operations.ContentCorrectRequest{
+    ctx := context.Background()
+    res, err := s.Content.Correct(ctx, operations.ContentCorrectRequest{
         ContentRequest: shared.ContentRequest{
             Content: "laboriosam",
             Settings: shared.ContentSettings{
@@ -121,9 +119,7 @@ func main() {
         },
         XRequestID: writer.String("hic"),
         TeamID: 902599,
-    }
-
-    res, err := s.Content.Correct(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

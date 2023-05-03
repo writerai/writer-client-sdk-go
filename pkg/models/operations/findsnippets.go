@@ -23,20 +23,20 @@ func (e FindSnippetsSortFieldEnum) ToPointer() *FindSnippetsSortFieldEnum {
 }
 
 func (e *FindSnippetsSortFieldEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "shortcut":
 		fallthrough
 	case "creationTime":
 		fallthrough
 	case "modificationTime":
-		*e = FindSnippetsSortFieldEnum(s)
+		*e = FindSnippetsSortFieldEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindSnippetsSortFieldEnum: %s", s)
+		return fmt.Errorf("invalid value for FindSnippetsSortFieldEnum: %v", v)
 	}
 }
 
@@ -53,18 +53,18 @@ func (e FindSnippetsSortOrderEnum) ToPointer() *FindSnippetsSortOrderEnum {
 }
 
 func (e *FindSnippetsSortOrderEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = FindSnippetsSortOrderEnum(s)
+		*e = FindSnippetsSortOrderEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindSnippetsSortOrderEnum: %s", s)
+		return fmt.Errorf("invalid value for FindSnippetsSortOrderEnum: %v", v)
 	}
 }
 

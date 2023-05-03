@@ -54,11 +54,11 @@ func (e ContentIssueServiceEnum) ToPointer() *ContentIssueServiceEnum {
 }
 
 func (e *ContentIssueServiceEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "common-mistakes":
 		fallthrough
 	case "banned-words":
@@ -132,10 +132,10 @@ func (e *ContentIssueServiceEnum) UnmarshalJSON(data []byte) error {
 	case "gec-dark":
 		fallthrough
 	case "gec-gpt3":
-		*e = ContentIssueServiceEnum(s)
+		*e = ContentIssueServiceEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ContentIssueServiceEnum: %s", s)
+		return fmt.Errorf("invalid value for ContentIssueServiceEnum: %v", v)
 	}
 }
 

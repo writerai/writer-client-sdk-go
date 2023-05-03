@@ -33,12 +33,10 @@ func main() {
         writer.WithOrganizationID(100226),
     )
 
-    ctx := context.Background()    
-    req := operations.PageDetailsRequest{
+    ctx := context.Background()
+    res, err := s.Styleguide.Get(ctx, operations.PageDetailsRequest{
         PageID: 99569,
-    }
-
-    res, err := s.Styleguide.Get(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -73,14 +71,12 @@ func main() {
         writer.WithOrganizationID(919483),
     )
 
-    ctx := context.Background()    
-    req := operations.ListPagesRequest{
+    ctx := context.Background()
+    res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{
         Limit: writer.Int64(352312),
         Offset: writer.Int64(714242),
         Status: operations.ListPagesStatusEnumLive.ToPointer(),
-    }
-
-    res, err := s.Styleguide.ListPages(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

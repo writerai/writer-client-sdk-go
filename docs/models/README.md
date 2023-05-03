@@ -32,10 +32,8 @@ func main() {
         writer.WithOrganizationID(653108),
     )
 
-    ctx := context.Background()    
-    req := operations.ListModelsRequest{}
-
-    res, err := s.Models.List(ctx, req)
+    ctx := context.Background()
+    res, err := s.Models.List(ctx, operations.ListModelsRequest{})
     if err != nil {
         log.Fatal(err)
     }

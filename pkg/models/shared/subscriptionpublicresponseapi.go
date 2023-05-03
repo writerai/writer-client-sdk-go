@@ -23,11 +23,11 @@ func (e SubscriptionPublicResponseAPIProductNameEnum) ToPointer() *SubscriptionP
 }
 
 func (e *SubscriptionPublicResponseAPIProductNameEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "free":
 		fallthrough
 	case "pro":
@@ -37,10 +37,10 @@ func (e *SubscriptionPublicResponseAPIProductNameEnum) UnmarshalJSON(data []byte
 	case "enterprise":
 		fallthrough
 	case "legacy":
-		*e = SubscriptionPublicResponseAPIProductNameEnum(s)
+		*e = SubscriptionPublicResponseAPIProductNameEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIProductNameEnum: %s", s)
+		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIProductNameEnum: %v", v)
 	}
 }
 
@@ -61,11 +61,11 @@ func (e SubscriptionPublicResponseAPIStatusEnum) ToPointer() *SubscriptionPublic
 }
 
 func (e *SubscriptionPublicResponseAPIStatusEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "trialing":
 		fallthrough
 	case "active":
@@ -79,10 +79,10 @@ func (e *SubscriptionPublicResponseAPIStatusEnum) UnmarshalJSON(data []byte) err
 	case "unpaid":
 		fallthrough
 	case "canceled":
-		*e = SubscriptionPublicResponseAPIStatusEnum(s)
+		*e = SubscriptionPublicResponseAPIStatusEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIStatusEnum: %s", s)
+		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIStatusEnum: %v", v)
 	}
 }
 

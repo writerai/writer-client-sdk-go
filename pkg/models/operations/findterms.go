@@ -24,11 +24,11 @@ func (e FindTermsPartOfSpeechEnum) ToPointer() *FindTermsPartOfSpeechEnum {
 }
 
 func (e *FindTermsPartOfSpeechEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "noun":
 		fallthrough
 	case "verb":
@@ -36,10 +36,10 @@ func (e *FindTermsPartOfSpeechEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = FindTermsPartOfSpeechEnum(s)
+		*e = FindTermsPartOfSpeechEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsPartOfSpeechEnum: %s", s)
+		return fmt.Errorf("invalid value for FindTermsPartOfSpeechEnum: %v", v)
 	}
 }
 
@@ -58,11 +58,11 @@ func (e FindTermsSortFieldEnum) ToPointer() *FindTermsSortFieldEnum {
 }
 
 func (e *FindTermsSortFieldEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "term":
 		fallthrough
 	case "creationTime":
@@ -70,10 +70,10 @@ func (e *FindTermsSortFieldEnum) UnmarshalJSON(data []byte) error {
 	case "modificationTime":
 		fallthrough
 	case "type":
-		*e = FindTermsSortFieldEnum(s)
+		*e = FindTermsSortFieldEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsSortFieldEnum: %s", s)
+		return fmt.Errorf("invalid value for FindTermsSortFieldEnum: %v", v)
 	}
 }
 
@@ -90,18 +90,18 @@ func (e FindTermsSortOrderEnum) ToPointer() *FindTermsSortOrderEnum {
 }
 
 func (e *FindTermsSortOrderEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = FindTermsSortOrderEnum(s)
+		*e = FindTermsSortOrderEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsSortOrderEnum: %s", s)
+		return fmt.Errorf("invalid value for FindTermsSortOrderEnum: %v", v)
 	}
 }
 
@@ -119,20 +119,20 @@ func (e FindTermsTypeEnum) ToPointer() *FindTermsTypeEnum {
 }
 
 func (e *FindTermsTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "approved":
 		fallthrough
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = FindTermsTypeEnum(s)
+		*e = FindTermsTypeEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for FindTermsTypeEnum: %v", v)
 	}
 }
 

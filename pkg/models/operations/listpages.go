@@ -22,18 +22,18 @@ func (e ListPagesStatusEnum) ToPointer() *ListPagesStatusEnum {
 }
 
 func (e *ListPagesStatusEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "live":
 		fallthrough
 	case "offline":
-		*e = ListPagesStatusEnum(s)
+		*e = ListPagesStatusEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListPagesStatusEnum: %s", s)
+		return fmt.Errorf("invalid value for ListPagesStatusEnum: %v", v)
 	}
 }
 

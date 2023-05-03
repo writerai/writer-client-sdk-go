@@ -32,16 +32,14 @@ func main() {
         writer.WithOrganizationID(55),
     )
 
-    ctx := context.Background()    
-    req := operations.ListUsersRequest{
+    ctx := context.Background()
+    res, err := s.User.List(ctx, operations.ListUsersRequest{
         Limit: writer.Int64(872651),
         Offset: writer.Int64(311860),
         Search: writer.String("tempora"),
         SortField: operations.ListUsersSortFieldEnumCreationTime.ToPointer(),
         SortOrder: operations.ListUsersSortOrderEnumDesc.ToPointer(),
-    }
-
-    res, err := s.User.List(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

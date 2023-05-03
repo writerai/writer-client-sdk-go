@@ -21,11 +21,11 @@ func (e FullLinkedTermPosEnum) ToPointer() *FullLinkedTermPosEnum {
 }
 
 func (e *FullLinkedTermPosEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "noun":
 		fallthrough
 	case "verb":
@@ -33,10 +33,10 @@ func (e *FullLinkedTermPosEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = FullLinkedTermPosEnum(s)
+		*e = FullLinkedTermPosEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FullLinkedTermPosEnum: %s", s)
+		return fmt.Errorf("invalid value for FullLinkedTermPosEnum: %v", v)
 	}
 }
 

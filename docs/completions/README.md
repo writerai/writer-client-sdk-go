@@ -34,8 +34,8 @@ func main() {
         writer.WithOrganizationID(870088),
     )
 
-    ctx := context.Background()    
-    req := operations.CreateCompletionRequest{
+    ctx := context.Background()
+    res, err := s.Completions.Create(ctx, operations.CreateCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
             BestOf: writer.Int64(978619),
             FrequencyPenalty: writer.Float64(4736.08),
@@ -52,9 +52,7 @@ func main() {
             TopP: writer.Float64(5820.2),
         },
         ModelID: "fugit",
-    }
-
-    res, err := s.Completions.Create(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -90,8 +88,8 @@ func main() {
         writer.WithOrganizationID(537373),
     )
 
-    ctx := context.Background()    
-    req := operations.CreateModelCustomizationCompletionRequest{
+    ctx := context.Background()
+    res, err := s.Completions.CreateModelCustomizationCompletion(ctx, operations.CreateModelCustomizationCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
             BestOf: writer.Int64(944669),
             FrequencyPenalty: writer.Float64(7586.16),
@@ -112,9 +110,7 @@ func main() {
         },
         CustomizationID: "ad",
         ModelID: "natus",
-    }
-
-    res, err := s.Completions.CreateModelCustomizationCompletion(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

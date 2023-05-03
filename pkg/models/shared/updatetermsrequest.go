@@ -21,11 +21,11 @@ func (e UpdateTermsRequestFailHandlingEnum) ToPointer() *UpdateTermsRequestFailH
 }
 
 func (e *UpdateTermsRequestFailHandlingEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "accumulate":
 		fallthrough
 	case "validate":
@@ -33,10 +33,10 @@ func (e *UpdateTermsRequestFailHandlingEnum) UnmarshalJSON(data []byte) error {
 	case "skip":
 		fallthrough
 	case "validateOnly":
-		*e = UpdateTermsRequestFailHandlingEnum(s)
+		*e = UpdateTermsRequestFailHandlingEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UpdateTermsRequestFailHandlingEnum: %s", s)
+		return fmt.Errorf("invalid value for UpdateTermsRequestFailHandlingEnum: %v", v)
 	}
 }
 

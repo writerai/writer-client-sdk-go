@@ -32,13 +32,11 @@ func main() {
         writer.WithOrganizationID(681820),
     )
 
-    ctx := context.Background()    
-    req := operations.FetchCustomizedModelFileRequest{
+    ctx := context.Background()
+    res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, operations.FetchCustomizedModelFileRequest{
         CustomizationID: "in",
         ModelID: "corporis",
-    }
-
-    res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

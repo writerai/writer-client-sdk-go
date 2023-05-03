@@ -35,6 +35,7 @@ func newSnippet(defaultClient, securityClient HTTPClient, serverURL, language, s
 }
 
 // Delete - Delete snippets
+
 func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsRequest) (*operations.DeleteSnippetsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.globals)
@@ -110,6 +111,7 @@ func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsR
 }
 
 // Find - Find snippets
+
 func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsRequest) (*operations.FindSnippetsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.globals)
@@ -183,6 +185,7 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 }
 
 // Update - Update snippets
+
 func (s *snippet) Update(ctx context.Context, request operations.UpdateSnippetsRequest) (*operations.UpdateSnippetsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.globals)

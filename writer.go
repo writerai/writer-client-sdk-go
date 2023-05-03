@@ -125,8 +125,8 @@ func WithOrganizationID(organizationID int64) SDKOption {
 func New(opts ...SDKOption) *Writer {
 	sdk := &Writer{
 		_language:   "go",
-		_sdkVersion: "0.4.0",
-		_genVersion: "2.21.1",
+		_sdkVersion: "0.5.0",
+		_genVersion: "2.24.0",
 
 		_globals: map[string]map[string]map[string]interface{}{
 			"parameters": {},

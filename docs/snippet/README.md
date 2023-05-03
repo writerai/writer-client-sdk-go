@@ -34,17 +34,15 @@ func main() {
         writer.WithOrganizationID(581850),
     )
 
-    ctx := context.Background()    
-    req := operations.DeleteSnippetsRequest{
+    ctx := context.Background()
+    res, err := s.Snippet.Delete(ctx, operations.DeleteSnippetsRequest{
         XRequestID: writer.String("numquam"),
         Ids: []string{
             "quam",
             "molestiae",
         },
         TeamID: 244425,
-    }
-
-    res, err := s.Snippet.Delete(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -79,8 +77,8 @@ func main() {
         writer.WithOrganizationID(623510),
     )
 
-    ctx := context.Background()    
-    req := operations.FindSnippetsRequest{
+    ctx := context.Background()
+    res, err := s.Snippet.Find(ctx, operations.FindSnippetsRequest{
         Limit: writer.Int64(158969),
         Offset: writer.Int64(338007),
         Search: writer.String("vitae"),
@@ -98,9 +96,7 @@ func main() {
             "aut",
         },
         TeamID: 97101,
-    }
-
-    res, err := s.Snippet.Find(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -136,8 +132,8 @@ func main() {
         writer.WithOrganizationID(622846),
     )
 
-    ctx := context.Background()    
-    req := operations.UpdateSnippetsRequest{
+    ctx := context.Background()
+    res, err := s.Snippet.Update(ctx, operations.UpdateSnippetsRequest{
         RequestBody: []shared.SnippetUpdate{
             shared.SnippetUpdate{
                 Description: writer.String("laborum"),
@@ -213,9 +209,7 @@ func main() {
         },
         XRequestID: writer.String("facilis"),
         TeamID: 447926,
-    }
-
-    res, err := s.Snippet.Update(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

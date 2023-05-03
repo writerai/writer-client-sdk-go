@@ -18,14 +18,12 @@ func main() {
         writer.WithOrganizationID(548814),
     )
 
-    ctx := context.Background()    
-    req := operations.DetectContentRequest{
+    ctx := context.Background()
+    res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
         ContentDetectorRequest: shared.ContentDetectorRequest{
             Input: "provident",
         },
-    }
-
-    res, err := s.AIContentDetector.Detect(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

@@ -20,18 +20,18 @@ func (e PageWithSectionResponseStatusEnum) ToPointer() *PageWithSectionResponseS
 }
 
 func (e *PageWithSectionResponseStatusEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "live":
 		fallthrough
 	case "offline":
-		*e = PageWithSectionResponseStatusEnum(s)
+		*e = PageWithSectionResponseStatusEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PageWithSectionResponseStatusEnum: %s", s)
+		return fmt.Errorf("invalid value for PageWithSectionResponseStatusEnum: %v", v)
 	}
 }
 

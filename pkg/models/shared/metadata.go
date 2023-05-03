@@ -21,11 +21,11 @@ func (e MetaDataTierEnum) ToPointer() *MetaDataTierEnum {
 }
 
 func (e *MetaDataTierEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "enterprise-1":
 		fallthrough
 	case "enterprise-2":
@@ -33,10 +33,10 @@ func (e *MetaDataTierEnum) UnmarshalJSON(data []byte) error {
 	case "enterprise-3":
 		fallthrough
 	case "enterprise-4":
-		*e = MetaDataTierEnum(s)
+		*e = MetaDataTierEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for MetaDataTierEnum: %s", s)
+		return fmt.Errorf("invalid value for MetaDataTierEnum: %v", v)
 	}
 }
 

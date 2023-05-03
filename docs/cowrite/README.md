@@ -34,8 +34,8 @@ func main() {
         writer.WithOrganizationID(857946),
     )
 
-    ctx := context.Background()    
-    req := operations.GenerateContentRequest{
+    ctx := context.Background()
+    res, err := s.CoWrite.GenerateContent(ctx, operations.GenerateContentRequest{
         GenerateTemplateRequest: shared.GenerateTemplateRequest{
             Inputs: []shared.MagicRequestInput{
                 shared.MagicRequestInput{
@@ -64,9 +64,7 @@ func main() {
             TemplateID: "repellendus",
         },
         TeamID: 957156,
-    }
-
-    res, err := s.CoWrite.GenerateContent(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -101,13 +99,11 @@ func main() {
         writer.WithOrganizationID(778157),
     )
 
-    ctx := context.Background()    
-    req := operations.ListTemplatesRequest{
+    ctx := context.Background()
+    res, err := s.CoWrite.ListTemplates(ctx, operations.ListTemplatesRequest{
         TeamID: 140350,
         TemplateID: "at",
-    }
-
-    res, err := s.CoWrite.ListTemplates(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

@@ -35,12 +35,10 @@ func main() {
         writer.WithOrganizationID(613064),
     )
 
-    ctx := context.Background()    
-    req := operations.DeleteFileRequest{
+    ctx := context.Background()
+    res, err := s.Files.Delete(ctx, operations.DeleteFileRequest{
         FileID: "iure",
-    }
-
-    res, err := s.Files.Delete(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -75,12 +73,10 @@ func main() {
         writer.WithOrganizationID(902349),
     )
 
-    ctx := context.Background()    
-    req := operations.GetFileRequest{
+    ctx := context.Background()
+    res, err := s.Files.Get(ctx, operations.GetFileRequest{
         FileID: "quidem",
-    }
-
-    res, err := s.Files.Get(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -115,10 +111,8 @@ func main() {
         writer.WithOrganizationID(99280),
     )
 
-    ctx := context.Background()    
-    req := operations.ListFilesRequest{}
-
-    res, err := s.Files.List(ctx, req)
+    ctx := context.Background()
+    res, err := s.Files.List(ctx, operations.ListFilesRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -154,17 +148,15 @@ func main() {
         writer.WithOrganizationID(60225),
     )
 
-    ctx := context.Background()    
-    req := operations.UploadFileRequest{
+    ctx := context.Background()
+    res, err := s.Files.Upload(ctx, operations.UploadFileRequest{
         UploadModelFileRequest: shared.UploadModelFileRequest{
             File: shared.UploadModelFileRequestFile{
                 Content: []byte("reiciendis"),
                 File: "est",
             },
         },
-    }
-
-    res, err := s.Files.Upload(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

@@ -19,18 +19,18 @@ func (e GenerationModelInfoResponseTypeEnum) ToPointer() *GenerationModelInfoRes
 }
 
 func (e *GenerationModelInfoResponseTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "GPT":
 		fallthrough
 	case "Instruct":
-		*e = GenerationModelInfoResponseTypeEnum(s)
+		*e = GenerationModelInfoResponseTypeEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GenerationModelInfoResponseTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for GenerationModelInfoResponseTypeEnum: %v", v)
 	}
 }
 

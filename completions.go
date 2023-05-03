@@ -35,6 +35,7 @@ func newCompletions(defaultClient, securityClient HTTPClient, serverURL, languag
 }
 
 // Create - Create completion for LLM model
+
 func (s *completions) Create(ctx context.Context, request operations.CreateCompletionRequest) (*operations.CreateCompletionResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/completions", request, s.globals)
@@ -114,6 +115,7 @@ func (s *completions) Create(ctx context.Context, request operations.CreateCompl
 }
 
 // CreateModelCustomizationCompletion - Create completion for LLM customization model
+
 func (s *completions) CreateModelCustomizationCompletion(ctx context.Context, request operations.CreateModelCustomizationCompletionRequest) (*operations.CreateModelCustomizationCompletionResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}/completions", request, s.globals)

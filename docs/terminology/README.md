@@ -36,8 +36,8 @@ func main() {
         writer.WithOrganizationID(998848),
     )
 
-    ctx := context.Background()    
-    req := operations.AddTermsRequest{
+    ctx := context.Background()
+    res, err := s.Terminology.Add(ctx, operations.AddTermsRequest{
         CreateTermsRequest: shared.CreateTermsRequest{
             FailHandling: shared.CreateTermsRequestFailHandlingEnumValidateOnly.ToPointer(),
             Models: []shared.TermCreate{
@@ -119,9 +119,7 @@ func main() {
             },
         },
         TeamID: 729991,
-    }
-
-    res, err := s.Terminology.Add(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -156,17 +154,15 @@ func main() {
         writer.WithOrganizationID(749999),
     )
 
-    ctx := context.Background()    
-    req := operations.DeleteTermsRequest{
+    ctx := context.Background()
+    res, err := s.Terminology.Delete(ctx, operations.DeleteTermsRequest{
         XRequestID: writer.String("dolores"),
         Ids: []int64{
             521037,
             489549,
         },
         TeamID: 54338,
-    }
-
-    res, err := s.Terminology.Delete(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -201,8 +197,8 @@ func main() {
         writer.WithOrganizationID(338985),
     )
 
-    ctx := context.Background()    
-    req := operations.FindTermsRequest{
+    ctx := context.Background()
+    res, err := s.Terminology.Find(ctx, operations.FindTermsRequest{
         Limit: writer.Int64(199996),
         Offset: writer.Int64(179490),
         PartOfSpeech: operations.FindTermsPartOfSpeechEnumNoun.ToPointer(),
@@ -215,9 +211,7 @@ func main() {
         TeamID: 345352,
         Term: writer.String("hic"),
         Type: operations.FindTermsTypeEnumPending.ToPointer(),
-    }
-
-    res, err := s.Terminology.Find(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -253,8 +247,8 @@ func main() {
         writer.WithOrganizationID(608253),
     )
 
-    ctx := context.Background()    
-    req := operations.UpdateTermsRequest{
+    ctx := context.Background()
+    res, err := s.Terminology.Update(ctx, operations.UpdateTermsRequest{
         UpdateTermsRequest: shared.UpdateTermsRequest{
             FailHandling: shared.UpdateTermsRequestFailHandlingEnumSkip.ToPointer(),
             Models: []shared.TermUpdate{
@@ -442,9 +436,7 @@ func main() {
         },
         XRequestID: writer.String("totam"),
         TeamID: 628982,
-    }
-
-    res, err := s.Terminology.Update(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

@@ -27,11 +27,11 @@ func (e ListUsersSortFieldEnum) ToPointer() *ListUsersSortFieldEnum {
 }
 
 func (e *ListUsersSortFieldEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "id":
 		fallthrough
 	case "name":
@@ -45,10 +45,10 @@ func (e *ListUsersSortFieldEnum) UnmarshalJSON(data []byte) error {
 	case "email":
 		fallthrough
 	case "lastSeen":
-		*e = ListUsersSortFieldEnum(s)
+		*e = ListUsersSortFieldEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListUsersSortFieldEnum: %s", s)
+		return fmt.Errorf("invalid value for ListUsersSortFieldEnum: %v", v)
 	}
 }
 
@@ -65,18 +65,18 @@ func (e ListUsersSortOrderEnum) ToPointer() *ListUsersSortOrderEnum {
 }
 
 func (e *ListUsersSortOrderEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = ListUsersSortOrderEnum(s)
+		*e = ListUsersSortOrderEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListUsersSortOrderEnum: %s", s)
+		return fmt.Errorf("invalid value for ListUsersSortOrderEnum: %v", v)
 	}
 }
 

@@ -35,6 +35,7 @@ func newFiles(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 }
 
 // Delete - Delete file
+
 func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest) (*operations.DeleteFileResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.globals)
@@ -104,6 +105,7 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 }
 
 // Get - Get file
+
 func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*operations.GetFileResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.globals)
@@ -173,6 +175,7 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 }
 
 // List - List files
+
 func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (*operations.ListFilesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.globals)
@@ -242,6 +245,7 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 }
 
 // Upload - Upload file
+
 func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest) (*operations.UploadFileResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.globals)
