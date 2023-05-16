@@ -35,7 +35,6 @@ func newAIContentDetector(defaultClient, securityClient HTTPClient, serverURL, l
 }
 
 // Detect - Content detector api
-
 func (s *aiContentDetector) Detect(ctx context.Context, request operations.DetectContentRequest) (*operations.DetectContentResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/detect", request, s.globals)

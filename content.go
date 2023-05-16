@@ -35,7 +35,6 @@ func newContent(defaultClient, securityClient HTTPClient, serverURL, language, s
 }
 
 // Check - Check your content against your preset styleguide.
-
 func (s *content) Check(ctx context.Context, request operations.ContentCheckRequest) (*operations.ContentCheckResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/team/{teamId}/check", request, s.globals)
@@ -115,7 +114,6 @@ func (s *content) Check(ctx context.Context, request operations.ContentCheckRequ
 }
 
 // Correct - Apply the style guide suggestions directly to your content.
-
 func (s *content) Correct(ctx context.Context, request operations.ContentCorrectRequest) (*operations.ContentCorrectResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/team/{teamId}/correct", request, s.globals)

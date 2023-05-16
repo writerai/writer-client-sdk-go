@@ -36,7 +36,6 @@ func newUser(defaultClient, securityClient HTTPClient, serverURL, language, sdkV
 }
 
 // List - List users
-
 func (s *user) List(ctx context.Context, request operations.ListUsersRequest) (*operations.ListUsersResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/user"

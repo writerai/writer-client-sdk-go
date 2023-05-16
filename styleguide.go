@@ -36,7 +36,6 @@ func newStyleguide(defaultClient, securityClient HTTPClient, serverURL, language
 }
 
 // Get - Page details
-
 func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequest) (*operations.PageDetailsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/styleguide/page/{pageId}", request, s.globals)
@@ -106,7 +105,6 @@ func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequ
 }
 
 // ListPages - List your styleguide pages
-
 func (s *styleguide) ListPages(ctx context.Context, request operations.ListPagesRequest) (*operations.ListPagesResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/styleguide/page"

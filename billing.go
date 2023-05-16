@@ -36,7 +36,6 @@ func newBilling(defaultClient, securityClient HTTPClient, serverURL, language, s
 }
 
 // GetSubscriptionDetails - Get your organization subscription details
-
 func (s *billing) GetSubscriptionDetails(ctx context.Context) (*operations.GetSubscriptionDetailsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/billing/subscription"

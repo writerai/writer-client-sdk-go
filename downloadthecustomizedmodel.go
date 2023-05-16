@@ -36,7 +36,6 @@ func newDownloadTheCustomizedModel(defaultClient, securityClient HTTPClient, ser
 }
 
 // FetchFile - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
-
 func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request operations.FetchCustomizedModelFileRequest) (*operations.FetchCustomizedModelFileResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}/fetch", request, s.globals)

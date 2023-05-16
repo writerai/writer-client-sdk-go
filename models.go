@@ -35,7 +35,6 @@ func newModels(defaultClient, securityClient HTTPClient, serverURL, language, sd
 }
 
 // List - List available LLM models
-
 func (s *models) List(ctx context.Context, request operations.ListModelsRequest) (*operations.ListModelsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model", request, s.globals)

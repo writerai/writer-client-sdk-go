@@ -35,7 +35,6 @@ func newCoWrite(defaultClient, securityClient HTTPClient, serverURL, language, s
 }
 
 // GenerateContent - Generate content using predefined templates
-
 func (s *coWrite) GenerateContent(ctx context.Context, request operations.GenerateContentRequest) (*operations.GenerateContentResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/cowrite/organization/{organizationId}/team/{teamId}/generate", request, s.globals)
@@ -115,7 +114,6 @@ func (s *coWrite) GenerateContent(ctx context.Context, request operations.Genera
 }
 
 // ListTemplates - Get a list of your existing CoWrite templates
-
 func (s *coWrite) ListTemplates(ctx context.Context, request operations.ListTemplatesRequest) (*operations.ListTemplatesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/cowrite/organization/{organizationId}/team/{teamId}/template/{templateId}", request, s.globals)

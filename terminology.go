@@ -35,7 +35,6 @@ func newTerminology(defaultClient, securityClient HTTPClient, serverURL, languag
 }
 
 // Add - Add terms
-
 func (s *terminology) Add(ctx context.Context, request operations.AddTermsRequest) (*operations.AddTermsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.globals)
@@ -115,7 +114,6 @@ func (s *terminology) Add(ctx context.Context, request operations.AddTermsReques
 }
 
 // Delete - Delete terms
-
 func (s *terminology) Delete(ctx context.Context, request operations.DeleteTermsRequest) (*operations.DeleteTermsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.globals)
@@ -191,7 +189,6 @@ func (s *terminology) Delete(ctx context.Context, request operations.DeleteTerms
 }
 
 // Find - Find terms
-
 func (s *terminology) Find(ctx context.Context, request operations.FindTermsRequest) (*operations.FindTermsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.globals)
@@ -265,7 +262,6 @@ func (s *terminology) Find(ctx context.Context, request operations.FindTermsRequ
 }
 
 // Update - Update terms
-
 func (s *terminology) Update(ctx context.Context, request operations.UpdateTermsRequest) (*operations.UpdateTermsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.globals)
