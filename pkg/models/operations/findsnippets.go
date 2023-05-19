@@ -9,20 +9,20 @@ import (
 	"net/http"
 )
 
-// FindSnippetsSortFieldEnum
-type FindSnippetsSortFieldEnum string
+// FindSnippetsSortField
+type FindSnippetsSortField string
 
 const (
-	FindSnippetsSortFieldEnumShortcut         FindSnippetsSortFieldEnum = "shortcut"
-	FindSnippetsSortFieldEnumCreationTime     FindSnippetsSortFieldEnum = "creationTime"
-	FindSnippetsSortFieldEnumModificationTime FindSnippetsSortFieldEnum = "modificationTime"
+	FindSnippetsSortFieldShortcut         FindSnippetsSortField = "shortcut"
+	FindSnippetsSortFieldCreationTime     FindSnippetsSortField = "creationTime"
+	FindSnippetsSortFieldModificationTime FindSnippetsSortField = "modificationTime"
 )
 
-func (e FindSnippetsSortFieldEnum) ToPointer() *FindSnippetsSortFieldEnum {
+func (e FindSnippetsSortField) ToPointer() *FindSnippetsSortField {
 	return &e
 }
 
-func (e *FindSnippetsSortFieldEnum) UnmarshalJSON(data []byte) error {
+func (e *FindSnippetsSortField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,26 +33,26 @@ func (e *FindSnippetsSortFieldEnum) UnmarshalJSON(data []byte) error {
 	case "creationTime":
 		fallthrough
 	case "modificationTime":
-		*e = FindSnippetsSortFieldEnum(v)
+		*e = FindSnippetsSortField(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindSnippetsSortFieldEnum: %v", v)
+		return fmt.Errorf("invalid value for FindSnippetsSortField: %v", v)
 	}
 }
 
-// FindSnippetsSortOrderEnum
-type FindSnippetsSortOrderEnum string
+// FindSnippetsSortOrder
+type FindSnippetsSortOrder string
 
 const (
-	FindSnippetsSortOrderEnumAsc  FindSnippetsSortOrderEnum = "asc"
-	FindSnippetsSortOrderEnumDesc FindSnippetsSortOrderEnum = "desc"
+	FindSnippetsSortOrderAsc  FindSnippetsSortOrder = "asc"
+	FindSnippetsSortOrderDesc FindSnippetsSortOrder = "desc"
 )
 
-func (e FindSnippetsSortOrderEnum) ToPointer() *FindSnippetsSortOrderEnum {
+func (e FindSnippetsSortOrder) ToPointer() *FindSnippetsSortOrder {
 	return &e
 }
 
-func (e *FindSnippetsSortOrderEnum) UnmarshalJSON(data []byte) error {
+func (e *FindSnippetsSortOrder) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -61,23 +61,23 @@ func (e *FindSnippetsSortOrderEnum) UnmarshalJSON(data []byte) error {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = FindSnippetsSortOrderEnum(v)
+		*e = FindSnippetsSortOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindSnippetsSortOrderEnum: %v", v)
+		return fmt.Errorf("invalid value for FindSnippetsSortOrder: %v", v)
 	}
 }
 
 type FindSnippetsRequest struct {
-	Limit          *int64                     `queryParam:"style=form,explode=true,name=limit"`
-	Offset         *int64                     `queryParam:"style=form,explode=true,name=offset"`
-	OrganizationID *int64                     `pathParam:"style=simple,explode=false,name=organizationId"`
-	Search         *string                    `queryParam:"style=form,explode=true,name=search"`
-	Shortcuts      []string                   `queryParam:"style=form,explode=true,name=shortcuts"`
-	SortField      *FindSnippetsSortFieldEnum `queryParam:"style=form,explode=true,name=sortField"`
-	SortOrder      *FindSnippetsSortOrderEnum `queryParam:"style=form,explode=true,name=sortOrder"`
-	Tags           []string                   `queryParam:"style=form,explode=true,name=tags"`
-	TeamID         int64                      `pathParam:"style=simple,explode=false,name=teamId"`
+	Limit          *int64                 `queryParam:"style=form,explode=true,name=limit"`
+	Offset         *int64                 `queryParam:"style=form,explode=true,name=offset"`
+	OrganizationID *int64                 `pathParam:"style=simple,explode=false,name=organizationId"`
+	Search         *string                `queryParam:"style=form,explode=true,name=search"`
+	Shortcuts      []string               `queryParam:"style=form,explode=true,name=shortcuts"`
+	SortField      *FindSnippetsSortField `queryParam:"style=form,explode=true,name=sortField"`
+	SortOrder      *FindSnippetsSortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
+	Tags           []string               `queryParam:"style=form,explode=true,name=tags"`
+	TeamID         int64                  `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
 type FindSnippetsResponse struct {

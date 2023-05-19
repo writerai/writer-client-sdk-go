@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-type MetaDataTierEnum string
+type MetaDataTier string
 
 const (
-	MetaDataTierEnumEnterprise1 MetaDataTierEnum = "enterprise-1"
-	MetaDataTierEnumEnterprise2 MetaDataTierEnum = "enterprise-2"
-	MetaDataTierEnumEnterprise3 MetaDataTierEnum = "enterprise-3"
-	MetaDataTierEnumEnterprise4 MetaDataTierEnum = "enterprise-4"
+	MetaDataTierEnterprise1 MetaDataTier = "enterprise-1"
+	MetaDataTierEnterprise2 MetaDataTier = "enterprise-2"
+	MetaDataTierEnterprise3 MetaDataTier = "enterprise-3"
+	MetaDataTierEnterprise4 MetaDataTier = "enterprise-4"
 )
 
-func (e MetaDataTierEnum) ToPointer() *MetaDataTierEnum {
+func (e MetaDataTier) ToPointer() *MetaDataTier {
 	return &e
 }
 
-func (e *MetaDataTierEnum) UnmarshalJSON(data []byte) error {
+func (e *MetaDataTier) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,10 +33,10 @@ func (e *MetaDataTierEnum) UnmarshalJSON(data []byte) error {
 	case "enterprise-3":
 		fallthrough
 	case "enterprise-4":
-		*e = MetaDataTierEnum(v)
+		*e = MetaDataTier(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for MetaDataTierEnum: %v", v)
+		return fmt.Errorf("invalid value for MetaDataTier: %v", v)
 	}
 }
 
@@ -48,5 +48,5 @@ type MetaData struct {
 	Styleguide    map[string]string `json:"styleguide"`
 	TeamCount     int64             `json:"teamCount"`
 	TermsCount    int64             `json:"termsCount"`
-	Tier          *MetaDataTierEnum `json:"tier,omitempty"`
+	Tier          *MetaDataTier     `json:"tier,omitempty"`
 }

@@ -9,21 +9,21 @@ import (
 	"net/http"
 )
 
-// FindTermsPartOfSpeechEnum
-type FindTermsPartOfSpeechEnum string
+// FindTermsPartOfSpeech
+type FindTermsPartOfSpeech string
 
 const (
-	FindTermsPartOfSpeechEnumNoun      FindTermsPartOfSpeechEnum = "noun"
-	FindTermsPartOfSpeechEnumVerb      FindTermsPartOfSpeechEnum = "verb"
-	FindTermsPartOfSpeechEnumAdverb    FindTermsPartOfSpeechEnum = "adverb"
-	FindTermsPartOfSpeechEnumAdjective FindTermsPartOfSpeechEnum = "adjective"
+	FindTermsPartOfSpeechNoun      FindTermsPartOfSpeech = "noun"
+	FindTermsPartOfSpeechVerb      FindTermsPartOfSpeech = "verb"
+	FindTermsPartOfSpeechAdverb    FindTermsPartOfSpeech = "adverb"
+	FindTermsPartOfSpeechAdjective FindTermsPartOfSpeech = "adjective"
 )
 
-func (e FindTermsPartOfSpeechEnum) ToPointer() *FindTermsPartOfSpeechEnum {
+func (e FindTermsPartOfSpeech) ToPointer() *FindTermsPartOfSpeech {
 	return &e
 }
 
-func (e *FindTermsPartOfSpeechEnum) UnmarshalJSON(data []byte) error {
+func (e *FindTermsPartOfSpeech) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -36,28 +36,28 @@ func (e *FindTermsPartOfSpeechEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = FindTermsPartOfSpeechEnum(v)
+		*e = FindTermsPartOfSpeech(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsPartOfSpeechEnum: %v", v)
+		return fmt.Errorf("invalid value for FindTermsPartOfSpeech: %v", v)
 	}
 }
 
-// FindTermsSortFieldEnum
-type FindTermsSortFieldEnum string
+// FindTermsSortField
+type FindTermsSortField string
 
 const (
-	FindTermsSortFieldEnumTerm             FindTermsSortFieldEnum = "term"
-	FindTermsSortFieldEnumCreationTime     FindTermsSortFieldEnum = "creationTime"
-	FindTermsSortFieldEnumModificationTime FindTermsSortFieldEnum = "modificationTime"
-	FindTermsSortFieldEnumType             FindTermsSortFieldEnum = "type"
+	FindTermsSortFieldTerm             FindTermsSortField = "term"
+	FindTermsSortFieldCreationTime     FindTermsSortField = "creationTime"
+	FindTermsSortFieldModificationTime FindTermsSortField = "modificationTime"
+	FindTermsSortFieldType             FindTermsSortField = "type"
 )
 
-func (e FindTermsSortFieldEnum) ToPointer() *FindTermsSortFieldEnum {
+func (e FindTermsSortField) ToPointer() *FindTermsSortField {
 	return &e
 }
 
-func (e *FindTermsSortFieldEnum) UnmarshalJSON(data []byte) error {
+func (e *FindTermsSortField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -70,26 +70,26 @@ func (e *FindTermsSortFieldEnum) UnmarshalJSON(data []byte) error {
 	case "modificationTime":
 		fallthrough
 	case "type":
-		*e = FindTermsSortFieldEnum(v)
+		*e = FindTermsSortField(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsSortFieldEnum: %v", v)
+		return fmt.Errorf("invalid value for FindTermsSortField: %v", v)
 	}
 }
 
-// FindTermsSortOrderEnum
-type FindTermsSortOrderEnum string
+// FindTermsSortOrder
+type FindTermsSortOrder string
 
 const (
-	FindTermsSortOrderEnumAsc  FindTermsSortOrderEnum = "asc"
-	FindTermsSortOrderEnumDesc FindTermsSortOrderEnum = "desc"
+	FindTermsSortOrderAsc  FindTermsSortOrder = "asc"
+	FindTermsSortOrderDesc FindTermsSortOrder = "desc"
 )
 
-func (e FindTermsSortOrderEnum) ToPointer() *FindTermsSortOrderEnum {
+func (e FindTermsSortOrder) ToPointer() *FindTermsSortOrder {
 	return &e
 }
 
-func (e *FindTermsSortOrderEnum) UnmarshalJSON(data []byte) error {
+func (e *FindTermsSortOrder) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -98,27 +98,27 @@ func (e *FindTermsSortOrderEnum) UnmarshalJSON(data []byte) error {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = FindTermsSortOrderEnum(v)
+		*e = FindTermsSortOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsSortOrderEnum: %v", v)
+		return fmt.Errorf("invalid value for FindTermsSortOrder: %v", v)
 	}
 }
 
-// FindTermsTypeEnum
-type FindTermsTypeEnum string
+// FindTermsType
+type FindTermsType string
 
 const (
-	FindTermsTypeEnumApproved FindTermsTypeEnum = "approved"
-	FindTermsTypeEnumBanned   FindTermsTypeEnum = "banned"
-	FindTermsTypeEnumPending  FindTermsTypeEnum = "pending"
+	FindTermsTypeApproved FindTermsType = "approved"
+	FindTermsTypeBanned   FindTermsType = "banned"
+	FindTermsTypePending  FindTermsType = "pending"
 )
 
-func (e FindTermsTypeEnum) ToPointer() *FindTermsTypeEnum {
+func (e FindTermsType) ToPointer() *FindTermsType {
 	return &e
 }
 
-func (e *FindTermsTypeEnum) UnmarshalJSON(data []byte) error {
+func (e *FindTermsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -129,24 +129,24 @@ func (e *FindTermsTypeEnum) UnmarshalJSON(data []byte) error {
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = FindTermsTypeEnum(v)
+		*e = FindTermsType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsTypeEnum: %v", v)
+		return fmt.Errorf("invalid value for FindTermsType: %v", v)
 	}
 }
 
 type FindTermsRequest struct {
-	Limit          *int64                     `queryParam:"style=form,explode=true,name=limit"`
-	Offset         *int64                     `queryParam:"style=form,explode=true,name=offset"`
-	OrganizationID *int64                     `pathParam:"style=simple,explode=false,name=organizationId"`
-	PartOfSpeech   *FindTermsPartOfSpeechEnum `queryParam:"style=form,explode=true,name=partOfSpeech"`
-	SortField      *FindTermsSortFieldEnum    `queryParam:"style=form,explode=true,name=sortField"`
-	SortOrder      *FindTermsSortOrderEnum    `queryParam:"style=form,explode=true,name=sortOrder"`
-	Tags           []string                   `queryParam:"style=form,explode=true,name=tags"`
-	TeamID         int64                      `pathParam:"style=simple,explode=false,name=teamId"`
-	Term           *string                    `queryParam:"style=form,explode=true,name=term"`
-	Type           *FindTermsTypeEnum         `queryParam:"style=form,explode=true,name=type"`
+	Limit          *int64                 `queryParam:"style=form,explode=true,name=limit"`
+	Offset         *int64                 `queryParam:"style=form,explode=true,name=offset"`
+	OrganizationID *int64                 `pathParam:"style=simple,explode=false,name=organizationId"`
+	PartOfSpeech   *FindTermsPartOfSpeech `queryParam:"style=form,explode=true,name=partOfSpeech"`
+	SortField      *FindTermsSortField    `queryParam:"style=form,explode=true,name=sortField"`
+	SortOrder      *FindTermsSortOrder    `queryParam:"style=form,explode=true,name=sortOrder"`
+	Tags           []string               `queryParam:"style=form,explode=true,name=tags"`
+	TeamID         int64                  `pathParam:"style=simple,explode=false,name=teamId"`
+	Term           *string                `queryParam:"style=form,explode=true,name=term"`
+	Type           *FindTermsType         `queryParam:"style=form,explode=true,name=type"`
 }
 
 type FindTermsResponse struct {

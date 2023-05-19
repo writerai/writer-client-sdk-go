@@ -39,7 +39,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Terminology.Add(ctx, operations.AddTermsRequest{
         CreateTermsRequest: shared.CreateTermsRequest{
-            FailHandling: shared.CreateTermsRequestFailHandlingEnumValidateOnly.ToPointer(),
+            FailHandling: shared.CreateTermsRequestFailHandlingValidateOnly.ToPointer(),
             Models: []shared.TermCreate{
                 shared.TermCreate{
                     ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
@@ -52,19 +52,19 @@ func main() {
                     Examples: []shared.TermExampleCreate{
                         shared.TermExampleCreate{
                             Example: "accusantium",
-                            Type: shared.TermExampleCreateTypeEnumGood,
+                            Type: shared.TermExampleCreateTypeGood,
                         },
                         shared.TermExampleCreate{
                             Example: "praesentium",
-                            Type: shared.TermExampleCreateTypeEnumBad,
+                            Type: shared.TermExampleCreateTypeBad,
                         },
                         shared.TermExampleCreate{
                             Example: "magni",
-                            Type: shared.TermExampleCreateTypeEnumGood,
+                            Type: shared.TermExampleCreateTypeGood,
                         },
                         shared.TermExampleCreate{
                             Example: "quo",
-                            Type: shared.TermExampleCreateTypeEnumBad,
+                            Type: shared.TermExampleCreateTypeBad,
                         },
                     },
                     Highlight: writer.Bool(false),
@@ -90,23 +90,23 @@ func main() {
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "ipsam",
-                            Pos: shared.TermMistakeCreatePosEnumVerb.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosVerb.ToPointer(),
                             Reference: writer.String("autem"),
                         },
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "nam",
-                            Pos: shared.TermMistakeCreatePosEnumNoun.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosNoun.ToPointer(),
                             Reference: writer.String("pariatur"),
                         },
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "nemo",
-                            Pos: shared.TermMistakeCreatePosEnumAdjective.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosAdjective.ToPointer(),
                             Reference: writer.String("perferendis"),
                         },
                     },
-                    Pos: shared.TermCreatePosEnumAdjective.ToPointer(),
+                    Pos: shared.TermCreatePosAdjective.ToPointer(),
                     Reference: writer.String("amet"),
                     Tags: []shared.TermTagCreate{
                         shared.TermTagCreate{
@@ -114,7 +114,7 @@ func main() {
                         },
                     },
                     Term: "corporis",
-                    Type: shared.TermCreateTypeEnumPending,
+                    Type: shared.TermCreateTypePending,
                 },
             },
         },
@@ -201,16 +201,16 @@ func main() {
     res, err := s.Terminology.Find(ctx, operations.FindTermsRequest{
         Limit: writer.Int64(199996),
         Offset: writer.Int64(179490),
-        PartOfSpeech: operations.FindTermsPartOfSpeechEnumNoun.ToPointer(),
-        SortField: operations.FindTermsSortFieldEnumTerm.ToPointer(),
-        SortOrder: operations.FindTermsSortOrderEnumDesc.ToPointer(),
+        PartOfSpeech: operations.FindTermsPartOfSpeechNoun.ToPointer(),
+        SortField: operations.FindTermsSortFieldTerm.ToPointer(),
+        SortOrder: operations.FindTermsSortOrderDesc.ToPointer(),
         Tags: []string{
             "dolor",
             "vero",
         },
         TeamID: 345352,
         Term: writer.String("hic"),
-        Type: operations.FindTermsTypeEnumPending.ToPointer(),
+        Type: operations.FindTermsTypePending.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -250,7 +250,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Terminology.Update(ctx, operations.UpdateTermsRequest{
         UpdateTermsRequest: shared.UpdateTermsRequest{
-            FailHandling: shared.UpdateTermsRequestFailHandlingEnumSkip.ToPointer(),
+            FailHandling: shared.UpdateTermsRequestFailHandlingSkip.ToPointer(),
             Models: []shared.TermUpdate{
                 shared.TermUpdate{
                     ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
@@ -263,19 +263,19 @@ func main() {
                     Examples: []shared.TermExampleCreate{
                         shared.TermExampleCreate{
                             Example: "consequuntur",
-                            Type: shared.TermExampleCreateTypeEnumBad,
+                            Type: shared.TermExampleCreateTypeBad,
                         },
                         shared.TermExampleCreate{
                             Example: "error",
-                            Type: shared.TermExampleCreateTypeEnumGood,
+                            Type: shared.TermExampleCreateTypeGood,
                         },
                         shared.TermExampleCreate{
                             Example: "occaecati",
-                            Type: shared.TermExampleCreateTypeEnumBad,
+                            Type: shared.TermExampleCreateTypeBad,
                         },
                         shared.TermExampleCreate{
                             Example: "adipisci",
-                            Type: shared.TermExampleCreateTypeEnumBad,
+                            Type: shared.TermExampleCreateTypeBad,
                         },
                     },
                     Highlight: writer.Bool(false),
@@ -294,30 +294,30 @@ func main() {
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "nobis",
-                            Pos: shared.TermMistakeCreatePosEnumAdverb.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosAdverb.ToPointer(),
                             Reference: writer.String("delectus"),
                         },
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "quaerat",
-                            Pos: shared.TermMistakeCreatePosEnumAdverb.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosAdverb.ToPointer(),
                             Reference: writer.String("aliquid"),
                         },
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "dolorem",
-                            Pos: shared.TermMistakeCreatePosEnumNoun.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosNoun.ToPointer(),
                             Reference: writer.String("dolor"),
                         },
                     },
-                    Pos: shared.TermUpdatePosEnumNoun.ToPointer(),
+                    Pos: shared.TermUpdatePosNoun.ToPointer(),
                     Tags: []shared.TermTagCreate{
                         shared.TermTagCreate{
                             Tag: "hic",
                         },
                     },
                     Term: "excepturi",
-                    Type: shared.TermUpdateTypeEnumPending,
+                    Type: shared.TermUpdateTypePending,
                 },
                 shared.TermUpdate{
                     ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
@@ -330,11 +330,11 @@ func main() {
                     Examples: []shared.TermExampleCreate{
                         shared.TermExampleCreate{
                             Example: "reiciendis",
-                            Type: shared.TermExampleCreateTypeEnumGood,
+                            Type: shared.TermExampleCreateTypeGood,
                         },
                         shared.TermExampleCreate{
                             Example: "dolorum",
-                            Type: shared.TermExampleCreateTypeEnumGood,
+                            Type: shared.TermExampleCreateTypeGood,
                         },
                     },
                     Highlight: writer.Bool(false),
@@ -349,17 +349,17 @@ func main() {
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "quaerat",
-                            Pos: shared.TermMistakeCreatePosEnumAdjective.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosAdjective.ToPointer(),
                             Reference: writer.String("quidem"),
                         },
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "voluptatibus",
-                            Pos: shared.TermMistakeCreatePosEnumVerb.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosVerb.ToPointer(),
                             Reference: writer.String("natus"),
                         },
                     },
-                    Pos: shared.TermUpdatePosEnumNoun.ToPointer(),
+                    Pos: shared.TermUpdatePosNoun.ToPointer(),
                     Tags: []shared.TermTagCreate{
                         shared.TermTagCreate{
                             Tag: "sit",
@@ -372,7 +372,7 @@ func main() {
                         },
                     },
                     Term: "soluta",
-                    Type: shared.TermUpdateTypeEnumPending,
+                    Type: shared.TermUpdateTypePending,
                 },
                 shared.TermUpdate{
                     ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
@@ -385,11 +385,11 @@ func main() {
                     Examples: []shared.TermExampleCreate{
                         shared.TermExampleCreate{
                             Example: "dolorum",
-                            Type: shared.TermExampleCreateTypeEnumBad,
+                            Type: shared.TermExampleCreateTypeBad,
                         },
                         shared.TermExampleCreate{
                             Example: "omnis",
-                            Type: shared.TermExampleCreateTypeEnumBad,
+                            Type: shared.TermExampleCreateTypeBad,
                         },
                     },
                     Highlight: writer.Bool(false),
@@ -416,11 +416,11 @@ func main() {
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
                             Mistake: "optio",
-                            Pos: shared.TermMistakeCreatePosEnumAdjective.ToPointer(),
+                            Pos: shared.TermMistakeCreatePosAdjective.ToPointer(),
                             Reference: writer.String("ad"),
                         },
                     },
-                    Pos: shared.TermUpdatePosEnumAdjective.ToPointer(),
+                    Pos: shared.TermUpdatePosAdjective.ToPointer(),
                     Tags: []shared.TermTagCreate{
                         shared.TermTagCreate{
                             Tag: "deserunt",
@@ -430,7 +430,7 @@ func main() {
                         },
                     },
                     Term: "minima",
-                    Type: shared.TermUpdateTypeEnumPending,
+                    Type: shared.TermUpdateTypePending,
                 },
             },
         },

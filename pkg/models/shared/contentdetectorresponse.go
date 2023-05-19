@@ -7,18 +7,18 @@ import (
 	"fmt"
 )
 
-type ContentDetectorResponseLabelEnum string
+type ContentDetectorResponseLabel string
 
 const (
-	ContentDetectorResponseLabelEnumFake ContentDetectorResponseLabelEnum = "fake"
-	ContentDetectorResponseLabelEnumReal ContentDetectorResponseLabelEnum = "real"
+	ContentDetectorResponseLabelFake ContentDetectorResponseLabel = "fake"
+	ContentDetectorResponseLabelReal ContentDetectorResponseLabel = "real"
 )
 
-func (e ContentDetectorResponseLabelEnum) ToPointer() *ContentDetectorResponseLabelEnum {
+func (e ContentDetectorResponseLabel) ToPointer() *ContentDetectorResponseLabel {
 	return &e
 }
 
-func (e *ContentDetectorResponseLabelEnum) UnmarshalJSON(data []byte) error {
+func (e *ContentDetectorResponseLabel) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -27,14 +27,14 @@ func (e *ContentDetectorResponseLabelEnum) UnmarshalJSON(data []byte) error {
 	case "fake":
 		fallthrough
 	case "real":
-		*e = ContentDetectorResponseLabelEnum(v)
+		*e = ContentDetectorResponseLabel(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ContentDetectorResponseLabelEnum: %v", v)
+		return fmt.Errorf("invalid value for ContentDetectorResponseLabel: %v", v)
 	}
 }
 
 type ContentDetectorResponse struct {
-	Label ContentDetectorResponseLabelEnum `json:"label"`
-	Score float64                          `json:"score"`
+	Label ContentDetectorResponseLabel `json:"label"`
+	Score float64                      `json:"score"`
 }

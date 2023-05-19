@@ -75,7 +75,7 @@ func main() {
     res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{
         Limit: writer.Int64(352312),
         Offset: writer.Int64(714242),
-        Status: operations.ListPagesStatusEnumLive.ToPointer(),
+        Status: operations.ListPagesStatusLive.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)

@@ -7,18 +7,18 @@ import (
 	"fmt"
 )
 
-type TermExampleTypeEnum string
+type TermExampleType string
 
 const (
-	TermExampleTypeEnumGood TermExampleTypeEnum = "good"
-	TermExampleTypeEnumBad  TermExampleTypeEnum = "bad"
+	TermExampleTypeGood TermExampleType = "good"
+	TermExampleTypeBad  TermExampleType = "bad"
 )
 
-func (e TermExampleTypeEnum) ToPointer() *TermExampleTypeEnum {
+func (e TermExampleType) ToPointer() *TermExampleType {
 	return &e
 }
 
-func (e *TermExampleTypeEnum) UnmarshalJSON(data []byte) error {
+func (e *TermExampleType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -27,17 +27,17 @@ func (e *TermExampleTypeEnum) UnmarshalJSON(data []byte) error {
 	case "good":
 		fallthrough
 	case "bad":
-		*e = TermExampleTypeEnum(v)
+		*e = TermExampleType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermExampleTypeEnum: %v", v)
+		return fmt.Errorf("invalid value for TermExampleType: %v", v)
 	}
 }
 
 type TermExample struct {
-	Example    string              `json:"example"`
-	ID         *int64              `json:"id,omitempty"`
-	TermBankID int64               `json:"termBankId"`
-	TermID     int64               `json:"termId"`
-	Type       TermExampleTypeEnum `json:"type"`
+	Example    string          `json:"example"`
+	ID         *int64          `json:"id,omitempty"`
+	TermBankID int64           `json:"termBankId"`
+	TermID     int64           `json:"termId"`
+	Type       TermExampleType `json:"type"`
 }

@@ -9,19 +9,19 @@ import (
 	"net/http"
 )
 
-// ListPagesStatusEnum
-type ListPagesStatusEnum string
+// ListPagesStatus
+type ListPagesStatus string
 
 const (
-	ListPagesStatusEnumLive    ListPagesStatusEnum = "live"
-	ListPagesStatusEnumOffline ListPagesStatusEnum = "offline"
+	ListPagesStatusLive    ListPagesStatus = "live"
+	ListPagesStatusOffline ListPagesStatus = "offline"
 )
 
-func (e ListPagesStatusEnum) ToPointer() *ListPagesStatusEnum {
+func (e ListPagesStatus) ToPointer() *ListPagesStatus {
 	return &e
 }
 
-func (e *ListPagesStatusEnum) UnmarshalJSON(data []byte) error {
+func (e *ListPagesStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,17 +30,17 @@ func (e *ListPagesStatusEnum) UnmarshalJSON(data []byte) error {
 	case "live":
 		fallthrough
 	case "offline":
-		*e = ListPagesStatusEnum(v)
+		*e = ListPagesStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListPagesStatusEnum: %v", v)
+		return fmt.Errorf("invalid value for ListPagesStatus: %v", v)
 	}
 }
 
 type ListPagesRequest struct {
-	Limit  *int64               `queryParam:"style=form,explode=true,name=limit"`
-	Offset *int64               `queryParam:"style=form,explode=true,name=offset"`
-	Status *ListPagesStatusEnum `queryParam:"style=form,explode=true,name=status"`
+	Limit  *int64           `queryParam:"style=form,explode=true,name=limit"`
+	Offset *int64           `queryParam:"style=form,explode=true,name=offset"`
+	Status *ListPagesStatus `queryParam:"style=form,explode=true,name=status"`
 }
 
 type ListPagesResponse struct {

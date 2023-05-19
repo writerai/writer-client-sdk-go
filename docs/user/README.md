@@ -37,8 +37,8 @@ func main() {
         Limit: writer.Int64(872651),
         Offset: writer.Int64(311860),
         Search: writer.String("tempora"),
-        SortField: operations.ListUsersSortFieldEnumCreationTime.ToPointer(),
-        SortOrder: operations.ListUsersSortOrderEnumDesc.ToPointer(),
+        SortField: operations.ListUsersSortFieldCreationTime.ToPointer(),
+        SortOrder: operations.ListUsersSortOrderDesc.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)

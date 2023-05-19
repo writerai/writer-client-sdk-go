@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-type TermMistakeCreatePosEnum string
+type TermMistakeCreatePos string
 
 const (
-	TermMistakeCreatePosEnumNoun      TermMistakeCreatePosEnum = "noun"
-	TermMistakeCreatePosEnumVerb      TermMistakeCreatePosEnum = "verb"
-	TermMistakeCreatePosEnumAdverb    TermMistakeCreatePosEnum = "adverb"
-	TermMistakeCreatePosEnumAdjective TermMistakeCreatePosEnum = "adjective"
+	TermMistakeCreatePosNoun      TermMistakeCreatePos = "noun"
+	TermMistakeCreatePosVerb      TermMistakeCreatePos = "verb"
+	TermMistakeCreatePosAdverb    TermMistakeCreatePos = "adverb"
+	TermMistakeCreatePosAdjective TermMistakeCreatePos = "adjective"
 )
 
-func (e TermMistakeCreatePosEnum) ToPointer() *TermMistakeCreatePosEnum {
+func (e TermMistakeCreatePos) ToPointer() *TermMistakeCreatePos {
 	return &e
 }
 
-func (e *TermMistakeCreatePosEnum) UnmarshalJSON(data []byte) error {
+func (e *TermMistakeCreatePos) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,16 +33,16 @@ func (e *TermMistakeCreatePosEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = TermMistakeCreatePosEnum(v)
+		*e = TermMistakeCreatePos(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermMistakeCreatePosEnum: %v", v)
+		return fmt.Errorf("invalid value for TermMistakeCreatePos: %v", v)
 	}
 }
 
 type TermMistakeCreate struct {
-	CaseSensitive bool                      `json:"caseSensitive"`
-	Mistake       string                    `json:"mistake"`
-	Pos           *TermMistakeCreatePosEnum `json:"pos,omitempty"`
-	Reference     *string                   `json:"reference,omitempty"`
+	CaseSensitive bool                  `json:"caseSensitive"`
+	Mistake       string                `json:"mistake"`
+	Pos           *TermMistakeCreatePos `json:"pos,omitempty"`
+	Reference     *string               `json:"reference,omitempty"`
 }

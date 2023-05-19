@@ -87,8 +87,8 @@ func main() {
             "enim",
             "odit",
         },
-        SortField: operations.FindSnippetsSortFieldEnumModificationTime.ToPointer(),
-        SortOrder: operations.FindSnippetsSortOrderEnumAsc.ToPointer(),
+        SortField: operations.FindSnippetsSortFieldModificationTime.ToPointer(),
+        SortOrder: operations.FindSnippetsSortOrderAsc.ToPointer(),
         Tags: []string{
             "ipsam",
             "id",

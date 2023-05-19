@@ -8,18 +8,18 @@ import (
 	"time"
 )
 
-type PagePublicAPIResponseStatusEnum string
+type PagePublicAPIResponseStatus string
 
 const (
-	PagePublicAPIResponseStatusEnumLive    PagePublicAPIResponseStatusEnum = "live"
-	PagePublicAPIResponseStatusEnumOffline PagePublicAPIResponseStatusEnum = "offline"
+	PagePublicAPIResponseStatusLive    PagePublicAPIResponseStatus = "live"
+	PagePublicAPIResponseStatusOffline PagePublicAPIResponseStatus = "offline"
 )
 
-func (e PagePublicAPIResponseStatusEnum) ToPointer() *PagePublicAPIResponseStatusEnum {
+func (e PagePublicAPIResponseStatus) ToPointer() *PagePublicAPIResponseStatus {
 	return &e
 }
 
-func (e *PagePublicAPIResponseStatusEnum) UnmarshalJSON(data []byte) error {
+func (e *PagePublicAPIResponseStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -28,21 +28,21 @@ func (e *PagePublicAPIResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	case "live":
 		fallthrough
 	case "offline":
-		*e = PagePublicAPIResponseStatusEnum(v)
+		*e = PagePublicAPIResponseStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PagePublicAPIResponseStatusEnum: %v", v)
+		return fmt.Errorf("invalid value for PagePublicAPIResponseStatus: %v", v)
 	}
 }
 
 type PagePublicAPIResponse struct {
-	CreatedAt time.Time                       `json:"createdAt"`
-	ID        int64                           `json:"id"`
-	Order     int64                           `json:"order"`
-	Section   *SectionInfo                    `json:"section,omitempty"`
-	Status    PagePublicAPIResponseStatusEnum `json:"status"`
-	Title     string                          `json:"title"`
-	UpdatedAt time.Time                       `json:"updatedAt"`
-	UpdatedBy *SimpleUser                     `json:"updatedBy,omitempty"`
-	URL       string                          `json:"url"`
+	CreatedAt time.Time                   `json:"createdAt"`
+	ID        int64                       `json:"id"`
+	Order     int64                       `json:"order"`
+	Section   *SectionInfo                `json:"section,omitempty"`
+	Status    PagePublicAPIResponseStatus `json:"status"`
+	Title     string                      `json:"title"`
+	UpdatedAt time.Time                   `json:"updatedAt"`
+	UpdatedBy *SimpleUser                 `json:"updatedBy,omitempty"`
+	URL       string                      `json:"url"`
 }

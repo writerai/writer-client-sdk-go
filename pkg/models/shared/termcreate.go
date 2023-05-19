@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-type TermCreatePosEnum string
+type TermCreatePos string
 
 const (
-	TermCreatePosEnumNoun      TermCreatePosEnum = "noun"
-	TermCreatePosEnumVerb      TermCreatePosEnum = "verb"
-	TermCreatePosEnumAdverb    TermCreatePosEnum = "adverb"
-	TermCreatePosEnumAdjective TermCreatePosEnum = "adjective"
+	TermCreatePosNoun      TermCreatePos = "noun"
+	TermCreatePosVerb      TermCreatePos = "verb"
+	TermCreatePosAdverb    TermCreatePos = "adverb"
+	TermCreatePosAdjective TermCreatePos = "adjective"
 )
 
-func (e TermCreatePosEnum) ToPointer() *TermCreatePosEnum {
+func (e TermCreatePos) ToPointer() *TermCreatePos {
 	return &e
 }
 
-func (e *TermCreatePosEnum) UnmarshalJSON(data []byte) error {
+func (e *TermCreatePos) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,26 +33,26 @@ func (e *TermCreatePosEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = TermCreatePosEnum(v)
+		*e = TermCreatePos(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermCreatePosEnum: %v", v)
+		return fmt.Errorf("invalid value for TermCreatePos: %v", v)
 	}
 }
 
-type TermCreateTypeEnum string
+type TermCreateType string
 
 const (
-	TermCreateTypeEnumApproved TermCreateTypeEnum = "approved"
-	TermCreateTypeEnumBanned   TermCreateTypeEnum = "banned"
-	TermCreateTypeEnumPending  TermCreateTypeEnum = "pending"
+	TermCreateTypeApproved TermCreateType = "approved"
+	TermCreateTypeBanned   TermCreateType = "banned"
+	TermCreateTypePending  TermCreateType = "pending"
 )
 
-func (e TermCreateTypeEnum) ToPointer() *TermCreateTypeEnum {
+func (e TermCreateType) ToPointer() *TermCreateType {
 	return &e
 }
 
-func (e *TermCreateTypeEnum) UnmarshalJSON(data []byte) error {
+func (e *TermCreateType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -63,10 +63,10 @@ func (e *TermCreateTypeEnum) UnmarshalJSON(data []byte) error {
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = TermCreateTypeEnum(v)
+		*e = TermCreateType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermCreateTypeEnum: %v", v)
+		return fmt.Errorf("invalid value for TermCreateType: %v", v)
 	}
 }
 
@@ -78,9 +78,9 @@ type TermCreate struct {
 	Highlight             *bool                        `json:"highlight,omitempty"`
 	LinkedTerms           []LinkedTermCreate           `json:"linkedTerms,omitempty"`
 	Mistakes              []TermMistakeCreate          `json:"mistakes,omitempty"`
-	Pos                   *TermCreatePosEnum           `json:"pos,omitempty"`
+	Pos                   *TermCreatePos               `json:"pos,omitempty"`
 	Reference             *string                      `json:"reference,omitempty"`
 	Tags                  []TermTagCreate              `json:"tags,omitempty"`
 	Term                  string                       `json:"term"`
-	Type                  TermCreateTypeEnum           `json:"type"`
+	Type                  TermCreateType               `json:"type"`
 }

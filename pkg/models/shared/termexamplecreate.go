@@ -7,18 +7,18 @@ import (
 	"fmt"
 )
 
-type TermExampleCreateTypeEnum string
+type TermExampleCreateType string
 
 const (
-	TermExampleCreateTypeEnumGood TermExampleCreateTypeEnum = "good"
-	TermExampleCreateTypeEnumBad  TermExampleCreateTypeEnum = "bad"
+	TermExampleCreateTypeGood TermExampleCreateType = "good"
+	TermExampleCreateTypeBad  TermExampleCreateType = "bad"
 )
 
-func (e TermExampleCreateTypeEnum) ToPointer() *TermExampleCreateTypeEnum {
+func (e TermExampleCreateType) ToPointer() *TermExampleCreateType {
 	return &e
 }
 
-func (e *TermExampleCreateTypeEnum) UnmarshalJSON(data []byte) error {
+func (e *TermExampleCreateType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -27,14 +27,14 @@ func (e *TermExampleCreateTypeEnum) UnmarshalJSON(data []byte) error {
 	case "good":
 		fallthrough
 	case "bad":
-		*e = TermExampleCreateTypeEnum(v)
+		*e = TermExampleCreateType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermExampleCreateTypeEnum: %v", v)
+		return fmt.Errorf("invalid value for TermExampleCreateType: %v", v)
 	}
 }
 
 type TermExampleCreate struct {
-	Example string                    `json:"example"`
-	Type    TermExampleCreateTypeEnum `json:"type"`
+	Example string                `json:"example"`
+	Type    TermExampleCreateType `json:"type"`
 }

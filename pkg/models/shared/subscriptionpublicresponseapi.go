@@ -8,21 +8,21 @@ import (
 	"time"
 )
 
-type SubscriptionPublicResponseAPIProductNameEnum string
+type SubscriptionPublicResponseAPIProductName string
 
 const (
-	SubscriptionPublicResponseAPIProductNameEnumFree       SubscriptionPublicResponseAPIProductNameEnum = "free"
-	SubscriptionPublicResponseAPIProductNameEnumPro        SubscriptionPublicResponseAPIProductNameEnum = "pro"
-	SubscriptionPublicResponseAPIProductNameEnumTeam       SubscriptionPublicResponseAPIProductNameEnum = "team"
-	SubscriptionPublicResponseAPIProductNameEnumEnterprise SubscriptionPublicResponseAPIProductNameEnum = "enterprise"
-	SubscriptionPublicResponseAPIProductNameEnumLegacy     SubscriptionPublicResponseAPIProductNameEnum = "legacy"
+	SubscriptionPublicResponseAPIProductNameFree       SubscriptionPublicResponseAPIProductName = "free"
+	SubscriptionPublicResponseAPIProductNamePro        SubscriptionPublicResponseAPIProductName = "pro"
+	SubscriptionPublicResponseAPIProductNameTeam       SubscriptionPublicResponseAPIProductName = "team"
+	SubscriptionPublicResponseAPIProductNameEnterprise SubscriptionPublicResponseAPIProductName = "enterprise"
+	SubscriptionPublicResponseAPIProductNameLegacy     SubscriptionPublicResponseAPIProductName = "legacy"
 )
 
-func (e SubscriptionPublicResponseAPIProductNameEnum) ToPointer() *SubscriptionPublicResponseAPIProductNameEnum {
+func (e SubscriptionPublicResponseAPIProductName) ToPointer() *SubscriptionPublicResponseAPIProductName {
 	return &e
 }
 
-func (e *SubscriptionPublicResponseAPIProductNameEnum) UnmarshalJSON(data []byte) error {
+func (e *SubscriptionPublicResponseAPIProductName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -37,30 +37,30 @@ func (e *SubscriptionPublicResponseAPIProductNameEnum) UnmarshalJSON(data []byte
 	case "enterprise":
 		fallthrough
 	case "legacy":
-		*e = SubscriptionPublicResponseAPIProductNameEnum(v)
+		*e = SubscriptionPublicResponseAPIProductName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIProductNameEnum: %v", v)
+		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIProductName: %v", v)
 	}
 }
 
-type SubscriptionPublicResponseAPIStatusEnum string
+type SubscriptionPublicResponseAPIStatus string
 
 const (
-	SubscriptionPublicResponseAPIStatusEnumTrialing          SubscriptionPublicResponseAPIStatusEnum = "trialing"
-	SubscriptionPublicResponseAPIStatusEnumActive            SubscriptionPublicResponseAPIStatusEnum = "active"
-	SubscriptionPublicResponseAPIStatusEnumPastDue           SubscriptionPublicResponseAPIStatusEnum = "past_due"
-	SubscriptionPublicResponseAPIStatusEnumIncomplete        SubscriptionPublicResponseAPIStatusEnum = "incomplete"
-	SubscriptionPublicResponseAPIStatusEnumIncompleteExpired SubscriptionPublicResponseAPIStatusEnum = "incomplete_expired"
-	SubscriptionPublicResponseAPIStatusEnumUnpaid            SubscriptionPublicResponseAPIStatusEnum = "unpaid"
-	SubscriptionPublicResponseAPIStatusEnumCanceled          SubscriptionPublicResponseAPIStatusEnum = "canceled"
+	SubscriptionPublicResponseAPIStatusTrialing          SubscriptionPublicResponseAPIStatus = "trialing"
+	SubscriptionPublicResponseAPIStatusActive            SubscriptionPublicResponseAPIStatus = "active"
+	SubscriptionPublicResponseAPIStatusPastDue           SubscriptionPublicResponseAPIStatus = "past_due"
+	SubscriptionPublicResponseAPIStatusIncomplete        SubscriptionPublicResponseAPIStatus = "incomplete"
+	SubscriptionPublicResponseAPIStatusIncompleteExpired SubscriptionPublicResponseAPIStatus = "incomplete_expired"
+	SubscriptionPublicResponseAPIStatusUnpaid            SubscriptionPublicResponseAPIStatus = "unpaid"
+	SubscriptionPublicResponseAPIStatusCanceled          SubscriptionPublicResponseAPIStatus = "canceled"
 )
 
-func (e SubscriptionPublicResponseAPIStatusEnum) ToPointer() *SubscriptionPublicResponseAPIStatusEnum {
+func (e SubscriptionPublicResponseAPIStatus) ToPointer() *SubscriptionPublicResponseAPIStatus {
 	return &e
 }
 
-func (e *SubscriptionPublicResponseAPIStatusEnum) UnmarshalJSON(data []byte) error {
+func (e *SubscriptionPublicResponseAPIStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -79,19 +79,19 @@ func (e *SubscriptionPublicResponseAPIStatusEnum) UnmarshalJSON(data []byte) err
 	case "unpaid":
 		fallthrough
 	case "canceled":
-		*e = SubscriptionPublicResponseAPIStatusEnum(v)
+		*e = SubscriptionPublicResponseAPIStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIStatusEnum: %v", v)
+		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIStatus: %v", v)
 	}
 }
 
 type SubscriptionPublicResponseAPI struct {
-	CreatedAt      time.Time                                    `json:"createdAt"`
-	Meta           MetaData                                     `json:"meta"`
-	ProductName    SubscriptionPublicResponseAPIProductNameEnum `json:"productName"`
-	Seats          int64                                        `json:"seats"`
-	Status         SubscriptionPublicResponseAPIStatusEnum      `json:"status"`
-	SubscriptionID string                                       `json:"subscriptionId"`
-	Usage          Usage                                        `json:"usage"`
+	CreatedAt      time.Time                                `json:"createdAt"`
+	Meta           MetaData                                 `json:"meta"`
+	ProductName    SubscriptionPublicResponseAPIProductName `json:"productName"`
+	Seats          int64                                    `json:"seats"`
+	Status         SubscriptionPublicResponseAPIStatus      `json:"status"`
+	SubscriptionID string                                   `json:"subscriptionId"`
+	Usage          Usage                                    `json:"usage"`
 }

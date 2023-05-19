@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-type TermUpdatePosEnum string
+type TermUpdatePos string
 
 const (
-	TermUpdatePosEnumNoun      TermUpdatePosEnum = "noun"
-	TermUpdatePosEnumVerb      TermUpdatePosEnum = "verb"
-	TermUpdatePosEnumAdverb    TermUpdatePosEnum = "adverb"
-	TermUpdatePosEnumAdjective TermUpdatePosEnum = "adjective"
+	TermUpdatePosNoun      TermUpdatePos = "noun"
+	TermUpdatePosVerb      TermUpdatePos = "verb"
+	TermUpdatePosAdverb    TermUpdatePos = "adverb"
+	TermUpdatePosAdjective TermUpdatePos = "adjective"
 )
 
-func (e TermUpdatePosEnum) ToPointer() *TermUpdatePosEnum {
+func (e TermUpdatePos) ToPointer() *TermUpdatePos {
 	return &e
 }
 
-func (e *TermUpdatePosEnum) UnmarshalJSON(data []byte) error {
+func (e *TermUpdatePos) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,26 +33,26 @@ func (e *TermUpdatePosEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = TermUpdatePosEnum(v)
+		*e = TermUpdatePos(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermUpdatePosEnum: %v", v)
+		return fmt.Errorf("invalid value for TermUpdatePos: %v", v)
 	}
 }
 
-type TermUpdateTypeEnum string
+type TermUpdateType string
 
 const (
-	TermUpdateTypeEnumApproved TermUpdateTypeEnum = "approved"
-	TermUpdateTypeEnumBanned   TermUpdateTypeEnum = "banned"
-	TermUpdateTypeEnumPending  TermUpdateTypeEnum = "pending"
+	TermUpdateTypeApproved TermUpdateType = "approved"
+	TermUpdateTypeBanned   TermUpdateType = "banned"
+	TermUpdateTypePending  TermUpdateType = "pending"
 )
 
-func (e TermUpdateTypeEnum) ToPointer() *TermUpdateTypeEnum {
+func (e TermUpdateType) ToPointer() *TermUpdateType {
 	return &e
 }
 
-func (e *TermUpdateTypeEnum) UnmarshalJSON(data []byte) error {
+func (e *TermUpdateType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -63,10 +63,10 @@ func (e *TermUpdateTypeEnum) UnmarshalJSON(data []byte) error {
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = TermUpdateTypeEnum(v)
+		*e = TermUpdateType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TermUpdateTypeEnum: %v", v)
+		return fmt.Errorf("invalid value for TermUpdateType: %v", v)
 	}
 }
 
@@ -79,8 +79,8 @@ type TermUpdate struct {
 	ID                    int64                        `json:"id"`
 	LinkedTerms           []LinkedTermCreate           `json:"linkedTerms,omitempty"`
 	Mistakes              []TermMistakeCreate          `json:"mistakes,omitempty"`
-	Pos                   *TermUpdatePosEnum           `json:"pos,omitempty"`
+	Pos                   *TermUpdatePos               `json:"pos,omitempty"`
 	Tags                  []TermTagCreate              `json:"tags,omitempty"`
 	Term                  string                       `json:"term"`
-	Type                  TermUpdateTypeEnum           `json:"type"`
+	Type                  TermUpdateType               `json:"type"`
 }
