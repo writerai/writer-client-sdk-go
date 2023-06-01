@@ -12,6 +12,7 @@ styleguide.go
 terminology.go
 user.go
 writer.go
+.gitignore
 go.mod
 go.sum
 pkg/types/bigint.go
