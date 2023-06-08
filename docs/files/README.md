@@ -30,7 +30,7 @@ import(
 func main() {
     s := writer.New(
         writer.WithSecurity(shared.Security{
-            APIKey: "YOUR_API_KEY_HERE",
+            APIKey: "",
         }),
         writer.WithOrganizationID(613064),
     )
@@ -68,7 +68,7 @@ import(
 func main() {
     s := writer.New(
         writer.WithSecurity(shared.Security{
-            APIKey: "YOUR_API_KEY_HERE",
+            APIKey: "",
         }),
         writer.WithOrganizationID(902349),
     )
@@ -106,7 +106,7 @@ import(
 func main() {
     s := writer.New(
         writer.WithSecurity(shared.Security{
-            APIKey: "YOUR_API_KEY_HERE",
+            APIKey: "",
         }),
         writer.WithOrganizationID(99280),
     )
@@ -143,7 +143,7 @@ import(
 func main() {
     s := writer.New(
         writer.WithSecurity(shared.Security{
-            APIKey: "YOUR_API_KEY_HERE",
+            APIKey: "",
         }),
         writer.WithOrganizationID(60225),
     )
