@@ -156,7 +156,7 @@ func (s *modelCustomization) Delete(ctx context.Context, request operations.Dele
 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out map[string]interface{}
+			var out *operations.DeleteModelCustomization200ApplicationJSON
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}

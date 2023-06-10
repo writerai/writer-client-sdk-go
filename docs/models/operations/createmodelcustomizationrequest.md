@@ -1,0 +1,10 @@
+# CreateModelCustomizationRequest
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `CreateCustomizationRequest`                                                           | [shared.CreateCustomizationRequest](../../models/shared/createcustomizationrequest.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `ModelID`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `OrganizationID`                                                                       | **int64*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |

@@ -12,6 +12,9 @@ type DeleteFileRequest struct {
 	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+type DeleteFile200ApplicationJSON struct {
+}
+
 type DeleteFileResponse struct {
 	ContentType string
 	// Bad Request
@@ -19,5 +22,5 @@ type DeleteFileResponse struct {
 	Headers                            map[string][]string
 	StatusCode                         int
 	RawResponse                        *http.Response
-	DeleteFile200ApplicationJSONObject map[string]interface{}
+	DeleteFile200ApplicationJSONObject *DeleteFile200ApplicationJSON
 }

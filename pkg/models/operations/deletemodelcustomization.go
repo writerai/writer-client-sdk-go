@@ -13,6 +13,9 @@ type DeleteModelCustomizationRequest struct {
 	OrganizationID  *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+type DeleteModelCustomization200ApplicationJSON struct {
+}
+
 type DeleteModelCustomizationResponse struct {
 	ContentType string
 	// Bad Request
@@ -20,5 +23,5 @@ type DeleteModelCustomizationResponse struct {
 	Headers                                          map[string][]string
 	StatusCode                                       int
 	RawResponse                                      *http.Response
-	DeleteModelCustomization200ApplicationJSONObject map[string]interface{}
+	DeleteModelCustomization200ApplicationJSONObject *DeleteModelCustomization200ApplicationJSON
 }
