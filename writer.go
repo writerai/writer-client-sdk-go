@@ -87,6 +87,8 @@ type Writer struct {
 	Terminology *terminology
 	// User - Methods related to User
 	User *user
+	// Document - Methods related to document
+	Document *document
 
 	sdkConfiguration sdkConfiguration
 }
@@ -152,9 +154,9 @@ func New(opts ...SDKOption) *Writer {
 	sdk := &Writer{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
-			OpenAPIDocVersion: "1.6",
-			SDKVersion:        "0.10.0",
-			GenVersion:        "2.39.0",
+			OpenAPIDocVersion: "1.7",
+			SDKVersion:        "0.11.0",
+			GenVersion:        "2.43.2",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -201,6 +203,8 @@ func New(opts ...SDKOption) *Writer {
 	sdk.Terminology = newTerminology(sdk.sdkConfiguration)
 
 	sdk.User = newUser(sdk.sdkConfiguration)
+
+	sdk.Document = newDocument(sdk.sdkConfiguration)
 
 	return sdk
 }
