@@ -7,54 +7,58 @@ import (
 	"fmt"
 )
 
-type ContentIssueServiceEnum string
+type ContentIssueService string
 
 const (
-	ContentIssueServiceEnumCommonMistakes     ContentIssueServiceEnum = "common-mistakes"
-	ContentIssueServiceEnumBannedWords        ContentIssueServiceEnum = "banned-words"
-	ContentIssueServiceEnumDictionary         ContentIssueServiceEnum = "dictionary"
-	ContentIssueServiceEnumGec                ContentIssueServiceEnum = "gec"
-	ContentIssueServiceEnumInfinitive         ContentIssueServiceEnum = "infinitive"
-	ContentIssueServiceEnumSpelling           ContentIssueServiceEnum = "spelling"
-	ContentIssueServiceEnumWritingStyle       ContentIssueServiceEnum = "writing-style"
-	ContentIssueServiceEnumCustomRules        ContentIssueServiceEnum = "custom-rules"
-	ContentIssueServiceEnumSentenceCase       ContentIssueServiceEnum = "sentence-case"
-	ContentIssueServiceEnumAcronym            ContentIssueServiceEnum = "acronym"
-	ContentIssueServiceEnumOxfordComma        ContentIssueServiceEnum = "oxford-comma"
-	ContentIssueServiceEnumMlPunctuation      ContentIssueServiceEnum = "ml-punctuation"
-	ContentIssueServiceEnumEmojis             ContentIssueServiceEnum = "emojis"
-	ContentIssueServiceEnumGenderPronouns     ContentIssueServiceEnum = "gender-pronouns"
-	ContentIssueServiceEnumSensitivity        ContentIssueServiceEnum = "sensitivity"
-	ContentIssueServiceEnumPlagiarism         ContentIssueServiceEnum = "plagiarism"
-	ContentIssueServiceEnumReadability        ContentIssueServiceEnum = "readability"
-	ContentIssueServiceEnumSentenceComplexity ContentIssueServiceEnum = "sentence-complexity"
-	ContentIssueServiceEnumVocabulary         ContentIssueServiceEnum = "vocabulary"
-	ContentIssueServiceEnumParagraphLength    ContentIssueServiceEnum = "paragraph-length"
-	ContentIssueServiceEnumPlainLanguage      ContentIssueServiceEnum = "plain-language"
-	ContentIssueServiceEnumHealthyCommn       ContentIssueServiceEnum = "healthy-commn"
-	ContentIssueServiceEnumConfidence         ContentIssueServiceEnum = "confidence"
-	ContentIssueServiceEnumDataLossPrevention ContentIssueServiceEnum = "data-loss-prevention"
-	ContentIssueServiceEnumHateSpeech         ContentIssueServiceEnum = "hate-speech"
-	ContentIssueServiceEnumContentSafeguards  ContentIssueServiceEnum = "content-safeguards"
-	ContentIssueServiceEnumFeedback           ContentIssueServiceEnum = "feedback"
-	ContentIssueServiceEnumClaim              ContentIssueServiceEnum = "claim"
-	ContentIssueServiceEnumQuote              ContentIssueServiceEnum = "quote"
-	ContentIssueServiceEnumGenderNouns        ContentIssueServiceEnum = "gender-nouns"
-	ContentIssueServiceEnumGenderTone         ContentIssueServiceEnum = "gender-tone"
-	ContentIssueServiceEnumGrammar            ContentIssueServiceEnum = "grammar"
-	ContentIssueServiceEnumPunctuationDark    ContentIssueServiceEnum = "punctuation-dark"
-	ContentIssueServiceEnumFormatting         ContentIssueServiceEnum = "formatting"
-	ContentIssueServiceEnumTwitter            ContentIssueServiceEnum = "twitter"
-	ContentIssueServiceEnumGecDark            ContentIssueServiceEnum = "gec-dark"
-	ContentIssueServiceEnumGecGpt3            ContentIssueServiceEnum = "gec-gpt3"
+	ContentIssueServiceCommonMistakes     ContentIssueService = "common-mistakes"
+	ContentIssueServiceBannedWords        ContentIssueService = "banned-words"
+	ContentIssueServiceDictionary         ContentIssueService = "dictionary"
+	ContentIssueServiceGec                ContentIssueService = "gec"
+	ContentIssueServiceInfinitive         ContentIssueService = "infinitive"
+	ContentIssueServiceSpelling           ContentIssueService = "spelling"
+	ContentIssueServiceWritingStyle       ContentIssueService = "writing-style"
+	ContentIssueServiceCustomRules        ContentIssueService = "custom-rules"
+	ContentIssueServiceSentenceCase       ContentIssueService = "sentence-case"
+	ContentIssueServiceAcronym            ContentIssueService = "acronym"
+	ContentIssueServiceOxfordComma        ContentIssueService = "oxford-comma"
+	ContentIssueServiceMlPunctuation      ContentIssueService = "ml-punctuation"
+	ContentIssueServiceEmojis             ContentIssueService = "emojis"
+	ContentIssueServiceGenderPronouns     ContentIssueService = "gender-pronouns"
+	ContentIssueServiceSensitivity        ContentIssueService = "sensitivity"
+	ContentIssueServicePlagiarism         ContentIssueService = "plagiarism"
+	ContentIssueServiceReadability        ContentIssueService = "readability"
+	ContentIssueServiceSentenceComplexity ContentIssueService = "sentence-complexity"
+	ContentIssueServiceVocabulary         ContentIssueService = "vocabulary"
+	ContentIssueServiceParagraphLength    ContentIssueService = "paragraph-length"
+	ContentIssueServicePlainLanguage      ContentIssueService = "plain-language"
+	ContentIssueServiceHealthyCommn       ContentIssueService = "healthy-commn"
+	ContentIssueServiceConfidence         ContentIssueService = "confidence"
+	ContentIssueServiceDataLossPrevention ContentIssueService = "data-loss-prevention"
+	ContentIssueServiceHateSpeech         ContentIssueService = "hate-speech"
+	ContentIssueServiceContentSafeguards  ContentIssueService = "content-safeguards"
+	ContentIssueServiceFeedback           ContentIssueService = "feedback"
+	ContentIssueServiceClaim              ContentIssueService = "claim"
+	ContentIssueServiceQuote              ContentIssueService = "quote"
+	ContentIssueServiceGenderNouns        ContentIssueService = "gender-nouns"
+	ContentIssueServiceGenderTone         ContentIssueService = "gender-tone"
+	ContentIssueServiceGrammar            ContentIssueService = "grammar"
+	ContentIssueServicePunctuationDark    ContentIssueService = "punctuation-dark"
+	ContentIssueServiceFormatting         ContentIssueService = "formatting"
+	ContentIssueServiceTwitter            ContentIssueService = "twitter"
+	ContentIssueServiceGecDark            ContentIssueService = "gec-dark"
+	ContentIssueServiceGecGpt3            ContentIssueService = "gec-gpt3"
 )
 
-func (e *ContentIssueServiceEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e ContentIssueService) ToPointer() *ContentIssueService {
+	return &e
+}
+
+func (e *ContentIssueService) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "common-mistakes":
 		fallthrough
 	case "banned-words":
@@ -128,18 +132,18 @@ func (e *ContentIssueServiceEnum) UnmarshalJSON(data []byte) error {
 	case "gec-dark":
 		fallthrough
 	case "gec-gpt3":
-		*e = ContentIssueServiceEnum(s)
+		*e = ContentIssueService(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ContentIssueServiceEnum: %s", s)
+		return fmt.Errorf("invalid value for ContentIssueService: %v", v)
 	}
 }
 
 type ContentIssue struct {
-	Description *string                 `json:"description,omitempty"`
-	From        int64                   `json:"from"`
-	Meta        interface{}             `json:"meta,omitempty"`
-	Service     ContentIssueServiceEnum `json:"service"`
-	Suggestions []string                `json:"suggestions,omitempty"`
-	Until       int64                   `json:"until"`
+	Description *string             `json:"description,omitempty"`
+	From        int64               `json:"from"`
+	Meta        interface{}         `json:"meta,omitempty"`
+	Service     ContentIssueService `json:"service"`
+	Suggestions []string            `json:"suggestions,omitempty"`
+	Until       int64               `json:"until"`
 }

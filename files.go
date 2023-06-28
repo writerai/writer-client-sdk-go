@@ -3,41 +3,31 @@
 package writer
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
+	"io"
 	"net/http"
 )
 
 // files - Methods related to Files
 type files struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
-	globals        map[string]map[string]map[string]interface{}
+	sdkConfiguration sdkConfiguration
 }
 
-func newFiles(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, globals map[string]map[string]map[string]interface{}) *files {
+func newFiles(sdkConfig sdkConfiguration) *files {
 	return &files{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
-		globals:        globals,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Delete - Delete file
 func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest) (*operations.DeleteFileResponse, error) {
-	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.globals)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -46,8 +36,10 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -56,7 +48,13 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -71,8 +69,8 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out map[string]interface{}
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			var out *operations.DeleteFile200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -92,7 +90,7 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -105,8 +103,8 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 
 // Get - Get file
 func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*operations.GetFileResponse, error) {
-	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.globals)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -115,8 +113,10 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -125,7 +125,13 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -141,7 +147,7 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ModelFile
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -161,7 +167,7 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -174,8 +180,8 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 
 // List - List files
 func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (*operations.ListFilesResponse, error) {
-	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.globals)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -184,8 +190,10 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -194,7 +202,13 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -210,7 +224,7 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ModelFilesResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -230,7 +244,7 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -243,8 +257,8 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 
 // Upload - Upload file
 func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest) (*operations.UploadFileResponse, error) {
-	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.globals)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -261,10 +275,12 @@ func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -273,7 +289,13 @@ func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -289,7 +311,7 @@ func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ModelFile
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -309,7 +331,7 @@ func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

@@ -2,30 +2,28 @@
 ```go
 package main
 
-import (
-    "context"
-    "log"
-    "github.com/writerai/writer-client-sdk-go"
-    "github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-    "github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+import(
+	"context"
+	"log"
+	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writer.New(
         writer.WithSecurity(shared.Security{
-            APIKey: "YOUR_API_KEY_HERE",
+            APIKey: "",
         }),
-        WithOrganizationID(548814),
+        writer.WithOrganizationID(548814),
     )
 
-    ctx := context.Background()    
-    req := operations.DetectContentRequest{
+    ctx := context.Background()
+    res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
         ContentDetectorRequest: shared.ContentDetectorRequest{
             Input: "provident",
         },
-    }
-
-    res, err := s.AIContentDetector.Detect(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

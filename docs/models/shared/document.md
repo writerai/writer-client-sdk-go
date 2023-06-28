@@ -1,0 +1,18 @@
+# Document
+
+
+## Fields
+
+| Field                                                   | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `Access`                                                | [DocumentAccess](../../models/shared/documentaccess.md) | :heavy_check_mark:                                      | N/A                                                     |
+| `Content`                                               | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |
+| `CreatedUser`                                           | [*SimpleUser](../../models/shared/simpleuser.md)        | :heavy_minus_sign:                                      | N/A                                                     |
+| `CreationTime`                                          | [time.Time](https://pkg.go.dev/time#Time)               | :heavy_check_mark:                                      | N/A                                                     |
+| `ID`                                                    | *int64*                                                 | :heavy_check_mark:                                      | N/A                                                     |
+| `ModificationTime`                                      | [time.Time](https://pkg.go.dev/time#Time)               | :heavy_check_mark:                                      | N/A                                                     |
+| `ModifiedUser`                                          | [*SimpleUser](../../models/shared/simpleuser.md)        | :heavy_minus_sign:                                      | N/A                                                     |
+| `OrganizationID`                                        | *int64*                                                 | :heavy_check_mark:                                      | N/A                                                     |
+| `Score`                                                 | *int64*                                                 | :heavy_check_mark:                                      | N/A                                                     |
+| `TeamID`                                                | *int64*                                                 | :heavy_check_mark:                                      | N/A                                                     |
+| `Title`                                                 | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |

@@ -7,31 +7,35 @@ import (
 	"fmt"
 )
 
-type GenerationModelInfoResponseTypeEnum string
+type GenerationModelInfoResponseType string
 
 const (
-	GenerationModelInfoResponseTypeEnumGpt      GenerationModelInfoResponseTypeEnum = "GPT"
-	GenerationModelInfoResponseTypeEnumInstruct GenerationModelInfoResponseTypeEnum = "Instruct"
+	GenerationModelInfoResponseTypeGpt      GenerationModelInfoResponseType = "GPT"
+	GenerationModelInfoResponseTypeInstruct GenerationModelInfoResponseType = "Instruct"
 )
 
-func (e *GenerationModelInfoResponseTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e GenerationModelInfoResponseType) ToPointer() *GenerationModelInfoResponseType {
+	return &e
+}
+
+func (e *GenerationModelInfoResponseType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "GPT":
 		fallthrough
 	case "Instruct":
-		*e = GenerationModelInfoResponseTypeEnum(s)
+		*e = GenerationModelInfoResponseType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GenerationModelInfoResponseTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for GenerationModelInfoResponseType: %v", v)
 	}
 }
 
 type GenerationModelInfoResponse struct {
-	ID   string                              `json:"id"`
-	Name string                              `json:"name"`
-	Type GenerationModelInfoResponseTypeEnum `json:"type"`
+	ID   string                          `json:"id"`
+	Name string                          `json:"name"`
+	Type GenerationModelInfoResponseType `json:"type"`
 }

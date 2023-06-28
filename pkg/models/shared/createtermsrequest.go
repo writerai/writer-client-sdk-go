@@ -7,21 +7,25 @@ import (
 	"fmt"
 )
 
-type CreateTermsRequestFailHandlingEnum string
+type CreateTermsRequestFailHandling string
 
 const (
-	CreateTermsRequestFailHandlingEnumAccumulate   CreateTermsRequestFailHandlingEnum = "accumulate"
-	CreateTermsRequestFailHandlingEnumValidate     CreateTermsRequestFailHandlingEnum = "validate"
-	CreateTermsRequestFailHandlingEnumSkip         CreateTermsRequestFailHandlingEnum = "skip"
-	CreateTermsRequestFailHandlingEnumValidateOnly CreateTermsRequestFailHandlingEnum = "validateOnly"
+	CreateTermsRequestFailHandlingAccumulate   CreateTermsRequestFailHandling = "accumulate"
+	CreateTermsRequestFailHandlingValidate     CreateTermsRequestFailHandling = "validate"
+	CreateTermsRequestFailHandlingSkip         CreateTermsRequestFailHandling = "skip"
+	CreateTermsRequestFailHandlingValidateOnly CreateTermsRequestFailHandling = "validateOnly"
 )
 
-func (e *CreateTermsRequestFailHandlingEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e CreateTermsRequestFailHandling) ToPointer() *CreateTermsRequestFailHandling {
+	return &e
+}
+
+func (e *CreateTermsRequestFailHandling) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "accumulate":
 		fallthrough
 	case "validate":
@@ -29,14 +33,14 @@ func (e *CreateTermsRequestFailHandlingEnum) UnmarshalJSON(data []byte) error {
 	case "skip":
 		fallthrough
 	case "validateOnly":
-		*e = CreateTermsRequestFailHandlingEnum(s)
+		*e = CreateTermsRequestFailHandling(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateTermsRequestFailHandlingEnum: %s", s)
+		return fmt.Errorf("invalid value for CreateTermsRequestFailHandling: %v", v)
 	}
 }
 
 type CreateTermsRequest struct {
-	FailHandling *CreateTermsRequestFailHandlingEnum `json:"failHandling,omitempty"`
-	Models       []TermCreate                        `json:"models,omitempty"`
+	FailHandling *CreateTermsRequestFailHandling `json:"failHandling,omitempty"`
+	Models       []TermCreate                    `json:"models,omitempty"`
 }

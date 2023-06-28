@@ -3,53 +3,45 @@
 package writer
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
+	"io"
 	"net/http"
 	"strings"
 )
 
 // user - Methods related to User
 type user struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
-	globals        map[string]map[string]map[string]interface{}
+	sdkConfiguration sdkConfiguration
 }
 
-func newUser(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, globals map[string]map[string]map[string]interface{}) *user {
+func newUser(sdkConfig sdkConfiguration) *user {
 	return &user{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
-		globals:        globals,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // List - List users
 func (s *user) List(ctx context.Context, request operations.ListUsersRequest) (*operations.ListUsersResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	if err := utils.PopulateQueryParams(ctx, req, request, s.globals); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -58,7 +50,13 @@ func (s *user) List(ctx context.Context, request operations.ListUsersRequest) (*
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -74,7 +72,7 @@ func (s *user) List(ctx context.Context, request operations.ListUsersRequest) (*
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.PaginatedResultUserPublicResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -94,7 +92,7 @@ func (s *user) List(ctx context.Context, request operations.ListUsersRequest) (*
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

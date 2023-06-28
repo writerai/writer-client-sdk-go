@@ -1,0 +1,10 @@
+# GenerationModelInfoResponse
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `ID`                                                                                      | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `Name`                                                                                    | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `Type`                                                                                    | [GenerationModelInfoResponseType](../../models/shared/generationmodelinforesponsetype.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |

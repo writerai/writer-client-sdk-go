@@ -8,38 +8,42 @@ import (
 	"time"
 )
 
-type PageWithSectionResponseStatusEnum string
+type PageWithSectionResponseStatus string
 
 const (
-	PageWithSectionResponseStatusEnumLive    PageWithSectionResponseStatusEnum = "live"
-	PageWithSectionResponseStatusEnumOffline PageWithSectionResponseStatusEnum = "offline"
+	PageWithSectionResponseStatusLive    PageWithSectionResponseStatus = "live"
+	PageWithSectionResponseStatusOffline PageWithSectionResponseStatus = "offline"
 )
 
-func (e *PageWithSectionResponseStatusEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e PageWithSectionResponseStatus) ToPointer() *PageWithSectionResponseStatus {
+	return &e
+}
+
+func (e *PageWithSectionResponseStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "live":
 		fallthrough
 	case "offline":
-		*e = PageWithSectionResponseStatusEnum(s)
+		*e = PageWithSectionResponseStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PageWithSectionResponseStatusEnum: %s", s)
+		return fmt.Errorf("invalid value for PageWithSectionResponseStatus: %v", v)
 	}
 }
 
 type PageWithSectionResponse struct {
-	Content   *string                           `json:"content,omitempty"`
-	CreatedAt time.Time                         `json:"createdAt"`
-	ID        int64                             `json:"id"`
-	Order     int64                             `json:"order"`
-	Section   *SectionInfo                      `json:"section,omitempty"`
-	Status    PageWithSectionResponseStatusEnum `json:"status"`
-	Title     string                            `json:"title"`
-	UpdatedAt time.Time                         `json:"updatedAt"`
-	UpdatedBy *SimpleUser                       `json:"updatedBy,omitempty"`
-	URL       string                            `json:"url"`
+	Content   *string                       `json:"content,omitempty"`
+	CreatedAt time.Time                     `json:"createdAt"`
+	ID        int64                         `json:"id"`
+	Order     int64                         `json:"order"`
+	Section   *SectionInfo                  `json:"section,omitempty"`
+	Status    PageWithSectionResponseStatus `json:"status"`
+	Title     string                        `json:"title"`
+	UpdatedAt time.Time                     `json:"updatedAt"`
+	UpdatedBy *SimpleUser                   `json:"updatedBy,omitempty"`
+	URL       string                        `json:"url"`
 }

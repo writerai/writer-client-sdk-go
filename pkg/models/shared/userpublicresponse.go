@@ -8,39 +8,43 @@ import (
 	"time"
 )
 
-type UserPublicResponseAccountStatusEnum string
+type UserPublicResponseAccountStatus string
 
 const (
-	UserPublicResponseAccountStatusEnumInvited  UserPublicResponseAccountStatusEnum = "invited"
-	UserPublicResponseAccountStatusEnumSignedUp UserPublicResponseAccountStatusEnum = "signed_up"
+	UserPublicResponseAccountStatusInvited  UserPublicResponseAccountStatus = "invited"
+	UserPublicResponseAccountStatusSignedUp UserPublicResponseAccountStatus = "signed_up"
 )
 
-func (e *UserPublicResponseAccountStatusEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e UserPublicResponseAccountStatus) ToPointer() *UserPublicResponseAccountStatus {
+	return &e
+}
+
+func (e *UserPublicResponseAccountStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "invited":
 		fallthrough
 	case "signed_up":
-		*e = UserPublicResponseAccountStatusEnum(s)
+		*e = UserPublicResponseAccountStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UserPublicResponseAccountStatusEnum: %s", s)
+		return fmt.Errorf("invalid value for UserPublicResponseAccountStatus: %v", v)
 	}
 }
 
 type UserPublicResponse struct {
-	AccountStatus  UserPublicResponseAccountStatusEnum `json:"accountStatus"`
-	Avatar         *string                             `json:"avatar,omitempty"`
-	CreatedAt      time.Time                           `json:"createdAt"`
-	Email          *string                             `json:"email,omitempty"`
-	FirstName      string                              `json:"firstName"`
-	FullName       string                              `json:"fullName"`
-	ID             int64                               `json:"id"`
-	InvitedBy      *int64                              `json:"invitedBy,omitempty"`
-	LastName       *string                             `json:"lastName,omitempty"`
-	LastSeenOnline *time.Time                          `json:"lastSeenOnline,omitempty"`
-	Timezone       *string                             `json:"timezone,omitempty"`
+	AccountStatus  UserPublicResponseAccountStatus `json:"accountStatus"`
+	Avatar         *string                         `json:"avatar,omitempty"`
+	CreatedAt      time.Time                       `json:"createdAt"`
+	Email          *string                         `json:"email,omitempty"`
+	FirstName      string                          `json:"firstName"`
+	FullName       string                          `json:"fullName"`
+	ID             int64                           `json:"id"`
+	InvitedBy      *int64                          `json:"invitedBy,omitempty"`
+	LastName       *string                         `json:"lastName,omitempty"`
+	LastSeenOnline *time.Time                      `json:"lastSeenOnline,omitempty"`
+	Timezone       *string                         `json:"timezone,omitempty"`
 }

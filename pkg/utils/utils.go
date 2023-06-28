@@ -6,10 +6,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"math/big"
 	"reflect"
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/writerai/writer-client-sdk-go/pkg/types"
 )
 
 const (
@@ -42,6 +45,10 @@ func UnmarshalJsonFromResponseBody(body io.Reader, out interface{}) error {
 }
 
 func ReplaceParameters(stringWithParams string, params map[string]string) string {
+	if len(params) == 0 {
+		return stringWithParams
+	}
+
 	return paramRegex.ReplaceAllStringFunc(stringWithParams, func(match string) string {
 		match = match[1 : len(match)-1]
 		return params[match]
@@ -120,6 +127,10 @@ func valToString(val interface{}) string {
 	switch v := val.(type) {
 	case time.Time:
 		return v.Format(time.RFC3339Nano)
+	case types.BigInt:
+		return v.String()
+	case big.Int:
+		return v.String()
 	default:
 		return fmt.Sprintf("%v", v)
 	}

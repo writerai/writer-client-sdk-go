@@ -3,6 +3,7 @@
 package writer
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
@@ -14,31 +15,19 @@ import (
 
 // downloadTheCustomizedModel - Methods related to Download the customized model
 type downloadTheCustomizedModel struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
-	globals        map[string]map[string]map[string]interface{}
+	sdkConfiguration sdkConfiguration
 }
 
-func newDownloadTheCustomizedModel(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, globals map[string]map[string]map[string]interface{}) *downloadTheCustomizedModel {
+func newDownloadTheCustomizedModel(sdkConfig sdkConfiguration) *downloadTheCustomizedModel {
 	return &downloadTheCustomizedModel{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
-		globals:        globals,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // FetchFile - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
 func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request operations.FetchCustomizedModelFileRequest) (*operations.FetchCustomizedModelFileResponse, error) {
-	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}/fetch", request, s.globals)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}/fetch", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -47,8 +36,10 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request oper
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/octet-stream;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -57,7 +48,13 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request oper
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -72,12 +69,7 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request oper
 
 		switch {
 		case utils.MatchContentType(contentType, `application/octet-stream`):
-			out, err := io.ReadAll(httpRes.Body)
-			if err != nil {
-				return nil, fmt.Errorf("error reading response body: %w", err)
-			}
-
-			res.FetchCustomizedModelFile200ApplicationOctetStreamBinaryString = out
+			res.FetchCustomizedModelFile200ApplicationOctetStreamBinaryString = rawBody
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -93,7 +85,7 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request oper
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

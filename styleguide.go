@@ -3,42 +3,32 @@
 package writer
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
+	"io"
 	"net/http"
 	"strings"
 )
 
 // styleguide - Methods related to Styleguide
 type styleguide struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
-	globals        map[string]map[string]map[string]interface{}
+	sdkConfiguration sdkConfiguration
 }
 
-func newStyleguide(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, globals map[string]map[string]map[string]interface{}) *styleguide {
+func newStyleguide(sdkConfig sdkConfiguration) *styleguide {
 	return &styleguide{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
-		globals:        globals,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Get - Page details
 func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequest) (*operations.PageDetailsResponse, error) {
-	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/styleguide/page/{pageId}", request, s.globals)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/styleguide/page/{pageId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -47,8 +37,10 @@ func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequ
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -57,7 +49,13 @@ func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequ
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -73,7 +71,7 @@ func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.PageWithSectionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -93,7 +91,7 @@ func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -106,19 +104,21 @@ func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequ
 
 // ListPages - List your styleguide pages
 func (s *styleguide) ListPages(ctx context.Context, request operations.ListPagesRequest) (*operations.ListPagesResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/styleguide/page"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	if err := utils.PopulateQueryParams(ctx, req, request, s.globals); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -127,7 +127,13 @@ func (s *styleguide) ListPages(ctx context.Context, request operations.ListPages
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -143,7 +149,7 @@ func (s *styleguide) ListPages(ctx context.Context, request operations.ListPages
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.PaginatedResultPagePublicAPIResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -163,7 +169,7 @@ func (s *styleguide) ListPages(ctx context.Context, request operations.ListPages
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

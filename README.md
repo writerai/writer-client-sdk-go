@@ -34,30 +34,28 @@ If you cannot see your secret API keys in the Dashboard, this means you do not h
 ```go
 package main
 
-import (
-    "context"
-    "log"
-    "github.com/writerai/writer-client-sdk-go"
-    "github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-    "github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+import(
+	"context"
+	"log"
+	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writer.New(
         writer.WithSecurity(shared.Security{
-            APIKey: "YOUR_API_KEY_HERE",
+            APIKey: "",
         }),
-        WithOrganizationID(548814),
+        writer.WithOrganizationID(548814),
     )
 
-    ctx := context.Background()    
-    req := operations.DetectContentRequest{
+    ctx := context.Background()
+    res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
         ContentDetectorRequest: shared.ContentDetectorRequest{
             Input: "provident",
         },
-    }
-
-    res, err := s.AIContentDetector.Detect(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -73,72 +71,77 @@ func main() {
 ## Available Resources and Operations
 
 
-### AIContentDetector
+### [AIContentDetector](docs/sdks/aicontentdetector/README.md)
 
-* `Detect` - Content detector api
+* [Detect](docs/sdks/aicontentdetector/README.md#detect) - Content detector api
 
-### Billing
+### [Billing](docs/sdks/billing/README.md)
 
-* `GetSubscriptionDetails` - Get your organization subscription details
+* [GetSubscriptionDetails](docs/sdks/billing/README.md#getsubscriptiondetails) - Get your organization subscription details
 
-### CoWrite
+### [CoWrite](docs/sdks/cowrite/README.md)
 
-* `GenerateContent` - Generate content using predefined templates
-* `ListTemplates` - Get a list of your existing CoWrite templates
+* [GenerateContent](docs/sdks/cowrite/README.md#generatecontent) - Generate content using predefined templates
+* [ListTemplates](docs/sdks/cowrite/README.md#listtemplates) - Get a list of your existing CoWrite templates
 
-### Completions
+### [Completions](docs/sdks/completions/README.md)
 
-* `Create` - Create completion for LLM model
-* `CreateModelCustomizationCompletion` - Create completion for LLM customization model
+* [Create](docs/sdks/completions/README.md#create) - Create completion for LLM model
+* [CreateModelCustomizationCompletion](docs/sdks/completions/README.md#createmodelcustomizationcompletion) - Create completion for LLM customization model
 
-### Content
+### [Content](docs/sdks/content/README.md)
 
-* `Check` - Check your content against your preset styleguide.
-* `Correct` - Apply the style guide suggestions directly to your content.
+* [Check](docs/sdks/content/README.md#check) - Check your content against your preset styleguide.
+* [Correct](docs/sdks/content/README.md#correct) - Apply the style guide suggestions directly to your content.
 
-### DownloadTheCustomizedModel
+### [DownloadTheCustomizedModel](docs/sdks/downloadthecustomizedmodel/README.md)
 
-* `FetchFile` - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
+* [FetchFile](docs/sdks/downloadthecustomizedmodel/README.md#fetchfile) - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
 
-### Files
+### [Files](docs/sdks/files/README.md)
 
-* `Delete` - Delete file
-* `Get` - Get file
-* `List` - List files
-* `Upload` - Upload file
+* [Delete](docs/sdks/files/README.md#delete) - Delete file
+* [Get](docs/sdks/files/README.md#get) - Get file
+* [List](docs/sdks/files/README.md#list) - List files
+* [Upload](docs/sdks/files/README.md#upload) - Upload file
 
-### ModelCustomization
+### [ModelCustomization](docs/sdks/modelcustomization/README.md)
 
-* `Create` - Create model customization
-* `Delete` - Delete Model customization
-* `Get` - Get model customization
-* `List` - List model customizations
+* [Create](docs/sdks/modelcustomization/README.md#create) - Create model customization
+* [Delete](docs/sdks/modelcustomization/README.md#delete) - Delete Model customization
+* [Get](docs/sdks/modelcustomization/README.md#get) - Get model customization
+* [List](docs/sdks/modelcustomization/README.md#list) - List model customizations
 
-### Models
+### [Models](docs/sdks/models/README.md)
 
-* `List` - List available LLM models
+* [List](docs/sdks/models/README.md#list) - List available LLM models
 
-### Snippet
+### [Snippet](docs/sdks/snippet/README.md)
 
-* `Delete` - Delete snippets
-* `Find` - Find snippets
-* `Update` - Update snippets
+* [Delete](docs/sdks/snippet/README.md#delete) - Delete snippets
+* [Find](docs/sdks/snippet/README.md#find) - Find snippets
+* [Update](docs/sdks/snippet/README.md#update) - Update snippets
 
-### Styleguide
+### [Styleguide](docs/sdks/styleguide/README.md)
 
-* `Get` - Page details
-* `ListPages` - List your styleguide pages
+* [Get](docs/sdks/styleguide/README.md#get) - Page details
+* [ListPages](docs/sdks/styleguide/README.md#listpages) - List your styleguide pages
 
-### Terminology
+### [Terminology](docs/sdks/terminology/README.md)
 
-* `Add` - Add terms
-* `Delete` - Delete terms
-* `Find` - Find terms
-* `Update` - Update terms
+* [Add](docs/sdks/terminology/README.md#add) - Add terms
+* [Delete](docs/sdks/terminology/README.md#delete) - Delete terms
+* [Find](docs/sdks/terminology/README.md#find) - Find terms
+* [Update](docs/sdks/terminology/README.md#update) - Update terms
 
-### User
+### [User](docs/sdks/user/README.md)
 
-* `List` - List users
+* [List](docs/sdks/user/README.md#list) - List users
+
+### [Document](docs/sdks/document/README.md)
+
+* [Get](docs/sdks/document/README.md#get) - Get document details
+* [List](docs/sdks/document/README.md#list) - List team documents
 <!-- End SDK Available Operations -->
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)

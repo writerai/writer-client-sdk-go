@@ -3,41 +3,31 @@
 package writer
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
+	"io"
 	"net/http"
 )
 
 // aiContentDetector - Methods related to AI Content Detector
 type aiContentDetector struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
-	globals        map[string]map[string]map[string]interface{}
+	sdkConfiguration sdkConfiguration
 }
 
-func newAIContentDetector(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, globals map[string]map[string]map[string]interface{}) *aiContentDetector {
+func newAIContentDetector(sdkConfig sdkConfiguration) *aiContentDetector {
 	return &aiContentDetector{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
-		globals:        globals,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Detect - Content detector api
 func (s *aiContentDetector) Detect(ctx context.Context, request operations.DetectContentRequest) (*operations.DetectContentResponse, error) {
-	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/detect", request, s.globals)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/detect", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -54,10 +44,12 @@ func (s *aiContentDetector) Detect(ctx context.Context, request operations.Detec
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -66,7 +58,13 @@ func (s *aiContentDetector) Detect(ctx context.Context, request operations.Detec
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -82,7 +80,7 @@ func (s *aiContentDetector) Detect(ctx context.Context, request operations.Detec
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ContentDetectorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -102,7 +100,7 @@ func (s *aiContentDetector) Detect(ctx context.Context, request operations.Detec
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FailResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

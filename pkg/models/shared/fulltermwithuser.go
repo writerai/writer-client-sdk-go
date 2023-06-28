@@ -8,21 +8,25 @@ import (
 	"time"
 )
 
-type FullTermWithUserPosEnum string
+type FullTermWithUserPos string
 
 const (
-	FullTermWithUserPosEnumNoun      FullTermWithUserPosEnum = "noun"
-	FullTermWithUserPosEnumVerb      FullTermWithUserPosEnum = "verb"
-	FullTermWithUserPosEnumAdverb    FullTermWithUserPosEnum = "adverb"
-	FullTermWithUserPosEnumAdjective FullTermWithUserPosEnum = "adjective"
+	FullTermWithUserPosNoun      FullTermWithUserPos = "noun"
+	FullTermWithUserPosVerb      FullTermWithUserPos = "verb"
+	FullTermWithUserPosAdverb    FullTermWithUserPos = "adverb"
+	FullTermWithUserPosAdjective FullTermWithUserPos = "adjective"
 )
 
-func (e *FullTermWithUserPosEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e FullTermWithUserPos) ToPointer() *FullTermWithUserPos {
+	return &e
+}
+
+func (e *FullTermWithUserPos) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "noun":
 		fallthrough
 	case "verb":
@@ -30,56 +34,60 @@ func (e *FullTermWithUserPosEnum) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = FullTermWithUserPosEnum(s)
+		*e = FullTermWithUserPos(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FullTermWithUserPosEnum: %s", s)
+		return fmt.Errorf("invalid value for FullTermWithUserPos: %v", v)
 	}
 }
 
-type FullTermWithUserTypeEnum string
+type FullTermWithUserType string
 
 const (
-	FullTermWithUserTypeEnumApproved FullTermWithUserTypeEnum = "approved"
-	FullTermWithUserTypeEnumBanned   FullTermWithUserTypeEnum = "banned"
-	FullTermWithUserTypeEnumPending  FullTermWithUserTypeEnum = "pending"
+	FullTermWithUserTypeApproved FullTermWithUserType = "approved"
+	FullTermWithUserTypeBanned   FullTermWithUserType = "banned"
+	FullTermWithUserTypePending  FullTermWithUserType = "pending"
 )
 
-func (e *FullTermWithUserTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e FullTermWithUserType) ToPointer() *FullTermWithUserType {
+	return &e
+}
+
+func (e *FullTermWithUserType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "approved":
 		fallthrough
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = FullTermWithUserTypeEnum(s)
+		*e = FullTermWithUserType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FullTermWithUserTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for FullTermWithUserType: %v", v)
 	}
 }
 
 type FullTermWithUser struct {
-	ApprovedTermExtension *ApprovedTermExtension   `json:"approvedTermExtension,omitempty"`
-	BacklinkedTerms       []FullLinkedTerm         `json:"backlinkedTerms,omitempty"`
-	CaseSensitive         bool                     `json:"caseSensitive"`
-	CreatedUser           TerminologyUser          `json:"createdUser"`
-	CreationTime          time.Time                `json:"creationTime"`
-	Description           *string                  `json:"description,omitempty"`
-	Examples              []TermExample            `json:"examples,omitempty"`
-	Highlight             bool                     `json:"highlight"`
-	ID                    int64                    `json:"id"`
-	LinkedTerms           []FullLinkedTerm         `json:"linkedTerms,omitempty"`
-	Mistakes              []TermMistake            `json:"mistakes,omitempty"`
-	ModificationTime      time.Time                `json:"modificationTime"`
-	ModifiedUser          TerminologyUser          `json:"modifiedUser"`
-	Pos                   *FullTermWithUserPosEnum `json:"pos,omitempty"`
-	Tags                  []TermTagResponse        `json:"tags,omitempty"`
-	Term                  string                   `json:"term"`
-	TermBankID            int64                    `json:"termBankId"`
-	Type                  FullTermWithUserTypeEnum `json:"type"`
+	ApprovedTermExtension *ApprovedTermExtension `json:"approvedTermExtension,omitempty"`
+	BacklinkedTerms       []FullLinkedTerm       `json:"backlinkedTerms,omitempty"`
+	CaseSensitive         bool                   `json:"caseSensitive"`
+	CreatedUser           TerminologyUser        `json:"createdUser"`
+	CreationTime          time.Time              `json:"creationTime"`
+	Description           *string                `json:"description,omitempty"`
+	Examples              []TermExample          `json:"examples,omitempty"`
+	Highlight             bool                   `json:"highlight"`
+	ID                    int64                  `json:"id"`
+	LinkedTerms           []FullLinkedTerm       `json:"linkedTerms,omitempty"`
+	Mistakes              []TermMistake          `json:"mistakes,omitempty"`
+	ModificationTime      time.Time              `json:"modificationTime"`
+	ModifiedUser          TerminologyUser        `json:"modifiedUser"`
+	Pos                   *FullTermWithUserPos   `json:"pos,omitempty"`
+	Tags                  []TermTagResponse      `json:"tags,omitempty"`
+	Term                  string                 `json:"term"`
+	TermBankID            int64                  `json:"termBankId"`
+	Type                  FullTermWithUserType   `json:"type"`
 }

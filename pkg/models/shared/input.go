@@ -7,41 +7,45 @@ import (
 	"fmt"
 )
 
-type InputTypeEnum string
+type InputType string
 
 const (
-	InputTypeEnumTextbox  InputTypeEnum = "textbox"
-	InputTypeEnumTextarea InputTypeEnum = "textarea"
-	InputTypeEnumDropdown InputTypeEnum = "dropdown"
+	InputTypeTextbox  InputType = "textbox"
+	InputTypeTextarea InputType = "textarea"
+	InputTypeDropdown InputType = "dropdown"
 )
 
-func (e *InputTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e InputType) ToPointer() *InputType {
+	return &e
+}
+
+func (e *InputType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "textbox":
 		fallthrough
 	case "textarea":
 		fallthrough
 	case "dropdown":
-		*e = InputTypeEnum(s)
+		*e = InputType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for InputTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for InputType: %v", v)
 	}
 }
 
 type Input struct {
-	Dynamic   bool          `json:"dynamic"`
-	Help      *string       `json:"help,omitempty"`
-	MaxFields *int64        `json:"maxFields,omitempty"`
-	MinFields *int64        `json:"minFields,omitempty"`
-	Name      string        `json:"name"`
-	Options   []string      `json:"options,omitempty"`
-	Required  bool          `json:"required"`
-	Subtitle  *string       `json:"subtitle,omitempty"`
-	Type      InputTypeEnum `json:"type"`
-	UnitCopy  *string       `json:"unitCopy,omitempty"`
+	Dynamic   bool      `json:"dynamic"`
+	Help      *string   `json:"help,omitempty"`
+	MaxFields *int64    `json:"maxFields,omitempty"`
+	MinFields *int64    `json:"minFields,omitempty"`
+	Name      string    `json:"name"`
+	Options   []string  `json:"options,omitempty"`
+	Required  bool      `json:"required"`
+	Subtitle  *string   `json:"subtitle,omitempty"`
+	Type      InputType `json:"type"`
+	UnitCopy  *string   `json:"unitCopy,omitempty"`
 }

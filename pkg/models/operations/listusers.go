@@ -9,25 +9,29 @@ import (
 	"net/http"
 )
 
-// ListUsersSortFieldEnum
-type ListUsersSortFieldEnum string
+// ListUsersSortField
+type ListUsersSortField string
 
 const (
-	ListUsersSortFieldEnumID               ListUsersSortFieldEnum = "id"
-	ListUsersSortFieldEnumName             ListUsersSortFieldEnum = "name"
-	ListUsersSortFieldEnumCreationTime     ListUsersSortFieldEnum = "creationTime"
-	ListUsersSortFieldEnumDeleted          ListUsersSortFieldEnum = "deleted"
-	ListUsersSortFieldEnumModificationTime ListUsersSortFieldEnum = "modificationTime"
-	ListUsersSortFieldEnumEmail            ListUsersSortFieldEnum = "email"
-	ListUsersSortFieldEnumLastSeen         ListUsersSortFieldEnum = "lastSeen"
+	ListUsersSortFieldID               ListUsersSortField = "id"
+	ListUsersSortFieldName             ListUsersSortField = "name"
+	ListUsersSortFieldCreationTime     ListUsersSortField = "creationTime"
+	ListUsersSortFieldDeleted          ListUsersSortField = "deleted"
+	ListUsersSortFieldModificationTime ListUsersSortField = "modificationTime"
+	ListUsersSortFieldEmail            ListUsersSortField = "email"
+	ListUsersSortFieldLastSeen         ListUsersSortField = "lastSeen"
 )
 
-func (e *ListUsersSortFieldEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e ListUsersSortField) ToPointer() *ListUsersSortField {
+	return &e
+}
+
+func (e *ListUsersSortField) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "id":
 		fallthrough
 	case "name":
@@ -41,43 +45,47 @@ func (e *ListUsersSortFieldEnum) UnmarshalJSON(data []byte) error {
 	case "email":
 		fallthrough
 	case "lastSeen":
-		*e = ListUsersSortFieldEnum(s)
+		*e = ListUsersSortField(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListUsersSortFieldEnum: %s", s)
+		return fmt.Errorf("invalid value for ListUsersSortField: %v", v)
 	}
 }
 
-// ListUsersSortOrderEnum
-type ListUsersSortOrderEnum string
+// ListUsersSortOrder
+type ListUsersSortOrder string
 
 const (
-	ListUsersSortOrderEnumAsc  ListUsersSortOrderEnum = "asc"
-	ListUsersSortOrderEnumDesc ListUsersSortOrderEnum = "desc"
+	ListUsersSortOrderAsc  ListUsersSortOrder = "asc"
+	ListUsersSortOrderDesc ListUsersSortOrder = "desc"
 )
 
-func (e *ListUsersSortOrderEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+func (e ListUsersSortOrder) ToPointer() *ListUsersSortOrder {
+	return &e
+}
+
+func (e *ListUsersSortOrder) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = ListUsersSortOrderEnum(s)
+		*e = ListUsersSortOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListUsersSortOrderEnum: %s", s)
+		return fmt.Errorf("invalid value for ListUsersSortOrder: %v", v)
 	}
 }
 
 type ListUsersRequest struct {
-	Limit     *int64                  `queryParam:"style=form,explode=true,name=limit"`
-	Offset    *int64                  `queryParam:"style=form,explode=true,name=offset"`
-	Search    *string                 `queryParam:"style=form,explode=true,name=search"`
-	SortField *ListUsersSortFieldEnum `queryParam:"style=form,explode=true,name=sortField"`
-	SortOrder *ListUsersSortOrderEnum `queryParam:"style=form,explode=true,name=sortOrder"`
+	Limit     *int64              `queryParam:"style=form,explode=true,name=limit"`
+	Offset    *int64              `queryParam:"style=form,explode=true,name=offset"`
+	Search    *string             `queryParam:"style=form,explode=true,name=search"`
+	SortField *ListUsersSortField `queryParam:"style=form,explode=true,name=sortField"`
+	SortOrder *ListUsersSortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
 }
 
 type ListUsersResponse struct {
