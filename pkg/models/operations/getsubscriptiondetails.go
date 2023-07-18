@@ -16,3 +16,45 @@ type GetSubscriptionDetailsResponse struct {
 	RawResponse                   *http.Response
 	SubscriptionPublicResponseAPI *shared.SubscriptionPublicResponseAPI
 }
+
+func (o *GetSubscriptionDetailsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetSubscriptionDetailsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *GetSubscriptionDetailsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetSubscriptionDetailsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetSubscriptionDetailsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *GetSubscriptionDetailsResponse) GetSubscriptionPublicResponseAPI() *shared.SubscriptionPublicResponseAPI {
+	if o == nil {
+		return nil
+	}
+	return o.SubscriptionPublicResponseAPI
+}

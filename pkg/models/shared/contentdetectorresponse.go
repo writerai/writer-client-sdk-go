@@ -38,3 +38,17 @@ type ContentDetectorResponse struct {
 	Label ContentDetectorResponseLabel `json:"label"`
 	Score float64                      `json:"score"`
 }
+
+func (o *ContentDetectorResponse) GetLabel() ContentDetectorResponseLabel {
+	if o == nil {
+		return ContentDetectorResponseLabel("")
+	}
+	return o.Label
+}
+
+func (o *ContentDetectorResponse) GetScore() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Score
+}

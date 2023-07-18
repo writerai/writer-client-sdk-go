@@ -39,3 +39,24 @@ type GenerationModelInfoResponse struct {
 	Name string                          `json:"name"`
 	Type GenerationModelInfoResponseType `json:"type"`
 }
+
+func (o *GenerationModelInfoResponse) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GenerationModelInfoResponse) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GenerationModelInfoResponse) GetType() GenerationModelInfoResponseType {
+	if o == nil {
+		return GenerationModelInfoResponseType("")
+	}
+	return o.Type
+}

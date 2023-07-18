@@ -7,3 +7,24 @@ type TerminologyUser struct {
 	FullName *string `json:"fullName,omitempty"`
 	ID       int64   `json:"id"`
 }
+
+func (o *TerminologyUser) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *TerminologyUser) GetFullName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FullName
+}
+
+func (o *TerminologyUser) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}

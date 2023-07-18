@@ -11,6 +11,13 @@ type ListModelsRequest struct {
 	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+func (o *ListModelsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
 type ListModelsResponse struct {
 	ContentType string
 	// Bad Request
@@ -19,4 +26,46 @@ type ListModelsResponse struct {
 	Headers                  map[string][]string
 	StatusCode               int
 	RawResponse              *http.Response
+}
+
+func (o *ListModelsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListModelsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *ListModelsResponse) GetGenerationModelsResponse() *shared.GenerationModelsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GenerationModelsResponse
+}
+
+func (o *ListModelsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *ListModelsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListModelsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

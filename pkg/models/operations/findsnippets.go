@@ -80,6 +80,69 @@ type FindSnippetsRequest struct {
 	TeamID         int64                  `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *FindSnippetsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *FindSnippetsRequest) GetOffset() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Offset
+}
+
+func (o *FindSnippetsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *FindSnippetsRequest) GetSearch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Search
+}
+
+func (o *FindSnippetsRequest) GetShortcuts() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Shortcuts
+}
+
+func (o *FindSnippetsRequest) GetSortField() *FindSnippetsSortField {
+	if o == nil {
+		return nil
+	}
+	return o.SortField
+}
+
+func (o *FindSnippetsRequest) GetSortOrder() *FindSnippetsSortOrder {
+	if o == nil {
+		return nil
+	}
+	return o.SortOrder
+}
+
+func (o *FindSnippetsRequest) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *FindSnippetsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type FindSnippetsResponse struct {
 	ContentType string
 	// Bad Request
@@ -88,4 +151,46 @@ type FindSnippetsResponse struct {
 	PaginatedResultSnippetWithUser *shared.PaginatedResultSnippetWithUser
 	StatusCode                     int
 	RawResponse                    *http.Response
+}
+
+func (o *FindSnippetsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *FindSnippetsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *FindSnippetsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *FindSnippetsResponse) GetPaginatedResultSnippetWithUser() *shared.PaginatedResultSnippetWithUser {
+	if o == nil {
+		return nil
+	}
+	return o.PaginatedResultSnippetWithUser
+}
+
+func (o *FindSnippetsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *FindSnippetsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

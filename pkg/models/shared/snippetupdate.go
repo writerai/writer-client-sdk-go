@@ -9,3 +9,38 @@ type SnippetUpdate struct {
 	Snippet     string         `json:"snippet"`
 	Tags        []SnippetTagV2 `json:"tags,omitempty"`
 }
+
+func (o *SnippetUpdate) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *SnippetUpdate) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *SnippetUpdate) GetShortcut() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Shortcut
+}
+
+func (o *SnippetUpdate) GetSnippet() string {
+	if o == nil {
+		return ""
+	}
+	return o.Snippet
+}
+
+func (o *SnippetUpdate) GetTags() []SnippetTagV2 {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}

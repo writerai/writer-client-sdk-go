@@ -46,3 +46,31 @@ type TermMistakeCreate struct {
 	Pos           *TermMistakeCreatePos `json:"pos,omitempty"`
 	Reference     *string               `json:"reference,omitempty"`
 }
+
+func (o *TermMistakeCreate) GetCaseSensitive() bool {
+	if o == nil {
+		return false
+	}
+	return o.CaseSensitive
+}
+
+func (o *TermMistakeCreate) GetMistake() string {
+	if o == nil {
+		return ""
+	}
+	return o.Mistake
+}
+
+func (o *TermMistakeCreate) GetPos() *TermMistakeCreatePos {
+	if o == nil {
+		return nil
+	}
+	return o.Pos
+}
+
+func (o *TermMistakeCreate) GetReference() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reference
+}

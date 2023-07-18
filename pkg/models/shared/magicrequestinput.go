@@ -6,3 +6,17 @@ type MagicRequestInput struct {
 	Name  string   `json:"name"`
 	Value []string `json:"value,omitempty"`
 }
+
+func (o *MagicRequestInput) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *MagicRequestInput) GetValue() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

@@ -13,6 +13,27 @@ type AddTermsRequest struct {
 	TeamID             int64                     `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *AddTermsRequest) GetCreateTermsRequest() shared.CreateTermsRequest {
+	if o == nil {
+		return shared.CreateTermsRequest{}
+	}
+	return o.CreateTermsRequest
+}
+
+func (o *AddTermsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *AddTermsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type AddTermsResponse struct {
 	ContentType         string
 	CreateTermsResponse *shared.CreateTermsResponse
@@ -21,4 +42,46 @@ type AddTermsResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *AddTermsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *AddTermsResponse) GetCreateTermsResponse() *shared.CreateTermsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTermsResponse
+}
+
+func (o *AddTermsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *AddTermsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *AddTermsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *AddTermsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -11,6 +11,13 @@ type PageDetailsRequest struct {
 	PageID int64 `pathParam:"style=simple,explode=false,name=pageId"`
 }
 
+func (o *PageDetailsRequest) GetPageID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.PageID
+}
+
 type PageDetailsResponse struct {
 	ContentType string
 	// Bad Request
@@ -19,4 +26,46 @@ type PageDetailsResponse struct {
 	PageWithSectionResponse *shared.PageWithSectionResponse
 	StatusCode              int
 	RawResponse             *http.Response
+}
+
+func (o *PageDetailsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PageDetailsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *PageDetailsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PageDetailsResponse) GetPageWithSectionResponse() *shared.PageWithSectionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.PageWithSectionResponse
+}
+
+func (o *PageDetailsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PageDetailsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

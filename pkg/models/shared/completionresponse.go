@@ -5,3 +5,10 @@ package shared
 type CompletionResponse struct {
 	Choices []CompletionGenerationChoice `json:"choices,omitempty"`
 }
+
+func (o *CompletionResponse) GetChoices() []CompletionGenerationChoice {
+	if o == nil {
+		return nil
+	}
+	return o.Choices
+}

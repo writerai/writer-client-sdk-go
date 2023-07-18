@@ -14,6 +14,34 @@ type UpdateSnippetsRequest struct {
 	TeamID         int64                  `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *UpdateSnippetsRequest) GetRequestBody() []shared.SnippetUpdate {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
+}
+
+func (o *UpdateSnippetsRequest) GetXRequestID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XRequestID
+}
+
+func (o *UpdateSnippetsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *UpdateSnippetsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type UpdateSnippetsResponse struct {
 	ContentType string
 	// Bad Request
@@ -22,4 +50,46 @@ type UpdateSnippetsResponse struct {
 	SnippetWithUsers []shared.SnippetWithUser
 	StatusCode       int
 	RawResponse      *http.Response
+}
+
+func (o *UpdateSnippetsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateSnippetsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *UpdateSnippetsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *UpdateSnippetsResponse) GetSnippetWithUsers() []shared.SnippetWithUser {
+	if o == nil {
+		return nil
+	}
+	return o.SnippetWithUsers
+}
+
+func (o *UpdateSnippetsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateSnippetsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

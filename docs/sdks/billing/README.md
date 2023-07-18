@@ -21,6 +21,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {

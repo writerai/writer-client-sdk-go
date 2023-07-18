@@ -24,8 +24,8 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -156,6 +156,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
@@ -212,6 +213,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
@@ -274,8 +276,8 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {

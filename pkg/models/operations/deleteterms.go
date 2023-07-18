@@ -14,6 +14,34 @@ type DeleteTermsRequest struct {
 	TeamID         int64   `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *DeleteTermsRequest) GetXRequestID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XRequestID
+}
+
+func (o *DeleteTermsRequest) GetIds() []int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Ids
+}
+
+func (o *DeleteTermsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *DeleteTermsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type DeleteTermsResponse struct {
 	ContentType    string
 	DeleteResponse *shared.DeleteResponse
@@ -22,4 +50,46 @@ type DeleteTermsResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *DeleteTermsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteTermsResponse) GetDeleteResponse() *shared.DeleteResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteResponse
+}
+
+func (o *DeleteTermsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *DeleteTermsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *DeleteTermsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteTermsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

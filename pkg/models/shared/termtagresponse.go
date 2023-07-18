@@ -8,3 +8,31 @@ type TermTagResponse struct {
 	Tag         string `json:"tag"`
 	TermID      int64  `json:"termId"`
 }
+
+func (o *TermTagResponse) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *TermTagResponse) GetParentTagID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ParentTagID
+}
+
+func (o *TermTagResponse) GetTag() string {
+	if o == nil {
+		return ""
+	}
+	return o.Tag
+}
+
+func (o *TermTagResponse) GetTermID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermID
+}

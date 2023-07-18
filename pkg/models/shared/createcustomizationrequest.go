@@ -13,3 +13,66 @@ type CreateCustomizationRequest struct {
 	TrainingDatasetFileID     string           `json:"trainingDatasetFileId"`
 	ValidationDatasetFileID   *string          `json:"validationDatasetFileId,omitempty"`
 }
+
+func (o *CreateCustomizationRequest) GetAdditionalHyperParameters() *HyperParameters {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalHyperParameters
+}
+
+func (o *CreateCustomizationRequest) GetBatchSize() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.BatchSize
+}
+
+func (o *CreateCustomizationRequest) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateCustomizationRequest) GetEpochs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Epochs
+}
+
+func (o *CreateCustomizationRequest) GetLearningRate() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LearningRate
+}
+
+func (o *CreateCustomizationRequest) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateCustomizationRequest) GetPromptTemplate() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PromptTemplate
+}
+
+func (o *CreateCustomizationRequest) GetTrainingDatasetFileID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TrainingDatasetFileID
+}
+
+func (o *CreateCustomizationRequest) GetValidationDatasetFileID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationDatasetFileID
+}

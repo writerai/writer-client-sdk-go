@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/sdkerrors"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"io"
@@ -75,6 +76,8 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 			}
 
 			res.DeleteFile200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -95,6 +98,8 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -152,6 +157,8 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 			}
 
 			res.ModelFile = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -172,6 +179,8 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -229,6 +238,8 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 			}
 
 			res.ModelFilesResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -249,6 +260,8 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -316,6 +329,8 @@ func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest
 			}
 
 			res.ModelFile = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -336,6 +351,8 @@ func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

@@ -14,6 +14,34 @@ type CreateModelCustomizationCompletionRequest struct {
 	OrganizationID    *int64                   `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+func (o *CreateModelCustomizationCompletionRequest) GetCompletionRequest() shared.CompletionRequest {
+	if o == nil {
+		return shared.CompletionRequest{}
+	}
+	return o.CompletionRequest
+}
+
+func (o *CreateModelCustomizationCompletionRequest) GetCustomizationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.CustomizationID
+}
+
+func (o *CreateModelCustomizationCompletionRequest) GetModelID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ModelID
+}
+
+func (o *CreateModelCustomizationCompletionRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
 type CreateModelCustomizationCompletionResponse struct {
 	CompletionResponse *shared.CompletionResponse
 	ContentType        string
@@ -22,4 +50,46 @@ type CreateModelCustomizationCompletionResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *CreateModelCustomizationCompletionResponse) GetCompletionResponse() *shared.CompletionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CompletionResponse
+}
+
+func (o *CreateModelCustomizationCompletionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateModelCustomizationCompletionResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *CreateModelCustomizationCompletionResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *CreateModelCustomizationCompletionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateModelCustomizationCompletionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

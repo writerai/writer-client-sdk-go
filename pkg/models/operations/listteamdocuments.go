@@ -84,6 +84,55 @@ type ListTeamDocumentsRequest struct {
 	TeamID         int64                       `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *ListTeamDocumentsRequest) GetLimit() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *ListTeamDocumentsRequest) GetOffset() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Offset
+}
+
+func (o *ListTeamDocumentsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *ListTeamDocumentsRequest) GetSearch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Search
+}
+
+func (o *ListTeamDocumentsRequest) GetSortField() *ListTeamDocumentsSortField {
+	if o == nil {
+		return nil
+	}
+	return o.SortField
+}
+
+func (o *ListTeamDocumentsRequest) GetSortOrder() *ListTeamDocumentsSortOrder {
+	if o == nil {
+		return nil
+	}
+	return o.SortOrder
+}
+
+func (o *ListTeamDocumentsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type ListTeamDocumentsResponse struct {
 	BriefDocuments *shared.BriefDocuments
 	ContentType    string
@@ -92,4 +141,46 @@ type ListTeamDocumentsResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *ListTeamDocumentsResponse) GetBriefDocuments() *shared.BriefDocuments {
+	if o == nil {
+		return nil
+	}
+	return o.BriefDocuments
+}
+
+func (o *ListTeamDocumentsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListTeamDocumentsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *ListTeamDocumentsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *ListTeamDocumentsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListTeamDocumentsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

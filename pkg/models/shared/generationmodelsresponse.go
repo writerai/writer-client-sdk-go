@@ -5,3 +5,10 @@ package shared
 type GenerationModelsResponse struct {
 	Data []GenerationModelInfoResponse `json:"data,omitempty"`
 }
+
+func (o *GenerationModelsResponse) GetData() []GenerationModelInfoResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Data
+}

@@ -7,3 +7,24 @@ type PaginatedResultPagePublicAPIResponse struct {
 	Result     []PagePublicAPIResponse `json:"result,omitempty"`
 	TotalCount int64                   `json:"totalCount"`
 }
+
+func (o *PaginatedResultPagePublicAPIResponse) GetPagination() Pagination {
+	if o == nil {
+		return Pagination{}
+	}
+	return o.Pagination
+}
+
+func (o *PaginatedResultPagePublicAPIResponse) GetResult() []PagePublicAPIResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Result
+}
+
+func (o *PaginatedResultPagePublicAPIResponse) GetTotalCount() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TotalCount
+}

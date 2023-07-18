@@ -50,3 +50,59 @@ type MetaData struct {
 	TermsCount    int64             `json:"termsCount"`
 	Tier          *MetaDataTier     `json:"tier,omitempty"`
 }
+
+func (o *MetaData) GetPortal() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Portal
+}
+
+func (o *MetaData) GetReporting() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Reporting
+}
+
+func (o *MetaData) GetSnippetsCount() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.SnippetsCount
+}
+
+func (o *MetaData) GetSsoAccess() bool {
+	if o == nil {
+		return false
+	}
+	return o.SsoAccess
+}
+
+func (o *MetaData) GetStyleguide() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Styleguide
+}
+
+func (o *MetaData) GetTeamCount() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamCount
+}
+
+func (o *MetaData) GetTermsCount() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermsCount
+}
+
+func (o *MetaData) GetTier() *MetaDataTier {
+	if o == nil {
+		return nil
+	}
+	return o.Tier
+}

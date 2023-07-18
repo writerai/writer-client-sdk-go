@@ -5,3 +5,10 @@ package shared
 type CorrectionResponse struct {
 	Correct string `json:"correct"`
 }
+
+func (o *CorrectionResponse) GetCorrect() string {
+	if o == nil {
+		return ""
+	}
+	return o.Correct
+}

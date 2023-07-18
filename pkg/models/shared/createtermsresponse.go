@@ -6,3 +6,17 @@ type CreateTermsResponse struct {
 	Fails  []FailMessage      `json:"fails,omitempty"`
 	Models []FullTermWithUser `json:"models,omitempty"`
 }
+
+func (o *CreateTermsResponse) GetFails() []FailMessage {
+	if o == nil {
+		return nil
+	}
+	return o.Fails
+}
+
+func (o *CreateTermsResponse) GetModels() []FullTermWithUser {
+	if o == nil {
+		return nil
+	}
+	return o.Models
+}

@@ -6,3 +6,17 @@ type Pagination struct {
 	Limit  *int64 `json:"limit,omitempty"`
 	Offset *int64 `json:"offset,omitempty"`
 }
+
+func (o *Pagination) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *Pagination) GetOffset() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Offset
+}

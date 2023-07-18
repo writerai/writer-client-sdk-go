@@ -46,3 +46,66 @@ type PagePublicAPIResponse struct {
 	UpdatedBy *SimpleUser                 `json:"updatedBy,omitempty"`
 	URL       string                      `json:"url"`
 }
+
+func (o *PagePublicAPIResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *PagePublicAPIResponse) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *PagePublicAPIResponse) GetOrder() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Order
+}
+
+func (o *PagePublicAPIResponse) GetSection() *SectionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Section
+}
+
+func (o *PagePublicAPIResponse) GetStatus() PagePublicAPIResponseStatus {
+	if o == nil {
+		return PagePublicAPIResponseStatus("")
+	}
+	return o.Status
+}
+
+func (o *PagePublicAPIResponse) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}
+
+func (o *PagePublicAPIResponse) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}
+
+func (o *PagePublicAPIResponse) GetUpdatedBy() *SimpleUser {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedBy
+}
+
+func (o *PagePublicAPIResponse) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}

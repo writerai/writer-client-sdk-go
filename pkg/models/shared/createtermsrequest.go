@@ -44,3 +44,17 @@ type CreateTermsRequest struct {
 	FailHandling *CreateTermsRequestFailHandling `json:"failHandling,omitempty"`
 	Models       []TermCreate                    `json:"models,omitempty"`
 }
+
+func (o *CreateTermsRequest) GetFailHandling() *CreateTermsRequestFailHandling {
+	if o == nil {
+		return nil
+	}
+	return o.FailHandling
+}
+
+func (o *CreateTermsRequest) GetModels() []TermCreate {
+	if o == nil {
+		return nil
+	}
+	return o.Models
+}

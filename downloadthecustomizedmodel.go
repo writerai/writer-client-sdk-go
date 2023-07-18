@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/sdkerrors"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"io"
@@ -70,6 +71,8 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request oper
 		switch {
 		case utils.MatchContentType(contentType, `application/octet-stream`):
 			res.FetchCustomizedModelFile200ApplicationOctetStreamBinaryString = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -90,6 +93,8 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request oper
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

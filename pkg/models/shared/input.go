@@ -49,3 +49,73 @@ type Input struct {
 	Type      InputType `json:"type"`
 	UnitCopy  *string   `json:"unitCopy,omitempty"`
 }
+
+func (o *Input) GetDynamic() bool {
+	if o == nil {
+		return false
+	}
+	return o.Dynamic
+}
+
+func (o *Input) GetHelp() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Help
+}
+
+func (o *Input) GetMaxFields() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxFields
+}
+
+func (o *Input) GetMinFields() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinFields
+}
+
+func (o *Input) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Input) GetOptions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}
+
+func (o *Input) GetRequired() bool {
+	if o == nil {
+		return false
+	}
+	return o.Required
+}
+
+func (o *Input) GetSubtitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Subtitle
+}
+
+func (o *Input) GetType() InputType {
+	if o == nil {
+		return InputType("")
+	}
+	return o.Type
+}
+
+func (o *Input) GetUnitCopy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UnitCopy
+}

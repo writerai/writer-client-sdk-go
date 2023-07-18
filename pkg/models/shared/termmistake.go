@@ -48,3 +48,45 @@ type TermMistake struct {
 	TermBankID    int64           `json:"termBankId"`
 	TermID        int64           `json:"termId"`
 }
+
+func (o *TermMistake) GetCaseSensitive() bool {
+	if o == nil {
+		return false
+	}
+	return o.CaseSensitive
+}
+
+func (o *TermMistake) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *TermMistake) GetMistake() string {
+	if o == nil {
+		return ""
+	}
+	return o.Mistake
+}
+
+func (o *TermMistake) GetPos() *TermMistakePos {
+	if o == nil {
+		return nil
+	}
+	return o.Pos
+}
+
+func (o *TermMistake) GetTermBankID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermBankID
+}
+
+func (o *TermMistake) GetTermID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermID
+}

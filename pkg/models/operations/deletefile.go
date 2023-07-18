@@ -12,6 +12,20 @@ type DeleteFileRequest struct {
 	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+func (o *DeleteFileRequest) GetFileID() string {
+	if o == nil {
+		return ""
+	}
+	return o.FileID
+}
+
+func (o *DeleteFileRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
 type DeleteFile200ApplicationJSON struct {
 }
 
@@ -23,4 +37,46 @@ type DeleteFileResponse struct {
 	StatusCode                         int
 	RawResponse                        *http.Response
 	DeleteFile200ApplicationJSONObject *DeleteFile200ApplicationJSON
+}
+
+func (o *DeleteFileResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteFileResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *DeleteFileResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *DeleteFileResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteFileResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *DeleteFileResponse) GetDeleteFile200ApplicationJSONObject() *DeleteFile200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteFile200ApplicationJSONObject
 }

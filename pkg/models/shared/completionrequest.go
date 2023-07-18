@@ -15,3 +15,80 @@ type CompletionRequest struct {
 	Temperature      *float64 `json:"temperature,omitempty"`
 	TopP             *float64 `json:"topP,omitempty"`
 }
+
+func (o *CompletionRequest) GetBestOf() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.BestOf
+}
+
+func (o *CompletionRequest) GetFrequencyPenalty() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FrequencyPenalty
+}
+
+func (o *CompletionRequest) GetLogprobs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Logprobs
+}
+
+func (o *CompletionRequest) GetMaxTokens() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxTokens
+}
+
+func (o *CompletionRequest) GetMinTokens() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinTokens
+}
+
+func (o *CompletionRequest) GetN() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.N
+}
+
+func (o *CompletionRequest) GetPresencePenalty() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.PresencePenalty
+}
+
+func (o *CompletionRequest) GetPrompt() string {
+	if o == nil {
+		return ""
+	}
+	return o.Prompt
+}
+
+func (o *CompletionRequest) GetStop() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Stop
+}
+
+func (o *CompletionRequest) GetTemperature() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Temperature
+}
+
+func (o *CompletionRequest) GetTopP() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TopP
+}

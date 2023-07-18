@@ -8,3 +8,31 @@ type Usage struct {
 	User         UsageItem `json:"user"`
 	Words        UsageItem `json:"words"`
 }
+
+func (o *Usage) GetCoWriteWords() UsageItem {
+	if o == nil {
+		return UsageItem{}
+	}
+	return o.CoWriteWords
+}
+
+func (o *Usage) GetTeam() UsageItem {
+	if o == nil {
+		return UsageItem{}
+	}
+	return o.Team
+}
+
+func (o *Usage) GetUser() UsageItem {
+	if o == nil {
+		return UsageItem{}
+	}
+	return o.User
+}
+
+func (o *Usage) GetWords() UsageItem {
+	if o == nil {
+		return UsageItem{}
+	}
+	return o.Words
+}

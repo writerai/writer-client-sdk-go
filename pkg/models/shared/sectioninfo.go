@@ -7,3 +7,24 @@ type SectionInfo struct {
 	Title string `json:"title"`
 	URL   string `json:"url"`
 }
+
+func (o *SectionInfo) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *SectionInfo) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}
+
+func (o *SectionInfo) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}

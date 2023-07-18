@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/sdkerrors"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"io"
@@ -85,6 +86,8 @@ func (s *modelCustomization) Create(ctx context.Context, request operations.Crea
 			}
 
 			res.ModelCustomization = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -105,6 +108,8 @@ func (s *modelCustomization) Create(ctx context.Context, request operations.Crea
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -162,6 +167,8 @@ func (s *modelCustomization) Delete(ctx context.Context, request operations.Dele
 			}
 
 			res.DeleteModelCustomization200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -182,6 +189,8 @@ func (s *modelCustomization) Delete(ctx context.Context, request operations.Dele
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -239,6 +248,8 @@ func (s *modelCustomization) Get(ctx context.Context, request operations.GetMode
 			}
 
 			res.ModelCustomization = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -259,6 +270,8 @@ func (s *modelCustomization) Get(ctx context.Context, request operations.GetMode
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -316,6 +329,8 @@ func (s *modelCustomization) List(ctx context.Context, request operations.ListMo
 			}
 
 			res.CustomizationsResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -336,6 +351,8 @@ func (s *modelCustomization) List(ctx context.Context, request operations.ListMo
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

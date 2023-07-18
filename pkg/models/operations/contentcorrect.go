@@ -14,6 +14,34 @@ type ContentCorrectRequest struct {
 	TeamID         int64                 `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *ContentCorrectRequest) GetContentRequest() shared.ContentRequest {
+	if o == nil {
+		return shared.ContentRequest{}
+	}
+	return o.ContentRequest
+}
+
+func (o *ContentCorrectRequest) GetXRequestID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XRequestID
+}
+
+func (o *ContentCorrectRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *ContentCorrectRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type ContentCorrectResponse struct {
 	ContentType        string
 	CorrectionResponse *shared.CorrectionResponse
@@ -22,4 +50,46 @@ type ContentCorrectResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *ContentCorrectResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ContentCorrectResponse) GetCorrectionResponse() *shared.CorrectionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CorrectionResponse
+}
+
+func (o *ContentCorrectResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *ContentCorrectResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *ContentCorrectResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ContentCorrectResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

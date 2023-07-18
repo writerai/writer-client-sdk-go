@@ -48,3 +48,80 @@ type UserPublicResponse struct {
 	LastSeenOnline *time.Time                      `json:"lastSeenOnline,omitempty"`
 	Timezone       *string                         `json:"timezone,omitempty"`
 }
+
+func (o *UserPublicResponse) GetAccountStatus() UserPublicResponseAccountStatus {
+	if o == nil {
+		return UserPublicResponseAccountStatus("")
+	}
+	return o.AccountStatus
+}
+
+func (o *UserPublicResponse) GetAvatar() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Avatar
+}
+
+func (o *UserPublicResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *UserPublicResponse) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *UserPublicResponse) GetFirstName() string {
+	if o == nil {
+		return ""
+	}
+	return o.FirstName
+}
+
+func (o *UserPublicResponse) GetFullName() string {
+	if o == nil {
+		return ""
+	}
+	return o.FullName
+}
+
+func (o *UserPublicResponse) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *UserPublicResponse) GetInvitedBy() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.InvitedBy
+}
+
+func (o *UserPublicResponse) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}
+
+func (o *UserPublicResponse) GetLastSeenOnline() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.LastSeenOnline
+}
+
+func (o *UserPublicResponse) GetTimezone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Timezone
+}

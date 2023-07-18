@@ -5,3 +5,10 @@ package shared
 type ModelFilesResponse struct {
 	Files []ModelFile `json:"files,omitempty"`
 }
+
+func (o *ModelFilesResponse) GetFiles() []ModelFile {
+	if o == nil {
+		return nil
+	}
+	return o.Files
+}

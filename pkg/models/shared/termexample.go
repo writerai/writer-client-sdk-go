@@ -41,3 +41,38 @@ type TermExample struct {
 	TermID     int64           `json:"termId"`
 	Type       TermExampleType `json:"type"`
 }
+
+func (o *TermExample) GetExample() string {
+	if o == nil {
+		return ""
+	}
+	return o.Example
+}
+
+func (o *TermExample) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *TermExample) GetTermBankID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermBankID
+}
+
+func (o *TermExample) GetTermID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermID
+}
+
+func (o *TermExample) GetType() TermExampleType {
+	if o == nil {
+		return TermExampleType("")
+	}
+	return o.Type
+}

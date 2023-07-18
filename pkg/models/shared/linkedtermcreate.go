@@ -6,3 +6,17 @@ type LinkedTermCreate struct {
 	LinkedTermID *int64  `json:"linkedTermId,omitempty"`
 	Reference    *string `json:"reference,omitempty"`
 }
+
+func (o *LinkedTermCreate) GetLinkedTermID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LinkedTermID
+}
+
+func (o *LinkedTermCreate) GetReference() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reference
+}

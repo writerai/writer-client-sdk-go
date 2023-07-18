@@ -8,3 +8,24 @@ type FailResponse struct {
 	Extras interface{}   `json:"extras"`
 	Tpe    string        `json:"tpe"`
 }
+
+func (o *FailResponse) GetErrors() []FailMessage {
+	if o == nil {
+		return nil
+	}
+	return o.Errors
+}
+
+func (o *FailResponse) GetExtras() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Extras
+}
+
+func (o *FailResponse) GetTpe() string {
+	if o == nil {
+		return ""
+	}
+	return o.Tpe
+}

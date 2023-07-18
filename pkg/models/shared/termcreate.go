@@ -84,3 +84,87 @@ type TermCreate struct {
 	Term                  string                       `json:"term"`
 	Type                  TermCreateType               `json:"type"`
 }
+
+func (o *TermCreate) GetApprovedTermExtension() *ApprovedTermExtensionCreate {
+	if o == nil {
+		return nil
+	}
+	return o.ApprovedTermExtension
+}
+
+func (o *TermCreate) GetCaseSensitive() bool {
+	if o == nil {
+		return false
+	}
+	return o.CaseSensitive
+}
+
+func (o *TermCreate) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *TermCreate) GetExamples() []TermExampleCreate {
+	if o == nil {
+		return nil
+	}
+	return o.Examples
+}
+
+func (o *TermCreate) GetHighlight() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Highlight
+}
+
+func (o *TermCreate) GetLinkedTerms() []LinkedTermCreate {
+	if o == nil {
+		return nil
+	}
+	return o.LinkedTerms
+}
+
+func (o *TermCreate) GetMistakes() []TermMistakeCreate {
+	if o == nil {
+		return nil
+	}
+	return o.Mistakes
+}
+
+func (o *TermCreate) GetPos() *TermCreatePos {
+	if o == nil {
+		return nil
+	}
+	return o.Pos
+}
+
+func (o *TermCreate) GetReference() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Reference
+}
+
+func (o *TermCreate) GetTags() []TermTagCreate {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *TermCreate) GetTerm() string {
+	if o == nil {
+		return ""
+	}
+	return o.Term
+}
+
+func (o *TermCreate) GetType() TermCreateType {
+	if o == nil {
+		return TermCreateType("")
+	}
+	return o.Type
+}

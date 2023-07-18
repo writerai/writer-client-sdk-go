@@ -38,3 +38,17 @@ type TermExampleCreate struct {
 	Example string                `json:"example"`
 	Type    TermExampleCreateType `json:"type"`
 }
+
+func (o *TermExampleCreate) GetExample() string {
+	if o == nil {
+		return ""
+	}
+	return o.Example
+}
+
+func (o *TermExampleCreate) GetType() TermExampleCreateType {
+	if o == nil {
+		return TermExampleCreateType("")
+	}
+	return o.Type
+}

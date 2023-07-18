@@ -8,3 +8,31 @@ type SimpleUser struct {
 	ID        int64   `json:"id"`
 	LastName  *string `json:"lastName,omitempty"`
 }
+
+func (o *SimpleUser) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *SimpleUser) GetFirstName() string {
+	if o == nil {
+		return ""
+	}
+	return o.FirstName
+}
+
+func (o *SimpleUser) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *SimpleUser) GetLastName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastName
+}

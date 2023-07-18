@@ -43,6 +43,27 @@ type ListPagesRequest struct {
 	Status *ListPagesStatus `queryParam:"style=form,explode=true,name=status"`
 }
 
+func (o *ListPagesRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *ListPagesRequest) GetOffset() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Offset
+}
+
+func (o *ListPagesRequest) GetStatus() *ListPagesStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
 type ListPagesResponse struct {
 	ContentType string
 	// Bad Request
@@ -51,4 +72,46 @@ type ListPagesResponse struct {
 	PaginatedResultPagePublicAPIResponse *shared.PaginatedResultPagePublicAPIResponse
 	StatusCode                           int
 	RawResponse                          *http.Response
+}
+
+func (o *ListPagesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListPagesResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *ListPagesResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *ListPagesResponse) GetPaginatedResultPagePublicAPIResponse() *shared.PaginatedResultPagePublicAPIResponse {
+	if o == nil {
+		return nil
+	}
+	return o.PaginatedResultPagePublicAPIResponse
+}
+
+func (o *ListPagesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListPagesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

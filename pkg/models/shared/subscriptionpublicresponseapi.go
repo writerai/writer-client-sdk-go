@@ -95,3 +95,52 @@ type SubscriptionPublicResponseAPI struct {
 	SubscriptionID string                                   `json:"subscriptionId"`
 	Usage          Usage                                    `json:"usage"`
 }
+
+func (o *SubscriptionPublicResponseAPI) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *SubscriptionPublicResponseAPI) GetMeta() MetaData {
+	if o == nil {
+		return MetaData{}
+	}
+	return o.Meta
+}
+
+func (o *SubscriptionPublicResponseAPI) GetProductName() SubscriptionPublicResponseAPIProductName {
+	if o == nil {
+		return SubscriptionPublicResponseAPIProductName("")
+	}
+	return o.ProductName
+}
+
+func (o *SubscriptionPublicResponseAPI) GetSeats() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Seats
+}
+
+func (o *SubscriptionPublicResponseAPI) GetStatus() SubscriptionPublicResponseAPIStatus {
+	if o == nil {
+		return SubscriptionPublicResponseAPIStatus("")
+	}
+	return o.Status
+}
+
+func (o *SubscriptionPublicResponseAPI) GetSubscriptionID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SubscriptionID
+}
+
+func (o *SubscriptionPublicResponseAPI) GetUsage() Usage {
+	if o == nil {
+		return Usage{}
+	}
+	return o.Usage
+}

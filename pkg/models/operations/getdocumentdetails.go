@@ -13,6 +13,27 @@ type GetDocumentDetailsRequest struct {
 	TeamID         int64  `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *GetDocumentDetailsRequest) GetDocumentID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.DocumentID
+}
+
+func (o *GetDocumentDetailsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *GetDocumentDetailsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type GetDocumentDetailsResponse struct {
 	ContentType string
 	Document    *shared.Document
@@ -21,4 +42,46 @@ type GetDocumentDetailsResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *GetDocumentDetailsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetDocumentDetailsResponse) GetDocument() *shared.Document {
+	if o == nil {
+		return nil
+	}
+	return o.Document
+}
+
+func (o *GetDocumentDetailsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *GetDocumentDetailsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetDocumentDetailsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetDocumentDetailsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

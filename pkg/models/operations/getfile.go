@@ -12,6 +12,20 @@ type GetFileRequest struct {
 	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+func (o *GetFileRequest) GetFileID() string {
+	if o == nil {
+		return ""
+	}
+	return o.FileID
+}
+
+func (o *GetFileRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
 type GetFileResponse struct {
 	ContentType string
 	// Bad Request
@@ -20,4 +34,46 @@ type GetFileResponse struct {
 	ModelFile    *shared.ModelFile
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *GetFileResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetFileResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *GetFileResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetFileResponse) GetModelFile() *shared.ModelFile {
+	if o == nil {
+		return nil
+	}
+	return o.ModelFile
+}
+
+func (o *GetFileResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetFileResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

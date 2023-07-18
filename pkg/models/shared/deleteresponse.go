@@ -5,3 +5,10 @@ package shared
 type DeleteResponse struct {
 	Deleted int64 `json:"deleted"`
 }
+
+func (o *DeleteResponse) GetDeleted() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Deleted
+}

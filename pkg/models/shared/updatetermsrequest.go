@@ -44,3 +44,17 @@ type UpdateTermsRequest struct {
 	FailHandling *UpdateTermsRequestFailHandling `json:"failHandling,omitempty"`
 	Models       []TermUpdate                    `json:"models,omitempty"`
 }
+
+func (o *UpdateTermsRequest) GetFailHandling() *UpdateTermsRequestFailHandling {
+	if o == nil {
+		return nil
+	}
+	return o.FailHandling
+}
+
+func (o *UpdateTermsRequest) GetModels() []TermUpdate {
+	if o == nil {
+		return nil
+	}
+	return o.Models
+}

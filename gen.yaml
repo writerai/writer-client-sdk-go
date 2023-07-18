@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: bf208a2a8543531774bae9addd634dc0
   docVersion: "1.7"
-  speakeasyVersion: 1.50.1
-  generationVersion: 2.43.2
+  speakeasyVersion: 1.61.0
+  generationVersion: 2.70.0
 generation:
   sdkClassName: writer
   singleTagPerOp: false
   telemetryEnabled: false
 go:
-  version: 0.11.0
+  version: 0.12.0
   maxMethodParams: 0
   packageName: github.com/writerai/writer-client-sdk-go

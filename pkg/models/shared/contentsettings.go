@@ -20,3 +20,115 @@ type ContentSettings struct {
 	UnclearReference                    bool `json:"unclearReference"`
 	Wordiness                           bool `json:"wordiness"`
 }
+
+func (o *ContentSettings) GetAgeAndFamilyStatus() bool {
+	if o == nil {
+		return false
+	}
+	return o.AgeAndFamilyStatus
+}
+
+func (o *ContentSettings) GetConfidence() bool {
+	if o == nil {
+		return false
+	}
+	return o.Confidence
+}
+
+func (o *ContentSettings) GetContentSafeguards() bool {
+	if o == nil {
+		return false
+	}
+	return o.ContentSafeguards
+}
+
+func (o *ContentSettings) GetDisability() bool {
+	if o == nil {
+		return false
+	}
+	return o.Disability
+}
+
+func (o *ContentSettings) GetGenderIdentitySensitivity() bool {
+	if o == nil {
+		return false
+	}
+	return o.GenderIdentitySensitivity
+}
+
+func (o *ContentSettings) GetGenderInclusiveNouns() bool {
+	if o == nil {
+		return false
+	}
+	return o.GenderInclusiveNouns
+}
+
+func (o *ContentSettings) GetGenderInclusivePronouns() bool {
+	if o == nil {
+		return false
+	}
+	return o.GenderInclusivePronouns
+}
+
+func (o *ContentSettings) GetGrammar() bool {
+	if o == nil {
+		return false
+	}
+	return o.Grammar
+}
+
+func (o *ContentSettings) GetHealthyCommunication() bool {
+	if o == nil {
+		return false
+	}
+	return o.HealthyCommunication
+}
+
+func (o *ContentSettings) GetPassiveVoice() bool {
+	if o == nil {
+		return false
+	}
+	return o.PassiveVoice
+}
+
+func (o *ContentSettings) GetRaceEthnicityNationalitySensitivity() bool {
+	if o == nil {
+		return false
+	}
+	return o.RaceEthnicityNationalitySensitivity
+}
+
+func (o *ContentSettings) GetSexualOrientationSensitivity() bool {
+	if o == nil {
+		return false
+	}
+	return o.SexualOrientationSensitivity
+}
+
+func (o *ContentSettings) GetSpelling() bool {
+	if o == nil {
+		return false
+	}
+	return o.Spelling
+}
+
+func (o *ContentSettings) GetSubstanceUseSensitivity() bool {
+	if o == nil {
+		return false
+	}
+	return o.SubstanceUseSensitivity
+}
+
+func (o *ContentSettings) GetUnclearReference() bool {
+	if o == nil {
+		return false
+	}
+	return o.UnclearReference
+}
+
+func (o *ContentSettings) GetWordiness() bool {
+	if o == nil {
+		return false
+	}
+	return o.Wordiness
+}

@@ -13,6 +13,27 @@ type ListTemplatesRequest struct {
 	TemplateID     string `pathParam:"style=simple,explode=false,name=templateId"`
 }
 
+func (o *ListTemplatesRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *ListTemplatesRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
+func (o *ListTemplatesRequest) GetTemplateID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TemplateID
+}
+
 type ListTemplatesResponse struct {
 	ContentType string
 	// Bad Request
@@ -21,4 +42,46 @@ type ListTemplatesResponse struct {
 	StatusCode              int
 	RawResponse             *http.Response
 	TemplateDetailsResponse *shared.TemplateDetailsResponse
+}
+
+func (o *ListTemplatesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListTemplatesResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *ListTemplatesResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *ListTemplatesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListTemplatesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ListTemplatesResponse) GetTemplateDetailsResponse() *shared.TemplateDetailsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.TemplateDetailsResponse
 }

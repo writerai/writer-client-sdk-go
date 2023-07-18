@@ -6,3 +6,17 @@ type GenerateTemplateRequest struct {
 	Inputs     []MagicRequestInput `json:"inputs,omitempty"`
 	TemplateID string              `json:"templateId"`
 }
+
+func (o *GenerateTemplateRequest) GetInputs() []MagicRequestInput {
+	if o == nil {
+		return nil
+	}
+	return o.Inputs
+}
+
+func (o *GenerateTemplateRequest) GetTemplateID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TemplateID
+}

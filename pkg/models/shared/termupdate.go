@@ -84,3 +84,87 @@ type TermUpdate struct {
 	Term                  string                       `json:"term"`
 	Type                  TermUpdateType               `json:"type"`
 }
+
+func (o *TermUpdate) GetApprovedTermExtension() *ApprovedTermExtensionCreate {
+	if o == nil {
+		return nil
+	}
+	return o.ApprovedTermExtension
+}
+
+func (o *TermUpdate) GetCaseSensitive() bool {
+	if o == nil {
+		return false
+	}
+	return o.CaseSensitive
+}
+
+func (o *TermUpdate) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *TermUpdate) GetExamples() []TermExampleCreate {
+	if o == nil {
+		return nil
+	}
+	return o.Examples
+}
+
+func (o *TermUpdate) GetHighlight() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Highlight
+}
+
+func (o *TermUpdate) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *TermUpdate) GetLinkedTerms() []LinkedTermCreate {
+	if o == nil {
+		return nil
+	}
+	return o.LinkedTerms
+}
+
+func (o *TermUpdate) GetMistakes() []TermMistakeCreate {
+	if o == nil {
+		return nil
+	}
+	return o.Mistakes
+}
+
+func (o *TermUpdate) GetPos() *TermUpdatePos {
+	if o == nil {
+		return nil
+	}
+	return o.Pos
+}
+
+func (o *TermUpdate) GetTags() []TermTagCreate {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *TermUpdate) GetTerm() string {
+	if o == nil {
+		return ""
+	}
+	return o.Term
+}
+
+func (o *TermUpdate) GetType() TermUpdateType {
+	if o == nil {
+		return TermUpdateType("")
+	}
+	return o.Type
+}
