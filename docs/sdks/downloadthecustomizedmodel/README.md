@@ -30,13 +30,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(681820),
+        writer.WithOrganizationID(324141),
     )
 
     ctx := context.Background()
     res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, operations.FetchCustomizedModelFileRequest{
-        CustomizationID: "in",
-        ModelID: "corporis",
+        CustomizationID: "natus",
+        ModelID: "sed",
     })
     if err != nil {
         log.Fatal(err)

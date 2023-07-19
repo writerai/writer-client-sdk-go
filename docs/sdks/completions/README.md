@@ -37,21 +37,23 @@ func main() {
     ctx := context.Background()
     res, err := s.Completions.Create(ctx, operations.CreateCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
-            BestOf: writer.Int64(978619),
-            FrequencyPenalty: writer.Float64(4736.08),
-            Logprobs: writer.Int64(799159),
-            MaxTokens: writer.Int64(800911),
-            MinTokens: writer.Int64(461479),
-            N: writer.Int64(520478),
-            PresencePenalty: writer.Float64(7805.29),
-            Prompt: "dolorum",
+            BestOf: writer.Int64(1),
+            FrequencyPenalty: writer.Float64(9786.19),
+            Logprobs: writer.Int64(473608),
+            MaxTokens: writer.Int64(2048),
+            MinTokens: writer.Int64(1),
+            N: writer.Int64(799159),
+            PresencePenalty: writer.Float64(8009.11),
+            Prompt: "esse",
             Stop: []string{
-                "nam",
+                "porro",
+                "dolorum",
+                "dicta",
             },
-            Temperature: writer.Float64(6399.21),
-            TopP: writer.Float64(5820.2),
+            Temperature: writer.Float64(0.7),
+            TopP: writer.Float64(1),
         },
-        ModelID: "fugit",
+        ModelID: "nam",
     })
     if err != nil {
         log.Fatal(err)
@@ -98,31 +100,30 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(537373),
+        writer.WithOrganizationID(639921),
     )
 
     ctx := context.Background()
     res, err := s.Completions.CreateModelCustomizationCompletion(ctx, operations.CreateModelCustomizationCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
-            BestOf: writer.Int64(944669),
-            FrequencyPenalty: writer.Float64(7586.16),
-            Logprobs: writer.Int64(521848),
-            MaxTokens: writer.Int64(105907),
-            MinTokens: writer.Int64(414662),
-            N: writer.Int64(473600),
-            PresencePenalty: writer.Float64(2645.55),
-            Prompt: "qui",
+            BestOf: writer.Int64(1),
+            FrequencyPenalty: writer.Float64(5820.2),
+            Logprobs: writer.Int64(143353),
+            MaxTokens: writer.Int64(2048),
+            MinTokens: writer.Int64(1),
+            N: writer.Int64(537373),
+            PresencePenalty: writer.Float64(9446.69),
+            Prompt: "optio",
             Stop: []string{
-                "cum",
-                "esse",
-                "ipsum",
-                "excepturi",
+                "beatae",
+                "commodi",
+                "molestiae",
             },
-            Temperature: writer.Float64(1352.18),
-            TopP: writer.Float64(187.89),
+            Temperature: writer.Float64(0.7),
+            TopP: writer.Float64(1),
         },
-        CustomizationID: "ad",
-        ModelID: "natus",
+        CustomizationID: "modi",
+        ModelID: "qui",
     })
     if err != nil {
         log.Fatal(err)

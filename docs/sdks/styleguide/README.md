@@ -31,12 +31,12 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(100226),
+        writer.WithOrganizationID(270008),
     )
 
     ctx := context.Background()
     res, err := s.Styleguide.Get(ctx, operations.PageDetailsRequest{
-        PageID: 99569,
+        PageID: 703737,
     })
     if err != nil {
         log.Fatal(err)
@@ -83,13 +83,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(919483),
+        writer.WithOrganizationID(735194),
     )
 
     ctx := context.Background()
     res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{
-        Limit: writer.Int64(352312),
-        Offset: writer.Int64(714242),
+        Limit: writer.Int64(288476),
+        Offset: writer.Int64(962189),
         Status: operations.ListPagesStatusLive.ToPointer(),
     })
     if err != nil {

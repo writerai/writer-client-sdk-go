@@ -32,17 +32,16 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(581850),
+        writer.WithOrganizationID(988374),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Delete(ctx, operations.DeleteSnippetsRequest{
-        XRequestID: writer.String("numquam"),
+        XRequestID: writer.String("sapiente"),
         Ids: []string{
-            "quam",
-            "molestiae",
+            "mollitia",
         },
-        TeamID: 244425,
+        TeamID: 208876,
     })
     if err != nil {
         log.Fatal(err)
@@ -89,28 +88,27 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(623510),
+        writer.WithOrganizationID(635059),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Find(ctx, operations.FindSnippetsRequest{
-        Limit: writer.Int64(158969),
-        Offset: writer.Int64(338007),
-        Search: writer.String("vitae"),
+        Limit: writer.Int64(161309),
+        Offset: writer.Int64(995300),
+        Search: writer.String("mollitia"),
         Shortcuts: []string{
-            "animi",
-            "enim",
-            "odit",
+            "numquam",
+            "commodi",
+            "quam",
         },
-        SortField: operations.FindSnippetsSortFieldModificationTime.ToPointer(),
+        SortField: operations.FindSnippetsSortFieldCreationTime.ToPointer(),
         SortOrder: operations.FindSnippetsSortOrderAsc.ToPointer(),
         Tags: []string{
-            "ipsam",
-            "id",
-            "possimus",
-            "aut",
+            "quia",
+            "quis",
+            "vitae",
         },
-        TeamID: 97101,
+        TeamID: 674752,
     })
     if err != nil {
         log.Fatal(err)
@@ -157,86 +155,43 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(622846),
+        writer.WithOrganizationID(656330),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Update(ctx, operations.UpdateSnippetsRequest{
         RequestBody: []shared.SnippetUpdate{
             shared.SnippetUpdate{
-                Description: writer.String("laborum"),
-                ID: "1ffe78f0-97b0-4074-b154-71b5e6e13b99",
-                Shortcut: writer.String("pariatur"),
-                Snippet: "modi",
+                Description: writer.String("odit"),
+                ID: "c3f5ad01-9da1-4ffe-b8f0-97b0074f1547",
+                Shortcut: writer.String("dicta"),
+                Snippet: "harum",
                 Tags: []shared.SnippetTagV2{
                     shared.SnippetTagV2{
-                        Tag: "rem",
+                        Tag: "accusamus",
                     },
                     shared.SnippetTagV2{
-                        Tag: "voluptates",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "quasi",
+                        Tag: "commodi",
                     },
                 },
             },
             shared.SnippetUpdate{
                 Description: writer.String("repudiandae"),
-                ID: "91e450ad-2abd-4442-a980-2d502a94bb4f",
-                Shortcut: writer.String("eum"),
-                Snippet: "non",
+                ID: "13b99d48-8e1e-491e-850a-d2abd4426980",
+                Shortcut: writer.String("magni"),
+                Snippet: "assumenda",
                 Tags: []shared.SnippetTagV2{
                     shared.SnippetTagV2{
-                        Tag: "sint",
+                        Tag: "alias",
                     },
                     shared.SnippetTagV2{
-                        Tag: "aliquid",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "provident",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "necessitatibus",
-                    },
-                },
-            },
-            shared.SnippetUpdate{
-                Description: writer.String("sint"),
-                ID: "a3efa77d-fb14-4cd6-aae3-95efb9ba88f3",
-                Shortcut: writer.String("deserunt"),
-                Snippet: "nisi",
-                Tags: []shared.SnippetTagV2{
-                    shared.SnippetTagV2{
-                        Tag: "natus",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "omnis",
-                    },
-                },
-            },
-            shared.SnippetUpdate{
-                Description: writer.String("molestiae"),
-                ID: "074ba446-9b6e-4214-9959-890afa563e25",
-                Shortcut: writer.String("quasi"),
-                Snippet: "iure",
-                Tags: []shared.SnippetTagV2{
-                    shared.SnippetTagV2{
-                        Tag: "debitis",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "eius",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "maxime",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "deleniti",
+                        Tag: "fugit",
                     },
                 },
             },
         },
-        XRequestID: writer.String("facilis"),
-        TeamID: 447926,
+        XRequestID: writer.String("dolorum"),
+        TeamID: 569618,
     })
     if err != nil {
         log.Fatal(err)
