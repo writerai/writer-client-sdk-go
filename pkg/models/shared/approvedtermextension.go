@@ -9,3 +9,38 @@ type ApprovedTermExtension struct {
 	ID                *int64 `json:"id,omitempty"`
 	TermID            int64  `json:"termId"`
 }
+
+func (o *ApprovedTermExtension) GetCapitalize() bool {
+	if o == nil {
+		return false
+	}
+	return o.Capitalize
+}
+
+func (o *ApprovedTermExtension) GetFixCase() bool {
+	if o == nil {
+		return false
+	}
+	return o.FixCase
+}
+
+func (o *ApprovedTermExtension) GetFixCommonMistakes() bool {
+	if o == nil {
+		return false
+	}
+	return o.FixCommonMistakes
+}
+
+func (o *ApprovedTermExtension) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ApprovedTermExtension) GetTermID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermID
+}

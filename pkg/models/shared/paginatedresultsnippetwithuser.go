@@ -7,3 +7,24 @@ type PaginatedResultSnippetWithUser struct {
 	Result     []SnippetWithUser `json:"result,omitempty"`
 	TotalCount int64             `json:"totalCount"`
 }
+
+func (o *PaginatedResultSnippetWithUser) GetPagination() Pagination {
+	if o == nil {
+		return Pagination{}
+	}
+	return o.Pagination
+}
+
+func (o *PaginatedResultSnippetWithUser) GetResult() []SnippetWithUser {
+	if o == nil {
+		return nil
+	}
+	return o.Result
+}
+
+func (o *PaginatedResultSnippetWithUser) GetTotalCount() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TotalCount
+}

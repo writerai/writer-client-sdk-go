@@ -22,6 +22,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
@@ -30,13 +31,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(885338),
+        writer.WithOrganizationID(383464),
     )
 
     ctx := context.Background()
     res, err := s.Document.Get(ctx, operations.GetDocumentDetailsRequest{
-        DocumentID: 185636,
-        TeamID: 679880,
+        DocumentID: 645785,
+        TeamID: 588317,
     })
     if err != nil {
         log.Fatal(err)
@@ -74,6 +75,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
@@ -82,17 +84,17 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(952792),
+        writer.WithOrganizationID(324683),
     )
 
     ctx := context.Background()
     res, err := s.Document.List(ctx, operations.ListTeamDocumentsRequest{
-        Limit: writer.Int(456130),
-        Offset: writer.Int64(687488),
-        Search: writer.String("iusto"),
-        SortField: operations.ListTeamDocumentsSortFieldCreationTime.ToPointer(),
+        Limit: writer.Int(831049),
+        Offset: writer.Int64(519711),
+        Search: writer.String("similique"),
+        SortField: operations.ListTeamDocumentsSortFieldTitle.ToPointer(),
         SortOrder: operations.ListTeamDocumentsSortOrderDesc.ToPointer(),
-        TeamID: 947371,
+        TeamID: 311860,
     })
     if err != nil {
         log.Fatal(err)

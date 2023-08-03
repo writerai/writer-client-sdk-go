@@ -49,3 +49,52 @@ type FullLinkedTerm struct {
 	Term                  string                 `json:"term"`
 	TermID                int64                  `json:"termId"`
 }
+
+func (o *FullLinkedTerm) GetApprovedTermExtension() *ApprovedTermExtension {
+	if o == nil {
+		return nil
+	}
+	return o.ApprovedTermExtension
+}
+
+func (o *FullLinkedTerm) GetCaseSensitive() bool {
+	if o == nil {
+		return false
+	}
+	return o.CaseSensitive
+}
+
+func (o *FullLinkedTerm) GetID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *FullLinkedTerm) GetLinkedTermID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.LinkedTermID
+}
+
+func (o *FullLinkedTerm) GetPos() *FullLinkedTermPos {
+	if o == nil {
+		return nil
+	}
+	return o.Pos
+}
+
+func (o *FullLinkedTerm) GetTerm() string {
+	if o == nil {
+		return ""
+	}
+	return o.Term
+}
+
+func (o *FullLinkedTerm) GetTermID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermID
+}

@@ -147,3 +147,45 @@ type ContentIssue struct {
 	Suggestions []string            `json:"suggestions,omitempty"`
 	Until       int64               `json:"until"`
 }
+
+func (o *ContentIssue) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *ContentIssue) GetFrom() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.From
+}
+
+func (o *ContentIssue) GetMeta() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *ContentIssue) GetService() ContentIssueService {
+	if o == nil {
+		return ContentIssueService("")
+	}
+	return o.Service
+}
+
+func (o *ContentIssue) GetSuggestions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Suggestions
+}
+
+func (o *ContentIssue) GetUntil() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Until
+}

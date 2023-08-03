@@ -13,6 +13,27 @@ type DeleteModelCustomizationRequest struct {
 	OrganizationID  *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+func (o *DeleteModelCustomizationRequest) GetCustomizationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.CustomizationID
+}
+
+func (o *DeleteModelCustomizationRequest) GetModelID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ModelID
+}
+
+func (o *DeleteModelCustomizationRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
 type DeleteModelCustomization200ApplicationJSON struct {
 }
 
@@ -24,4 +45,46 @@ type DeleteModelCustomizationResponse struct {
 	StatusCode                                       int
 	RawResponse                                      *http.Response
 	DeleteModelCustomization200ApplicationJSONObject *DeleteModelCustomization200ApplicationJSON
+}
+
+func (o *DeleteModelCustomizationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteModelCustomizationResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *DeleteModelCustomizationResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *DeleteModelCustomizationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteModelCustomizationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *DeleteModelCustomizationResponse) GetDeleteModelCustomization200ApplicationJSONObject() *DeleteModelCustomization200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteModelCustomization200ApplicationJSONObject
 }

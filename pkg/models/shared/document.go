@@ -51,3 +51,80 @@ type Document struct {
 	TeamID           int64          `json:"teamId"`
 	Title            string         `json:"title"`
 }
+
+func (o *Document) GetAccess() DocumentAccess {
+	if o == nil {
+		return DocumentAccess("")
+	}
+	return o.Access
+}
+
+func (o *Document) GetContent() string {
+	if o == nil {
+		return ""
+	}
+	return o.Content
+}
+
+func (o *Document) GetCreatedUser() *SimpleUser {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedUser
+}
+
+func (o *Document) GetCreationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreationTime
+}
+
+func (o *Document) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *Document) GetModificationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.ModificationTime
+}
+
+func (o *Document) GetModifiedUser() *SimpleUser {
+	if o == nil {
+		return nil
+	}
+	return o.ModifiedUser
+}
+
+func (o *Document) GetOrganizationID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.OrganizationID
+}
+
+func (o *Document) GetScore() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Score
+}
+
+func (o *Document) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
+func (o *Document) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}

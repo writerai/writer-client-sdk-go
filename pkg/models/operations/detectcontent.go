@@ -12,6 +12,20 @@ type DetectContentRequest struct {
 	OrganizationID         *int64                        `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+func (o *DetectContentRequest) GetContentDetectorRequest() shared.ContentDetectorRequest {
+	if o == nil {
+		return shared.ContentDetectorRequest{}
+	}
+	return o.ContentDetectorRequest
+}
+
+func (o *DetectContentRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
 type DetectContentResponse struct {
 	ContentDetectorResponses []shared.ContentDetectorResponse
 	ContentType              string
@@ -20,4 +34,46 @@ type DetectContentResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *DetectContentResponse) GetContentDetectorResponses() []shared.ContentDetectorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ContentDetectorResponses
+}
+
+func (o *DetectContentResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DetectContentResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *DetectContentResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *DetectContentResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DetectContentResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

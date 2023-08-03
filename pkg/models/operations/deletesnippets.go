@@ -14,6 +14,34 @@ type DeleteSnippetsRequest struct {
 	TeamID         int64    `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *DeleteSnippetsRequest) GetXRequestID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XRequestID
+}
+
+func (o *DeleteSnippetsRequest) GetIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ids
+}
+
+func (o *DeleteSnippetsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *DeleteSnippetsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type DeleteSnippetsResponse struct {
 	ContentType    string
 	DeleteResponse *shared.DeleteResponse
@@ -22,4 +50,46 @@ type DeleteSnippetsResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *DeleteSnippetsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteSnippetsResponse) GetDeleteResponse() *shared.DeleteResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteResponse
+}
+
+func (o *DeleteSnippetsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *DeleteSnippetsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *DeleteSnippetsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteSnippetsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -16,3 +16,59 @@ type TemplateDetailsResponse struct {
 	ModificationTime time.Time `json:"modificationTime"`
 	Name             string    `json:"name"`
 }
+
+func (o *TemplateDetailsResponse) GetCategoryID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.CategoryID
+}
+
+func (o *TemplateDetailsResponse) GetCreationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreationTime
+}
+
+func (o *TemplateDetailsResponse) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *TemplateDetailsResponse) GetGuideURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GuideURL
+}
+
+func (o *TemplateDetailsResponse) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *TemplateDetailsResponse) GetInputs() []Input {
+	if o == nil {
+		return nil
+	}
+	return o.Inputs
+}
+
+func (o *TemplateDetailsResponse) GetModificationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.ModificationTime
+}
+
+func (o *TemplateDetailsResponse) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}

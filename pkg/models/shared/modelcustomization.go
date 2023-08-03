@@ -22,3 +22,101 @@ type ModelCustomization struct {
 	UpdatedAt                 time.Time        `json:"updatedAt"`
 	ValidationDatasetFileID   *string          `json:"validationDatasetFileId,omitempty"`
 }
+
+func (o *ModelCustomization) GetAdditionalHyperParameters() *HyperParameters {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalHyperParameters
+}
+
+func (o *ModelCustomization) GetBaseModelID() string {
+	if o == nil {
+		return ""
+	}
+	return o.BaseModelID
+}
+
+func (o *ModelCustomization) GetBatchSize() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.BatchSize
+}
+
+func (o *ModelCustomization) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *ModelCustomization) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *ModelCustomization) GetEpochs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Epochs
+}
+
+func (o *ModelCustomization) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *ModelCustomization) GetLearningRate() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.LearningRate
+}
+
+func (o *ModelCustomization) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *ModelCustomization) GetPromptTemplate() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PromptTemplate
+}
+
+func (o *ModelCustomization) GetStatus() string {
+	if o == nil {
+		return ""
+	}
+	return o.Status
+}
+
+func (o *ModelCustomization) GetTrainingDatasetFileID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TrainingDatasetFileID
+}
+
+func (o *ModelCustomization) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}
+
+func (o *ModelCustomization) GetValidationDatasetFileID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationDatasetFileID
+}

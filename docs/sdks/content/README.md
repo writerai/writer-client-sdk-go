@@ -22,8 +22,8 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -31,13 +31,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(149675),
+        writer.WithOrganizationID(774234),
     )
 
     ctx := context.Background()
     res, err := s.Content.Check(ctx, operations.ContentCheckRequest{
         ContentRequest: shared.ContentRequest{
-            Content: "iste",
+            Content: "cum",
             Settings: shared.ContentSettings{
                 AgeAndFamilyStatus: false,
                 Confidence: false,
@@ -57,7 +57,7 @@ func main() {
                 Wordiness: false,
             },
         },
-        TeamID: 222321,
+        TeamID: 456150,
     })
     if err != nil {
         log.Fatal(err)
@@ -95,8 +95,8 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -104,13 +104,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(616934),
+        writer.WithOrganizationID(216550),
     )
 
     ctx := context.Background()
     res, err := s.Content.Correct(ctx, operations.ContentCorrectRequest{
         ContentRequest: shared.ContentRequest{
-            Content: "laboriosam",
+            Content: "excepturi",
             Settings: shared.ContentSettings{
                 AgeAndFamilyStatus: false,
                 Confidence: false,
@@ -130,8 +130,8 @@ func main() {
                 Wordiness: false,
             },
         },
-        XRequestID: writer.String("hic"),
-        TeamID: 902599,
+        XRequestID: writer.String("aspernatur"),
+        TeamID: 18789,
     })
     if err != nil {
         log.Fatal(err)

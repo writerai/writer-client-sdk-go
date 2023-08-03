@@ -13,6 +13,27 @@ type ContentCheckRequest struct {
 	TeamID         int64                 `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *ContentCheckRequest) GetContentRequest() shared.ContentRequest {
+	if o == nil {
+		return shared.ContentRequest{}
+	}
+	return o.ContentRequest
+}
+
+func (o *ContentCheckRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *ContentCheckRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type ContentCheckResponse struct {
 	ContentType string
 	// Bad Request
@@ -21,4 +42,46 @@ type ContentCheckResponse struct {
 	ProcessedContent *shared.ProcessedContent
 	StatusCode       int
 	RawResponse      *http.Response
+}
+
+func (o *ContentCheckResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ContentCheckResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *ContentCheckResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *ContentCheckResponse) GetProcessedContent() *shared.ProcessedContent {
+	if o == nil {
+		return nil
+	}
+	return o.ProcessedContent
+}
+
+func (o *ContentCheckResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ContentCheckResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

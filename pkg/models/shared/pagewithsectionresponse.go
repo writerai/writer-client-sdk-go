@@ -47,3 +47,73 @@ type PageWithSectionResponse struct {
 	UpdatedBy *SimpleUser                   `json:"updatedBy,omitempty"`
 	URL       string                        `json:"url"`
 }
+
+func (o *PageWithSectionResponse) GetContent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Content
+}
+
+func (o *PageWithSectionResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *PageWithSectionResponse) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *PageWithSectionResponse) GetOrder() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Order
+}
+
+func (o *PageWithSectionResponse) GetSection() *SectionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Section
+}
+
+func (o *PageWithSectionResponse) GetStatus() PageWithSectionResponseStatus {
+	if o == nil {
+		return PageWithSectionResponseStatus("")
+	}
+	return o.Status
+}
+
+func (o *PageWithSectionResponse) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}
+
+func (o *PageWithSectionResponse) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}
+
+func (o *PageWithSectionResponse) GetUpdatedBy() *SimpleUser {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedBy
+}
+
+func (o *PageWithSectionResponse) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}

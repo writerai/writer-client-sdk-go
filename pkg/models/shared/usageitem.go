@@ -6,3 +6,17 @@ type UsageItem struct {
 	Limit int64 `json:"limit"`
 	Value int64 `json:"value"`
 }
+
+func (o *UsageItem) GetLimit() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Limit
+}
+
+func (o *UsageItem) GetValue() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Value
+}

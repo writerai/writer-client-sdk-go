@@ -14,6 +14,34 @@ type UpdateTermsRequest struct {
 	TeamID             int64                     `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *UpdateTermsRequest) GetUpdateTermsRequest() shared.UpdateTermsRequest {
+	if o == nil {
+		return shared.UpdateTermsRequest{}
+	}
+	return o.UpdateTermsRequest
+}
+
+func (o *UpdateTermsRequest) GetXRequestID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XRequestID
+}
+
+func (o *UpdateTermsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *UpdateTermsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type UpdateTermsResponse struct {
 	ContentType         string
 	CreateTermsResponse *shared.CreateTermsResponse
@@ -22,4 +50,46 @@ type UpdateTermsResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *UpdateTermsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateTermsResponse) GetCreateTermsResponse() *shared.CreateTermsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTermsResponse
+}
+
+func (o *UpdateTermsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *UpdateTermsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *UpdateTermsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateTermsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

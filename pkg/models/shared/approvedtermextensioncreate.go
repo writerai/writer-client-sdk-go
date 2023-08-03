@@ -7,3 +7,24 @@ type ApprovedTermExtensionCreate struct {
 	FixCase           bool `json:"fixCase"`
 	FixCommonMistakes bool `json:"fixCommonMistakes"`
 }
+
+func (o *ApprovedTermExtensionCreate) GetCapitalize() bool {
+	if o == nil {
+		return false
+	}
+	return o.Capitalize
+}
+
+func (o *ApprovedTermExtensionCreate) GetFixCase() bool {
+	if o == nil {
+		return false
+	}
+	return o.FixCase
+}
+
+func (o *ApprovedTermExtensionCreate) GetFixCommonMistakes() bool {
+	if o == nil {
+		return false
+	}
+	return o.FixCommonMistakes
+}

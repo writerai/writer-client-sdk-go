@@ -24,8 +24,8 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -33,25 +33,25 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(653140),
+        writer.WithOrganizationID(359508),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Create(ctx, operations.CreateModelCustomizationRequest{
         CreateCustomizationRequest: shared.CreateCustomizationRequest{
             AdditionalHyperParameters: &shared.HyperParameters{
-                NumVirtualTokens: 670638,
+                NumVirtualTokens: 613064,
             },
-            BatchSize: writer.Int64(170909),
-            Description: writer.String("dolorem"),
-            Epochs: writer.Int64(358152),
-            LearningRate: writer.Float64(1289.26),
-            Name: "Ronnie Mohr",
-            PromptTemplate: writer.String("excepturi"),
-            TrainingDatasetFileID: "accusantium",
-            ValidationDatasetFileID: writer.String("iure"),
+            BatchSize: writer.Int64(437032),
+            Description: writer.String("saepe"),
+            Epochs: writer.Int64(697631),
+            LearningRate: writer.Float64(992.8),
+            Name: "Lela Orn",
+            PromptTemplate: writer.String("dolores"),
+            TrainingDatasetFileID: "dolorem",
+            ValidationDatasetFileID: writer.String("corporis"),
         },
-        ModelID: "culpa",
+        ModelID: "explicabo",
     })
     if err != nil {
         log.Fatal(err)
@@ -89,6 +89,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
@@ -97,13 +98,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(988374),
+        writer.WithOrganizationID(750686),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Delete(ctx, operations.DeleteModelCustomizationRequest{
-        CustomizationID: "sapiente",
-        ModelID: "architecto",
+        CustomizationID: "enim",
+        ModelID: "omnis",
     })
     if err != nil {
         log.Fatal(err)
@@ -141,6 +142,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
@@ -149,13 +151,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(652790),
+        writer.WithOrganizationID(363711),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Get(ctx, operations.GetModelCustomizationRequest{
-        CustomizationID: "dolorem",
-        ModelID: "culpa",
+        CustomizationID: "minima",
+        ModelID: "excepturi",
     })
     if err != nil {
         log.Fatal(err)
@@ -193,6 +195,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
@@ -201,12 +204,12 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(161309),
+        writer.WithOrganizationID(38425),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.List(ctx, operations.ListModelCustomizationsRequest{
-        ModelID: "repellat",
+        ModelID: "iure",
     })
     if err != nil {
         log.Fatal(err)

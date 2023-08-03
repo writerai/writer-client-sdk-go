@@ -149,6 +149,76 @@ type FindTermsRequest struct {
 	Type           *FindTermsType         `queryParam:"style=form,explode=true,name=type"`
 }
 
+func (o *FindTermsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *FindTermsRequest) GetOffset() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Offset
+}
+
+func (o *FindTermsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *FindTermsRequest) GetPartOfSpeech() *FindTermsPartOfSpeech {
+	if o == nil {
+		return nil
+	}
+	return o.PartOfSpeech
+}
+
+func (o *FindTermsRequest) GetSortField() *FindTermsSortField {
+	if o == nil {
+		return nil
+	}
+	return o.SortField
+}
+
+func (o *FindTermsRequest) GetSortOrder() *FindTermsSortOrder {
+	if o == nil {
+		return nil
+	}
+	return o.SortOrder
+}
+
+func (o *FindTermsRequest) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *FindTermsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
+func (o *FindTermsRequest) GetTerm() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Term
+}
+
+func (o *FindTermsRequest) GetType() *FindTermsType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
 type FindTermsResponse struct {
 	ContentType string
 	// Bad Request
@@ -157,4 +227,46 @@ type FindTermsResponse struct {
 	PaginatedResultFullTermWithUser *shared.PaginatedResultFullTermWithUser
 	StatusCode                      int
 	RawResponse                     *http.Response
+}
+
+func (o *FindTermsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *FindTermsResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *FindTermsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *FindTermsResponse) GetPaginatedResultFullTermWithUser() *shared.PaginatedResultFullTermWithUser {
+	if o == nil {
+		return nil
+	}
+	return o.PaginatedResultFullTermWithUser
+}
+
+func (o *FindTermsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *FindTermsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

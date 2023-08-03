@@ -50,3 +50,73 @@ type BriefDocument struct {
 	TeamID           int64               `json:"teamId"`
 	Title            string              `json:"title"`
 }
+
+func (o *BriefDocument) GetAccess() BriefDocumentAccess {
+	if o == nil {
+		return BriefDocumentAccess("")
+	}
+	return o.Access
+}
+
+func (o *BriefDocument) GetCreatedUser() *SimpleUser {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedUser
+}
+
+func (o *BriefDocument) GetCreationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreationTime
+}
+
+func (o *BriefDocument) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *BriefDocument) GetModificationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.ModificationTime
+}
+
+func (o *BriefDocument) GetModifiedUser() *SimpleUser {
+	if o == nil {
+		return nil
+	}
+	return o.ModifiedUser
+}
+
+func (o *BriefDocument) GetOrganizationID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.OrganizationID
+}
+
+func (o *BriefDocument) GetScore() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Score
+}
+
+func (o *BriefDocument) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
+func (o *BriefDocument) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}

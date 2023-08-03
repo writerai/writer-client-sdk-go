@@ -21,6 +21,7 @@ import(
 	"context"
 	"log"
 	"github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
@@ -29,14 +30,14 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(55),
+        writer.WithOrganizationID(20651),
     )
 
     ctx := context.Background()
     res, err := s.User.List(ctx, operations.ListUsersRequest{
-        Limit: writer.Int64(872651),
-        Offset: writer.Int64(311860),
-        Search: writer.String("tempora"),
+        Limit: writer.Int64(229219),
+        Offset: writer.Int64(758379),
+        Search: writer.String("accusamus"),
         SortField: operations.ListUsersSortFieldCreationTime.ToPointer(),
         SortOrder: operations.ListUsersSortOrderDesc.ToPointer(),
     })

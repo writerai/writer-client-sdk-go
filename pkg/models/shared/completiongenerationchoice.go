@@ -6,3 +6,17 @@ type CompletionGenerationChoice struct {
 	Logprobs *CompletionGenerationChoiceLogprobs `json:"logprobs,omitempty"`
 	Text     string                              `json:"text"`
 }
+
+func (o *CompletionGenerationChoice) GetLogprobs() *CompletionGenerationChoiceLogprobs {
+	if o == nil {
+		return nil
+	}
+	return o.Logprobs
+}
+
+func (o *CompletionGenerationChoice) GetText() string {
+	if o == nil {
+		return ""
+	}
+	return o.Text
+}

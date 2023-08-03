@@ -5,3 +5,10 @@ package shared
 type CustomizationsResponse struct {
 	Customizations []ModelCustomization `json:"customizations,omitempty"`
 }
+
+func (o *CustomizationsResponse) GetCustomizations() []ModelCustomization {
+	if o == nil {
+		return nil
+	}
+	return o.Customizations
+}

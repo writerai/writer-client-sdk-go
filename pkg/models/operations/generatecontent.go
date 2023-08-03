@@ -13,6 +13,27 @@ type GenerateContentRequest struct {
 	TeamID                  int64                          `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
+func (o *GenerateContentRequest) GetGenerateTemplateRequest() shared.GenerateTemplateRequest {
+	if o == nil {
+		return shared.GenerateTemplateRequest{}
+	}
+	return o.GenerateTemplateRequest
+}
+
+func (o *GenerateContentRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
+func (o *GenerateContentRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
+}
+
 type GenerateContentResponse struct {
 	ContentType string
 	Draft       *shared.Draft
@@ -21,4 +42,46 @@ type GenerateContentResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *GenerateContentResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GenerateContentResponse) GetDraft() *shared.Draft {
+	if o == nil {
+		return nil
+	}
+	return o.Draft
+}
+
+func (o *GenerateContentResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *GenerateContentResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GenerateContentResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GenerateContentResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

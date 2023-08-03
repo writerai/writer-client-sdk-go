@@ -17,3 +17,66 @@ type SnippetWithUser struct {
 	Snippet          string          `json:"snippet"`
 	Tags             []SnippetTagV2  `json:"tags,omitempty"`
 }
+
+func (o *SnippetWithUser) GetCreatedUser() TerminologyUser {
+	if o == nil {
+		return TerminologyUser{}
+	}
+	return o.CreatedUser
+}
+
+func (o *SnippetWithUser) GetCreationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreationTime
+}
+
+func (o *SnippetWithUser) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *SnippetWithUser) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *SnippetWithUser) GetModificationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.ModificationTime
+}
+
+func (o *SnippetWithUser) GetModifiedUser() TerminologyUser {
+	if o == nil {
+		return TerminologyUser{}
+	}
+	return o.ModifiedUser
+}
+
+func (o *SnippetWithUser) GetShortcut() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Shortcut
+}
+
+func (o *SnippetWithUser) GetSnippet() string {
+	if o == nil {
+		return ""
+	}
+	return o.Snippet
+}
+
+func (o *SnippetWithUser) GetTags() []SnippetTagV2 {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}

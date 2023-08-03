@@ -13,6 +13,27 @@ type CreateModelCustomizationRequest struct {
 	OrganizationID             *int64                            `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+func (o *CreateModelCustomizationRequest) GetCreateCustomizationRequest() shared.CreateCustomizationRequest {
+	if o == nil {
+		return shared.CreateCustomizationRequest{}
+	}
+	return o.CreateCustomizationRequest
+}
+
+func (o *CreateModelCustomizationRequest) GetModelID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ModelID
+}
+
+func (o *CreateModelCustomizationRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
 type CreateModelCustomizationResponse struct {
 	ContentType string
 	// Bad Request
@@ -21,4 +42,46 @@ type CreateModelCustomizationResponse struct {
 	ModelCustomization *shared.ModelCustomization
 	StatusCode         int
 	RawResponse        *http.Response
+}
+
+func (o *CreateModelCustomizationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateModelCustomizationResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *CreateModelCustomizationResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *CreateModelCustomizationResponse) GetModelCustomization() *shared.ModelCustomization {
+	if o == nil {
+		return nil
+	}
+	return o.ModelCustomization
+}
+
+func (o *CreateModelCustomizationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateModelCustomizationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -5,3 +5,10 @@ package shared
 type HyperParameters struct {
 	NumVirtualTokens int64 `json:"numVirtualTokens"`
 }
+
+func (o *HyperParameters) GetNumVirtualTokens() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.NumVirtualTokens
+}

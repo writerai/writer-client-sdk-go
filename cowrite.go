@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/sdkerrors"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"io"
@@ -85,6 +86,8 @@ func (s *coWrite) GenerateContent(ctx context.Context, request operations.Genera
 			}
 
 			res.Draft = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -105,6 +108,8 @@ func (s *coWrite) GenerateContent(ctx context.Context, request operations.Genera
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -162,6 +167,8 @@ func (s *coWrite) ListTemplates(ctx context.Context, request operations.ListTemp
 			}
 
 			res.TemplateDetailsResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -182,6 +189,8 @@ func (s *coWrite) ListTemplates(ctx context.Context, request operations.ListTemp
 			}
 
 			res.FailResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

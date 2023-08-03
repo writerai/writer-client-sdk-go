@@ -14,3 +14,45 @@ type ModelFile struct {
 	NumberOfSamples int64     `json:"numberOfSamples"`
 	Size            int64     `json:"size"`
 }
+
+func (o *ModelFile) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *ModelFile) GetFormat() string {
+	if o == nil {
+		return ""
+	}
+	return o.Format
+}
+
+func (o *ModelFile) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *ModelFile) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *ModelFile) GetNumberOfSamples() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.NumberOfSamples
+}
+
+func (o *ModelFile) GetSize() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Size
+}

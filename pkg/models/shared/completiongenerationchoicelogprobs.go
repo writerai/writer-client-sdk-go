@@ -8,3 +8,31 @@ type CompletionGenerationChoiceLogprobs struct {
 	Tokens        []string            `json:"tokens,omitempty"`
 	TopLogprobs   []map[string]string `json:"topLogprobs,omitempty"`
 }
+
+func (o *CompletionGenerationChoiceLogprobs) GetTextOffset() []int64 {
+	if o == nil {
+		return nil
+	}
+	return o.TextOffset
+}
+
+func (o *CompletionGenerationChoiceLogprobs) GetTokenLogprobs() []float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TokenLogprobs
+}
+
+func (o *CompletionGenerationChoiceLogprobs) GetTokens() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tokens
+}
+
+func (o *CompletionGenerationChoiceLogprobs) GetTopLogprobs() []map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.TopLogprobs
+}

@@ -5,3 +5,10 @@ package shared
 type SnippetTagV2 struct {
 	Tag string `json:"tag"`
 }
+
+func (o *SnippetTagV2) GetTag() string {
+	if o == nil {
+		return ""
+	}
+	return o.Tag
+}

@@ -91,3 +91,129 @@ type FullTermWithUser struct {
 	TermBankID            int64                  `json:"termBankId"`
 	Type                  FullTermWithUserType   `json:"type"`
 }
+
+func (o *FullTermWithUser) GetApprovedTermExtension() *ApprovedTermExtension {
+	if o == nil {
+		return nil
+	}
+	return o.ApprovedTermExtension
+}
+
+func (o *FullTermWithUser) GetBacklinkedTerms() []FullLinkedTerm {
+	if o == nil {
+		return nil
+	}
+	return o.BacklinkedTerms
+}
+
+func (o *FullTermWithUser) GetCaseSensitive() bool {
+	if o == nil {
+		return false
+	}
+	return o.CaseSensitive
+}
+
+func (o *FullTermWithUser) GetCreatedUser() TerminologyUser {
+	if o == nil {
+		return TerminologyUser{}
+	}
+	return o.CreatedUser
+}
+
+func (o *FullTermWithUser) GetCreationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreationTime
+}
+
+func (o *FullTermWithUser) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *FullTermWithUser) GetExamples() []TermExample {
+	if o == nil {
+		return nil
+	}
+	return o.Examples
+}
+
+func (o *FullTermWithUser) GetHighlight() bool {
+	if o == nil {
+		return false
+	}
+	return o.Highlight
+}
+
+func (o *FullTermWithUser) GetID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.ID
+}
+
+func (o *FullTermWithUser) GetLinkedTerms() []FullLinkedTerm {
+	if o == nil {
+		return nil
+	}
+	return o.LinkedTerms
+}
+
+func (o *FullTermWithUser) GetMistakes() []TermMistake {
+	if o == nil {
+		return nil
+	}
+	return o.Mistakes
+}
+
+func (o *FullTermWithUser) GetModificationTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.ModificationTime
+}
+
+func (o *FullTermWithUser) GetModifiedUser() TerminologyUser {
+	if o == nil {
+		return TerminologyUser{}
+	}
+	return o.ModifiedUser
+}
+
+func (o *FullTermWithUser) GetPos() *FullTermWithUserPos {
+	if o == nil {
+		return nil
+	}
+	return o.Pos
+}
+
+func (o *FullTermWithUser) GetTags() []TermTagResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *FullTermWithUser) GetTerm() string {
+	if o == nil {
+		return ""
+	}
+	return o.Term
+}
+
+func (o *FullTermWithUser) GetTermBankID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TermBankID
+}
+
+func (o *FullTermWithUser) GetType() FullTermWithUserType {
+	if o == nil {
+		return FullTermWithUserType("")
+	}
+	return o.Type
+}

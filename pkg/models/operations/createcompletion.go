@@ -13,6 +13,27 @@ type CreateCompletionRequest struct {
 	OrganizationID    *int64                   `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
+func (o *CreateCompletionRequest) GetCompletionRequest() shared.CompletionRequest {
+	if o == nil {
+		return shared.CompletionRequest{}
+	}
+	return o.CompletionRequest
+}
+
+func (o *CreateCompletionRequest) GetModelID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ModelID
+}
+
+func (o *CreateCompletionRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
+}
+
 type CreateCompletionResponse struct {
 	CompletionResponse *shared.CompletionResponse
 	ContentType        string
@@ -21,4 +42,46 @@ type CreateCompletionResponse struct {
 	Headers      map[string][]string
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *CreateCompletionResponse) GetCompletionResponse() *shared.CompletionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CompletionResponse
+}
+
+func (o *CreateCompletionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateCompletionResponse) GetFailResponse() *shared.FailResponse {
+	if o == nil {
+		return nil
+	}
+	return o.FailResponse
+}
+
+func (o *CreateCompletionResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *CreateCompletionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateCompletionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }
