@@ -29,11 +29,9 @@ func (o *ListModelCustomizationsRequest) GetOrganizationID() *int64 {
 type ListModelCustomizationsResponse struct {
 	ContentType            string
 	CustomizationsResponse *shared.CustomizationsResponse
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers                map[string][]string
+	StatusCode             int
+	RawResponse            *http.Response
 }
 
 func (o *ListModelCustomizationsResponse) GetContentType() string {
@@ -48,13 +46,6 @@ func (o *ListModelCustomizationsResponse) GetCustomizationsResponse() *shared.Cu
 		return nil
 	}
 	return o.CustomizationsResponse
-}
-
-func (o *ListModelCustomizationsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *ListModelCustomizationsResponse) GetHeaders() map[string][]string {

@@ -35,9 +35,7 @@ func (o *ContentCheckRequest) GetTeamID() int64 {
 }
 
 type ContentCheckResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse     *shared.FailResponse
+	ContentType      string
 	Headers          map[string][]string
 	ProcessedContent *shared.ProcessedContent
 	StatusCode       int
@@ -49,13 +47,6 @@ func (o *ContentCheckResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *ContentCheckResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *ContentCheckResponse) GetHeaders() map[string][]string {

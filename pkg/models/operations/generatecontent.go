@@ -37,11 +37,9 @@ func (o *GenerateContentRequest) GetTeamID() int64 {
 type GenerateContentResponse struct {
 	ContentType string
 	Draft       *shared.Draft
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers     map[string][]string
+	StatusCode  int
+	RawResponse *http.Response
 }
 
 func (o *GenerateContentResponse) GetContentType() string {
@@ -56,13 +54,6 @@ func (o *GenerateContentResponse) GetDraft() *shared.Draft {
 		return nil
 	}
 	return o.Draft
-}
-
-func (o *GenerateContentResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *GenerateContentResponse) GetHeaders() map[string][]string {

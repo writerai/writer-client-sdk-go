@@ -220,9 +220,7 @@ func (o *FindTermsRequest) GetType() *FindTermsType {
 }
 
 type FindTermsResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse                    *shared.FailResponse
+	ContentType                     string
 	Headers                         map[string][]string
 	PaginatedResultFullTermWithUser *shared.PaginatedResultFullTermWithUser
 	StatusCode                      int
@@ -234,13 +232,6 @@ func (o *FindTermsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *FindTermsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *FindTermsResponse) GetHeaders() map[string][]string {

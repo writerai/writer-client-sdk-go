@@ -45,11 +45,9 @@ func (o *DeleteSnippetsRequest) GetTeamID() int64 {
 type DeleteSnippetsResponse struct {
 	ContentType    string
 	DeleteResponse *shared.DeleteResponse
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers        map[string][]string
+	StatusCode     int
+	RawResponse    *http.Response
 }
 
 func (o *DeleteSnippetsResponse) GetContentType() string {
@@ -64,13 +62,6 @@ func (o *DeleteSnippetsResponse) GetDeleteResponse() *shared.DeleteResponse {
 		return nil
 	}
 	return o.DeleteResponse
-}
-
-func (o *DeleteSnippetsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *DeleteSnippetsResponse) GetHeaders() map[string][]string {

@@ -8,9 +8,7 @@ import (
 )
 
 type GetSubscriptionDetailsResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse                  *shared.FailResponse
+	ContentType                   string
 	Headers                       map[string][]string
 	StatusCode                    int
 	RawResponse                   *http.Response
@@ -22,13 +20,6 @@ func (o *GetSubscriptionDetailsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetSubscriptionDetailsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *GetSubscriptionDetailsResponse) GetHeaders() map[string][]string {

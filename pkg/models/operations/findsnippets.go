@@ -144,9 +144,7 @@ func (o *FindSnippetsRequest) GetTeamID() int64 {
 }
 
 type FindSnippetsResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse                   *shared.FailResponse
+	ContentType                    string
 	Headers                        map[string][]string
 	PaginatedResultSnippetWithUser *shared.PaginatedResultSnippetWithUser
 	StatusCode                     int
@@ -158,13 +156,6 @@ func (o *FindSnippetsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *FindSnippetsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *FindSnippetsResponse) GetHeaders() map[string][]string {

@@ -37,11 +37,9 @@ func (o *CreateCompletionRequest) GetOrganizationID() *int64 {
 type CreateCompletionResponse struct {
 	CompletionResponse *shared.CompletionResponse
 	ContentType        string
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers            map[string][]string
+	StatusCode         int
+	RawResponse        *http.Response
 }
 
 func (o *CreateCompletionResponse) GetCompletionResponse() *shared.CompletionResponse {
@@ -56,13 +54,6 @@ func (o *CreateCompletionResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *CreateCompletionResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *CreateCompletionResponse) GetHeaders() map[string][]string {

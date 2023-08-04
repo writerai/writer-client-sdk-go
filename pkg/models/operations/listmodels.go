@@ -19,9 +19,7 @@ func (o *ListModelsRequest) GetOrganizationID() *int64 {
 }
 
 type ListModelsResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse             *shared.FailResponse
+	ContentType              string
 	GenerationModelsResponse *shared.GenerationModelsResponse
 	Headers                  map[string][]string
 	StatusCode               int
@@ -33,13 +31,6 @@ func (o *ListModelsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *ListModelsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *ListModelsResponse) GetGenerationModelsResponse() *shared.GenerationModelsResponse {

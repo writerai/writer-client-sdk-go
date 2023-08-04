@@ -45,11 +45,9 @@ func (o *DeleteTermsRequest) GetTeamID() int64 {
 type DeleteTermsResponse struct {
 	ContentType    string
 	DeleteResponse *shared.DeleteResponse
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers        map[string][]string
+	StatusCode     int
+	RawResponse    *http.Response
 }
 
 func (o *DeleteTermsResponse) GetContentType() string {
@@ -64,13 +62,6 @@ func (o *DeleteTermsResponse) GetDeleteResponse() *shared.DeleteResponse {
 		return nil
 	}
 	return o.DeleteResponse
-}
-
-func (o *DeleteTermsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *DeleteTermsResponse) GetHeaders() map[string][]string {

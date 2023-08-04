@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"net/http"
 )
 
@@ -35,9 +34,7 @@ func (o *FetchCustomizedModelFileRequest) GetOrganizationID() *int64 {
 }
 
 type FetchCustomizedModelFileResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse                                                  *shared.FailResponse
+	ContentType                                                   string
 	Headers                                                       map[string][]string
 	StatusCode                                                    int
 	RawResponse                                                   *http.Response
@@ -49,13 +46,6 @@ func (o *FetchCustomizedModelFileResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *FetchCustomizedModelFileResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *FetchCustomizedModelFileResponse) GetHeaders() map[string][]string {

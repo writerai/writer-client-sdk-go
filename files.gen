@@ -58,9 +58,8 @@ pkg/models/operations/updateterms.go
 pkg/models/operations/listusers.go
 pkg/models/operations/getdocumentdetails.go
 pkg/models/operations/listteamdocuments.go
-pkg/models/shared/failresponse.go
-pkg/models/shared/failmessage.go
 pkg/models/shared/contentdetectorresponse.go
+pkg/models/shared/failmessage.go
 pkg/models/shared/contentdetectorrequest.go
 pkg/models/shared/subscriptionpublicresponseapi.go
 pkg/models/shared/usage.go
@@ -124,6 +123,7 @@ pkg/models/shared/document.go
 pkg/models/shared/briefdocuments.go
 pkg/models/shared/briefdocument.go
 pkg/models/shared/security.go
+pkg/models/sdkerrors/failresponse.go
 docs/sdks/writer/README.md
 docs/sdks/aicontentdetector/README.md
 docs/sdks/billing/README.md
@@ -212,10 +212,9 @@ docs/models/operations/listteamdocumentssortfield.md
 docs/models/operations/listteamdocumentssortorder.md
 docs/models/operations/listteamdocumentsrequest.md
 docs/models/operations/listteamdocumentsresponse.md
-docs/models/shared/failresponse.md
-docs/models/shared/failmessage.md
 docs/models/shared/contentdetectorresponselabel.md
 docs/models/shared/contentdetectorresponse.md
+docs/models/shared/failmessage.md
 docs/models/shared/contentdetectorrequest.md
 docs/models/shared/subscriptionpublicresponseapiproductname.md
 docs/models/shared/subscriptionpublicresponseapistatus.md
@@ -304,3 +303,4 @@ docs/models/shared/briefdocuments.md
 docs/models/shared/briefdocumentaccess.md
 docs/models/shared/briefdocument.md
 docs/models/shared/security.md
+docs/models/errors/failresponse.md

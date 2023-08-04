@@ -37,11 +37,9 @@ func (o *AddTermsRequest) GetTeamID() int64 {
 type AddTermsResponse struct {
 	ContentType         string
 	CreateTermsResponse *shared.CreateTermsResponse
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers             map[string][]string
+	StatusCode          int
+	RawResponse         *http.Response
 }
 
 func (o *AddTermsResponse) GetContentType() string {
@@ -56,13 +54,6 @@ func (o *AddTermsResponse) GetCreateTermsResponse() *shared.CreateTermsResponse 
 		return nil
 	}
 	return o.CreateTermsResponse
-}
-
-func (o *AddTermsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *AddTermsResponse) GetHeaders() map[string][]string {

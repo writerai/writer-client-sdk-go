@@ -29,11 +29,9 @@ func (o *DetectContentRequest) GetOrganizationID() *int64 {
 type DetectContentResponse struct {
 	ContentDetectorResponses []shared.ContentDetectorResponse
 	ContentType              string
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers                  map[string][]string
+	StatusCode               int
+	RawResponse              *http.Response
 }
 
 func (o *DetectContentResponse) GetContentDetectorResponses() []shared.ContentDetectorResponse {
@@ -48,13 +46,6 @@ func (o *DetectContentResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *DetectContentResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *DetectContentResponse) GetHeaders() map[string][]string {

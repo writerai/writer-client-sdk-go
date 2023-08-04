@@ -35,9 +35,7 @@ func (o *ListTemplatesRequest) GetTemplateID() string {
 }
 
 type ListTemplatesResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse            *shared.FailResponse
+	ContentType             string
 	Headers                 map[string][]string
 	StatusCode              int
 	RawResponse             *http.Response
@@ -49,13 +47,6 @@ func (o *ListTemplatesResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *ListTemplatesResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *ListTemplatesResponse) GetHeaders() map[string][]string {

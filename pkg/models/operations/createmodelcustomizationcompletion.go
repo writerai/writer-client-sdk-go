@@ -45,11 +45,9 @@ func (o *CreateModelCustomizationCompletionRequest) GetOrganizationID() *int64 {
 type CreateModelCustomizationCompletionResponse struct {
 	CompletionResponse *shared.CompletionResponse
 	ContentType        string
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers            map[string][]string
+	StatusCode         int
+	RawResponse        *http.Response
 }
 
 func (o *CreateModelCustomizationCompletionResponse) GetCompletionResponse() *shared.CompletionResponse {
@@ -64,13 +62,6 @@ func (o *CreateModelCustomizationCompletionResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *CreateModelCustomizationCompletionResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *CreateModelCustomizationCompletionResponse) GetHeaders() map[string][]string {

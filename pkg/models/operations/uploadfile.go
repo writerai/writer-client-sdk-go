@@ -28,12 +28,10 @@ func (o *UploadFileRequest) GetOrganizationID() *int64 {
 
 type UploadFileResponse struct {
 	ContentType string
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	ModelFile    *shared.ModelFile
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers     map[string][]string
+	ModelFile   *shared.ModelFile
+	StatusCode  int
+	RawResponse *http.Response
 }
 
 func (o *UploadFileResponse) GetContentType() string {
@@ -41,13 +39,6 @@ func (o *UploadFileResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *UploadFileResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *UploadFileResponse) GetHeaders() map[string][]string {

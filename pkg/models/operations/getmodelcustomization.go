@@ -35,9 +35,7 @@ func (o *GetModelCustomizationRequest) GetOrganizationID() *int64 {
 }
 
 type GetModelCustomizationResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse       *shared.FailResponse
+	ContentType        string
 	Headers            map[string][]string
 	ModelCustomization *shared.ModelCustomization
 	StatusCode         int
@@ -49,13 +47,6 @@ func (o *GetModelCustomizationResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetModelCustomizationResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *GetModelCustomizationResponse) GetHeaders() map[string][]string {
