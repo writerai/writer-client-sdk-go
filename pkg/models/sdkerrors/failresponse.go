@@ -4,16 +4,13 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"net/http"
 )
 
 // FailResponse - Bad Request
 type FailResponse struct {
-	RawResponse *http.Response       `json:"-"`
-	Errors      []shared.FailMessage `json:"errors,omitempty"`
-	Extras      interface{}          `json:"extras"`
-	Tpe         string               `json:"tpe"`
+	Errors []FailMessage `json:"errors,omitempty"`
+	Extras interface{}   `json:"extras"`
+	Tpe    string        `json:"tpe"`
 }
 
 var _ error = &FailResponse{}
