@@ -306,3 +306,4 @@ docs/models/shared/briefdocument.md
 docs/models/shared/security.md
 docs/models/errors/failresponse.md
 docs/models/errors/failmessage.md
+.gitattributes
