@@ -26,6 +26,16 @@ func newDownloadTheCustomizedModel(sdkConfig sdkConfiguration) *downloadTheCusto
 
 // FetchFile - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
 func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request operations.FetchCustomizedModelFileRequest, opts ...operations.Option) (*operations.FetchCustomizedModelFileResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionAcceptHeaderOverride,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}/fetch", request, s.sdkConfiguration.Globals)
 	if err != nil {
