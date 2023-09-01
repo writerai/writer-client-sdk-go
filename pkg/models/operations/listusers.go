@@ -124,9 +124,7 @@ func (o *ListUsersRequest) GetSortOrder() *ListUsersSortOrder {
 }
 
 type ListUsersResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse                      *shared.FailResponse
+	ContentType                       string
 	Headers                           map[string][]string
 	PaginatedResultUserPublicResponse *shared.PaginatedResultUserPublicResponse
 	StatusCode                        int
@@ -138,13 +136,6 @@ func (o *ListUsersResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *ListUsersResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *ListUsersResponse) GetHeaders() map[string][]string {

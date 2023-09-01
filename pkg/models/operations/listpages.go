@@ -65,9 +65,7 @@ func (o *ListPagesRequest) GetStatus() *ListPagesStatus {
 }
 
 type ListPagesResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse                         *shared.FailResponse
+	ContentType                          string
 	Headers                              map[string][]string
 	PaginatedResultPagePublicAPIResponse *shared.PaginatedResultPagePublicAPIResponse
 	StatusCode                           int
@@ -79,13 +77,6 @@ func (o *ListPagesResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *ListPagesResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *ListPagesResponse) GetHeaders() map[string][]string {

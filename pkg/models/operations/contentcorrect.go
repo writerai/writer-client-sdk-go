@@ -45,11 +45,9 @@ func (o *ContentCorrectRequest) GetTeamID() int64 {
 type ContentCorrectResponse struct {
 	ContentType        string
 	CorrectionResponse *shared.CorrectionResponse
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers            map[string][]string
+	StatusCode         int
+	RawResponse        *http.Response
 }
 
 func (o *ContentCorrectResponse) GetContentType() string {
@@ -64,13 +62,6 @@ func (o *ContentCorrectResponse) GetCorrectionResponse() *shared.CorrectionRespo
 		return nil
 	}
 	return o.CorrectionResponse
-}
-
-func (o *ContentCorrectResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *ContentCorrectResponse) GetHeaders() map[string][]string {

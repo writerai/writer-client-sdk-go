@@ -58,8 +58,6 @@ pkg/models/operations/updateterms.go
 pkg/models/operations/listusers.go
 pkg/models/operations/getdocumentdetails.go
 pkg/models/operations/listteamdocuments.go
-pkg/models/shared/failresponse.go
-pkg/models/shared/failmessage.go
 pkg/models/shared/contentdetectorresponse.go
 pkg/models/shared/contentdetectorrequest.go
 pkg/models/shared/subscriptionpublicresponseapi.go
@@ -108,6 +106,7 @@ pkg/models/shared/termmistake.go
 pkg/models/shared/fulllinkedterm.go
 pkg/models/shared/approvedtermextension.go
 pkg/models/shared/termexample.go
+pkg/models/shared/failmessage.go
 pkg/models/shared/createtermsrequest.go
 pkg/models/shared/termcreate.go
 pkg/models/shared/termtagcreate.go
@@ -124,6 +123,8 @@ pkg/models/shared/document.go
 pkg/models/shared/briefdocuments.go
 pkg/models/shared/briefdocument.go
 pkg/models/shared/security.go
+pkg/models/sdkerrors/failresponse.go
+pkg/models/sdkerrors/failmessage.go
 docs/sdks/writer/README.md
 docs/sdks/aicontentdetector/README.md
 docs/sdks/billing/README.md
@@ -212,8 +213,6 @@ docs/models/operations/listteamdocumentssortfield.md
 docs/models/operations/listteamdocumentssortorder.md
 docs/models/operations/listteamdocumentsrequest.md
 docs/models/operations/listteamdocumentsresponse.md
-docs/models/shared/failresponse.md
-docs/models/shared/failmessage.md
 docs/models/shared/contentdetectorresponselabel.md
 docs/models/shared/contentdetectorresponse.md
 docs/models/shared/contentdetectorrequest.md
@@ -277,6 +276,7 @@ docs/models/shared/fulllinkedterm.md
 docs/models/shared/approvedtermextension.md
 docs/models/shared/termexampletype.md
 docs/models/shared/termexample.md
+docs/models/shared/failmessage.md
 docs/models/shared/createtermsrequestfailhandling.md
 docs/models/shared/createtermsrequest.md
 docs/models/shared/termcreatepos.md
@@ -304,3 +304,7 @@ docs/models/shared/briefdocuments.md
 docs/models/shared/briefdocumentaccess.md
 docs/models/shared/briefdocument.md
 docs/models/shared/security.md
+docs/models/errors/failresponse.md
+docs/models/errors/failmessage.md
+pkg/models/operations/options.go
+.gitattributes

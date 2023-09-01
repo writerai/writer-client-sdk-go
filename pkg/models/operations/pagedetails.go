@@ -19,9 +19,7 @@ func (o *PageDetailsRequest) GetPageID() int64 {
 }
 
 type PageDetailsResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse            *shared.FailResponse
+	ContentType             string
 	Headers                 map[string][]string
 	PageWithSectionResponse *shared.PageWithSectionResponse
 	StatusCode              int
@@ -33,13 +31,6 @@ func (o *PageDetailsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *PageDetailsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *PageDetailsResponse) GetHeaders() map[string][]string {

@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"net/http"
 )
 
@@ -38,9 +37,7 @@ type DeleteModelCustomization200ApplicationJSON struct {
 }
 
 type DeleteModelCustomizationResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse                                     *shared.FailResponse
+	ContentType                                      string
 	Headers                                          map[string][]string
 	StatusCode                                       int
 	RawResponse                                      *http.Response
@@ -52,13 +49,6 @@ func (o *DeleteModelCustomizationResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *DeleteModelCustomizationResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *DeleteModelCustomizationResponse) GetHeaders() map[string][]string {

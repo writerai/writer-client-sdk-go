@@ -43,9 +43,7 @@ func (o *UpdateSnippetsRequest) GetTeamID() int64 {
 }
 
 type UpdateSnippetsResponse struct {
-	ContentType string
-	// Bad Request
-	FailResponse     *shared.FailResponse
+	ContentType      string
 	Headers          map[string][]string
 	SnippetWithUsers []shared.SnippetWithUser
 	StatusCode       int
@@ -57,13 +55,6 @@ func (o *UpdateSnippetsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *UpdateSnippetsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *UpdateSnippetsResponse) GetHeaders() map[string][]string {

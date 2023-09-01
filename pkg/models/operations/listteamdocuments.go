@@ -136,11 +136,9 @@ func (o *ListTeamDocumentsRequest) GetTeamID() int64 {
 type ListTeamDocumentsResponse struct {
 	BriefDocuments *shared.BriefDocuments
 	ContentType    string
-	// Bad Request
-	FailResponse *shared.FailResponse
-	Headers      map[string][]string
-	StatusCode   int
-	RawResponse  *http.Response
+	Headers        map[string][]string
+	StatusCode     int
+	RawResponse    *http.Response
 }
 
 func (o *ListTeamDocumentsResponse) GetBriefDocuments() *shared.BriefDocuments {
@@ -155,13 +153,6 @@ func (o *ListTeamDocumentsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *ListTeamDocumentsResponse) GetFailResponse() *shared.FailResponse {
-	if o == nil {
-		return nil
-	}
-	return o.FailResponse
 }
 
 func (o *ListTeamDocumentsResponse) GetHeaders() map[string][]string {

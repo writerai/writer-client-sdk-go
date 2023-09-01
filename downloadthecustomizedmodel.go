@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/sdkerrors"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"io"
 	"net/http"
@@ -26,7 +25,17 @@ func newDownloadTheCustomizedModel(sdkConfig sdkConfiguration) *downloadTheCusto
 }
 
 // FetchFile - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
-func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request operations.FetchCustomizedModelFileRequest) (*operations.FetchCustomizedModelFileResponse, error) {
+func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request operations.FetchCustomizedModelFileRequest, opts ...operations.Option) (*operations.FetchCustomizedModelFileResponse, error) {
+	o := operations.Options{}
+	supportedOptions := []string{
+		operations.SupportedOptionAcceptHeaderOverride,
+	}
+
+	for _, opt := range opts {
+		if err := opt(&o, supportedOptions...); err != nil {
+			return nil, fmt.Errorf("error applying option: %w", err)
+		}
+	}
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}/fetch", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -37,7 +46,12 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request oper
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/json;q=1, application/octet-stream;q=0")
+	if o.AcceptHeaderOverride != nil {
+		req.Header.Set("Accept", string(*o.AcceptHeaderOverride))
+	} else {
+		req.Header.Set("Accept", "application/json;q=1, application/octet-stream;q=0")
+	}
+
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	client := s.sdkConfiguration.SecurityClient
@@ -87,15 +101,18 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request oper
 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.FailResponse
+			var out *sdkerrors.FailResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
-
-			res.FailResponse = out
+			return nil, out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
