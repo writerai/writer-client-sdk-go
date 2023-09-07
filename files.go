@@ -25,7 +25,7 @@ func newFiles(sdkConfig sdkConfiguration) *files {
 	}
 }
 
-// Delete - Delete file
+// Delete file
 func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest) (*operations.DeleteFileResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.sdkConfiguration.Globals)
@@ -109,7 +109,7 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 	return res, nil
 }
 
-// Get - Get file
+// Get file
 func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*operations.GetFileResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.sdkConfiguration.Globals)
@@ -193,7 +193,7 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 	return res, nil
 }
 
-// List - List files
+// List files
 func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (*operations.ListFilesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.sdkConfiguration.Globals)
@@ -277,7 +277,7 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 	return res, nil
 }
 
-// Upload - Upload file
+// Upload file
 func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest) (*operations.UploadFileResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.sdkConfiguration.Globals)

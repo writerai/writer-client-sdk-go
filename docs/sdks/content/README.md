@@ -31,13 +31,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(774234),
+        writer.WithOrganizationID(832620),
     )
 
     ctx := context.Background()
     res, err := s.Content.Check(ctx, operations.ContentCheckRequest{
         ContentRequest: shared.ContentRequest{
-            Content: "cum",
+            Content: "sapiente",
             Settings: shared.ContentSettings{
                 AgeAndFamilyStatus: false,
                 Confidence: false,
@@ -57,7 +57,7 @@ func main() {
                 Wordiness: false,
             },
         },
-        TeamID: 456150,
+        TeamID: 778157,
     })
     if err != nil {
         log.Fatal(err)
@@ -104,13 +104,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(216550),
+        writer.WithOrganizationID(140350),
     )
 
     ctx := context.Background()
     res, err := s.Content.Correct(ctx, operations.ContentCorrectRequest{
         ContentRequest: shared.ContentRequest{
-            Content: "excepturi",
+            Content: "at",
             Settings: shared.ContentSettings{
                 AgeAndFamilyStatus: false,
                 Confidence: false,
@@ -130,8 +130,8 @@ func main() {
                 Wordiness: false,
             },
         },
-        XRequestID: writer.String("aspernatur"),
-        TeamID: 18789,
+        XRequestID: writer.String("at"),
+        TeamID: 978619,
     })
     if err != nil {
         log.Fatal(err)

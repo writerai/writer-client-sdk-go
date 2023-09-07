@@ -25,7 +25,7 @@ func newSnippet(sdkConfig sdkConfiguration) *snippet {
 	}
 }
 
-// Delete - Delete snippets
+// Delete snippets
 func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsRequest) (*operations.DeleteSnippetsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
@@ -115,7 +115,7 @@ func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsR
 	return res, nil
 }
 
-// Find - Find snippets
+// Find snippets
 func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsRequest) (*operations.FindSnippetsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
@@ -203,7 +203,7 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 	return res, nil
 }
 
-// Update - Update snippets
+// Update snippets
 func (s *snippet) Update(ctx context.Context, request operations.UpdateSnippetsRequest) (*operations.UpdateSnippetsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)

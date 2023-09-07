@@ -31,29 +31,27 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(870088),
+        writer.WithOrganizationID(272656),
     )
 
     ctx := context.Background()
     res, err := s.Completions.Create(ctx, operations.CreateCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
             BestOf: writer.Int64(1),
-            FrequencyPenalty: writer.Float64(9786.19),
-            Logprobs: writer.Int64(473608),
+            FrequencyPenalty: writer.Float64(3834.41),
+            Logprobs: writer.Int64(477665),
             MaxTokens: writer.Int64(1024),
             MinTokens: writer.Int64(1),
-            N: writer.Int64(799159),
-            PresencePenalty: writer.Float64(8009.11),
-            Prompt: "esse",
+            N: writer.Int64(791725),
+            PresencePenalty: writer.Float64(8121.69),
+            Prompt: "voluptatum",
             Stop: []string{
-                "porro",
-                "dolorum",
-                "dicta",
+                "iusto",
             },
             Temperature: writer.Float64(0.7),
             TopP: writer.Float64(1),
         },
-        ModelID: "nam",
+        ModelID: "excepturi",
     })
     if err != nil {
         log.Fatal(err)
@@ -100,30 +98,28 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(639921),
+        writer.WithOrganizationID(392785),
     )
 
     ctx := context.Background()
     res, err := s.Completions.CreateModelCustomizationCompletion(ctx, operations.CreateModelCustomizationCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
             BestOf: writer.Int64(1),
-            FrequencyPenalty: writer.Float64(5820.2),
-            Logprobs: writer.Int64(143353),
+            FrequencyPenalty: writer.Float64(9255.97),
+            Logprobs: writer.Int64(836079),
             MaxTokens: writer.Int64(1024),
             MinTokens: writer.Int64(1),
-            N: writer.Int64(537373),
-            PresencePenalty: writer.Float64(9446.69),
-            Prompt: "optio",
+            N: writer.Int64(71036),
+            PresencePenalty: writer.Float64(3373.96),
+            Prompt: "veritatis",
             Stop: []string{
-                "beatae",
-                "commodi",
-                "molestiae",
+                "deserunt",
             },
             Temperature: writer.Float64(0.7),
             TopP: writer.Float64(1),
         },
-        CustomizationID: "modi",
-        ModelID: "qui",
+        CustomizationID: "perferendis",
+        ModelID: "ipsam",
     })
     if err != nil {
         log.Fatal(err)

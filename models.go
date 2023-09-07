@@ -25,7 +25,7 @@ func newModels(sdkConfig sdkConfiguration) *models {
 	}
 }
 
-// List - List available LLM models
+// List available LLM models
 func (s *models) List(ctx context.Context, request operations.ListModelsRequest) (*operations.ListModelsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model", request, s.sdkConfiguration.Globals)

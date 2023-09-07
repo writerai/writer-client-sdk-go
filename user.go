@@ -26,7 +26,7 @@ func newUser(sdkConfig sdkConfiguration) *user {
 	}
 }
 
-// List - List users
+// List users
 func (s *user) List(ctx context.Context, request operations.ListUsersRequest) (*operations.ListUsersResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"

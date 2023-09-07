@@ -30,15 +30,15 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(20651),
+        writer.WithOrganizationID(318569),
     )
 
     ctx := context.Background()
     res, err := s.User.List(ctx, operations.ListUsersRequest{
-        Limit: writer.Int64(229219),
-        Offset: writer.Int64(758379),
-        Search: writer.String("accusamus"),
-        SortField: operations.ListUsersSortFieldCreationTime.ToPointer(),
+        Limit: writer.Int64(9356),
+        Offset: writer.Int64(667411),
+        Search: writer.String("quibusdam"),
+        SortField: operations.ListUsersSortFieldID.ToPointer(),
         SortOrder: operations.ListUsersSortOrderDesc.ToPointer(),
     })
     if err != nil {

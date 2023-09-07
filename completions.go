@@ -25,7 +25,7 @@ func newCompletions(sdkConfig sdkConfiguration) *completions {
 	}
 }
 
-// Create - Create completion for LLM model
+// Create completion for LLM model
 func (s *completions) Create(ctx context.Context, request operations.CreateCompletionRequest) (*operations.CreateCompletionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/completions", request, s.sdkConfiguration.Globals)

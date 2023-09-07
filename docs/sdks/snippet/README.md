@@ -32,16 +32,16 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(988374),
+        writer.WithOrganizationID(943749),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Delete(ctx, operations.DeleteSnippetsRequest{
-        XRequestID: writer.String("sapiente"),
+        XRequestID: writer.String("saepe"),
         Ids: []string{
-            "mollitia",
+            "fuga",
         },
-        TeamID: 208876,
+        TeamID: 449950,
     })
     if err != nil {
         log.Fatal(err)
@@ -88,27 +88,23 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(635059),
+        writer.WithOrganizationID(359508),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Find(ctx, operations.FindSnippetsRequest{
-        Limit: writer.Int64(161309),
-        Offset: writer.Int64(995300),
-        Search: writer.String("mollitia"),
+        Limit: writer.Int64(613064),
+        Offset: writer.Int64(437032),
+        Search: writer.String("saepe"),
         Shortcuts: []string{
-            "numquam",
-            "commodi",
-            "quam",
+            "quidem",
         },
-        SortField: operations.FindSnippetsSortFieldCreationTime.ToPointer(),
+        SortField: operations.FindSnippetsSortFieldShortcut.ToPointer(),
         SortOrder: operations.FindSnippetsSortOrderAsc.ToPointer(),
         Tags: []string{
-            "quia",
-            "quis",
-            "vitae",
+            "reiciendis",
         },
-        TeamID: 674752,
+        TeamID: 666767,
     })
     if err != nil {
         log.Fatal(err)
@@ -155,43 +151,26 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(656330),
+        writer.WithOrganizationID(653140),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Update(ctx, operations.UpdateSnippetsRequest{
         RequestBody: []shared.SnippetUpdate{
             shared.SnippetUpdate{
-                Description: writer.String("odit"),
-                ID: "c3f5ad01-9da1-4ffe-b8f0-97b0074f1547",
-                Shortcut: writer.String("dicta"),
-                Snippet: "harum",
+                Description: writer.String("laborum"),
+                ID: "2352c595-5907-4aff-9a3a-2fa946773925",
+                Shortcut: writer.String("vitae"),
+                Snippet: "laborum",
                 Tags: []shared.SnippetTagV2{
                     shared.SnippetTagV2{
-                        Tag: "accusamus",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "commodi",
-                    },
-                },
-            },
-            shared.SnippetUpdate{
-                Description: writer.String("repudiandae"),
-                ID: "13b99d48-8e1e-491e-850a-d2abd4426980",
-                Shortcut: writer.String("magni"),
-                Snippet: "assumenda",
-                Tags: []shared.SnippetTagV2{
-                    shared.SnippetTagV2{
-                        Tag: "alias",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "fugit",
+                        Tag: "animi",
                     },
                 },
             },
         },
-        XRequestID: writer.String("dolorum"),
-        TeamID: 569618,
+        XRequestID: writer.String("enim"),
+        TeamID: 138183,
     })
     if err != nil {
         log.Fatal(err)

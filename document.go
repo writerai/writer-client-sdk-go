@@ -25,7 +25,7 @@ func newDocument(sdkConfig sdkConfiguration) *document {
 	}
 }
 
-// Get - Get document details
+// Get document details
 func (s *document) Get(ctx context.Context, request operations.GetDocumentDetailsRequest) (*operations.GetDocumentDetailsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/organization/{organizationId}/team/{teamId}/document/{documentId}", request, s.sdkConfiguration.Globals)
@@ -109,7 +109,7 @@ func (s *document) Get(ctx context.Context, request operations.GetDocumentDetail
 	return res, nil
 }
 
-// List - List team documents
+// List team documents
 func (s *document) List(ctx context.Context, request operations.ListTeamDocumentsRequest) (*operations.ListTeamDocumentsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/organization/{organizationId}/team/{teamId}/document", request, s.sdkConfiguration.Globals)

@@ -25,7 +25,7 @@ func newTerminology(sdkConfig sdkConfiguration) *terminology {
 	}
 }
 
-// Add - Add terms
+// Add terms
 func (s *terminology) Add(ctx context.Context, request operations.AddTermsRequest) (*operations.AddTermsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
@@ -119,7 +119,7 @@ func (s *terminology) Add(ctx context.Context, request operations.AddTermsReques
 	return res, nil
 }
 
-// Delete - Delete terms
+// Delete terms
 func (s *terminology) Delete(ctx context.Context, request operations.DeleteTermsRequest) (*operations.DeleteTermsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
@@ -209,7 +209,7 @@ func (s *terminology) Delete(ctx context.Context, request operations.DeleteTerms
 	return res, nil
 }
 
-// Find - Find terms
+// Find terms
 func (s *terminology) Find(ctx context.Context, request operations.FindTermsRequest) (*operations.FindTermsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
@@ -297,7 +297,7 @@ func (s *terminology) Find(ctx context.Context, request operations.FindTermsRequ
 	return res, nil
 }
 
-// Update - Update terms
+// Update terms
 func (s *terminology) Update(ctx context.Context, request operations.UpdateTermsRequest) (*operations.UpdateTermsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)

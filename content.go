@@ -25,7 +25,7 @@ func newContent(sdkConfig sdkConfiguration) *content {
 	}
 }
 
-// Check - Check your content against your preset styleguide.
+// Check your content against your preset styleguide.
 func (s *content) Check(ctx context.Context, request operations.ContentCheckRequest) (*operations.ContentCheckResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/team/{teamId}/check", request, s.sdkConfiguration.Globals)

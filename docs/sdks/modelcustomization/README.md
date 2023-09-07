@@ -33,25 +33,25 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(359508),
+        writer.WithOrganizationID(143353),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Create(ctx, operations.CreateModelCustomizationRequest{
         CreateCustomizationRequest: shared.CreateCustomizationRequest{
             AdditionalHyperParameters: &shared.HyperParameters{
-                NumVirtualTokens: 613064,
+                NumVirtualTokens: 537373,
             },
-            BatchSize: writer.Int64(437032),
-            Description: writer.String("saepe"),
-            Epochs: writer.Int64(697631),
-            LearningRate: writer.Float64(992.8),
-            Name: "Lela Orn",
-            PromptTemplate: writer.String("dolores"),
-            TrainingDatasetFileID: "dolorem",
-            ValidationDatasetFileID: writer.String("corporis"),
+            BatchSize: writer.Int64(944669),
+            Description: writer.String("optio"),
+            Epochs: writer.Int64(521848),
+            LearningRate: writer.Float64(1059.07),
+            Name: "Tanya Gleason",
+            PromptTemplate: writer.String("cum"),
+            TrainingDatasetFileID: "esse",
+            ValidationDatasetFileID: writer.String("ipsum"),
         },
-        ModelID: "explicabo",
+        ModelID: "excepturi",
     })
     if err != nil {
         log.Fatal(err)
@@ -98,13 +98,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(750686),
+        writer.WithOrganizationID(135218),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Delete(ctx, operations.DeleteModelCustomizationRequest{
-        CustomizationID: "enim",
-        ModelID: "omnis",
+        CustomizationID: "perferendis",
+        ModelID: "ad",
     })
     if err != nil {
         log.Fatal(err)
@@ -151,13 +151,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(363711),
+        writer.WithOrganizationID(617636),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Get(ctx, operations.GetModelCustomizationRequest{
-        CustomizationID: "minima",
-        ModelID: "excepturi",
+        CustomizationID: "sed",
+        ModelID: "iste",
     })
     if err != nil {
         log.Fatal(err)
@@ -204,12 +204,12 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(38425),
+        writer.WithOrganizationID(222321),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.List(ctx, operations.ListModelCustomizationsRequest{
-        ModelID: "iure",
+        ModelID: "natus",
     })
     if err != nil {
         log.Fatal(err)

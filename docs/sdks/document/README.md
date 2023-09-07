@@ -31,13 +31,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(383464),
+        writer.WithOrganizationID(716327),
     )
 
     ctx := context.Background()
     res, err := s.Document.Get(ctx, operations.GetDocumentDetailsRequest{
-        DocumentID: 645785,
-        TeamID: 588317,
+        DocumentID: 841386,
+        TeamID: 289406,
     })
     if err != nil {
         log.Fatal(err)
@@ -84,17 +84,17 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(324683),
+        writer.WithOrganizationID(264730),
     )
 
     ctx := context.Background()
     res, err := s.Document.List(ctx, operations.ListTeamDocumentsRequest{
-        Limit: writer.Int(831049),
-        Offset: writer.Int64(519711),
-        Search: writer.String("similique"),
-        SortField: operations.ListTeamDocumentsSortFieldTitle.ToPointer(),
-        SortOrder: operations.ListTeamDocumentsSortOrderDesc.ToPointer(),
-        TeamID: 311860,
+        Limit: writer.Int(183191),
+        Offset: writer.Int64(397821),
+        Search: writer.String("cupiditate"),
+        SortField: operations.ListTeamDocumentsSortFieldModificationTime.ToPointer(),
+        SortOrder: operations.ListTeamDocumentsSortOrderAsc.ToPointer(),
+        TeamID: 164940,
     })
     if err != nil {
         log.Fatal(err)

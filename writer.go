@@ -59,35 +59,34 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], nil
 }
 
-// Writer
 type Writer struct {
-	// AIContentDetector - Methods related to AI Content Detector
+	// Methods related to AI Content Detector
 	AIContentDetector *aiContentDetector
-	// Billing - Methods related to Billing
+	// Methods related to Billing
 	Billing *billing
-	// CoWrite - Methods related to CoWrite
+	// Methods related to CoWrite
 	CoWrite *coWrite
-	// Completions - Methods related to Completions
+	// Methods related to Completions
 	Completions *completions
-	// Content - Methods related to Content
+	// Methods related to Content
 	Content *content
-	// DownloadTheCustomizedModel - Methods related to Download the customized model
+	// Methods related to Download the customized model
 	DownloadTheCustomizedModel *downloadTheCustomizedModel
-	// Files - Methods related to Files
+	// Methods related to Files
 	Files *files
-	// ModelCustomization - Methods related to Model Customization
+	// Methods related to Model Customization
 	ModelCustomization *modelCustomization
-	// Models - Methods related to Model
+	// Methods related to Model
 	Models *models
-	// Snippet - Methods related to Snippets
+	// Methods related to Snippets
 	Snippet *snippet
-	// Styleguide - Methods related to Styleguide
+	// Methods related to Styleguide
 	Styleguide *styleguide
-	// Terminology - Methods related to Terminology
+	// Methods related to Terminology
 	Terminology *terminology
-	// User - Methods related to User
+	// Methods related to User
 	User *user
-	// Document - Methods related to document
+	// Methods related to document
 	Document *document
 
 	sdkConfiguration sdkConfiguration
@@ -155,8 +154,8 @@ func New(opts ...SDKOption) *Writer {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.7",
-			SDKVersion:        "0.16.0",
-			GenVersion:        "2.91.2",
+			SDKVersion:        "0.16.1",
+			GenVersion:        "2.101.0",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},

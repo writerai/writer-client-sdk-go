@@ -39,31 +39,15 @@ func main() {
         GenerateTemplateRequest: shared.GenerateTemplateRequest{
             Inputs: []shared.MagicRequestInput{
                 shared.MagicRequestInput{
-                    Name: "Ben Mueller",
+                    Name: "Dallas Kassulke",
                     Value: []string{
-                        "magnam",
-                        "debitis",
-                    },
-                },
-                shared.MagicRequestInput{
-                    Name: "Lucia Goldner",
-                    Value: []string{
-                        "placeat",
-                        "voluptatum",
-                        "iusto",
-                        "excepturi",
-                    },
-                },
-                shared.MagicRequestInput{
-                    Name: "Mrs. Sophie Smith MD",
-                    Value: []string{
-                        "ipsam",
+                        "suscipit",
                     },
                 },
             },
-            TemplateID: "repellendus",
+            TemplateID: "iure",
         },
-        TeamID: 957156,
+        TeamID: 297534,
     })
     if err != nil {
         log.Fatal(err)
@@ -110,13 +94,13 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(778157),
+        writer.WithOrganizationID(891773),
     )
 
     ctx := context.Background()
     res, err := s.CoWrite.ListTemplates(ctx, operations.ListTemplatesRequest{
-        TeamID: 140350,
-        TemplateID: "at",
+        TeamID: 56713,
+        TemplateID: "delectus",
     })
     if err != nil {
         log.Fatal(err)

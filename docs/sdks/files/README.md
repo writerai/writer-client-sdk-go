@@ -33,12 +33,12 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(612096),
+        writer.WithOrganizationID(461479),
     )
 
     ctx := context.Background()
     res, err := s.Files.Delete(ctx, operations.DeleteFileRequest{
-        FileID: "dolor",
+        FileID: "totam",
     })
     if err != nil {
         log.Fatal(err)
@@ -85,12 +85,12 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(616934),
+        writer.WithOrganizationID(780529),
     )
 
     ctx := context.Background()
     res, err := s.Files.Get(ctx, operations.GetFileRequest{
-        FileID: "laboriosam",
+        FileID: "dolorum",
     })
     if err != nil {
         log.Fatal(err)
@@ -137,7 +137,7 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(943749),
+        writer.WithOrganizationID(118274),
     )
 
     ctx := context.Background()
@@ -187,15 +187,15 @@ func main() {
         writer.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(902599),
+        writer.WithOrganizationID(720633),
     )
 
     ctx := context.Background()
     res, err := s.Files.Upload(ctx, operations.UploadFileRequest{
         UploadModelFileRequest: shared.UploadModelFileRequest{
             File: shared.UploadModelFileRequestFile{
-                Content: []byte("fuga"),
-                File: "in",
+                Content: []byte("officia"),
+                File: "occaecati",
             },
         },
     })
