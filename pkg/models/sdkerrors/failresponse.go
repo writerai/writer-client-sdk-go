@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 )
 
-// FailResponse - Bad Request
 type FailResponse struct {
 	Errors []FailMessage `json:"errors,omitempty"`
 	Extras interface{}   `json:"extras"`
