@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -90,6 +91,17 @@ type FullTermWithUser struct {
 	Term                  string                 `json:"term"`
 	TermBankID            int64                  `json:"termBankId"`
 	Type                  FullTermWithUserType   `json:"type"`
+}
+
+func (f FullTermWithUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FullTermWithUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FullTermWithUser) GetApprovedTermExtension() *ApprovedTermExtension {

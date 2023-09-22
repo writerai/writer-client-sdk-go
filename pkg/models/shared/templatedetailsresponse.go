@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -15,6 +16,17 @@ type TemplateDetailsResponse struct {
 	Inputs           []Input   `json:"inputs,omitempty"`
 	ModificationTime time.Time `json:"modificationTime"`
 	Name             string    `json:"name"`
+}
+
+func (t TemplateDetailsResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateDetailsResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TemplateDetailsResponse) GetCategoryID() int64 {

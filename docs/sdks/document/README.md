@@ -21,23 +21,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(383464),
+        writerclientsdkgo.WithOrganizationID(289406),
     )
 
     ctx := context.Background()
     res, err := s.Document.Get(ctx, operations.GetDocumentDetailsRequest{
-        DocumentID: 645785,
-        TeamID: 588317,
+        DocumentID: 264730,
+        TeamID: 183191,
     })
     if err != nil {
         log.Fatal(err)
@@ -74,27 +74,27 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(324683),
+        writerclientsdkgo.WithOrganizationID(397821),
     )
 
     ctx := context.Background()
     res, err := s.Document.List(ctx, operations.ListTeamDocumentsRequest{
-        Limit: writer.Int(831049),
-        Offset: writer.Int64(519711),
-        Search: writer.String("similique"),
+        Limit: writerclientsdkgo.Int(586513),
+        Offset: writerclientsdkgo.Int64(552822),
+        Search: writerclientsdkgo.String("perferendis"),
         SortField: operations.ListTeamDocumentsSortFieldTitle.ToPointer(),
         SortOrder: operations.ListTeamDocumentsSortOrderDesc.ToPointer(),
-        TeamID: 311860,
+        TeamID: 369808,
     })
     if err != nil {
         log.Fatal(err)

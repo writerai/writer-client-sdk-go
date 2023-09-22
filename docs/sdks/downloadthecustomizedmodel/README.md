@@ -20,23 +20,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(324141),
+        writerclientsdkgo.WithOrganizationID(800911),
     )
 
     ctx := context.Background()
     res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, operations.FetchCustomizedModelFileRequest{
-        CustomizationID: "natus",
-        ModelID: "sed",
+        CustomizationID: "esse",
+        ModelID: "totam",
     })
     if err != nil {
         log.Fatal(err)

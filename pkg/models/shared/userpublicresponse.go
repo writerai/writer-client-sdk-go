@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -47,6 +48,17 @@ type UserPublicResponse struct {
 	LastName       *string                         `json:"lastName,omitempty"`
 	LastSeenOnline *time.Time                      `json:"lastSeenOnline,omitempty"`
 	Timezone       *string                         `json:"timezone,omitempty"`
+}
+
+func (u UserPublicResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UserPublicResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UserPublicResponse) GetAccountStatus() UserPublicResponseAccountStatus {

@@ -20,16 +20,16 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(602763),
+        writerclientsdkgo.WithOrganizationID(544883),
     )
 
     ctx := context.Background()

@@ -9,7 +9,6 @@ import (
 	"net/http"
 )
 
-// ListPagesStatus
 type ListPagesStatus string
 
 const (

@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -94,6 +95,17 @@ type SubscriptionPublicResponseAPI struct {
 	Status         SubscriptionPublicResponseAPIStatus      `json:"status"`
 	SubscriptionID string                                   `json:"subscriptionId"`
 	Usage          Usage                                    `json:"usage"`
+}
+
+func (s SubscriptionPublicResponseAPI) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SubscriptionPublicResponseAPI) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SubscriptionPublicResponseAPI) GetCreatedAt() time.Time {

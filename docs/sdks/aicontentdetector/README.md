@@ -20,23 +20,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(715190),
+        writerclientsdkgo.WithOrganizationID(602763),
     )
 
     ctx := context.Background()
     res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
         ContentDetectorRequest: shared.ContentDetectorRequest{
-            Input: "quibusdam",
+            Input: "nulla",
         },
     })
     if err != nil {

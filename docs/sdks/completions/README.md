@@ -21,39 +21,37 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(870088),
+        writerclientsdkgo.WithOrganizationID(477665),
     )
 
     ctx := context.Background()
     res, err := s.Completions.Create(ctx, operations.CreateCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
-            BestOf: writer.Int64(1),
-            FrequencyPenalty: writer.Float64(9786.19),
-            Logprobs: writer.Int64(473608),
-            MaxTokens: writer.Int64(1024),
-            MinTokens: writer.Int64(1),
-            N: writer.Int64(799159),
-            PresencePenalty: writer.Float64(8009.11),
-            Prompt: "esse",
+            BestOf: writerclientsdkgo.Int64(1),
+            FrequencyPenalty: writerclientsdkgo.Float64(7917.25),
+            Logprobs: writerclientsdkgo.Int64(812169),
+            MaxTokens: writerclientsdkgo.Int64(1024),
+            MinTokens: writerclientsdkgo.Int64(1),
+            N: writerclientsdkgo.Int64(528895),
+            PresencePenalty: writerclientsdkgo.Float64(4799.77),
+            Prompt: "excepturi",
             Stop: []string{
-                "porro",
-                "dolorum",
-                "dicta",
+                "nisi",
             },
-            Temperature: writer.Float64(0.7),
-            TopP: writer.Float64(1),
+            Temperature: writerclientsdkgo.Float64(0.7),
+            TopP: writerclientsdkgo.Float64(1),
         },
-        ModelID: "nam",
+        ModelID: "recusandae",
     })
     if err != nil {
         log.Fatal(err)
@@ -90,40 +88,38 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(639921),
+        writerclientsdkgo.WithOrganizationID(836079),
     )
 
     ctx := context.Background()
     res, err := s.Completions.CreateModelCustomizationCompletion(ctx, operations.CreateModelCustomizationCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
-            BestOf: writer.Int64(1),
-            FrequencyPenalty: writer.Float64(5820.2),
-            Logprobs: writer.Int64(143353),
-            MaxTokens: writer.Int64(1024),
-            MinTokens: writer.Int64(1),
-            N: writer.Int64(537373),
-            PresencePenalty: writer.Float64(9446.69),
-            Prompt: "optio",
+            BestOf: writerclientsdkgo.Int64(1),
+            FrequencyPenalty: writerclientsdkgo.Float64(710.36),
+            Logprobs: writerclientsdkgo.Int64(337396),
+            MaxTokens: writerclientsdkgo.Int64(1024),
+            MinTokens: writerclientsdkgo.Int64(1),
+            N: writerclientsdkgo.Int64(87129),
+            PresencePenalty: writerclientsdkgo.Float64(6481.72),
+            Prompt: "perferendis",
             Stop: []string{
-                "beatae",
-                "commodi",
-                "molestiae",
+                "ipsam",
             },
-            Temperature: writer.Float64(0.7),
-            TopP: writer.Float64(1),
+            Temperature: writerclientsdkgo.Float64(0.7),
+            TopP: writerclientsdkgo.Float64(1),
         },
-        CustomizationID: "modi",
-        ModelID: "qui",
+        CustomizationID: "repellendus",
+        ModelID: "sapiente",
     })
     if err != nil {
         log.Fatal(err)

@@ -21,23 +21,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(774234),
+        writerclientsdkgo.WithOrganizationID(778157),
     )
 
     ctx := context.Background()
     res, err := s.Content.Check(ctx, operations.ContentCheckRequest{
         ContentRequest: shared.ContentRequest{
-            Content: "cum",
+            Content: "odit",
             Settings: shared.ContentSettings{
                 AgeAndFamilyStatus: false,
                 Confidence: false,
@@ -57,7 +57,7 @@ func main() {
                 Wordiness: false,
             },
         },
-        TeamID: 456150,
+        TeamID: 870013,
     })
     if err != nil {
         log.Fatal(err)
@@ -94,23 +94,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(216550),
+        writerclientsdkgo.WithOrganizationID(870088),
     )
 
     ctx := context.Background()
     res, err := s.Content.Correct(ctx, operations.ContentCorrectRequest{
         ContentRequest: shared.ContentRequest{
-            Content: "excepturi",
+            Content: "maiores",
             Settings: shared.ContentSettings{
                 AgeAndFamilyStatus: false,
                 Confidence: false,
@@ -130,8 +130,8 @@ func main() {
                 Wordiness: false,
             },
         },
-        XRequestID: writer.String("aspernatur"),
-        TeamID: 18789,
+        XRequestID: writerclientsdkgo.String("molestiae"),
+        TeamID: 799159,
     })
     if err != nil {
         log.Fatal(err)

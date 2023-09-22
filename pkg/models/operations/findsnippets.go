@@ -9,7 +9,6 @@ import (
 	"net/http"
 )
 
-// FindSnippetsSortField
 type FindSnippetsSortField string
 
 const (
@@ -40,7 +39,6 @@ func (e *FindSnippetsSortField) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// FindSnippetsSortOrder
 type FindSnippetsSortOrder string
 
 const (

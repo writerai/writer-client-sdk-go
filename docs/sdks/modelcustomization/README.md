@@ -23,35 +23,35 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(359508),
+        writerclientsdkgo.WithOrganizationID(944669),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Create(ctx, operations.CreateModelCustomizationRequest{
         CreateCustomizationRequest: shared.CreateCustomizationRequest{
             AdditionalHyperParameters: &shared.HyperParameters{
-                NumVirtualTokens: 613064,
+                NumVirtualTokens: 758616,
             },
-            BatchSize: writer.Int64(437032),
-            Description: writer.String("saepe"),
-            Epochs: writer.Int64(697631),
-            LearningRate: writer.Float64(992.8),
-            Name: "Lela Orn",
-            PromptTemplate: writer.String("dolores"),
-            TrainingDatasetFileID: "dolorem",
-            ValidationDatasetFileID: writer.String("corporis"),
+            BatchSize: writerclientsdkgo.Int64(521848),
+            Description: writerclientsdkgo.String("beatae"),
+            Epochs: writerclientsdkgo.Int64(414662),
+            LearningRate: writerclientsdkgo.Float64(4736),
+            Name: "Norma Ryan",
+            PromptTemplate: writerclientsdkgo.String("ipsum"),
+            TrainingDatasetFileID: "excepturi",
+            ValidationDatasetFileID: writerclientsdkgo.String("aspernatur"),
         },
-        ModelID: "explicabo",
+        ModelID: "perferendis",
     })
     if err != nil {
         log.Fatal(err)
@@ -88,23 +88,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(750686),
+        writerclientsdkgo.WithOrganizationID(324141),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Delete(ctx, operations.DeleteModelCustomizationRequest{
-        CustomizationID: "enim",
-        ModelID: "omnis",
+        CustomizationID: "natus",
+        ModelID: "sed",
     })
     if err != nil {
         log.Fatal(err)
@@ -141,23 +141,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(363711),
+        writerclientsdkgo.WithOrganizationID(612096),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Get(ctx, operations.GetModelCustomizationRequest{
-        CustomizationID: "minima",
-        ModelID: "excepturi",
+        CustomizationID: "dolor",
+        ModelID: "natus",
     })
     if err != nil {
         log.Fatal(err)
@@ -194,22 +194,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(38425),
+        writerclientsdkgo.WithOrganizationID(386489),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.List(ctx, operations.ListModelCustomizationsRequest{
-        ModelID: "iure",
+        ModelID: "hic",
     })
     if err != nil {
         log.Fatal(err)

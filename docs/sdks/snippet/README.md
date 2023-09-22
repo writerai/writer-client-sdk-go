@@ -22,26 +22,26 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(988374),
+        writerclientsdkgo.WithOrganizationID(681820),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Delete(ctx, operations.DeleteSnippetsRequest{
-        XRequestID: writer.String("sapiente"),
+        XRequestID: writerclientsdkgo.String("in"),
         Ids: []string{
-            "mollitia",
+            "corporis",
         },
-        TeamID: 208876,
+        TeamID: 613064,
     })
     if err != nil {
         log.Fatal(err)
@@ -78,37 +78,33 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(635059),
+        writerclientsdkgo.WithOrganizationID(437032),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Find(ctx, operations.FindSnippetsRequest{
-        Limit: writer.Int64(161309),
-        Offset: writer.Int64(995300),
-        Search: writer.String("mollitia"),
+        Limit: writerclientsdkgo.Int64(902349),
+        Offset: writerclientsdkgo.Int64(697631),
+        Search: writerclientsdkgo.String("architecto"),
         Shortcuts: []string{
-            "numquam",
-            "commodi",
-            "quam",
+            "ipsa",
         },
-        SortField: operations.FindSnippetsSortFieldCreationTime.ToPointer(),
-        SortOrder: operations.FindSnippetsSortOrderAsc.ToPointer(),
+        SortField: operations.FindSnippetsSortFieldModificationTime.ToPointer(),
+        SortOrder: operations.FindSnippetsSortOrderDesc.ToPointer(),
         Tags: []string{
-            "quia",
-            "quis",
-            "vitae",
+            "mollitia",
         },
-        TeamID: 674752,
+        TeamID: 670638,
     })
     if err != nil {
         log.Fatal(err)
@@ -145,53 +141,36 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(656330),
+        writerclientsdkgo.WithOrganizationID(170909),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Update(ctx, operations.UpdateSnippetsRequest{
         RequestBody: []shared.SnippetUpdate{
             shared.SnippetUpdate{
-                Description: writer.String("odit"),
-                ID: "c3f5ad01-9da1-4ffe-b8f0-97b0074f1547",
-                Shortcut: writer.String("dicta"),
-                Snippet: "harum",
+                Description: writerclientsdkgo.String("dolorem"),
+                ID: "52c59559-07af-4f1a-ba2f-a9467739251a",
+                Shortcut: writerclientsdkgo.String("animi"),
+                Snippet: "enim",
                 Tags: []shared.SnippetTagV2{
                     shared.SnippetTagV2{
-                        Tag: "accusamus",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "commodi",
-                    },
-                },
-            },
-            shared.SnippetUpdate{
-                Description: writer.String("repudiandae"),
-                ID: "13b99d48-8e1e-491e-850a-d2abd4426980",
-                Shortcut: writer.String("magni"),
-                Snippet: "assumenda",
-                Tags: []shared.SnippetTagV2{
-                    shared.SnippetTagV2{
-                        Tag: "alias",
-                    },
-                    shared.SnippetTagV2{
-                        Tag: "fugit",
+                        Tag: "odit",
                     },
                 },
             },
         },
-        XRequestID: writer.String("dolorum"),
-        TeamID: 569618,
+        XRequestID: writerclientsdkgo.String("quo"),
+        TeamID: 196582,
     })
     if err != nil {
         log.Fatal(err)

@@ -9,7 +9,6 @@ import (
 	"net/http"
 )
 
-// FindTermsPartOfSpeech
 type FindTermsPartOfSpeech string
 
 const (
@@ -43,7 +42,6 @@ func (e *FindTermsPartOfSpeech) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// FindTermsSortField
 type FindTermsSortField string
 
 const (
@@ -77,7 +75,6 @@ func (e *FindTermsSortField) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// FindTermsSortOrder
 type FindTermsSortOrder string
 
 const (
@@ -105,7 +102,6 @@ func (e *FindTermsSortOrder) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// FindTermsType
 type FindTermsType string
 
 const (

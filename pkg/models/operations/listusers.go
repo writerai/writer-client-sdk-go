@@ -9,7 +9,6 @@ import (
 	"net/http"
 )
 
-// ListUsersSortField
 type ListUsersSortField string
 
 const (
@@ -52,7 +51,6 @@ func (e *ListUsersSortField) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// ListUsersSortOrder
 type ListUsersSortOrder string
 
 const (

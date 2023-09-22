@@ -9,7 +9,6 @@ import (
 	"net/http"
 )
 
-// ListTeamDocumentsSortField
 type ListTeamDocumentsSortField string
 
 const (
@@ -46,7 +45,6 @@ func (e *ListTeamDocumentsSortField) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// ListTeamDocumentsSortOrder
 type ListTeamDocumentsSortOrder string
 
 const (

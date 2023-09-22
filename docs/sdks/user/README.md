@@ -20,25 +20,25 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writer.WithOrganizationID(20651),
+        writerclientsdkgo.WithOrganizationID(667411),
     )
 
     ctx := context.Background()
     res, err := s.User.List(ctx, operations.ListUsersRequest{
-        Limit: writer.Int64(229219),
-        Offset: writer.Int64(758379),
-        Search: writer.String("accusamus"),
-        SortField: operations.ListUsersSortFieldCreationTime.ToPointer(),
+        Limit: writerclientsdkgo.Int64(842342),
+        Offset: writerclientsdkgo.Int64(131797),
+        Search: writerclientsdkgo.String("deserunt"),
+        SortField: operations.ListUsersSortFieldEmail.ToPointer(),
         SortOrder: operations.ListUsersSortOrderDesc.ToPointer(),
     })
     if err != nil {
