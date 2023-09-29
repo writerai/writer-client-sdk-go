@@ -1,4 +1,5 @@
 # Styleguide
+(*Styleguide*)
 
 ## Overview
 
@@ -31,12 +32,12 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(949572),
+        writerclientsdkgo.WithOrganizationID(700347),
     )
 
     ctx := context.Background()
     res, err := s.Styleguide.Get(ctx, operations.PageDetailsRequest{
-        PageID: 368725,
+        PageID: 90065,
     })
     if err != nil {
         log.Fatal(err)
@@ -83,13 +84,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(662527),
+        writerclientsdkgo.WithOrganizationID(763372),
     )
 
     ctx := context.Background()
     res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{
-        Limit: writerclientsdkgo.Int64(820994),
-        Offset: writerclientsdkgo.Int64(13571),
+        Limit: writerclientsdkgo.Int64(760116),
+        Offset: writerclientsdkgo.Int64(303332),
         Status: operations.ListPagesStatusLive.ToPointer(),
     })
     if err != nil {

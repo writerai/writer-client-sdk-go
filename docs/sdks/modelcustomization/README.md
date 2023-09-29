@@ -1,4 +1,5 @@
 # ModelCustomization
+(*ModelCustomization*)
 
 ## Overview
 
@@ -33,25 +34,25 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(944669),
+        writerclientsdkgo.WithOrganizationID(486589),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Create(ctx, operations.CreateModelCustomizationRequest{
         CreateCustomizationRequest: shared.CreateCustomizationRequest{
             AdditionalHyperParameters: &shared.HyperParameters{
-                NumVirtualTokens: 758616,
+                NumVirtualTokens: 489382,
             },
-            BatchSize: writerclientsdkgo.Int64(521848),
-            Description: writerclientsdkgo.String("beatae"),
-            Epochs: writerclientsdkgo.Int64(414662),
-            LearningRate: writerclientsdkgo.Float64(4736),
-            Name: "Norma Ryan",
-            PromptTemplate: writerclientsdkgo.String("ipsum"),
-            TrainingDatasetFileID: "excepturi",
-            ValidationDatasetFileID: writerclientsdkgo.String("aspernatur"),
+            BatchSize: writerclientsdkgo.Int64(638424),
+            Description: writerclientsdkgo.String("Synchronised full-range emulation"),
+            Epochs: writerclientsdkgo.Int64(134365),
+            LearningRate: writerclientsdkgo.Float64(7865.46),
+            Name: "shred",
+            PromptTemplate: writerclientsdkgo.String("technology East"),
+            TrainingDatasetFileID: "evolve",
+            ValidationDatasetFileID: writerclientsdkgo.String("fuchsia Gasoline Screen"),
         },
-        ModelID: "perferendis",
+        ModelID: "physical Ameliorated",
     })
     if err != nil {
         log.Fatal(err)
@@ -98,13 +99,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(324141),
+        writerclientsdkgo.WithOrganizationID(545907),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Delete(ctx, operations.DeleteModelCustomizationRequest{
-        CustomizationID: "natus",
-        ModelID: "sed",
+        CustomizationID: "Designer complexity gladiolus",
+        ModelID: "objective Aluminium Metal",
     })
     if err != nil {
         log.Fatal(err)
@@ -151,13 +152,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(612096),
+        writerclientsdkgo.WithOrganizationID(700347),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Get(ctx, operations.GetModelCustomizationRequest{
-        CustomizationID: "dolor",
-        ModelID: "natus",
+        CustomizationID: "program",
+        ModelID: "Kia Cambridgeshire",
     })
     if err != nil {
         log.Fatal(err)
@@ -204,12 +205,12 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(386489),
+        writerclientsdkgo.WithOrganizationID(768578),
     )
 
     ctx := context.Background()
     res, err := s.ModelCustomization.List(ctx, operations.ListModelCustomizationsRequest{
-        ModelID: "hic",
+        ModelID: "compress",
     })
     if err != nil {
         log.Fatal(err)

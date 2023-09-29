@@ -27,10 +27,13 @@ func (o *GetFileRequest) GetOrganizationID() *int64 {
 }
 
 type GetFileResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	Headers     map[string][]string
 	ModelFile   *shared.ModelFile
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

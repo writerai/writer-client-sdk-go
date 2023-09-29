@@ -1,4 +1,5 @@
 # User
+(*User*)
 
 ## Overview
 
@@ -30,16 +31,16 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(667411),
+        writerclientsdkgo.WithOrganizationID(768578),
     )
 
     ctx := context.Background()
     res, err := s.User.List(ctx, operations.ListUsersRequest{
-        Limit: writerclientsdkgo.Int64(842342),
-        Offset: writerclientsdkgo.Int64(131797),
-        Search: writerclientsdkgo.String("deserunt"),
-        SortField: operations.ListUsersSortFieldEmail.ToPointer(),
-        SortOrder: operations.ListUsersSortOrderDesc.ToPointer(),
+        Limit: writerclientsdkgo.Int64(99895),
+        Offset: writerclientsdkgo.Int64(547272),
+        Search: writerclientsdkgo.String("Product"),
+        SortField: operations.ListUsersSortFieldID.ToPointer(),
+        SortOrder: operations.ListUsersSortOrderAsc.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)

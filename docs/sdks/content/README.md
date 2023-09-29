@@ -1,4 +1,5 @@
 # Content
+(*Content*)
 
 ## Overview
 
@@ -31,13 +32,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(778157),
+        writerclientsdkgo.WithOrganizationID(935464),
     )
 
     ctx := context.Background()
     res, err := s.Content.Check(ctx, operations.ContentCheckRequest{
         ContentRequest: shared.ContentRequest{
-            Content: "odit",
+            Content: "now",
             Settings: shared.ContentSettings{
                 AgeAndFamilyStatus: false,
                 Confidence: false,
@@ -57,7 +58,7 @@ func main() {
                 Wordiness: false,
             },
         },
-        TeamID: 870013,
+        TeamID: 740907,
     })
     if err != nil {
         log.Fatal(err)
@@ -104,13 +105,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(870088),
+        writerclientsdkgo.WithOrganizationID(501355),
     )
 
     ctx := context.Background()
     res, err := s.Content.Correct(ctx, operations.ContentCorrectRequest{
         ContentRequest: shared.ContentRequest{
-            Content: "maiores",
+            Content: "structure",
             Settings: shared.ContentSettings{
                 AgeAndFamilyStatus: false,
                 Confidence: false,
@@ -130,8 +131,8 @@ func main() {
                 Wordiness: false,
             },
         },
-        XRequestID: writerclientsdkgo.String("molestiae"),
-        TeamID: 799159,
+        XRequestID: writerclientsdkgo.String("failing"),
+        TeamID: 125766,
     })
     if err != nil {
         log.Fatal(err)

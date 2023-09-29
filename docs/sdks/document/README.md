@@ -1,4 +1,5 @@
 # Document
+(*Document*)
 
 ## Overview
 
@@ -31,13 +32,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(289406),
+        writerclientsdkgo.WithOrganizationID(700347),
     )
 
     ctx := context.Background()
     res, err := s.Document.Get(ctx, operations.GetDocumentDetailsRequest{
-        DocumentID: 264730,
-        TeamID: 183191,
+        DocumentID: 90065,
+        TeamID: 558834,
     })
     if err != nil {
         log.Fatal(err)
@@ -84,17 +85,17 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(397821),
+        writerclientsdkgo.WithOrganizationID(768578),
     )
 
     ctx := context.Background()
     res, err := s.Document.List(ctx, operations.ListTeamDocumentsRequest{
-        Limit: writerclientsdkgo.Int(586513),
-        Offset: writerclientsdkgo.Int64(552822),
-        Search: writerclientsdkgo.String("perferendis"),
+        Limit: writerclientsdkgo.Int(99895),
+        Offset: writerclientsdkgo.Int64(547272),
+        Search: writerclientsdkgo.String("Product"),
         SortField: operations.ListTeamDocumentsSortFieldTitle.ToPointer(),
-        SortOrder: operations.ListTeamDocumentsSortOrderDesc.ToPointer(),
-        TeamID: 369808,
+        SortOrder: operations.ListTeamDocumentsSortOrderAsc.ToPointer(),
+        TeamID: 917416,
     })
     if err != nil {
         log.Fatal(err)

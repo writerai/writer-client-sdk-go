@@ -47,13 +47,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(715190),
+        writerclientsdkgo.WithOrganizationID(496531),
     )
 
     ctx := context.Background()
     res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
         ContentDetectorRequest: shared.ContentDetectorRequest{
-            Input: "quibusdam",
+            Input: "Bronze Indian",
         },
     })
     if err != nil {
@@ -148,8 +148,6 @@ func main() {
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
 
 
@@ -162,8 +160,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `nil`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 

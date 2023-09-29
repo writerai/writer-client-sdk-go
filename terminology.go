@@ -46,7 +46,7 @@ func (s *terminology) Add(ctx context.Context, request operations.AddTermsReques
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
@@ -132,7 +132,7 @@ func (s *terminology) Delete(ctx context.Context, request operations.DeleteTerms
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	utils.PopulateHeaders(ctx, req, request)
 
@@ -222,7 +222,7 @@ func (s *terminology) Find(ctx context.Context, request operations.FindTermsRequ
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
@@ -318,7 +318,7 @@ func (s *terminology) Update(ctx context.Context, request operations.UpdateTerms
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 

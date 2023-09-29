@@ -1,4 +1,5 @@
 # CoWrite
+(*CoWrite*)
 
 ## Overview
 
@@ -31,7 +32,7 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(847252),
+        writerclientsdkgo.WithOrganizationID(569932),
     )
 
     ctx := context.Background()
@@ -39,15 +40,15 @@ func main() {
         GenerateTemplateRequest: shared.GenerateTemplateRequest{
             Inputs: []shared.MagicRequestInput{
                 shared.MagicRequestInput{
-                    Name: "Sabrina Oberbrunner",
+                    Name: "er man approach",
                     Value: []string{
-                        "magnam",
+                        "builder",
                     },
                 },
             },
-            TemplateID: "debitis",
+            TemplateID: "Planner",
         },
-        TeamID: 56713,
+        TeamID: 612911,
     })
     if err != nil {
         log.Fatal(err)
@@ -94,13 +95,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(963663),
+        writerclientsdkgo.WithOrganizationID(380445),
     )
 
     ctx := context.Background()
     res, err := s.CoWrite.ListTemplates(ctx, operations.ListTemplatesRequest{
-        TeamID: 272656,
-        TemplateID: "suscipit",
+        TeamID: 882866,
+        TemplateID: "Soul",
     })
     if err != nil {
         log.Fatal(err)

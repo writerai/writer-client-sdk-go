@@ -1,4 +1,5 @@
 # Completions
+(*Completions*)
 
 ## Overview
 
@@ -31,27 +32,27 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(477665),
+        writerclientsdkgo.WithOrganizationID(486589),
     )
 
     ctx := context.Background()
     res, err := s.Completions.Create(ctx, operations.CreateCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
             BestOf: writerclientsdkgo.Int64(1),
-            FrequencyPenalty: writerclientsdkgo.Float64(7917.25),
-            Logprobs: writerclientsdkgo.Int64(812169),
+            FrequencyPenalty: writerclientsdkgo.Float64(4893.82),
+            Logprobs: writerclientsdkgo.Int64(638424),
             MaxTokens: writerclientsdkgo.Int64(1024),
             MinTokens: writerclientsdkgo.Int64(1),
-            N: writerclientsdkgo.Int64(528895),
-            PresencePenalty: writerclientsdkgo.Float64(4799.77),
-            Prompt: "excepturi",
+            N: writerclientsdkgo.Int64(859213),
+            PresencePenalty: writerclientsdkgo.Float64(4174.58),
+            Prompt: "South",
             Stop: []string{
-                "nisi",
+                "shred",
             },
             Temperature: writerclientsdkgo.Float64(0.7),
             TopP: writerclientsdkgo.Float64(1),
         },
-        ModelID: "recusandae",
+        ModelID: "technology East",
     })
     if err != nil {
         log.Fatal(err)
@@ -98,28 +99,28 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(836079),
+        writerclientsdkgo.WithOrganizationID(919503),
     )
 
     ctx := context.Background()
     res, err := s.Completions.CreateModelCustomizationCompletion(ctx, operations.CreateModelCustomizationCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
             BestOf: writerclientsdkgo.Int64(1),
-            FrequencyPenalty: writerclientsdkgo.Float64(710.36),
-            Logprobs: writerclientsdkgo.Int64(337396),
+            FrequencyPenalty: writerclientsdkgo.Float64(412.97),
+            Logprobs: writerclientsdkgo.Int64(951257),
             MaxTokens: writerclientsdkgo.Int64(1024),
             MinTokens: writerclientsdkgo.Int64(1),
-            N: writerclientsdkgo.Int64(87129),
-            PresencePenalty: writerclientsdkgo.Float64(6481.72),
-            Prompt: "perferendis",
+            N: writerclientsdkgo.Int64(314952),
+            PresencePenalty: writerclientsdkgo.Float64(657.2),
+            Prompt: "platforms convergence Bicycle",
             Stop: []string{
-                "ipsam",
+                "heavily",
             },
             Temperature: writerclientsdkgo.Float64(0.7),
             TopP: writerclientsdkgo.Float64(1),
         },
-        CustomizationID: "repellendus",
-        ModelID: "sapiente",
+        CustomizationID: "Beauty cum Southeast",
+        ModelID: "Tandem BMX Lead",
     })
     if err != nil {
         log.Fatal(err)

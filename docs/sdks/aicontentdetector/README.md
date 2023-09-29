@@ -1,4 +1,5 @@
 # AIContentDetector
+(*AIContentDetector*)
 
 ## Overview
 
@@ -30,13 +31,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(602763),
+        writerclientsdkgo.WithOrganizationID(496531),
     )
 
     ctx := context.Background()
     res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
         ContentDetectorRequest: shared.ContentDetectorRequest{
-            Input: "nulla",
+            Input: "Bronze Indian",
         },
     })
     if err != nil {

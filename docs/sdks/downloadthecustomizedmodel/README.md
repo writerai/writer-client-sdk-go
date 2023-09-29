@@ -1,4 +1,5 @@
 # DownloadTheCustomizedModel
+(*DownloadTheCustomizedModel*)
 
 ## Overview
 
@@ -30,13 +31,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(800911),
+        writerclientsdkgo.WithOrganizationID(501762),
     )
 
     ctx := context.Background()
     res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, operations.FetchCustomizedModelFileRequest{
-        CustomizationID: "esse",
-        ModelID: "totam",
+        CustomizationID: "Racine beyond connecting",
+        ModelID: "invoice Folk",
     })
     if err != nil {
         log.Fatal(err)

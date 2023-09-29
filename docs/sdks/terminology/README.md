@@ -1,4 +1,5 @@
 # Terminology
+(*Terminology*)
 
 ## Overview
 
@@ -33,7 +34,7 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(622846),
+        writerclientsdkgo.WithOrganizationID(551477),
     )
 
     ctx := context.Background()
@@ -48,41 +49,41 @@ func main() {
                         FixCommonMistakes: false,
                     },
                     CaseSensitive: false,
-                    Description: writerclientsdkgo.String("laborum"),
+                    Description: writerclientsdkgo.String("Optional mobile secured line"),
                     Examples: []shared.TermExampleCreate{
                         shared.TermExampleCreate{
-                            Example: "quasi",
-                            Type: shared.TermExampleCreateTypeBad,
+                            Example: "noon bypass Chief",
+                            Type: shared.TermExampleCreateTypeGood,
                         },
                     },
                     Highlight: writerclientsdkgo.Bool(false),
                     LinkedTerms: []shared.LinkedTermCreate{
                         shared.LinkedTermCreate{
-                            LinkedTermID: writerclientsdkgo.Int64(976460),
-                            Reference: writerclientsdkgo.String("vero"),
+                            LinkedTermID: writerclientsdkgo.Int64(753323),
+                            Reference: writerclientsdkgo.String("Southeast"),
                         },
                     },
                     Mistakes: []shared.TermMistakeCreate{
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
-                            Mistake: "nihil",
-                            Pos: shared.TermMistakeCreatePosAdverb.ToPointer(),
-                            Reference: writerclientsdkgo.String("voluptatibus"),
+                            Mistake: "generating payment quantify",
+                            Pos: shared.TermMistakeCreatePosVerb.ToPointer(),
+                            Reference: writerclientsdkgo.String("Urbandale Gasoline"),
                         },
                     },
-                    Pos: shared.TermCreatePosNoun.ToPointer(),
-                    Reference: writerclientsdkgo.String("omnis"),
+                    Pos: shared.TermCreatePosAdverb.ToPointer(),
+                    Reference: writerclientsdkgo.String("methodologies"),
                     Tags: []shared.TermTagCreate{
                         shared.TermTagCreate{
-                            Tag: "voluptate",
+                            Tag: "Northeast",
                         },
                     },
-                    Term: "cum",
-                    Type: shared.TermCreateTypeApproved,
+                    Term: "Pomona auxiliary",
+                    Type: shared.TermCreateTypeBanned,
                 },
             },
         },
-        TeamID: 39187,
+        TeamID: 739517,
     })
     if err != nil {
         log.Fatal(err)
@@ -129,16 +130,16 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(441711),
+        writerclientsdkgo.WithOrganizationID(545907),
     )
 
     ctx := context.Background()
     res, err := s.Terminology.Delete(ctx, operations.DeleteTermsRequest{
-        XRequestID: writerclientsdkgo.String("ut"),
+        XRequestID: writerclientsdkgo.String("Designer complexity gladiolus"),
         Ids: []int64{
-            979587,
+            921415,
         },
-        TeamID: 120196,
+        TeamID: 953140,
     })
     if err != nil {
         log.Fatal(err)
@@ -185,21 +186,21 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(359444),
+        writerclientsdkgo.WithOrganizationID(40141),
     )
 
     ctx := context.Background()
     res, err := s.Terminology.Find(ctx, operations.FindTermsRequest{
-        Limit: writerclientsdkgo.Int64(296140),
-        Offset: writerclientsdkgo.Int64(480894),
-        PartOfSpeech: operations.FindTermsPartOfSpeechNoun.ToPointer(),
-        SortField: operations.FindTermsSortFieldModificationTime.ToPointer(),
+        Limit: writerclientsdkgo.Int64(326883),
+        Offset: writerclientsdkgo.Int64(488098),
+        PartOfSpeech: operations.FindTermsPartOfSpeechAdjective.ToPointer(),
+        SortField: operations.FindTermsSortFieldType.ToPointer(),
         SortOrder: operations.FindTermsSortOrderAsc.ToPointer(),
         Tags: []string{
-            "accusamus",
+            "West",
         },
-        TeamID: 414263,
-        Term: writerclientsdkgo.String("repudiandae"),
+        TeamID: 413686,
+        Term: writerclientsdkgo.String("Bike generating"),
         Type: operations.FindTermsTypeApproved.ToPointer(),
     })
     if err != nil {
@@ -247,13 +248,13 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(216822),
+        writerclientsdkgo.WithOrganizationID(857478),
     )
 
     ctx := context.Background()
     res, err := s.Terminology.Update(ctx, operations.UpdateTermsRequest{
         UpdateTermsRequest: shared.UpdateTermsRequest{
-            FailHandling: shared.UpdateTermsRequestFailHandlingSkip.ToPointer(),
+            FailHandling: shared.UpdateTermsRequestFailHandlingAccumulate.ToPointer(),
             Models: []shared.TermUpdate{
                 shared.TermUpdate{
                     ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
@@ -262,42 +263,42 @@ func main() {
                         FixCommonMistakes: false,
                     },
                     CaseSensitive: false,
-                    Description: writerclientsdkgo.String("molestias"),
+                    Description: writerclientsdkgo.String("Persistent 24/7 focus group"),
                     Examples: []shared.TermExampleCreate{
                         shared.TermExampleCreate{
-                            Example: "excepturi",
+                            Example: "dock Quality redundant",
                             Type: shared.TermExampleCreateTypeBad,
                         },
                     },
                     Highlight: writerclientsdkgo.Bool(false),
-                    ID: 265389,
+                    ID: 134151,
                     LinkedTerms: []shared.LinkedTermCreate{
                         shared.LinkedTermCreate{
-                            LinkedTermID: writerclientsdkgo.Int64(508969),
-                            Reference: writerclientsdkgo.String("rem"),
+                            LinkedTermID: writerclientsdkgo.Int64(54062),
+                            Reference: writerclientsdkgo.String("mostly"),
                         },
                     },
                     Mistakes: []shared.TermMistakeCreate{
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
-                            Mistake: "voluptates",
-                            Pos: shared.TermMistakeCreatePosNoun.ToPointer(),
-                            Reference: writerclientsdkgo.String("repudiandae"),
+                            Mistake: "dynamic white",
+                            Pos: shared.TermMistakeCreatePosVerb.ToPointer(),
+                            Reference: writerclientsdkgo.String("Forward"),
                         },
                     },
-                    Pos: shared.TermUpdatePosAdverb.ToPointer(),
+                    Pos: shared.TermUpdatePosAdjective.ToPointer(),
                     Tags: []shared.TermTagCreate{
                         shared.TermTagCreate{
-                            Tag: "veritatis",
+                            Tag: "East Baht Quality",
                         },
                     },
-                    Term: "itaque",
-                    Type: shared.TermUpdateTypeApproved,
+                    Term: "Home users Sharable",
+                    Type: shared.TermUpdateTypeBanned,
                 },
             },
         },
-        XRequestID: writerclientsdkgo.String("enim"),
-        TeamID: 9356,
+        XRequestID: writerclientsdkgo.String("Northeast Wooden"),
+        TeamID: 352919,
     })
     if err != nil {
         log.Fatal(err)

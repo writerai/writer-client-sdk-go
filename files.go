@@ -38,7 +38,7 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 
@@ -122,7 +122,7 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 
@@ -206,7 +206,7 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 
@@ -298,7 +298,7 @@ func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 

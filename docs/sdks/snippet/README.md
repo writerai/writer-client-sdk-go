@@ -1,4 +1,5 @@
 # Snippet
+(*Snippet*)
 
 ## Overview
 
@@ -32,16 +33,16 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(681820),
+        writerclientsdkgo.WithOrganizationID(545907),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Delete(ctx, operations.DeleteSnippetsRequest{
-        XRequestID: writerclientsdkgo.String("in"),
+        XRequestID: writerclientsdkgo.String("Designer complexity gladiolus"),
         Ids: []string{
-            "corporis",
+            "ick",
         },
-        TeamID: 613064,
+        TeamID: 604931,
     })
     if err != nil {
         log.Fatal(err)
@@ -88,23 +89,23 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(437032),
+        writerclientsdkgo.WithOrganizationID(40141),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Find(ctx, operations.FindSnippetsRequest{
-        Limit: writerclientsdkgo.Int64(902349),
-        Offset: writerclientsdkgo.Int64(697631),
-        Search: writerclientsdkgo.String("architecto"),
+        Limit: writerclientsdkgo.Int64(326883),
+        Offset: writerclientsdkgo.Int64(488098),
+        Search: writerclientsdkgo.String("whoa West Credit"),
         Shortcuts: []string{
-            "ipsa",
+            "Granite",
         },
-        SortField: operations.FindSnippetsSortFieldModificationTime.ToPointer(),
-        SortOrder: operations.FindSnippetsSortOrderDesc.ToPointer(),
+        SortField: operations.FindSnippetsSortFieldCreationTime.ToPointer(),
+        SortOrder: operations.FindSnippetsSortOrderAsc.ToPointer(),
         Tags: []string{
-            "mollitia",
+            "Iowa",
         },
-        TeamID: 670638,
+        TeamID: 785366,
     })
     if err != nil {
         log.Fatal(err)
@@ -151,26 +152,26 @@ func main() {
         writerclientsdkgo.WithSecurity(shared.Security{
             APIKey: "",
         }),
-        writerclientsdkgo.WithOrganizationID(170909),
+        writerclientsdkgo.WithOrganizationID(857478),
     )
 
     ctx := context.Background()
     res, err := s.Snippet.Update(ctx, operations.UpdateSnippetsRequest{
         RequestBody: []shared.SnippetUpdate{
             shared.SnippetUpdate{
-                Description: writerclientsdkgo.String("dolorem"),
-                ID: "52c59559-07af-4f1a-ba2f-a9467739251a",
-                Shortcut: writerclientsdkgo.String("animi"),
-                Snippet: "enim",
+                Description: writerclientsdkgo.String("Ameliorated methodical access"),
+                ID: "<ID>",
+                Shortcut: writerclientsdkgo.String("male Metal"),
+                Snippet: "Arizona Cotton extend",
                 Tags: []shared.SnippetTagV2{
                     shared.SnippetTagV2{
-                        Tag: "odit",
+                        Tag: "bifurcated",
                     },
                 },
             },
         },
-        XRequestID: writerclientsdkgo.String("quo"),
-        TeamID: 196582,
+        XRequestID: writerclientsdkgo.String("silver immediately"),
+        TeamID: 302461,
     })
     if err != nil {
         log.Fatal(err)

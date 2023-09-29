@@ -38,7 +38,7 @@ func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsR
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	utils.PopulateHeaders(ctx, req, request)
 
@@ -128,7 +128,7 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
@@ -221,7 +221,7 @@ func (s *snippet) Update(ctx context.Context, request operations.UpdateSnippetsR
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 

@@ -3,6 +3,7 @@
 package writerclientsdkgo
 
 import (
+	"context"
 	"fmt"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/utils"
@@ -41,13 +42,14 @@ func Float64(f float64) *float64 { return &f }
 type sdkConfiguration struct {
 	DefaultClient     HTTPClient
 	SecurityClient    HTTPClient
-	Security          *shared.Security
+	Security          func(context.Context) (interface{}, error)
 	ServerURL         string
 	ServerIndex       int
 	Language          string
 	OpenAPIDocVersion string
 	SDKVersion        string
 	GenVersion        string
+	UserAgent         string
 	Globals           map[string]map[string]map[string]interface{}
 	RetryConfig       *utils.RetryConfig
 }
@@ -130,11 +132,25 @@ func WithClient(client HTTPClient) SDKOption {
 		sdk.sdkConfiguration.DefaultClient = client
 	}
 }
+func withSecurity(security interface{}) func(context.Context) (interface{}, error) {
+	return func(context.Context) (interface{}, error) {
+		return &security, nil
+	}
+}
 
 // WithSecurity configures the SDK to use the provided security details
 func WithSecurity(security shared.Security) SDKOption {
 	return func(sdk *Writer) {
-		sdk.sdkConfiguration.Security = &security
+		sdk.sdkConfiguration.Security = withSecurity(security)
+	}
+}
+
+// WithSecuritySource configures the SDK to invoke the Security Source function on each method call to determine authentication
+func WithSecuritySource(security func(context.Context) (shared.Security, error)) SDKOption {
+	return func(sdk *Writer) {
+		sdk.sdkConfiguration.Security = func(ctx context.Context) (interface{}, error) {
+			return security(ctx)
+		}
 	}
 }
 
@@ -161,8 +177,9 @@ func New(opts ...SDKOption) *Writer {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.7",
-			SDKVersion:        "0.17.0",
-			GenVersion:        "2.125.1",
+			SDKVersion:        "0.18.0",
+			GenVersion:        "2.139.1",
+			UserAgent:         "speakeasy-sdk/go 0.18.0 2.139.1 1.7 github.com/writerai/writer-client-sdk-go",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
