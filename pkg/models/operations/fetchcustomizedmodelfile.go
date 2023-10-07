@@ -3,6 +3,7 @@
 package operations
 
 import (
+	"io"
 	"net/http"
 )
 
@@ -40,8 +41,9 @@ type FetchCustomizedModelFileResponse struct {
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
-	RawResponse                                                   *http.Response
-	FetchCustomizedModelFile200ApplicationOctetStreamBinaryString []byte
+	RawResponse *http.Response
+	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
+	FetchCustomizedModelFile200ApplicationOctetStreamBinaryString io.ReadCloser
 }
 
 func (o *FetchCustomizedModelFileResponse) GetContentType() string {
@@ -72,7 +74,7 @@ func (o *FetchCustomizedModelFileResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *FetchCustomizedModelFileResponse) GetFetchCustomizedModelFile200ApplicationOctetStreamBinaryString() []byte {
+func (o *FetchCustomizedModelFileResponse) GetFetchCustomizedModelFile200ApplicationOctetStreamBinaryString() io.ReadCloser {
 	if o == nil {
 		return nil
 	}

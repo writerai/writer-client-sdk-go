@@ -35,13 +35,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.User.List(ctx, operations.ListUsersRequest{
-        Limit: writerclientsdkgo.Int64(99895),
-        Offset: writerclientsdkgo.Int64(547272),
-        Search: writerclientsdkgo.String("Product"),
-        SortField: operations.ListUsersSortFieldID.ToPointer(),
-        SortOrder: operations.ListUsersSortOrderAsc.ToPointer(),
-    })
+    res, err := s.User.List(ctx, operations.ListUsersRequest{})
     if err != nil {
         log.Fatal(err)
     }

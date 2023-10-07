@@ -43,16 +43,10 @@ func main() {
             AdditionalHyperParameters: &shared.HyperParameters{
                 NumVirtualTokens: 489382,
             },
-            BatchSize: writerclientsdkgo.Int64(638424),
-            Description: writerclientsdkgo.String("Synchronised full-range emulation"),
-            Epochs: writerclientsdkgo.Int64(134365),
-            LearningRate: writerclientsdkgo.Float64(7865.46),
-            Name: "shred",
-            PromptTemplate: writerclientsdkgo.String("technology East"),
-            TrainingDatasetFileID: "evolve",
-            ValidationDatasetFileID: writerclientsdkgo.String("fuchsia Gasoline Screen"),
+            Name: "Extended South",
+            TrainingDatasetFileID: "grey technology East",
         },
-        ModelID: "physical Ameliorated",
+        ModelID: "evolve",
     })
     if err != nil {
         log.Fatal(err)

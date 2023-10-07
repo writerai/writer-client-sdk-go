@@ -90,12 +90,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Document.List(ctx, operations.ListTeamDocumentsRequest{
-        Limit: writerclientsdkgo.Int(99895),
-        Offset: writerclientsdkgo.Int64(547272),
-        Search: writerclientsdkgo.String("Product"),
-        SortField: operations.ListTeamDocumentsSortFieldTitle.ToPointer(),
-        SortOrder: operations.ListTeamDocumentsSortOrderAsc.ToPointer(),
-        TeamID: 917416,
+        TeamID: 99895,
     })
     if err != nil {
         log.Fatal(err)

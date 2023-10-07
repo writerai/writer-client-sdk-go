@@ -131,8 +131,7 @@ func main() {
                 Wordiness: false,
             },
         },
-        XRequestID: writerclientsdkgo.String("failing"),
-        TeamID: 125766,
+        TeamID: 267677,
     })
     if err != nil {
         log.Fatal(err)

@@ -88,11 +88,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{
-        Limit: writerclientsdkgo.Int64(760116),
-        Offset: writerclientsdkgo.Int64(303332),
-        Status: operations.ListPagesStatusLive.ToPointer(),
-    })
+    res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{})
     if err != nil {
         log.Fatal(err)
     }

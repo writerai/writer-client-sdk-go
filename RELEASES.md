@@ -169,3 +169,13 @@ Based on:
 - [go v0.18.0] .
 ### Releases
 - [Go v0.18.0] https://github.com/writerai/writer-client-sdk-go/releases/tag/v0.18.0 - .
+
+## 2023-10-07 00:04:50
+### Changes
+Based on:
+- OpenAPI Doc 1.7 https://raw.githubusercontent.com/speakeasy-sdks/w-ai-openapi/main/openapi.yaml
+- Speakeasy CLI 1.96.1 (2.150.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v0.19.0] .
+### Releases
+- [Go v0.19.0] https://github.com/writerai/writer-client-sdk-go/releases/tag/v0.19.0 - .

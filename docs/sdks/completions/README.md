@@ -39,20 +39,18 @@ func main() {
     res, err := s.Completions.Create(ctx, operations.CreateCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
             BestOf: writerclientsdkgo.Int64(1),
-            FrequencyPenalty: writerclientsdkgo.Float64(4893.82),
-            Logprobs: writerclientsdkgo.Int64(638424),
             MaxTokens: writerclientsdkgo.Int64(1024),
             MinTokens: writerclientsdkgo.Int64(1),
-            N: writerclientsdkgo.Int64(859213),
-            PresencePenalty: writerclientsdkgo.Float64(4174.58),
-            Prompt: "South",
+            Prompt: "Configuration Money",
             Stop: []string{
-                "shred",
+                "the",
+                "is",
+                "and",
             },
             Temperature: writerclientsdkgo.Float64(0.7),
             TopP: writerclientsdkgo.Float64(1),
         },
-        ModelID: "technology East",
+        ModelID: "Cambridgeshire grey technology",
     })
     if err != nil {
         log.Fatal(err)
@@ -106,21 +104,19 @@ func main() {
     res, err := s.Completions.CreateModelCustomizationCompletion(ctx, operations.CreateModelCustomizationCompletionRequest{
         CompletionRequest: shared.CompletionRequest{
             BestOf: writerclientsdkgo.Int64(1),
-            FrequencyPenalty: writerclientsdkgo.Float64(412.97),
-            Logprobs: writerclientsdkgo.Int64(951257),
             MaxTokens: writerclientsdkgo.Int64(1024),
             MinTokens: writerclientsdkgo.Int64(1),
-            N: writerclientsdkgo.Int64(314952),
-            PresencePenalty: writerclientsdkgo.Float64(657.2),
-            Prompt: "platforms convergence Bicycle",
+            Prompt: "error",
             Stop: []string{
-                "heavily",
+                "the",
+                "is",
+                "and",
             },
             Temperature: writerclientsdkgo.Float64(0.7),
             TopP: writerclientsdkgo.Float64(1),
         },
-        CustomizationID: "Beauty cum Southeast",
-        ModelID: "Tandem BMX Lead",
+        CustomizationID: "newton",
+        ModelID: "convergence",
     })
     if err != nil {
         log.Fatal(err)

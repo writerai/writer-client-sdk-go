@@ -38,11 +38,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Snippet.Delete(ctx, operations.DeleteSnippetsRequest{
-        XRequestID: writerclientsdkgo.String("Designer complexity gladiolus"),
         Ids: []string{
-            "ick",
+            "Van",
         },
-        TeamID: 604931,
+        TeamID: 386564,
     })
     if err != nil {
         log.Fatal(err)
@@ -94,18 +93,13 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Snippet.Find(ctx, operations.FindSnippetsRequest{
-        Limit: writerclientsdkgo.Int64(326883),
-        Offset: writerclientsdkgo.Int64(488098),
-        Search: writerclientsdkgo.String("whoa West Credit"),
         Shortcuts: []string{
-            "Granite",
+            "underestimate",
         },
-        SortField: operations.FindSnippetsSortFieldCreationTime.ToPointer(),
-        SortOrder: operations.FindSnippetsSortOrderAsc.ToPointer(),
         Tags: []string{
-            "Iowa",
+            "Northeast",
         },
-        TeamID: 785366,
+        TeamID: 803382,
     })
     if err != nil {
         log.Fatal(err)
@@ -159,19 +153,16 @@ func main() {
     res, err := s.Snippet.Update(ctx, operations.UpdateSnippetsRequest{
         RequestBody: []shared.SnippetUpdate{
             shared.SnippetUpdate{
-                Description: writerclientsdkgo.String("Ameliorated methodical access"),
                 ID: "<ID>",
-                Shortcut: writerclientsdkgo.String("male Metal"),
-                Snippet: "Arizona Cotton extend",
+                Snippet: "Rock",
                 Tags: []shared.SnippetTagV2{
                     shared.SnippetTagV2{
-                        Tag: "bifurcated",
+                        Tag: "male Metal",
                     },
                 },
             },
         },
-        XRequestID: writerclientsdkgo.String("silver immediately"),
-        TeamID: 302461,
+        TeamID: 984008,
     })
     if err != nil {
         log.Fatal(err)

@@ -40,7 +40,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Terminology.Add(ctx, operations.AddTermsRequest{
         CreateTermsRequest: shared.CreateTermsRequest{
-            FailHandling: shared.CreateTermsRequestFailHandlingValidateOnly.ToPointer(),
             Models: []shared.TermCreate{
                 shared.TermCreate{
                     ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
@@ -49,41 +48,32 @@ func main() {
                         FixCommonMistakes: false,
                     },
                     CaseSensitive: false,
-                    Description: writerclientsdkgo.String("Optional mobile secured line"),
                     Examples: []shared.TermExampleCreate{
                         shared.TermExampleCreate{
-                            Example: "noon bypass Chief",
-                            Type: shared.TermExampleCreateTypeGood,
+                            Example: "calculate Toyota noon",
+                            Type: shared.TermExampleCreateTypeBad,
                         },
                     },
-                    Highlight: writerclientsdkgo.Bool(false),
                     LinkedTerms: []shared.LinkedTermCreate{
-                        shared.LinkedTermCreate{
-                            LinkedTermID: writerclientsdkgo.Int64(753323),
-                            Reference: writerclientsdkgo.String("Southeast"),
-                        },
+                        shared.LinkedTermCreate{},
                     },
                     Mistakes: []shared.TermMistakeCreate{
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
-                            Mistake: "generating payment quantify",
-                            Pos: shared.TermMistakeCreatePosVerb.ToPointer(),
-                            Reference: writerclientsdkgo.String("Urbandale Gasoline"),
+                            Mistake: "Chief",
                         },
                     },
-                    Pos: shared.TermCreatePosAdverb.ToPointer(),
-                    Reference: writerclientsdkgo.String("methodologies"),
                     Tags: []shared.TermTagCreate{
                         shared.TermTagCreate{
-                            Tag: "Northeast",
+                            Tag: "kelvin",
                         },
                     },
-                    Term: "Pomona auxiliary",
+                    Term: "lime",
                     Type: shared.TermCreateTypeBanned,
                 },
             },
         },
-        TeamID: 739517,
+        TeamID: 623862,
     })
     if err != nil {
         log.Fatal(err)
@@ -135,11 +125,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Terminology.Delete(ctx, operations.DeleteTermsRequest{
-        XRequestID: writerclientsdkgo.String("Designer complexity gladiolus"),
         Ids: []int64{
-            921415,
+            841399,
         },
-        TeamID: 953140,
+        TeamID: 698486,
     })
     if err != nil {
         log.Fatal(err)
@@ -191,17 +180,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Terminology.Find(ctx, operations.FindTermsRequest{
-        Limit: writerclientsdkgo.Int64(326883),
-        Offset: writerclientsdkgo.Int64(488098),
-        PartOfSpeech: operations.FindTermsPartOfSpeechAdjective.ToPointer(),
-        SortField: operations.FindTermsSortFieldType.ToPointer(),
-        SortOrder: operations.FindTermsSortOrderAsc.ToPointer(),
         Tags: []string{
-            "West",
+            "underestimate",
         },
-        TeamID: 413686,
-        Term: writerclientsdkgo.String("Bike generating"),
-        Type: operations.FindTermsTypeApproved.ToPointer(),
+        TeamID: 111247,
     })
     if err != nil {
         log.Fatal(err)
@@ -254,7 +236,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Terminology.Update(ctx, operations.UpdateTermsRequest{
         UpdateTermsRequest: shared.UpdateTermsRequest{
-            FailHandling: shared.UpdateTermsRequestFailHandlingAccumulate.ToPointer(),
             Models: []shared.TermUpdate{
                 shared.TermUpdate{
                     ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
@@ -263,42 +244,33 @@ func main() {
                         FixCommonMistakes: false,
                     },
                     CaseSensitive: false,
-                    Description: writerclientsdkgo.String("Persistent 24/7 focus group"),
                     Examples: []shared.TermExampleCreate{
                         shared.TermExampleCreate{
-                            Example: "dock Quality redundant",
-                            Type: shared.TermExampleCreateTypeBad,
+                            Example: "Rock",
+                            Type: shared.TermExampleCreateTypeGood,
                         },
                     },
-                    Highlight: writerclientsdkgo.Bool(false),
-                    ID: 134151,
+                    ID: 708455,
                     LinkedTerms: []shared.LinkedTermCreate{
-                        shared.LinkedTermCreate{
-                            LinkedTermID: writerclientsdkgo.Int64(54062),
-                            Reference: writerclientsdkgo.String("mostly"),
-                        },
+                        shared.LinkedTermCreate{},
                     },
                     Mistakes: []shared.TermMistakeCreate{
                         shared.TermMistakeCreate{
                             CaseSensitive: false,
-                            Mistake: "dynamic white",
-                            Pos: shared.TermMistakeCreatePosVerb.ToPointer(),
-                            Reference: writerclientsdkgo.String("Forward"),
+                            Mistake: "Metal cheater Islands",
                         },
                     },
-                    Pos: shared.TermUpdatePosAdjective.ToPointer(),
                     Tags: []shared.TermTagCreate{
                         shared.TermTagCreate{
-                            Tag: "East Baht Quality",
+                            Tag: "withdrawal extend",
                         },
                     },
-                    Term: "Home users Sharable",
+                    Term: "bifurcated",
                     Type: shared.TermUpdateTypeBanned,
                 },
             },
         },
-        XRequestID: writerclientsdkgo.String("Northeast Wooden"),
-        TeamID: 352919,
+        TeamID: 789275,
     })
     if err != nil {
         log.Fatal(err)
