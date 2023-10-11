@@ -31,9 +31,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
+        writerclientsdkgo.WithSecurity(""),
         writerclientsdkgo.WithOrganizationID(486589),
     )
 
@@ -90,9 +88,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
+        writerclientsdkgo.WithSecurity(""),
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
@@ -143,9 +139,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
+        writerclientsdkgo.WithSecurity(""),
         writerclientsdkgo.WithOrganizationID(700347),
     )
 
@@ -196,9 +190,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
+        writerclientsdkgo.WithSecurity(""),
         writerclientsdkgo.WithOrganizationID(768578),
     )
 

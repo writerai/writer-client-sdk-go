@@ -29,9 +29,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
+        writerclientsdkgo.WithSecurity(""),
         writerclientsdkgo.WithOrganizationID(569932),
     )
 
@@ -92,9 +90,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
+        writerclientsdkgo.WithSecurity(""),
         writerclientsdkgo.WithOrganizationID(380445),
     )
 

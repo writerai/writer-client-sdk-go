@@ -34,36 +34,35 @@ If you cannot see your secret API keys in the Dashboard, this means you do not h
 ```go
 package main
 
-import(
+import (
 	"context"
-	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	"log"
 )
 
 func main() {
-    s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writerclientsdkgo.WithOrganizationID(496531),
-    )
+	s := writerclientsdkgo.New(
+		writerclientsdkgo.WithSecurity(""),
+		writerclientsdkgo.WithOrganizationID(496531),
+	)
 
-    ctx := context.Background()
-    res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
-        ContentDetectorRequest: shared.ContentDetectorRequest{
-            Input: "Bronze Indian",
-        },
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
+	ctx := context.Background()
+	res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
+		ContentDetectorRequest: shared.ContentDetectorRequest{
+			Input: "Bronze Indian",
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    if res.ContentDetectorResponses != nil {
-        // handle response
-    }
+	if res.ContentDetectorResponses != nil {
+		// handle response
+	}
 }
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -167,6 +166,64 @@ Here's an example of one such pagination call:
 <!-- Start Go Types -->
 
 <!-- End Go Types -->
+
+
+
+<!-- Start Global Parameters -->
+# Global Parameters
+
+A parameter is configured globally. This parameter must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `organizationId` to `547272` at SDK initialization and then you do not have to pass the same value on calls to operations like `Detect`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+## Available Globals
+
+The following global parameter is available. The required parameter must be set when you initialize the SDK client.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| organizationId | int64 | ✔️ | The organizationId parameter. |
+
+
+
+## Example
+
+```go
+package main
+
+import (
+	"context"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := writerclientsdkgo.New(
+		writerclientsdkgo.WithSecurity(""),
+		writerclientsdkgo.WithOrganizationID(496531),
+	)
+
+	ctx := context.Background()
+	res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
+		ContentDetectorRequest: shared.ContentDetectorRequest{
+			Input: "Bronze Indian",
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.ContentDetectorResponses != nil {
+		// handle response
+	}
+}
+
+```
+
+<!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
