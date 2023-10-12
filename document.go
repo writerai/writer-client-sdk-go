@@ -26,7 +26,13 @@ func newDocument(sdkConfig sdkConfiguration) *document {
 }
 
 // Get document details
-func (s *document) Get(ctx context.Context, request operations.GetDocumentDetailsRequest) (*operations.GetDocumentDetailsResponse, error) {
+func (s *document) Get(ctx context.Context, documentID int64, teamID int64, organizationID *int64) (*operations.GetDocumentDetailsResponse, error) {
+	request := operations.GetDocumentDetailsRequest{
+		DocumentID:     documentID,
+		TeamID:         teamID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/organization/{organizationId}/team/{teamId}/document/{documentId}", request, s.sdkConfiguration.Globals)
 	if err != nil {

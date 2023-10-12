@@ -24,7 +24,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -33,23 +32,27 @@ func main() {
         writerclientsdkgo.WithOrganizationID(486589),
     )
 
-    ctx := context.Background()
-    res, err := s.Completions.Create(ctx, operations.CreateCompletionRequest{
-        CompletionRequest: shared.CompletionRequest{
-            BestOf: writerclientsdkgo.Int64(1),
-            MaxTokens: writerclientsdkgo.Int64(1024),
-            MinTokens: writerclientsdkgo.Int64(1),
-            Prompt: "Configuration Money",
-            Stop: []string{
-                "the",
-                "is",
-                "and",
-            },
-            Temperature: writerclientsdkgo.Float64(0.7),
-            TopP: writerclientsdkgo.Float64(1),
+
+    completionRequest := shared.CompletionRequest{
+        BestOf: writerclientsdkgo.Int64(1),
+        MaxTokens: writerclientsdkgo.Int64(1024),
+        MinTokens: writerclientsdkgo.Int64(1),
+        Prompt: "Configuration Money",
+        Stop: []string{
+            "the",
+            "is",
+            "and",
         },
-        ModelID: "Cambridgeshire grey technology",
-    })
+        Temperature: writerclientsdkgo.Float64(0.7),
+        TopP: writerclientsdkgo.Float64(1),
+    }
+
+    var modelID string = "blue"
+
+    var organizationID *int64 = 996706
+
+    ctx := context.Background()
+    res, err := s.Completions.Create(ctx, completionRequest, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -62,10 +65,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
-| `request`                                                                                | [operations.CreateCompletionRequest](../../models/operations/createcompletionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `completionRequest`                                                  | [shared.CompletionRequest](../../models/shared/completionrequest.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `modelID`                                                            | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `organizationID`                                                     | **int64*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
 
 
 ### Response
@@ -87,7 +92,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -96,24 +100,29 @@ func main() {
         writerclientsdkgo.WithOrganizationID(919503),
     )
 
-    ctx := context.Background()
-    res, err := s.Completions.CreateModelCustomizationCompletion(ctx, operations.CreateModelCustomizationCompletionRequest{
-        CompletionRequest: shared.CompletionRequest{
-            BestOf: writerclientsdkgo.Int64(1),
-            MaxTokens: writerclientsdkgo.Int64(1024),
-            MinTokens: writerclientsdkgo.Int64(1),
-            Prompt: "error",
-            Stop: []string{
-                "the",
-                "is",
-                "and",
-            },
-            Temperature: writerclientsdkgo.Float64(0.7),
-            TopP: writerclientsdkgo.Float64(1),
+
+    completionRequest := shared.CompletionRequest{
+        BestOf: writerclientsdkgo.Int64(1),
+        MaxTokens: writerclientsdkgo.Int64(1024),
+        MinTokens: writerclientsdkgo.Int64(1),
+        Prompt: "error",
+        Stop: []string{
+            "the",
+            "is",
+            "and",
         },
-        CustomizationID: "newton",
-        ModelID: "convergence",
-    })
+        Temperature: writerclientsdkgo.Float64(0.7),
+        TopP: writerclientsdkgo.Float64(1),
+    }
+
+    var customizationID string = "Buckinghamshire"
+
+    var modelID string = "platforms"
+
+    var organizationID *int64 = 328071
+
+    ctx := context.Background()
+    res, err := s.Completions.CreateModelCustomizationCompletion(ctx, completionRequest, customizationID, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -126,10 +135,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
-| `request`                                                                                                                    | [operations.CreateModelCustomizationCompletionRequest](../../models/operations/createmodelcustomizationcompletionrequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `completionRequest`                                                  | [shared.CompletionRequest](../../models/shared/completionrequest.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `customizationID`                                                    | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `modelID`                                                            | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `organizationID`                                                     | **int64*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
 
 
 ### Response

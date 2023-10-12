@@ -9,9 +9,9 @@ import (
 
 type UpdateTermsRequest struct {
 	UpdateTermsRequest shared.UpdateTermsRequest `request:"mediaType=application/json"`
+	TeamID             int64                     `pathParam:"style=simple,explode=false,name=teamId"`
 	XRequestID         *string                   `header:"style=simple,explode=false,name=X-Request-ID"`
 	OrganizationID     *int64                    `pathParam:"style=simple,explode=false,name=organizationId"`
-	TeamID             int64                     `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
 func (o *UpdateTermsRequest) GetUpdateTermsRequest() shared.UpdateTermsRequest {
@@ -19,6 +19,13 @@ func (o *UpdateTermsRequest) GetUpdateTermsRequest() shared.UpdateTermsRequest {
 		return shared.UpdateTermsRequest{}
 	}
 	return o.UpdateTermsRequest
+}
+
+func (o *UpdateTermsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
 }
 
 func (o *UpdateTermsRequest) GetXRequestID() *string {
@@ -33,13 +40,6 @@ func (o *UpdateTermsRequest) GetOrganizationID() *int64 {
 		return nil
 	}
 	return o.OrganizationID
-}
-
-func (o *UpdateTermsRequest) GetTeamID() int64 {
-	if o == nil {
-		return 0
-	}
-	return o.TeamID
 }
 
 type UpdateTermsResponse struct {

@@ -25,7 +25,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -34,13 +33,19 @@ func main() {
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
+
+    var teamID int64 = 841399
+
+    var xRequestID *string = "Designer"
+
+    ids := []string{
+        "complexity",
+    }
+
+    var organizationID *int64 = 952479
+
     ctx := context.Background()
-    res, err := s.Snippet.Delete(ctx, operations.DeleteSnippetsRequest{
-        Ids: []string{
-            "Van",
-        },
-        TeamID: 386564,
-    })
+    res, err := s.Snippet.Delete(ctx, teamID, xRequestID, ids, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -53,10 +58,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [operations.DeleteSnippetsRequest](../../models/operations/deletesnippetsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `teamID`                                              | *int64*                                               | :heavy_check_mark:                                    | N/A                                                   |
+| `xRequestID`                                          | **string*                                             | :heavy_minus_sign:                                    | N/A                                                   |
+| `ids`                                                 | []*string*                                            | :heavy_minus_sign:                                    | N/A                                                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
@@ -134,7 +142,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -143,21 +150,27 @@ func main() {
         writerclientsdkgo.WithOrganizationID(857478),
     )
 
-    ctx := context.Background()
-    res, err := s.Snippet.Update(ctx, operations.UpdateSnippetsRequest{
-        RequestBody: []shared.SnippetUpdate{
-            shared.SnippetUpdate{
-                ID: "<ID>",
-                Snippet: "Rock",
-                Tags: []shared.SnippetTagV2{
-                    shared.SnippetTagV2{
-                        Tag: "male Metal",
-                    },
+
+    var teamID int64 = 24555
+
+    requestBody := []shared.SnippetUpdate{
+        shared.SnippetUpdate{
+            ID: "<ID>",
+            Snippet: "East male",
+            Tags: []shared.SnippetTagV2{
+                shared.SnippetTagV2{
+                    Tag: "Quality",
                 },
             },
         },
-        TeamID: 984008,
-    })
+    }
+
+    var xRequestID *string = "redundant"
+
+    var organizationID *int64 = 984008
+
+    ctx := context.Background()
+    res, err := s.Snippet.Update(ctx, teamID, requestBody, xRequestID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -170,10 +183,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [operations.UpdateSnippetsRequest](../../models/operations/updatesnippetsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `teamID`                                                       | *int64*                                                        | :heavy_check_mark:                                             | N/A                                                            |
+| `requestBody`                                                  | [][shared.SnippetUpdate](../../models/shared/snippetupdate.md) | :heavy_minus_sign:                                             | N/A                                                            |
+| `xRequestID`                                                   | **string*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| `organizationID`                                               | **int64*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
 
 
 ### Response

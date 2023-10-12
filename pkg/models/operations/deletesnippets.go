@@ -8,10 +8,17 @@ import (
 )
 
 type DeleteSnippetsRequest struct {
+	TeamID         int64    `pathParam:"style=simple,explode=false,name=teamId"`
 	XRequestID     *string  `header:"style=simple,explode=false,name=X-Request-ID"`
 	Ids            []string `queryParam:"style=form,explode=true,name=ids"`
 	OrganizationID *int64   `pathParam:"style=simple,explode=false,name=organizationId"`
-	TeamID         int64    `pathParam:"style=simple,explode=false,name=teamId"`
+}
+
+func (o *DeleteSnippetsRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
 }
 
 func (o *DeleteSnippetsRequest) GetXRequestID() *string {
@@ -33,13 +40,6 @@ func (o *DeleteSnippetsRequest) GetOrganizationID() *int64 {
 		return nil
 	}
 	return o.OrganizationID
-}
-
-func (o *DeleteSnippetsRequest) GetTeamID() int64 {
-	if o == nil {
-		return 0
-	}
-	return o.TeamID
 }
 
 type DeleteSnippetsResponse struct {

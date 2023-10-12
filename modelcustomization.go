@@ -26,7 +26,13 @@ func newModelCustomization(sdkConfig sdkConfiguration) *modelCustomization {
 }
 
 // Create model customization
-func (s *modelCustomization) Create(ctx context.Context, request operations.CreateModelCustomizationRequest) (*operations.CreateModelCustomizationResponse, error) {
+func (s *modelCustomization) Create(ctx context.Context, createCustomizationRequest shared.CreateCustomizationRequest, modelID string, organizationID *int64) (*operations.CreateModelCustomizationResponse, error) {
+	request := operations.CreateModelCustomizationRequest{
+		CreateCustomizationRequest: createCustomizationRequest,
+		ModelID:                    modelID,
+		OrganizationID:             organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -120,7 +126,13 @@ func (s *modelCustomization) Create(ctx context.Context, request operations.Crea
 }
 
 // Delete Model customization
-func (s *modelCustomization) Delete(ctx context.Context, request operations.DeleteModelCustomizationRequest) (*operations.DeleteModelCustomizationResponse, error) {
+func (s *modelCustomization) Delete(ctx context.Context, customizationID string, modelID string, organizationID *int64) (*operations.DeleteModelCustomizationResponse, error) {
+	request := operations.DeleteModelCustomizationRequest{
+		CustomizationID: customizationID,
+		ModelID:         modelID,
+		OrganizationID:  organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -204,7 +216,13 @@ func (s *modelCustomization) Delete(ctx context.Context, request operations.Dele
 }
 
 // Get model customization
-func (s *modelCustomization) Get(ctx context.Context, request operations.GetModelCustomizationRequest) (*operations.GetModelCustomizationResponse, error) {
+func (s *modelCustomization) Get(ctx context.Context, customizationID string, modelID string, organizationID *int64) (*operations.GetModelCustomizationResponse, error) {
+	request := operations.GetModelCustomizationRequest{
+		CustomizationID: customizationID,
+		ModelID:         modelID,
+		OrganizationID:  organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -288,7 +306,12 @@ func (s *modelCustomization) Get(ctx context.Context, request operations.GetMode
 }
 
 // List model customizations
-func (s *modelCustomization) List(ctx context.Context, request operations.ListModelCustomizationsRequest) (*operations.ListModelCustomizationsResponse, error) {
+func (s *modelCustomization) List(ctx context.Context, modelID string, organizationID *int64) (*operations.ListModelCustomizationsResponse, error) {
+	request := operations.ListModelCustomizationsRequest{
+		ModelID:        modelID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/model/{modelId}/customization", request, s.sdkConfiguration.Globals)
 	if err != nil {

@@ -26,7 +26,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -35,17 +34,21 @@ func main() {
         writerclientsdkgo.WithOrganizationID(486589),
     )
 
-    ctx := context.Background()
-    res, err := s.ModelCustomization.Create(ctx, operations.CreateModelCustomizationRequest{
-        CreateCustomizationRequest: shared.CreateCustomizationRequest{
-            AdditionalHyperParameters: &shared.HyperParameters{
-                NumVirtualTokens: 489382,
-            },
-            Name: "Extended South",
-            TrainingDatasetFileID: "grey technology East",
+
+    createCustomizationRequest := shared.CreateCustomizationRequest{
+        AdditionalHyperParameters: &shared.HyperParameters{
+            NumVirtualTokens: 489382,
         },
-        ModelID: "evolve",
-    })
+        Name: "Extended South",
+        TrainingDatasetFileID: "grey technology East",
+    }
+
+    var modelID string = "orange"
+
+    var organizationID *int64 = 89964
+
+    ctx := context.Background()
+    res, err := s.ModelCustomization.Create(ctx, createCustomizationRequest, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -58,10 +61,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
-| `request`                                                                                                | [operations.CreateModelCustomizationRequest](../../models/operations/createmodelcustomizationrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
+| `createCustomizationRequest`                                                           | [shared.CreateCustomizationRequest](../../models/shared/createcustomizationrequest.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `modelID`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `organizationID`                                                                       | **int64*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
 
 
 ### Response
@@ -83,7 +88,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -92,11 +96,15 @@ func main() {
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
+
+    var customizationID string = "Van"
+
+    var modelID string = "complexity"
+
+    var organizationID *int64 = 952479
+
     ctx := context.Background()
-    res, err := s.ModelCustomization.Delete(ctx, operations.DeleteModelCustomizationRequest{
-        CustomizationID: "Designer complexity gladiolus",
-        ModelID: "objective Aluminium Metal",
-    })
+    res, err := s.ModelCustomization.Delete(ctx, customizationID, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -109,10 +117,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
-| `request`                                                                                                | [operations.DeleteModelCustomizationRequest](../../models/operations/deletemodelcustomizationrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `customizationID`                                     | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `modelID`                                             | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
@@ -134,7 +144,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -143,11 +152,15 @@ func main() {
         writerclientsdkgo.WithOrganizationID(700347),
     )
 
+
+    var customizationID string = "Northeast"
+
+    var modelID string = "Hatchback"
+
+    var organizationID *int64 = 830636
+
     ctx := context.Background()
-    res, err := s.ModelCustomization.Get(ctx, operations.GetModelCustomizationRequest{
-        CustomizationID: "program",
-        ModelID: "Kia Cambridgeshire",
-    })
+    res, err := s.ModelCustomization.Get(ctx, customizationID, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -160,10 +173,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `request`                                                                                          | [operations.GetModelCustomizationRequest](../../models/operations/getmodelcustomizationrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `customizationID`                                     | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `modelID`                                             | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
@@ -185,7 +200,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -194,10 +208,13 @@ func main() {
         writerclientsdkgo.WithOrganizationID(768578),
     )
 
+
+    var modelID string = "Northeast"
+
+    var organizationID *int64 = 257649
+
     ctx := context.Background()
-    res, err := s.ModelCustomization.List(ctx, operations.ListModelCustomizationsRequest{
-        ModelID: "compress",
-    })
+    res, err := s.ModelCustomization.List(ctx, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -210,10 +227,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
-| `request`                                                                                              | [operations.ListModelCustomizationsRequest](../../models/operations/listmodelcustomizationsrequest.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `modelID`                                             | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response

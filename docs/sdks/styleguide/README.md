@@ -24,7 +24,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -33,10 +32,11 @@ func main() {
         writerclientsdkgo.WithOrganizationID(700347),
     )
 
+
+    var pageID int64 = 90065
+
     ctx := context.Background()
-    res, err := s.Styleguide.Get(ctx, operations.PageDetailsRequest{
-        PageID: 90065,
-    })
+    res, err := s.Styleguide.Get(ctx, pageID)
     if err != nil {
         log.Fatal(err)
     }
@@ -49,10 +49,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [operations.PageDetailsRequest](../../models/operations/pagedetailsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `pageID`                                              | *int64*                                               | :heavy_check_mark:                                    | N/A                                                   |
 
 
 ### Response
@@ -83,8 +83,15 @@ func main() {
         writerclientsdkgo.WithOrganizationID(763372),
     )
 
+
+    var limit *int64 = 760116
+
+    var offset *int64 = 303332
+
+    var status *operations.ListPagesStatus = operations.ListPagesStatusLive
+
     ctx := context.Background()
-    res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{})
+    res, err := s.Styleguide.ListPages(ctx, limit, offset, status)
     if err != nil {
         log.Fatal(err)
     }
@@ -97,10 +104,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [operations.ListPagesRequest](../../models/operations/listpagesrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `ctx`                                                                     | [context.Context](https://pkg.go.dev/context#Context)                     | :heavy_check_mark:                                                        | The context to use for the request.                                       |
+| `limit`                                                                   | **int64*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `offset`                                                                  | **int64*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `status`                                                                  | [*operations.ListPagesStatus](../../models/operations/listpagesstatus.md) | :heavy_minus_sign:                                                        | N/A                                                                       |
 
 
 ### Response

@@ -26,7 +26,13 @@ func newContent(sdkConfig sdkConfiguration) *content {
 }
 
 // Check your content against your preset styleguide.
-func (s *content) Check(ctx context.Context, request operations.ContentCheckRequest) (*operations.ContentCheckResponse, error) {
+func (s *content) Check(ctx context.Context, contentRequest shared.ContentRequest, teamID int64, organizationID *int64) (*operations.ContentCheckResponse, error) {
+	request := operations.ContentCheckRequest{
+		ContentRequest: contentRequest,
+		TeamID:         teamID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/team/{teamId}/check", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -120,7 +126,14 @@ func (s *content) Check(ctx context.Context, request operations.ContentCheckRequ
 }
 
 // Correct - Apply the style guide suggestions directly to your content.
-func (s *content) Correct(ctx context.Context, request operations.ContentCorrectRequest) (*operations.ContentCorrectResponse, error) {
+func (s *content) Correct(ctx context.Context, contentRequest shared.ContentRequest, teamID int64, xRequestID *string, organizationID *int64) (*operations.ContentCorrectResponse, error) {
+	request := operations.ContentCorrectRequest{
+		ContentRequest: contentRequest,
+		TeamID:         teamID,
+		XRequestID:     xRequestID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/team/{teamId}/correct", request, s.sdkConfiguration.Globals)
 	if err != nil {

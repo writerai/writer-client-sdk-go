@@ -23,7 +23,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -32,12 +31,15 @@ func main() {
         writerclientsdkgo.WithOrganizationID(496531),
     )
 
+
+    contentDetectorRequest := shared.ContentDetectorRequest{
+        Input: "Bronze Indian",
+    }
+
+    var organizationID *int64 = 558689
+
     ctx := context.Background()
-    res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
-        ContentDetectorRequest: shared.ContentDetectorRequest{
-            Input: "Bronze Indian",
-        },
-    })
+    res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -50,10 +52,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.DetectContentRequest](../../models/operations/detectcontentrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `contentDetectorRequest`                                                       | [shared.ContentDetectorRequest](../../models/shared/contentdetectorrequest.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `organizationID`                                                               | **int64*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
 
 
 ### Response

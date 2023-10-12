@@ -9,9 +9,9 @@ import (
 
 type ContentCorrectRequest struct {
 	ContentRequest shared.ContentRequest `request:"mediaType=application/json"`
+	TeamID         int64                 `pathParam:"style=simple,explode=false,name=teamId"`
 	XRequestID     *string               `header:"style=simple,explode=false,name=X-Request-ID"`
 	OrganizationID *int64                `pathParam:"style=simple,explode=false,name=organizationId"`
-	TeamID         int64                 `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
 func (o *ContentCorrectRequest) GetContentRequest() shared.ContentRequest {
@@ -19,6 +19,13 @@ func (o *ContentCorrectRequest) GetContentRequest() shared.ContentRequest {
 		return shared.ContentRequest{}
 	}
 	return o.ContentRequest
+}
+
+func (o *ContentCorrectRequest) GetTeamID() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.TeamID
 }
 
 func (o *ContentCorrectRequest) GetXRequestID() *string {
@@ -33,13 +40,6 @@ func (o *ContentCorrectRequest) GetOrganizationID() *int64 {
 		return nil
 	}
 	return o.OrganizationID
-}
-
-func (o *ContentCorrectRequest) GetTeamID() int64 {
-	if o == nil {
-		return 0
-	}
-	return o.TeamID
 }
 
 type ContentCorrectResponse struct {

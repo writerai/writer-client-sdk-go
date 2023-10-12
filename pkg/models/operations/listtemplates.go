@@ -8,16 +8,9 @@ import (
 )
 
 type ListTemplatesRequest struct {
-	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 	TeamID         int64  `pathParam:"style=simple,explode=false,name=teamId"`
 	TemplateID     string `pathParam:"style=simple,explode=false,name=templateId"`
-}
-
-func (o *ListTemplatesRequest) GetOrganizationID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.OrganizationID
+	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
 func (o *ListTemplatesRequest) GetTeamID() int64 {
@@ -32,6 +25,13 @@ func (o *ListTemplatesRequest) GetTemplateID() string {
 		return ""
 	}
 	return o.TemplateID
+}
+
+func (o *ListTemplatesRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
 }
 
 type ListTemplatesResponse struct {
