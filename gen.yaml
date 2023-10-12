@@ -20,5 +20,5 @@ features:
 go:
   version: 0.19.1
   flattenGlobalSecurity: true
-  maxMethodParams: 0
+  maxMethodParams: 4
   packageName: github.com/writerai/writer-client-sdk-go
