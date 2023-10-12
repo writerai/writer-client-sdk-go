@@ -8,9 +8,12 @@ import (
 )
 
 type GetSubscriptionDetailsResponse struct {
-	ContentType                   string
-	Headers                       map[string][]string
-	StatusCode                    int
+	// HTTP response content type for this operation
+	ContentType string
+	Headers     map[string][]string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse                   *http.Response
 	SubscriptionPublicResponseAPI *shared.SubscriptionPublicResponseAPI
 }

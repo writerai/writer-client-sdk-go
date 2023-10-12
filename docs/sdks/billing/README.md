@@ -1,4 +1,5 @@
 # Billing
+(*Billing*)
 
 ## Overview
 
@@ -20,16 +21,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(602763),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(850421),
     )
 
     ctx := context.Background()

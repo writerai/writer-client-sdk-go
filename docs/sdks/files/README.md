@@ -1,4 +1,5 @@
 # Files
+(*Files*)
 
 ## Overview
 
@@ -23,22 +24,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(612096),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(545907),
     )
 
     ctx := context.Background()
     res, err := s.Files.Delete(ctx, operations.DeleteFileRequest{
-        FileID: "dolor",
+        FileID: "Designer complexity gladiolus",
     })
     if err != nil {
         log.Fatal(err)
@@ -75,22 +74,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(616934),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(700347),
     )
 
     ctx := context.Background()
     res, err := s.Files.Get(ctx, operations.GetFileRequest{
-        FileID: "laboriosam",
+        FileID: "program",
     })
     if err != nil {
         log.Fatal(err)
@@ -127,17 +124,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(943749),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(768578),
     )
 
     ctx := context.Background()
@@ -177,25 +172,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(902599),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(403654),
     )
 
     ctx := context.Background()
     res, err := s.Files.Upload(ctx, operations.UploadFileRequest{
         UploadModelFileRequest: shared.UploadModelFileRequest{
             File: shared.UploadModelFileRequestFile{
-                Content: []byte("fuga"),
-                File: "in",
+                Content: []byte("?SRSKG@^n="),
+                File: "Plastic CLI",
             },
         },
     })

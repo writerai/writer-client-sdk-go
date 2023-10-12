@@ -1,4 +1,5 @@
 # Document
+(*Document*)
 
 ## Overview
 
@@ -21,23 +22,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(383464),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(700347),
     )
 
     ctx := context.Background()
     res, err := s.Document.Get(ctx, operations.GetDocumentDetailsRequest{
-        DocumentID: 645785,
-        TeamID: 588317,
+        DocumentID: 90065,
+        TeamID: 558834,
     })
     if err != nil {
         log.Fatal(err)
@@ -74,27 +73,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(324683),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(768578),
     )
 
     ctx := context.Background()
     res, err := s.Document.List(ctx, operations.ListTeamDocumentsRequest{
-        Limit: writer.Int(831049),
-        Offset: writer.Int64(519711),
-        Search: writer.String("similique"),
-        SortField: operations.ListTeamDocumentsSortFieldTitle.ToPointer(),
-        SortOrder: operations.ListTeamDocumentsSortOrderDesc.ToPointer(),
-        TeamID: 311860,
+        TeamID: 99895,
     })
     if err != nil {
         log.Fatal(err)

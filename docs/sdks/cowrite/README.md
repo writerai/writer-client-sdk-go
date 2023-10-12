@@ -1,4 +1,5 @@
 # CoWrite
+(*CoWrite*)
 
 ## Overview
 
@@ -21,17 +22,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(857946),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(569932),
     )
 
     ctx := context.Background()
@@ -39,31 +38,15 @@ func main() {
         GenerateTemplateRequest: shared.GenerateTemplateRequest{
             Inputs: []shared.MagicRequestInput{
                 shared.MagicRequestInput{
-                    Name: "Ben Mueller",
+                    Name: "er man approach",
                     Value: []string{
-                        "magnam",
-                        "debitis",
-                    },
-                },
-                shared.MagicRequestInput{
-                    Name: "Lucia Goldner",
-                    Value: []string{
-                        "placeat",
-                        "voluptatum",
-                        "iusto",
-                        "excepturi",
-                    },
-                },
-                shared.MagicRequestInput{
-                    Name: "Mrs. Sophie Smith MD",
-                    Value: []string{
-                        "ipsam",
+                        "builder",
                     },
                 },
             },
-            TemplateID: "repellendus",
+            TemplateID: "Planner",
         },
-        TeamID: 957156,
+        TeamID: 612911,
     })
     if err != nil {
         log.Fatal(err)
@@ -100,23 +83,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(778157),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(380445),
     )
 
     ctx := context.Background()
     res, err := s.CoWrite.ListTemplates(ctx, operations.ListTemplatesRequest{
-        TeamID: 140350,
-        TemplateID: "at",
+        TeamID: 882866,
+        TemplateID: "Soul",
     })
     if err != nil {
         log.Fatal(err)

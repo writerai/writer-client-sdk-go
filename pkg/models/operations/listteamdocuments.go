@@ -9,7 +9,6 @@ import (
 	"net/http"
 )
 
-// ListTeamDocumentsSortField
 type ListTeamDocumentsSortField string
 
 const (
@@ -46,7 +45,6 @@ func (e *ListTeamDocumentsSortField) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// ListTeamDocumentsSortOrder
 type ListTeamDocumentsSortOrder string
 
 const (
@@ -135,10 +133,13 @@ func (o *ListTeamDocumentsRequest) GetTeamID() int64 {
 
 type ListTeamDocumentsResponse struct {
 	BriefDocuments *shared.BriefDocuments
-	ContentType    string
-	Headers        map[string][]string
-	StatusCode     int
-	RawResponse    *http.Response
+	// HTTP response content type for this operation
+	ContentType string
+	Headers     map[string][]string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *ListTeamDocumentsResponse) GetBriefDocuments() *shared.BriefDocuments {

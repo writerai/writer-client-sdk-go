@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -45,6 +46,17 @@ type PagePublicAPIResponse struct {
 	UpdatedAt time.Time                   `json:"updatedAt"`
 	UpdatedBy *SimpleUser                 `json:"updatedBy,omitempty"`
 	URL       string                      `json:"url"`
+}
+
+func (p PagePublicAPIResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PagePublicAPIResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PagePublicAPIResponse) GetCreatedAt() time.Time {

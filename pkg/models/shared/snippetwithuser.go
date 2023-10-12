@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -16,6 +17,17 @@ type SnippetWithUser struct {
 	Shortcut         *string         `json:"shortcut,omitempty"`
 	Snippet          string          `json:"snippet"`
 	Tags             []SnippetTagV2  `json:"tags,omitempty"`
+}
+
+func (s SnippetWithUser) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SnippetWithUser) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SnippetWithUser) GetCreatedUser() TerminologyUser {

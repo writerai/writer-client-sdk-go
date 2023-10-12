@@ -1,4 +1,5 @@
 # Styleguide
+(*Styleguide*)
 
 ## Overview
 
@@ -21,22 +22,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(270008),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(700347),
     )
 
     ctx := context.Background()
     res, err := s.Styleguide.Get(ctx, operations.PageDetailsRequest{
-        PageID: 703737,
+        PageID: 90065,
     })
     if err != nil {
         log.Fatal(err)
@@ -73,25 +72,19 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/writerai/writer-client-sdk-go"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
-    s := writer.New(
-        writer.WithSecurity(shared.Security{
-            APIKey: "",
-        }),
-        writer.WithOrganizationID(735194),
+    s := writerclientsdkgo.New(
+        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithOrganizationID(763372),
     )
 
     ctx := context.Background()
-    res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{
-        Limit: writer.Int64(288476),
-        Offset: writer.Int64(962189),
-        Status: operations.ListPagesStatusLive.ToPointer(),
-    })
+    res, err := s.Styleguide.ListPages(ctx, operations.ListPagesRequest{})
     if err != nil {
         log.Fatal(err)
     }

@@ -9,7 +9,6 @@ import (
 	"net/http"
 )
 
-// FindSnippetsSortField
 type FindSnippetsSortField string
 
 const (
@@ -40,7 +39,6 @@ func (e *FindSnippetsSortField) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// FindSnippetsSortOrder
 type FindSnippetsSortOrder string
 
 const (
@@ -144,11 +142,14 @@ func (o *FindSnippetsRequest) GetTeamID() int64 {
 }
 
 type FindSnippetsResponse struct {
+	// HTTP response content type for this operation
 	ContentType                    string
 	Headers                        map[string][]string
 	PaginatedResultSnippetWithUser *shared.PaginatedResultSnippetWithUser
-	StatusCode                     int
-	RawResponse                    *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *FindSnippetsResponse) GetContentType() string {

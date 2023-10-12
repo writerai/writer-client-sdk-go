@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -21,6 +22,17 @@ type ModelCustomization struct {
 	TrainingDatasetFileID     string           `json:"trainingDatasetFileId"`
 	UpdatedAt                 time.Time        `json:"updatedAt"`
 	ValidationDatasetFileID   *string          `json:"validationDatasetFileId,omitempty"`
+}
+
+func (m ModelCustomization) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *ModelCustomization) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ModelCustomization) GetAdditionalHyperParameters() *HyperParameters {

@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -13,6 +14,17 @@ type ModelFile struct {
 	Name            string    `json:"name"`
 	NumberOfSamples int64     `json:"numberOfSamples"`
 	Size            int64     `json:"size"`
+}
+
+func (m ModelFile) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
+}
+
+func (m *ModelFile) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ModelFile) GetCreatedAt() time.Time {

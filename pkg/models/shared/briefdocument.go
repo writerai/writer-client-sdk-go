@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -49,6 +50,17 @@ type BriefDocument struct {
 	Score            int64               `json:"score"`
 	TeamID           int64               `json:"teamId"`
 	Title            string              `json:"title"`
+}
+
+func (b BriefDocument) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BriefDocument) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BriefDocument) GetAccess() BriefDocumentAccess {

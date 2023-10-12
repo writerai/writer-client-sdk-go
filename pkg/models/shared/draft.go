@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/writerai/writer-client-sdk-go/pkg/utils"
 	"time"
 )
 
@@ -18,6 +19,17 @@ type Draft struct {
 	TeamID         int64       `json:"teamId"`
 	TemplateID     string      `json:"templateId"`
 	Title          *string     `json:"title,omitempty"`
+}
+
+func (d Draft) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Draft) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Draft) GetBody() string {

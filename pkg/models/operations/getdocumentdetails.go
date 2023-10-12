@@ -35,10 +35,13 @@ func (o *GetDocumentDetailsRequest) GetTeamID() int64 {
 }
 
 type GetDocumentDetailsResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	Document    *shared.Document
 	Headers     map[string][]string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 
