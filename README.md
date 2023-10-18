@@ -48,10 +48,10 @@ func main() {
 	)
 
 	contentDetectorRequest := shared.ContentDetectorRequest{
-		Input: "Bronze Indian",
+		Input: "Folk",
 	}
 
-	var organizationID *int64 = 558689
+	var organizationID *int64 = 149376
 
 	ctx := context.Background()
 	res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
@@ -207,10 +207,10 @@ func main() {
 	)
 
 	contentDetectorRequest := shared.ContentDetectorRequest{
-		Input: "Bronze Indian",
+		Input: "Folk",
 	}
 
-	var organizationID *int64 = 558689
+	var organizationID *int64 = 149376
 
 	ctx := context.Background()
 	res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)

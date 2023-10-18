@@ -34,7 +34,7 @@ func main() {
 
 
     contentRequest := shared.ContentRequest{
-        Content: "now",
+        Content: "Tustin",
         Settings: shared.ContentSettings{
             AgeAndFamilyStatus: false,
             Confidence: false,
@@ -55,9 +55,9 @@ func main() {
         },
     }
 
-    var teamID int64 = 740907
+    var teamID int64 = 488169
 
-    var organizationID *int64 = 53397
+    var organizationID *int64 = 740907
 
     ctx := context.Background()
     res, err := s.Content.Check(ctx, contentRequest, teamID, organizationID)
@@ -110,7 +110,7 @@ func main() {
 
 
     contentRequest := shared.ContentRequest{
-        Content: "structure",
+        Content: "Hattiesburg",
         Settings: shared.ContentSettings{
             AgeAndFamilyStatus: false,
             Confidence: false,
@@ -131,11 +131,11 @@ func main() {
         },
     }
 
-    var teamID int64 = 267677
+    var teamID int64 = 754764
 
-    var xRequestID *string = "failing"
+    var xRequestID *string = "Folk"
 
-    var organizationID *int64 = 125766
+    var organizationID *int64 = 874845
 
     ctx := context.Background()
     res, err := s.Content.Correct(ctx, contentRequest, teamID, xRequestID, organizationID)

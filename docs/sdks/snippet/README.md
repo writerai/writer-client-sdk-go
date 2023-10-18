@@ -156,18 +156,18 @@ func main() {
     requestBody := []shared.SnippetUpdate{
         shared.SnippetUpdate{
             ID: "<ID>",
-            Snippet: "East male",
+            Snippet: "Rock",
             Tags: []shared.SnippetTagV2{
                 shared.SnippetTagV2{
-                    Tag: "Quality",
+                    Tag: "Reactive",
                 },
             },
         },
     }
 
-    var xRequestID *string = "redundant"
+    var xRequestID *string = "dock"
 
-    var organizationID *int64 = 984008
+    var organizationID *int64 = 627690
 
     ctx := context.Background()
     res, err := s.Snippet.Update(ctx, teamID, requestBody, xRequestID, organizationID)

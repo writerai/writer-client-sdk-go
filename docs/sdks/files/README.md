@@ -194,11 +194,11 @@ func main() {
     uploadModelFileRequest := shared.UploadModelFileRequest{
         File: shared.UploadModelFileRequestFile{
             Content: []byte("?SRSKG@^n="),
-            File: "Plastic CLI",
+            File: "ullam",
         },
     }
 
-    var organizationID *int64 = 600322
+    var organizationID *int64 = 236236
 
     ctx := context.Background()
     res, err := s.Files.Upload(ctx, uploadModelFileRequest, organizationID)

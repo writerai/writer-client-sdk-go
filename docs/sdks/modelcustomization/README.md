@@ -39,13 +39,13 @@ func main() {
         AdditionalHyperParameters: &shared.HyperParameters{
             NumVirtualTokens: 489382,
         },
-        Name: "Extended South",
-        TrainingDatasetFileID: "grey technology East",
+        Name: "Configuration",
+        TrainingDatasetFileID: "Money",
     }
 
-    var modelID string = "orange"
+    var modelID string = "blue"
 
-    var organizationID *int64 = 89964
+    var organizationID *int64 = 996706
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Create(ctx, createCustomizationRequest, modelID, organizationID)

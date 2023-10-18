@@ -46,7 +46,7 @@ func main() {
                 CaseSensitive: false,
                 Examples: []shared.TermExampleCreate{
                     shared.TermExampleCreate{
-                        Example: "calculate Toyota noon",
+                        Example: "Lamborghini",
                         Type: shared.TermExampleCreateTypeBad,
                     },
                 },
@@ -56,23 +56,23 @@ func main() {
                 Mistakes: []shared.TermMistakeCreate{
                     shared.TermMistakeCreate{
                         CaseSensitive: false,
-                        Mistake: "Chief",
+                        Mistake: "Toyota",
                     },
                 },
                 Tags: []shared.TermTagCreate{
                     shared.TermTagCreate{
-                        Tag: "kelvin",
+                        Tag: "noon",
                     },
                 },
-                Term: "lime",
+                Term: "bypass",
                 Type: shared.TermCreateTypeBanned,
             },
         },
     }
 
-    var teamID int64 = 623862
+    var teamID int64 = 945233
 
-    var organizationID *int64 = 445859
+    var organizationID *int64 = 172496
 
     ctx := context.Background()
     res, err := s.Terminology.Add(ctx, createTermsRequest, teamID, organizationID)
@@ -249,7 +249,7 @@ func main() {
                 CaseSensitive: false,
                 Examples: []shared.TermExampleCreate{
                     shared.TermExampleCreate{
-                        Example: "Rock",
+                        Example: "New",
                         Type: shared.TermExampleCreateTypeGood,
                     },
                 },
@@ -260,25 +260,25 @@ func main() {
                 Mistakes: []shared.TermMistakeCreate{
                     shared.TermMistakeCreate{
                         CaseSensitive: false,
-                        Mistake: "Metal cheater Islands",
+                        Mistake: "dock",
                     },
                 },
                 Tags: []shared.TermTagCreate{
                     shared.TermTagCreate{
-                        Tag: "withdrawal extend",
+                        Tag: "Quality",
                     },
                 },
-                Term: "bifurcated",
-                Type: shared.TermUpdateTypeBanned,
+                Term: "redundant",
+                Type: shared.TermUpdateTypePending,
             },
         },
     }
 
-    var teamID int64 = 789275
+    var teamID int64 = 134151
 
-    var xRequestID *string = "syndicate"
+    var xRequestID *string = "Islands"
 
-    var organizationID *int64 = 345187
+    var organizationID *int64 = 499557
 
     ctx := context.Background()
     res, err := s.Terminology.Update(ctx, updateTermsRequest, teamID, xRequestID, organizationID)
