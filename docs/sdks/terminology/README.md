@@ -46,7 +46,7 @@ func main() {
                 CaseSensitive: false,
                 Examples: []shared.TermExampleCreate{
                     shared.TermExampleCreate{
-                        Example: "Lamborghini",
+                        Example: "string",
                         Type: shared.TermExampleCreateTypeBad,
                     },
                 },
@@ -56,23 +56,23 @@ func main() {
                 Mistakes: []shared.TermMistakeCreate{
                     shared.TermMistakeCreate{
                         CaseSensitive: false,
-                        Mistake: "Toyota",
+                        Mistake: "string",
                     },
                 },
                 Tags: []shared.TermTagCreate{
                     shared.TermTagCreate{
-                        Tag: "noon",
+                        Tag: "string",
                     },
                 },
-                Term: "bypass",
+                Term: "string",
                 Type: shared.TermCreateTypeBanned,
             },
         },
     }
 
-    var teamID int64 = 945233
+    var teamID int64 = 623445
 
-    var organizationID *int64 = 172496
+    var organizationID *int64 = 822001
 
     ctx := context.Background()
     res, err := s.Terminology.Add(ctx, createTermsRequest, teamID, organizationID)
@@ -126,13 +126,13 @@ func main() {
 
     var teamID int64 = 841399
 
-    var xRequestID *string = "Designer"
+    var xRequestID *string = "string"
 
     ids := []int64{
-        386564,
+        698486,
     }
 
-    var organizationID *int64 = 201447
+    var organizationID *int64 = 557937
 
     ctx := context.Background()
     res, err := s.Terminology.Delete(ctx, teamID, xRequestID, ids, organizationID)
@@ -188,9 +188,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Terminology.Find(ctx, operations.FindTermsRequest{
         Tags: []string{
-            "underestimate",
+            "string",
         },
-        TeamID: 111247,
+        TeamID: 326883,
     })
     if err != nil {
         log.Fatal(err)
@@ -249,36 +249,36 @@ func main() {
                 CaseSensitive: false,
                 Examples: []shared.TermExampleCreate{
                     shared.TermExampleCreate{
-                        Example: "New",
+                        Example: "string",
                         Type: shared.TermExampleCreateTypeGood,
                     },
                 },
-                ID: 708455,
+                ID: 597129,
                 LinkedTerms: []shared.LinkedTermCreate{
                     shared.LinkedTermCreate{},
                 },
                 Mistakes: []shared.TermMistakeCreate{
                     shared.TermMistakeCreate{
                         CaseSensitive: false,
-                        Mistake: "dock",
+                        Mistake: "string",
                     },
                 },
                 Tags: []shared.TermTagCreate{
                     shared.TermTagCreate{
-                        Tag: "Quality",
+                        Tag: "string",
                     },
                 },
-                Term: "redundant",
-                Type: shared.TermUpdateTypePending,
+                Term: "string",
+                Type: shared.TermUpdateTypeApproved,
             },
         },
     }
 
-    var teamID int64 = 134151
+    var teamID int64 = 344620
 
-    var xRequestID *string = "Islands"
+    var xRequestID *string = "string"
 
-    var organizationID *int64 = 499557
+    var organizationID *int64 = 708455
 
     ctx := context.Background()
     res, err := s.Terminology.Update(ctx, updateTermsRequest, teamID, xRequestID, organizationID)

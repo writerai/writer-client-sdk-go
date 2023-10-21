@@ -36,18 +36,18 @@ func main() {
     generateTemplateRequest := shared.GenerateTemplateRequest{
         Inputs: []shared.MagicRequestInput{
             shared.MagicRequestInput{
-                Name: "very",
+                Name: "string",
                 Value: []string{
-                    "eek",
+                    "string",
                 },
             },
         },
-        TemplateID: "Mini",
+        TemplateID: "string",
     }
 
-    var teamID int64 = 396397
+    var teamID int64 = 888452
 
-    var organizationID *int64 = 76381
+    var organizationID *int64 = 926220
 
     ctx := context.Background()
     res, err := s.CoWrite.GenerateContent(ctx, generateTemplateRequest, teamID, organizationID)
@@ -101,9 +101,9 @@ func main() {
 
     var teamID int64 = 882866
 
-    var templateID string = "Morocco"
+    var templateID string = "string"
 
-    var organizationID *int64 = 543280
+    var organizationID *int64 = 55511
 
     ctx := context.Background()
     res, err := s.CoWrite.ListTemplates(ctx, teamID, templateID, organizationID)

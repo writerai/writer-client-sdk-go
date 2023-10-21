@@ -37,7 +37,7 @@ func main() {
         BestOf: writerclientsdkgo.Int64(1),
         MaxTokens: writerclientsdkgo.Int64(1024),
         MinTokens: writerclientsdkgo.Int64(1),
-        Prompt: "bluetooth",
+        Prompt: "string",
         Stop: []string{
             "the",
             "is",
@@ -47,9 +47,9 @@ func main() {
         TopP: writerclientsdkgo.Float64(1),
     }
 
-    var modelID string = "Extended"
+    var modelID string = "string"
 
-    var organizationID *int64 = 134365
+    var organizationID *int64 = 489382
 
     ctx := context.Background()
     res, err := s.Completions.Create(ctx, completionRequest, modelID, organizationID)
@@ -105,7 +105,7 @@ func main() {
         BestOf: writerclientsdkgo.Int64(1),
         MaxTokens: writerclientsdkgo.Int64(1024),
         MinTokens: writerclientsdkgo.Int64(1),
-        Prompt: "Uruguay",
+        Prompt: "string",
         Stop: []string{
             "the",
             "is",
@@ -115,11 +115,11 @@ func main() {
         TopP: writerclientsdkgo.Float64(1),
     }
 
-    var customizationID string = "streamline"
+    var customizationID string = "string"
 
-    var modelID string = "newton"
+    var modelID string = "string"
 
-    var organizationID *int64 = 151932
+    var organizationID *int64 = 41297
 
     ctx := context.Background()
     res, err := s.Completions.CreateModelCustomizationCompletion(ctx, completionRequest, customizationID, modelID, organizationID)

@@ -35,9 +35,9 @@ func main() {
     )
 
 
-    var fileID string = "Van"
+    var fileID string = "string"
 
-    var organizationID *int64 = 386564
+    var organizationID *int64 = 841399
 
     ctx := context.Background()
     res, err := s.Files.Delete(ctx, fileID, organizationID)
@@ -88,9 +88,9 @@ func main() {
     )
 
 
-    var fileID string = "Northeast"
+    var fileID string = "string"
 
-    var organizationID *int64 = 844199
+    var organizationID *int64 = 90065
 
     ctx := context.Background()
     res, err := s.Files.Get(ctx, fileID, organizationID)
@@ -194,11 +194,11 @@ func main() {
     uploadModelFileRequest := shared.UploadModelFileRequest{
         File: shared.UploadModelFileRequestFile{
             Content: []byte("?SRSKG@^n="),
-            File: "ullam",
+            File: "string",
         },
     }
 
-    var organizationID *int64 = 236236
+    var organizationID *int64 = 572988
 
     ctx := context.Background()
     res, err := s.Files.Upload(ctx, uploadModelFileRequest, organizationID)

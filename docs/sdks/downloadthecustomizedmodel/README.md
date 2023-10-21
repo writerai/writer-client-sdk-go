@@ -32,11 +32,11 @@ func main() {
     )
 
 
-    var customizationID string = "apology"
+    var customizationID string = "string"
 
-    var modelID string = "Silver"
+    var modelID string = "string"
 
-    var organizationID *int64 = 432823
+    var organizationID *int64 = 948692
 
     ctx := context.Background()
     res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, customizationID, modelID, organizationID)
