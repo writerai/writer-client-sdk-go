@@ -26,7 +26,12 @@ func newAIContentDetector(sdkConfig sdkConfiguration) *aiContentDetector {
 }
 
 // Detect - Content detector api
-func (s *aiContentDetector) Detect(ctx context.Context, request operations.DetectContentRequest) (*operations.DetectContentResponse, error) {
+func (s *aiContentDetector) Detect(ctx context.Context, contentDetectorRequest shared.ContentDetectorRequest, organizationID *int64) (*operations.DetectContentResponse, error) {
+	request := operations.DetectContentRequest{
+		ContentDetectorRequest: contentDetectorRequest,
+		OrganizationID:         organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/detect", request, s.sdkConfiguration.Globals)
 	if err != nil {

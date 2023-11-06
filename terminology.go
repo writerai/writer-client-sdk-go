@@ -26,7 +26,13 @@ func newTerminology(sdkConfig sdkConfiguration) *terminology {
 }
 
 // Add terms
-func (s *terminology) Add(ctx context.Context, request operations.AddTermsRequest) (*operations.AddTermsResponse, error) {
+func (s *terminology) Add(ctx context.Context, createTermsRequest shared.CreateTermsRequest, teamID int64, organizationID *int64) (*operations.AddTermsResponse, error) {
+	request := operations.AddTermsRequest{
+		CreateTermsRequest: createTermsRequest,
+		TeamID:             teamID,
+		OrganizationID:     organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -120,7 +126,14 @@ func (s *terminology) Add(ctx context.Context, request operations.AddTermsReques
 }
 
 // Delete terms
-func (s *terminology) Delete(ctx context.Context, request operations.DeleteTermsRequest) (*operations.DeleteTermsResponse, error) {
+func (s *terminology) Delete(ctx context.Context, teamID int64, xRequestID *string, ids []int64, organizationID *int64) (*operations.DeleteTermsResponse, error) {
+	request := operations.DeleteTermsRequest{
+		TeamID:         teamID,
+		XRequestID:     xRequestID,
+		Ids:            ids,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -298,7 +311,14 @@ func (s *terminology) Find(ctx context.Context, request operations.FindTermsRequ
 }
 
 // Update terms
-func (s *terminology) Update(ctx context.Context, request operations.UpdateTermsRequest) (*operations.UpdateTermsResponse, error) {
+func (s *terminology) Update(ctx context.Context, updateTermsRequest shared.UpdateTermsRequest, teamID int64, xRequestID *string, organizationID *int64) (*operations.UpdateTermsResponse, error) {
+	request := operations.UpdateTermsRequest{
+		UpdateTermsRequest: updateTermsRequest,
+		TeamID:             teamID,
+		XRequestID:         xRequestID,
+		OrganizationID:     organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
 	if err != nil {

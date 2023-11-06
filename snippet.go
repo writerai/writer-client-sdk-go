@@ -26,7 +26,14 @@ func newSnippet(sdkConfig sdkConfiguration) *snippet {
 }
 
 // Delete snippets
-func (s *snippet) Delete(ctx context.Context, request operations.DeleteSnippetsRequest) (*operations.DeleteSnippetsResponse, error) {
+func (s *snippet) Delete(ctx context.Context, teamID int64, xRequestID *string, ids []string, organizationID *int64) (*operations.DeleteSnippetsResponse, error) {
+	request := operations.DeleteSnippetsRequest{
+		TeamID:         teamID,
+		XRequestID:     xRequestID,
+		Ids:            ids,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -204,7 +211,14 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 }
 
 // Update snippets
-func (s *snippet) Update(ctx context.Context, request operations.UpdateSnippetsRequest) (*operations.UpdateSnippetsResponse, error) {
+func (s *snippet) Update(ctx context.Context, teamID int64, requestBody []shared.SnippetUpdate, xRequestID *string, organizationID *int64) (*operations.UpdateSnippetsResponse, error) {
+	request := operations.UpdateSnippetsRequest{
+		TeamID:         teamID,
+		RequestBody:    requestBody,
+		XRequestID:     xRequestID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
 	if err != nil {

@@ -25,7 +25,13 @@ func newDownloadTheCustomizedModel(sdkConfig sdkConfiguration) *downloadTheCusto
 }
 
 // FetchFile - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
-func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, request operations.FetchCustomizedModelFileRequest, opts ...operations.Option) (*operations.FetchCustomizedModelFileResponse, error) {
+func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, customizationID string, modelID string, organizationID *int64, opts ...operations.Option) (*operations.FetchCustomizedModelFileResponse, error) {
+	request := operations.FetchCustomizedModelFileRequest{
+		CustomizationID: customizationID,
+		ModelID:         modelID,
+		OrganizationID:  organizationID,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionAcceptHeaderOverride,

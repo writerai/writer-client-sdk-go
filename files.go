@@ -26,7 +26,12 @@ func newFiles(sdkConfig sdkConfiguration) *files {
 }
 
 // Delete file
-func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest) (*operations.DeleteFileResponse, error) {
+func (s *files) Delete(ctx context.Context, fileID string, organizationID *int64) (*operations.DeleteFileResponse, error) {
+	request := operations.DeleteFileRequest{
+		FileID:         fileID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -110,7 +115,12 @@ func (s *files) Delete(ctx context.Context, request operations.DeleteFileRequest
 }
 
 // Get file
-func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*operations.GetFileResponse, error) {
+func (s *files) Get(ctx context.Context, fileID string, organizationID *int64) (*operations.GetFileResponse, error) {
+	request := operations.GetFileRequest{
+		FileID:         fileID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file/{fileId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -194,7 +204,11 @@ func (s *files) Get(ctx context.Context, request operations.GetFileRequest) (*op
 }
 
 // List files
-func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (*operations.ListFilesResponse, error) {
+func (s *files) List(ctx context.Context, organizationID *int64) (*operations.ListFilesResponse, error) {
+	request := operations.ListFilesRequest{
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -278,7 +292,12 @@ func (s *files) List(ctx context.Context, request operations.ListFilesRequest) (
 }
 
 // Upload file
-func (s *files) Upload(ctx context.Context, request operations.UploadFileRequest) (*operations.UploadFileResponse, error) {
+func (s *files) Upload(ctx context.Context, uploadModelFileRequest shared.UploadModelFileRequest, organizationID *int64) (*operations.UploadFileResponse, error) {
+	request := operations.UploadFileRequest{
+		UploadModelFileRequest: uploadModelFileRequest,
+		OrganizationID:         organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/llm/organization/{organizationId}/file", request, s.sdkConfiguration.Globals)
 	if err != nil {

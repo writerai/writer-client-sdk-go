@@ -9,8 +9,8 @@ import (
 
 type GetDocumentDetailsRequest struct {
 	DocumentID     int64  `pathParam:"style=simple,explode=false,name=documentId"`
-	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 	TeamID         int64  `pathParam:"style=simple,explode=false,name=teamId"`
+	OrganizationID *int64 `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
 func (o *GetDocumentDetailsRequest) GetDocumentID() int64 {
@@ -20,18 +20,18 @@ func (o *GetDocumentDetailsRequest) GetDocumentID() int64 {
 	return o.DocumentID
 }
 
-func (o *GetDocumentDetailsRequest) GetOrganizationID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.OrganizationID
-}
-
 func (o *GetDocumentDetailsRequest) GetTeamID() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.TeamID
+}
+
+func (o *GetDocumentDetailsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
 }
 
 type GetDocumentDetailsResponse struct {

@@ -9,8 +9,8 @@ import (
 
 type AddTermsRequest struct {
 	CreateTermsRequest shared.CreateTermsRequest `request:"mediaType=application/json"`
-	OrganizationID     *int64                    `pathParam:"style=simple,explode=false,name=organizationId"`
 	TeamID             int64                     `pathParam:"style=simple,explode=false,name=teamId"`
+	OrganizationID     *int64                    `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
 func (o *AddTermsRequest) GetCreateTermsRequest() shared.CreateTermsRequest {
@@ -20,18 +20,18 @@ func (o *AddTermsRequest) GetCreateTermsRequest() shared.CreateTermsRequest {
 	return o.CreateTermsRequest
 }
 
-func (o *AddTermsRequest) GetOrganizationID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.OrganizationID
-}
-
 func (o *AddTermsRequest) GetTeamID() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.TeamID
+}
+
+func (o *AddTermsRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
 }
 
 type AddTermsResponse struct {

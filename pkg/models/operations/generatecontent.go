@@ -9,8 +9,8 @@ import (
 
 type GenerateContentRequest struct {
 	GenerateTemplateRequest shared.GenerateTemplateRequest `request:"mediaType=application/json"`
-	OrganizationID          *int64                         `pathParam:"style=simple,explode=false,name=organizationId"`
 	TeamID                  int64                          `pathParam:"style=simple,explode=false,name=teamId"`
+	OrganizationID          *int64                         `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
 func (o *GenerateContentRequest) GetGenerateTemplateRequest() shared.GenerateTemplateRequest {
@@ -20,18 +20,18 @@ func (o *GenerateContentRequest) GetGenerateTemplateRequest() shared.GenerateTem
 	return o.GenerateTemplateRequest
 }
 
-func (o *GenerateContentRequest) GetOrganizationID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.OrganizationID
-}
-
 func (o *GenerateContentRequest) GetTeamID() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.TeamID
+}
+
+func (o *GenerateContentRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
 }
 
 type GenerateContentResponse struct {

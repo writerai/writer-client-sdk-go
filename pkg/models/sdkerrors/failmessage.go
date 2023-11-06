@@ -2,19 +2,29 @@
 
 package sdkerrors
 
-import (
-	"encoding/json"
-)
-
 type FailMessage struct {
 	Description string      `json:"description"`
 	Extras      interface{} `json:"extras"`
 	Key         string      `json:"key"`
 }
 
-var _ error = &FailMessage{}
+func (o *FailMessage) GetDescription() string {
+	if o == nil {
+		return ""
+	}
+	return o.Description
+}
 
-func (e *FailMessage) Error() string {
-	data, _ := json.Marshal(e)
-	return string(data)
+func (o *FailMessage) GetExtras() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Extras
+}
+
+func (o *FailMessage) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
 }
