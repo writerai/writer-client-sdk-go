@@ -1,5 +1,5 @@
 # ModelCustomization
-(*ModelCustomization*)
+(*.ModelCustomization*)
 
 ## Overview
 
@@ -109,7 +109,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.DeleteModelCustomization200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }

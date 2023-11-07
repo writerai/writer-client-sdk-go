@@ -1,5 +1,5 @@
 # User
-(*User*)
+(*.User*)
 
 ## Overview
 

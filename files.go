@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// files - Methods related to Files
-type files struct {
+// Files - Methods related to Files
+type Files struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newFiles(sdkConfig sdkConfiguration) *files {
-	return &files{
+func newFiles(sdkConfig sdkConfiguration) *Files {
+	return &Files{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Delete file
-func (s *files) Delete(ctx context.Context, fileID string, organizationID *int64) (*operations.DeleteFileResponse, error) {
+func (s *Files) Delete(ctx context.Context, fileID string, organizationID *int64) (*operations.DeleteFileResponse, error) {
 	request := operations.DeleteFileRequest{
 		FileID:         fileID,
 		OrganizationID: organizationID,
@@ -75,12 +75,12 @@ func (s *files) Delete(ctx context.Context, fileID string, organizationID *int64
 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out operations.DeleteFile200ApplicationJSON
+			var out operations.DeleteFileResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.DeleteFile200ApplicationJSONObject = &out
+			res.Object = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -115,7 +115,7 @@ func (s *files) Delete(ctx context.Context, fileID string, organizationID *int64
 }
 
 // Get file
-func (s *files) Get(ctx context.Context, fileID string, organizationID *int64) (*operations.GetFileResponse, error) {
+func (s *Files) Get(ctx context.Context, fileID string, organizationID *int64) (*operations.GetFileResponse, error) {
 	request := operations.GetFileRequest{
 		FileID:         fileID,
 		OrganizationID: organizationID,
@@ -204,7 +204,7 @@ func (s *files) Get(ctx context.Context, fileID string, organizationID *int64) (
 }
 
 // List files
-func (s *files) List(ctx context.Context, organizationID *int64) (*operations.ListFilesResponse, error) {
+func (s *Files) List(ctx context.Context, organizationID *int64) (*operations.ListFilesResponse, error) {
 	request := operations.ListFilesRequest{
 		OrganizationID: organizationID,
 	}
@@ -292,7 +292,7 @@ func (s *files) List(ctx context.Context, organizationID *int64) (*operations.Li
 }
 
 // Upload file
-func (s *files) Upload(ctx context.Context, uploadModelFileRequest shared.UploadModelFileRequest, organizationID *int64) (*operations.UploadFileResponse, error) {
+func (s *Files) Upload(ctx context.Context, uploadModelFileRequest shared.UploadModelFileRequest, organizationID *int64) (*operations.UploadFileResponse, error) {
 	request := operations.UploadFileRequest{
 		UploadModelFileRequest: uploadModelFileRequest,
 		OrganizationID:         organizationID,

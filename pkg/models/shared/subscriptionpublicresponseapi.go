@@ -9,21 +9,21 @@ import (
 	"time"
 )
 
-type SubscriptionPublicResponseAPIProductName string
+type ProductName string
 
 const (
-	SubscriptionPublicResponseAPIProductNameFree       SubscriptionPublicResponseAPIProductName = "free"
-	SubscriptionPublicResponseAPIProductNamePro        SubscriptionPublicResponseAPIProductName = "pro"
-	SubscriptionPublicResponseAPIProductNameTeam       SubscriptionPublicResponseAPIProductName = "team"
-	SubscriptionPublicResponseAPIProductNameEnterprise SubscriptionPublicResponseAPIProductName = "enterprise"
-	SubscriptionPublicResponseAPIProductNameLegacy     SubscriptionPublicResponseAPIProductName = "legacy"
+	ProductNameFree       ProductName = "free"
+	ProductNamePro        ProductName = "pro"
+	ProductNameTeam       ProductName = "team"
+	ProductNameEnterprise ProductName = "enterprise"
+	ProductNameLegacy     ProductName = "legacy"
 )
 
-func (e SubscriptionPublicResponseAPIProductName) ToPointer() *SubscriptionPublicResponseAPIProductName {
+func (e ProductName) ToPointer() *ProductName {
 	return &e
 }
 
-func (e *SubscriptionPublicResponseAPIProductName) UnmarshalJSON(data []byte) error {
+func (e *ProductName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -38,10 +38,10 @@ func (e *SubscriptionPublicResponseAPIProductName) UnmarshalJSON(data []byte) er
 	case "enterprise":
 		fallthrough
 	case "legacy":
-		*e = SubscriptionPublicResponseAPIProductName(v)
+		*e = ProductName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SubscriptionPublicResponseAPIProductName: %v", v)
+		return fmt.Errorf("invalid value for ProductName: %v", v)
 	}
 }
 
@@ -88,13 +88,13 @@ func (e *SubscriptionPublicResponseAPIStatus) UnmarshalJSON(data []byte) error {
 }
 
 type SubscriptionPublicResponseAPI struct {
-	CreatedAt      time.Time                                `json:"createdAt"`
-	Meta           MetaData                                 `json:"meta"`
-	ProductName    SubscriptionPublicResponseAPIProductName `json:"productName"`
-	Seats          int64                                    `json:"seats"`
-	Status         SubscriptionPublicResponseAPIStatus      `json:"status"`
-	SubscriptionID string                                   `json:"subscriptionId"`
-	Usage          Usage                                    `json:"usage"`
+	CreatedAt      time.Time                           `json:"createdAt"`
+	Meta           MetaData                            `json:"meta"`
+	ProductName    ProductName                         `json:"productName"`
+	Seats          int64                               `json:"seats"`
+	Status         SubscriptionPublicResponseAPIStatus `json:"status"`
+	SubscriptionID string                              `json:"subscriptionId"`
+	Usage          Usage                               `json:"usage"`
 }
 
 func (s SubscriptionPublicResponseAPI) MarshalJSON() ([]byte, error) {
@@ -122,9 +122,9 @@ func (o *SubscriptionPublicResponseAPI) GetMeta() MetaData {
 	return o.Meta
 }
 
-func (o *SubscriptionPublicResponseAPI) GetProductName() SubscriptionPublicResponseAPIProductName {
+func (o *SubscriptionPublicResponseAPI) GetProductName() ProductName {
 	if o == nil {
-		return SubscriptionPublicResponseAPIProductName("")
+		return ProductName("")
 	}
 	return o.ProductName
 }

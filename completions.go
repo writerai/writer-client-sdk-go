@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// completions - Methods related to Completions
-type completions struct {
+// Completions - Methods related to Completions
+type Completions struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newCompletions(sdkConfig sdkConfiguration) *completions {
-	return &completions{
+func newCompletions(sdkConfig sdkConfiguration) *Completions {
+	return &Completions{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Create completion for LLM model
-func (s *completions) Create(ctx context.Context, completionRequest shared.CompletionRequest, modelID string, organizationID *int64) (*operations.CreateCompletionResponse, error) {
+func (s *Completions) Create(ctx context.Context, completionRequest shared.CompletionRequest, modelID string, organizationID *int64) (*operations.CreateCompletionResponse, error) {
 	request := operations.CreateCompletionRequest{
 		CompletionRequest: completionRequest,
 		ModelID:           modelID,
@@ -126,7 +126,7 @@ func (s *completions) Create(ctx context.Context, completionRequest shared.Compl
 }
 
 // CreateModelCustomizationCompletion - Create completion for LLM customization model
-func (s *completions) CreateModelCustomizationCompletion(ctx context.Context, completionRequest shared.CompletionRequest, customizationID string, modelID string, organizationID *int64) (*operations.CreateModelCustomizationCompletionResponse, error) {
+func (s *Completions) CreateModelCustomizationCompletion(ctx context.Context, completionRequest shared.CompletionRequest, customizationID string, modelID string, organizationID *int64) (*operations.CreateModelCustomizationCompletionResponse, error) {
 	request := operations.CreateModelCustomizationCompletionRequest{
 		CompletionRequest: completionRequest,
 		CustomizationID:   customizationID,

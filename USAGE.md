@@ -14,22 +14,16 @@ import (
 func main() {
 	s := writerclientsdkgo.New(
 		writerclientsdkgo.WithSecurity(""),
-		writerclientsdkgo.WithOrganizationID(496531),
+		writerclientsdkgo.WithOrganizationID(850421),
 	)
 
-	contentDetectorRequest := shared.ContentDetectorRequest{
-		Input: "string",
-	}
-
-	var organizationID *int64 = 592237
-
 	ctx := context.Background()
-	res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
+	res, err := s.Billing.GetSubscriptionDetails(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.ContentDetectorResponses != nil {
+	if res.SubscriptionPublicResponseAPI != nil {
 		// handle response
 	}
 }

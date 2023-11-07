@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// aiContentDetector - Methods related to AI Content Detector
-type aiContentDetector struct {
+// AIContentDetector - Methods related to AI Content Detector
+type AIContentDetector struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAIContentDetector(sdkConfig sdkConfiguration) *aiContentDetector {
-	return &aiContentDetector{
+func newAIContentDetector(sdkConfig sdkConfiguration) *AIContentDetector {
+	return &AIContentDetector{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Detect - Content detector api
-func (s *aiContentDetector) Detect(ctx context.Context, contentDetectorRequest shared.ContentDetectorRequest, organizationID *int64) (*operations.DetectContentResponse, error) {
+func (s *AIContentDetector) Detect(ctx context.Context, contentDetectorRequest shared.ContentDetectorRequest, organizationID *int64) (*operations.DetectContentResponse, error) {
 	request := operations.DetectContentRequest{
 		ContentDetectorRequest: contentDetectorRequest,
 		OrganizationID:         organizationID,
@@ -90,7 +90,7 @@ func (s *aiContentDetector) Detect(ctx context.Context, contentDetectorRequest s
 				return nil, err
 			}
 
-			res.ContentDetectorResponses = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

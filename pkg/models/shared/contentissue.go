@@ -7,53 +7,53 @@ import (
 	"fmt"
 )
 
-type ContentIssueService string
+type Service string
 
 const (
-	ContentIssueServiceCommonMistakes     ContentIssueService = "common-mistakes"
-	ContentIssueServiceBannedWords        ContentIssueService = "banned-words"
-	ContentIssueServiceDictionary         ContentIssueService = "dictionary"
-	ContentIssueServiceGec                ContentIssueService = "gec"
-	ContentIssueServiceInfinitive         ContentIssueService = "infinitive"
-	ContentIssueServiceSpelling           ContentIssueService = "spelling"
-	ContentIssueServiceWritingStyle       ContentIssueService = "writing-style"
-	ContentIssueServiceCustomRules        ContentIssueService = "custom-rules"
-	ContentIssueServiceSentenceCase       ContentIssueService = "sentence-case"
-	ContentIssueServiceAcronym            ContentIssueService = "acronym"
-	ContentIssueServiceOxfordComma        ContentIssueService = "oxford-comma"
-	ContentIssueServiceMlPunctuation      ContentIssueService = "ml-punctuation"
-	ContentIssueServiceEmojis             ContentIssueService = "emojis"
-	ContentIssueServiceGenderPronouns     ContentIssueService = "gender-pronouns"
-	ContentIssueServiceSensitivity        ContentIssueService = "sensitivity"
-	ContentIssueServicePlagiarism         ContentIssueService = "plagiarism"
-	ContentIssueServiceReadability        ContentIssueService = "readability"
-	ContentIssueServiceSentenceComplexity ContentIssueService = "sentence-complexity"
-	ContentIssueServiceVocabulary         ContentIssueService = "vocabulary"
-	ContentIssueServiceParagraphLength    ContentIssueService = "paragraph-length"
-	ContentIssueServicePlainLanguage      ContentIssueService = "plain-language"
-	ContentIssueServiceHealthyCommn       ContentIssueService = "healthy-commn"
-	ContentIssueServiceConfidence         ContentIssueService = "confidence"
-	ContentIssueServiceDataLossPrevention ContentIssueService = "data-loss-prevention"
-	ContentIssueServiceHateSpeech         ContentIssueService = "hate-speech"
-	ContentIssueServiceContentSafeguards  ContentIssueService = "content-safeguards"
-	ContentIssueServiceFeedback           ContentIssueService = "feedback"
-	ContentIssueServiceClaim              ContentIssueService = "claim"
-	ContentIssueServiceQuote              ContentIssueService = "quote"
-	ContentIssueServiceGenderNouns        ContentIssueService = "gender-nouns"
-	ContentIssueServiceGenderTone         ContentIssueService = "gender-tone"
-	ContentIssueServiceGrammar            ContentIssueService = "grammar"
-	ContentIssueServicePunctuationDark    ContentIssueService = "punctuation-dark"
-	ContentIssueServiceFormatting         ContentIssueService = "formatting"
-	ContentIssueServiceTwitter            ContentIssueService = "twitter"
-	ContentIssueServiceGecDark            ContentIssueService = "gec-dark"
-	ContentIssueServiceGecGpt3            ContentIssueService = "gec-gpt3"
+	ServiceCommonMistakes     Service = "common-mistakes"
+	ServiceBannedWords        Service = "banned-words"
+	ServiceDictionary         Service = "dictionary"
+	ServiceGec                Service = "gec"
+	ServiceInfinitive         Service = "infinitive"
+	ServiceSpelling           Service = "spelling"
+	ServiceWritingStyle       Service = "writing-style"
+	ServiceCustomRules        Service = "custom-rules"
+	ServiceSentenceCase       Service = "sentence-case"
+	ServiceAcronym            Service = "acronym"
+	ServiceOxfordComma        Service = "oxford-comma"
+	ServiceMlPunctuation      Service = "ml-punctuation"
+	ServiceEmojis             Service = "emojis"
+	ServiceGenderPronouns     Service = "gender-pronouns"
+	ServiceSensitivity        Service = "sensitivity"
+	ServicePlagiarism         Service = "plagiarism"
+	ServiceReadability        Service = "readability"
+	ServiceSentenceComplexity Service = "sentence-complexity"
+	ServiceVocabulary         Service = "vocabulary"
+	ServiceParagraphLength    Service = "paragraph-length"
+	ServicePlainLanguage      Service = "plain-language"
+	ServiceHealthyCommn       Service = "healthy-commn"
+	ServiceConfidence         Service = "confidence"
+	ServiceDataLossPrevention Service = "data-loss-prevention"
+	ServiceHateSpeech         Service = "hate-speech"
+	ServiceContentSafeguards  Service = "content-safeguards"
+	ServiceFeedback           Service = "feedback"
+	ServiceClaim              Service = "claim"
+	ServiceQuote              Service = "quote"
+	ServiceGenderNouns        Service = "gender-nouns"
+	ServiceGenderTone         Service = "gender-tone"
+	ServiceGrammar            Service = "grammar"
+	ServicePunctuationDark    Service = "punctuation-dark"
+	ServiceFormatting         Service = "formatting"
+	ServiceTwitter            Service = "twitter"
+	ServiceGecDark            Service = "gec-dark"
+	ServiceGecGpt3            Service = "gec-gpt3"
 )
 
-func (e ContentIssueService) ToPointer() *ContentIssueService {
+func (e Service) ToPointer() *Service {
 	return &e
 }
 
-func (e *ContentIssueService) UnmarshalJSON(data []byte) error {
+func (e *Service) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -132,20 +132,20 @@ func (e *ContentIssueService) UnmarshalJSON(data []byte) error {
 	case "gec-dark":
 		fallthrough
 	case "gec-gpt3":
-		*e = ContentIssueService(v)
+		*e = Service(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ContentIssueService: %v", v)
+		return fmt.Errorf("invalid value for Service: %v", v)
 	}
 }
 
 type ContentIssue struct {
-	Description *string             `json:"description,omitempty"`
-	From        int64               `json:"from"`
-	Meta        interface{}         `json:"meta,omitempty"`
-	Service     ContentIssueService `json:"service"`
-	Suggestions []string            `json:"suggestions,omitempty"`
-	Until       int64               `json:"until"`
+	Description *string     `json:"description,omitempty"`
+	From        int64       `json:"from"`
+	Meta        interface{} `json:"meta,omitempty"`
+	Service     Service     `json:"service"`
+	Suggestions []string    `json:"suggestions,omitempty"`
+	Until       int64       `json:"until"`
 }
 
 func (o *ContentIssue) GetDescription() *string {
@@ -169,9 +169,9 @@ func (o *ContentIssue) GetMeta() interface{} {
 	return o.Meta
 }
 
-func (o *ContentIssue) GetService() ContentIssueService {
+func (o *ContentIssue) GetService() Service {
 	if o == nil {
-		return ContentIssueService("")
+		return Service("")
 	}
 	return o.Service
 }

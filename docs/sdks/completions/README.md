@@ -1,5 +1,5 @@
 # Completions
-(*Completions*)
+(*.Completions*)
 
 ## Overview
 

@@ -44,22 +44,16 @@ import (
 func main() {
 	s := writerclientsdkgo.New(
 		writerclientsdkgo.WithSecurity(""),
-		writerclientsdkgo.WithOrganizationID(496531),
+		writerclientsdkgo.WithOrganizationID(850421),
 	)
 
-	contentDetectorRequest := shared.ContentDetectorRequest{
-		Input: "string",
-	}
-
-	var organizationID *int64 = 592237
-
 	ctx := context.Background()
-	res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
+	res, err := s.Billing.GetSubscriptionDetails(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.ContentDetectorResponses != nil {
+	if res.SubscriptionPublicResponseAPI != nil {
 		// handle response
 	}
 }
@@ -71,77 +65,77 @@ func main() {
 ## Available Resources and Operations
 
 
-### [AIContentDetector](docs/sdks/aicontentdetector/README.md)
-
-* [Detect](docs/sdks/aicontentdetector/README.md#detect) - Content detector api
-
-### [Billing](docs/sdks/billing/README.md)
+### [.Billing](docs/sdks/billing/README.md)
 
 * [GetSubscriptionDetails](docs/sdks/billing/README.md#getsubscriptiondetails) - Get your organization subscription details
 
-### [CoWrite](docs/sdks/cowrite/README.md)
+### [.AIContentDetector](docs/sdks/aicontentdetector/README.md)
 
-* [GenerateContent](docs/sdks/cowrite/README.md#generatecontent) - Generate content using predefined templates
-* [ListTemplates](docs/sdks/cowrite/README.md#listtemplates) - Get a list of your existing CoWrite templates
+* [Detect](docs/sdks/aicontentdetector/README.md#detect) - Content detector api
 
-### [Completions](docs/sdks/completions/README.md)
-
-* [Create](docs/sdks/completions/README.md#create) - Create completion for LLM model
-* [CreateModelCustomizationCompletion](docs/sdks/completions/README.md#createmodelcustomizationcompletion) - Create completion for LLM customization model
-
-### [Content](docs/sdks/content/README.md)
+### [.Content](docs/sdks/content/README.md)
 
 * [Check](docs/sdks/content/README.md#check) - Check your content against your preset styleguide.
 * [Correct](docs/sdks/content/README.md#correct) - Apply the style guide suggestions directly to your content.
 
-### [DownloadTheCustomizedModel](docs/sdks/downloadthecustomizedmodel/README.md)
+### [.CoWrite](docs/sdks/cowrite/README.md)
 
-* [FetchFile](docs/sdks/downloadthecustomizedmodel/README.md#fetchfile) - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
+* [GenerateContent](docs/sdks/cowrite/README.md#generatecontent) - Generate content using predefined templates
+* [ListTemplates](docs/sdks/cowrite/README.md#listtemplates) - Get a list of your existing CoWrite templates
 
-### [Files](docs/sdks/files/README.md)
+### [.Files](docs/sdks/files/README.md)
 
 * [Delete](docs/sdks/files/README.md#delete) - Delete file
 * [Get](docs/sdks/files/README.md#get) - Get file
 * [List](docs/sdks/files/README.md#list) - List files
 * [Upload](docs/sdks/files/README.md#upload) - Upload file
 
-### [ModelCustomization](docs/sdks/modelcustomization/README.md)
+### [.Models](docs/sdks/models/README.md)
+
+* [List](docs/sdks/models/README.md#list) - List available LLM models
+
+### [.Completions](docs/sdks/completions/README.md)
+
+* [Create](docs/sdks/completions/README.md#create) - Create completion for LLM model
+* [CreateModelCustomizationCompletion](docs/sdks/completions/README.md#createmodelcustomizationcompletion) - Create completion for LLM customization model
+
+### [.ModelCustomization](docs/sdks/modelcustomization/README.md)
 
 * [Create](docs/sdks/modelcustomization/README.md#create) - Create model customization
 * [Delete](docs/sdks/modelcustomization/README.md#delete) - Delete Model customization
 * [Get](docs/sdks/modelcustomization/README.md#get) - Get model customization
 * [List](docs/sdks/modelcustomization/README.md#list) - List model customizations
 
-### [Models](docs/sdks/models/README.md)
+### [.DownloadTheCustomizedModel](docs/sdks/downloadthecustomizedmodel/README.md)
 
-* [List](docs/sdks/models/README.md#list) - List available LLM models
+* [FetchFile](docs/sdks/downloadthecustomizedmodel/README.md#fetchfile) - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
 
-### [Snippet](docs/sdks/snippet/README.md)
+### [.Document](docs/sdks/document/README.md)
+
+* [Get](docs/sdks/document/README.md#get) - Get document details
+* [List](docs/sdks/document/README.md#list) - List team documents
+
+### [.Snippet](docs/sdks/snippet/README.md)
 
 * [Delete](docs/sdks/snippet/README.md#delete) - Delete snippets
 * [Find](docs/sdks/snippet/README.md#find) - Find snippets
 * [Update](docs/sdks/snippet/README.md#update) - Update snippets
 
-### [Styleguide](docs/sdks/styleguide/README.md)
+### [.Styleguide](docs/sdks/styleguide/README.md)
 
 * [Get](docs/sdks/styleguide/README.md#get) - Page details
 * [ListPages](docs/sdks/styleguide/README.md#listpages) - List your styleguide pages
 
-### [Terminology](docs/sdks/terminology/README.md)
+### [.Terminology](docs/sdks/terminology/README.md)
 
 * [Add](docs/sdks/terminology/README.md#add) - Add terms
 * [Delete](docs/sdks/terminology/README.md#delete) - Delete terms
 * [Find](docs/sdks/terminology/README.md#find) - Find terms
 * [Update](docs/sdks/terminology/README.md#update) - Update terms
 
-### [User](docs/sdks/user/README.md)
+### [.User](docs/sdks/user/README.md)
 
 * [List](docs/sdks/user/README.md#list) - List users
-
-### [Document](docs/sdks/document/README.md)
-
-* [Get](docs/sdks/document/README.md#get) - Get document details
-* [List](docs/sdks/document/README.md#list) - List team documents
 <!-- End SDK Available Operations -->
 
 
@@ -175,7 +169,7 @@ Here's an example of one such pagination call:
 
 A parameter is configured globally. This parameter must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `organizationId` to `547272` at SDK initialization and then you do not have to pass the same value on calls to operations like `Detect`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `organizationId` to `99895` at SDK initialization and then you do not have to pass the same value on calls to operations like `Detect`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ## Available Globals
@@ -218,7 +212,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if res.ContentDetectorResponses != nil {
+	if res.Classes != nil {
 		// handle response
 	}
 }
@@ -249,20 +243,14 @@ import (
 func main() {
 	s := writerclientsdkgo.New(
 		writerclientsdkgo.WithSecurity(""),
-		writerclientsdkgo.WithOrganizationID(496531),
+		writerclientsdkgo.WithOrganizationID(850421),
 	)
 
-	contentDetectorRequest := shared.ContentDetectorRequest{
-		Input: "string",
-	}
-
-	var organizationID *int64 = 592237
-
 	ctx := context.Background()
-	res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
+	res, err := s.Billing.GetSubscriptionDetails(ctx)
 	if err != nil {
 
-		var e *FailResponse
+		var e *sdkerrors.FailResponse
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -289,7 +277,6 @@ You can override the default server globally using the `WithServerIndex` option 
 
 For example:
 
-
 ```go
 package main
 
@@ -302,24 +289,18 @@ import (
 
 func main() {
 	s := writerclientsdkgo.New(
-		writerclientsdkgo.WithSecurity(""),
-		writerclientsdkgo.WithOrganizationID(496531),
 		writerclientsdkgo.WithServerIndex(0),
+		writerclientsdkgo.WithSecurity(""),
+		writerclientsdkgo.WithOrganizationID(850421),
 	)
 
-	contentDetectorRequest := shared.ContentDetectorRequest{
-		Input: "string",
-	}
-
-	var organizationID *int64 = 592237
-
 	ctx := context.Background()
-	res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
+	res, err := s.Billing.GetSubscriptionDetails(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.ContentDetectorResponses != nil {
+	if res.SubscriptionPublicResponseAPI != nil {
 		// handle response
 	}
 }
@@ -331,7 +312,6 @@ func main() {
 
 The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
 
-
 ```go
 package main
 
@@ -344,24 +324,18 @@ import (
 
 func main() {
 	s := writerclientsdkgo.New(
-		writerclientsdkgo.WithSecurity(""),
-		writerclientsdkgo.WithOrganizationID(496531),
 		writerclientsdkgo.WithServerURL("https://enterprise-api.writer.com"),
+		writerclientsdkgo.WithSecurity(""),
+		writerclientsdkgo.WithOrganizationID(850421),
 	)
 
-	contentDetectorRequest := shared.ContentDetectorRequest{
-		Input: "string",
-	}
-
-	var organizationID *int64 = 592237
-
 	ctx := context.Background()
-	res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
+	res, err := s.Billing.GetSubscriptionDetails(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.ContentDetectorResponses != nil {
+	if res.SubscriptionPublicResponseAPI != nil {
 		// handle response
 	}
 }
@@ -399,6 +373,52 @@ var (
 
 This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
 <!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name     | Type     | Scheme   |
+| -------- | -------- | -------- |
+| `APIKey` | apiKey   | API key  |
+
+You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
+
+```go
+package main
+
+import (
+	"context"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := writerclientsdkgo.New(
+		writerclientsdkgo.WithSecurity(""),
+		writerclientsdkgo.WithOrganizationID(850421),
+	)
+
+	ctx := context.Background()
+	res, err := s.Billing.GetSubscriptionDetails(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.SubscriptionPublicResponseAPI != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

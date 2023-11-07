@@ -13,19 +13,19 @@ import (
 	"net/http"
 )
 
-// downloadTheCustomizedModel - Methods related to Download the customized model
-type downloadTheCustomizedModel struct {
+// DownloadTheCustomizedModel - Methods related to Download the customized model
+type DownloadTheCustomizedModel struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDownloadTheCustomizedModel(sdkConfig sdkConfiguration) *downloadTheCustomizedModel {
-	return &downloadTheCustomizedModel{
+func newDownloadTheCustomizedModel(sdkConfig sdkConfiguration) *DownloadTheCustomizedModel {
+	return &DownloadTheCustomizedModel{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // FetchFile - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
-func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, customizationID string, modelID string, organizationID *int64, opts ...operations.Option) (*operations.FetchCustomizedModelFileResponse, error) {
+func (s *DownloadTheCustomizedModel) FetchFile(ctx context.Context, customizationID string, modelID string, organizationID *int64, opts ...operations.Option) (*operations.FetchCustomizedModelFileResponse, error) {
 	request := operations.FetchCustomizedModelFileRequest{
 		CustomizationID: customizationID,
 		ModelID:         modelID,
@@ -80,7 +80,7 @@ func (s *downloadTheCustomizedModel) FetchFile(ctx context.Context, customizatio
 
 	if (httpRes.StatusCode == 200) && utils.MatchContentType(contentType, `application/octet-stream`) {
 		res.Headers = httpRes.Header
-		res.FetchCustomizedModelFile200ApplicationOctetStreamBinaryString = httpRes.Body
+		res.Stream = httpRes.Body
 
 		return res, nil
 	}

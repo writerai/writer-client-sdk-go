@@ -9,18 +9,18 @@ import (
 	"time"
 )
 
-type PagePublicAPIResponseStatus string
+type Status string
 
 const (
-	PagePublicAPIResponseStatusLive    PagePublicAPIResponseStatus = "live"
-	PagePublicAPIResponseStatusOffline PagePublicAPIResponseStatus = "offline"
+	StatusLive    Status = "live"
+	StatusOffline Status = "offline"
 )
 
-func (e PagePublicAPIResponseStatus) ToPointer() *PagePublicAPIResponseStatus {
+func (e Status) ToPointer() *Status {
 	return &e
 }
 
-func (e *PagePublicAPIResponseStatus) UnmarshalJSON(data []byte) error {
+func (e *Status) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,23 +29,23 @@ func (e *PagePublicAPIResponseStatus) UnmarshalJSON(data []byte) error {
 	case "live":
 		fallthrough
 	case "offline":
-		*e = PagePublicAPIResponseStatus(v)
+		*e = Status(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PagePublicAPIResponseStatus: %v", v)
+		return fmt.Errorf("invalid value for Status: %v", v)
 	}
 }
 
 type PagePublicAPIResponse struct {
-	CreatedAt time.Time                   `json:"createdAt"`
-	ID        int64                       `json:"id"`
-	Order     int64                       `json:"order"`
-	Section   *SectionInfo                `json:"section,omitempty"`
-	Status    PagePublicAPIResponseStatus `json:"status"`
-	Title     string                      `json:"title"`
-	UpdatedAt time.Time                   `json:"updatedAt"`
-	UpdatedBy *SimpleUser                 `json:"updatedBy,omitempty"`
-	URL       string                      `json:"url"`
+	CreatedAt time.Time    `json:"createdAt"`
+	ID        int64        `json:"id"`
+	Order     int64        `json:"order"`
+	Section   *SectionInfo `json:"section,omitempty"`
+	Status    Status       `json:"status"`
+	Title     string       `json:"title"`
+	UpdatedAt time.Time    `json:"updatedAt"`
+	UpdatedBy *SimpleUser  `json:"updatedBy,omitempty"`
+	URL       string       `json:"url"`
 }
 
 func (p PagePublicAPIResponse) MarshalJSON() ([]byte, error) {
@@ -87,9 +87,9 @@ func (o *PagePublicAPIResponse) GetSection() *SectionInfo {
 	return o.Section
 }
 
-func (o *PagePublicAPIResponse) GetStatus() PagePublicAPIResponseStatus {
+func (o *PagePublicAPIResponse) GetStatus() Status {
 	if o == nil {
-		return PagePublicAPIResponseStatus("")
+		return Status("")
 	}
 	return o.Status
 }

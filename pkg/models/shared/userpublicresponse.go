@@ -9,18 +9,18 @@ import (
 	"time"
 )
 
-type UserPublicResponseAccountStatus string
+type AccountStatus string
 
 const (
-	UserPublicResponseAccountStatusInvited  UserPublicResponseAccountStatus = "invited"
-	UserPublicResponseAccountStatusSignedUp UserPublicResponseAccountStatus = "signed_up"
+	AccountStatusInvited  AccountStatus = "invited"
+	AccountStatusSignedUp AccountStatus = "signed_up"
 )
 
-func (e UserPublicResponseAccountStatus) ToPointer() *UserPublicResponseAccountStatus {
+func (e AccountStatus) ToPointer() *AccountStatus {
 	return &e
 }
 
-func (e *UserPublicResponseAccountStatus) UnmarshalJSON(data []byte) error {
+func (e *AccountStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,25 +29,25 @@ func (e *UserPublicResponseAccountStatus) UnmarshalJSON(data []byte) error {
 	case "invited":
 		fallthrough
 	case "signed_up":
-		*e = UserPublicResponseAccountStatus(v)
+		*e = AccountStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UserPublicResponseAccountStatus: %v", v)
+		return fmt.Errorf("invalid value for AccountStatus: %v", v)
 	}
 }
 
 type UserPublicResponse struct {
-	AccountStatus  UserPublicResponseAccountStatus `json:"accountStatus"`
-	Avatar         *string                         `json:"avatar,omitempty"`
-	CreatedAt      time.Time                       `json:"createdAt"`
-	Email          *string                         `json:"email,omitempty"`
-	FirstName      string                          `json:"firstName"`
-	FullName       string                          `json:"fullName"`
-	ID             int64                           `json:"id"`
-	InvitedBy      *int64                          `json:"invitedBy,omitempty"`
-	LastName       *string                         `json:"lastName,omitempty"`
-	LastSeenOnline *time.Time                      `json:"lastSeenOnline,omitempty"`
-	Timezone       *string                         `json:"timezone,omitempty"`
+	AccountStatus  AccountStatus `json:"accountStatus"`
+	Avatar         *string       `json:"avatar,omitempty"`
+	CreatedAt      time.Time     `json:"createdAt"`
+	Email          *string       `json:"email,omitempty"`
+	FirstName      string        `json:"firstName"`
+	FullName       string        `json:"fullName"`
+	ID             int64         `json:"id"`
+	InvitedBy      *int64        `json:"invitedBy,omitempty"`
+	LastName       *string       `json:"lastName,omitempty"`
+	LastSeenOnline *time.Time    `json:"lastSeenOnline,omitempty"`
+	Timezone       *string       `json:"timezone,omitempty"`
 }
 
 func (u UserPublicResponse) MarshalJSON() ([]byte, error) {
@@ -61,9 +61,9 @@ func (u *UserPublicResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UserPublicResponse) GetAccountStatus() UserPublicResponseAccountStatus {
+func (o *UserPublicResponse) GetAccountStatus() AccountStatus {
 	if o == nil {
-		return UserPublicResponseAccountStatus("")
+		return AccountStatus("")
 	}
 	return o.AccountStatus
 }

@@ -1,5 +1,5 @@
 # Styleguide
-(*Styleguide*)
+(*.Styleguide*)
 
 ## Overview
 
@@ -88,7 +88,7 @@ func main() {
 
     var offset *int64 = 303332
 
-    var status *operations.ListPagesStatus = operations.ListPagesStatusLive
+    var status *operations.Status = operations.StatusLive
 
     ctx := context.Background()
     res, err := s.Styleguide.ListPages(ctx, limit, offset, status)
@@ -104,12 +104,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `ctx`                                                                     | [context.Context](https://pkg.go.dev/context#Context)                     | :heavy_check_mark:                                                        | The context to use for the request.                                       |
-| `limit`                                                                   | **int64*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
-| `offset`                                                                  | **int64*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
-| `status`                                                                  | [*operations.ListPagesStatus](../../models/operations/listpagesstatus.md) | :heavy_minus_sign:                                                        | N/A                                                                       |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `ctx`                                                   | [context.Context](https://pkg.go.dev/context#Context)   | :heavy_check_mark:                                      | The context to use for the request.                     |
+| `limit`                                                 | **int64*                                                | :heavy_minus_sign:                                      | N/A                                                     |
+| `offset`                                                | **int64*                                                | :heavy_minus_sign:                                      | N/A                                                     |
+| `status`                                                | [*operations.Status](../../models/operations/status.md) | :heavy_minus_sign:                                      | N/A                                                     |
 
 
 ### Response

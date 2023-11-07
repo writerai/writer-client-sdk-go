@@ -1,5 +1,5 @@
 # Models
-(*Models*)
+(*.Models*)
 
 ## Overview
 

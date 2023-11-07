@@ -1,5 +1,5 @@
 # Files
-(*Files*)
+(*.Files*)
 
 ## Overview
 
@@ -45,7 +45,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.DeleteFile200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -192,13 +192,13 @@ func main() {
 
 
     uploadModelFileRequest := shared.UploadModelFileRequest{
-        File: shared.UploadModelFileRequestFile{
-            Content: []byte("?SRSKG@^n="),
-            File: "string",
+        File: shared.File{
+            Content: []byte("0x7cbca97eC6"),
+            FileName: "plastic_cli.gif",
         },
     }
 
-    var organizationID *int64 = 572988
+    var organizationID *int64 = 360896
 
     ctx := context.Background()
     res, err := s.Files.Upload(ctx, uploadModelFileRequest, organizationID)

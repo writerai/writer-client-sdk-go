@@ -25,7 +25,7 @@ func (o *DeleteFileRequest) GetOrganizationID() *int64 {
 	return o.OrganizationID
 }
 
-type DeleteFile200ApplicationJSON struct {
+type DeleteFileResponseBody struct {
 }
 
 type DeleteFileResponse struct {
@@ -35,8 +35,8 @@ type DeleteFileResponse struct {
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
-	RawResponse                        *http.Response
-	DeleteFile200ApplicationJSONObject *DeleteFile200ApplicationJSON
+	RawResponse *http.Response
+	Object      *DeleteFileResponseBody
 }
 
 func (o *DeleteFileResponse) GetContentType() string {
@@ -67,9 +67,9 @@ func (o *DeleteFileResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *DeleteFileResponse) GetDeleteFile200ApplicationJSONObject() *DeleteFile200ApplicationJSON {
+func (o *DeleteFileResponse) GetObject() *DeleteFileResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.DeleteFile200ApplicationJSONObject
+	return o.Object
 }

@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// billing - Methods related to Billing
-type billing struct {
+// Billing - Methods related to Billing
+type Billing struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newBilling(sdkConfig sdkConfiguration) *billing {
-	return &billing{
+func newBilling(sdkConfig sdkConfiguration) *Billing {
+	return &Billing{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetSubscriptionDetails - Get your organization subscription details
-func (s *billing) GetSubscriptionDetails(ctx context.Context) (*operations.GetSubscriptionDetailsResponse, error) {
+func (s *Billing) GetSubscriptionDetails(ctx context.Context) (*operations.GetSubscriptionDetailsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/billing/subscription"
 

@@ -1,5 +1,5 @@
 # CoWrite
-(*CoWrite*)
+(*.CoWrite*)
 
 ## Overview
 

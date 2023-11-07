@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// terminology - Methods related to Terminology
-type terminology struct {
+// Terminology - Methods related to Terminology
+type Terminology struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newTerminology(sdkConfig sdkConfiguration) *terminology {
-	return &terminology{
+func newTerminology(sdkConfig sdkConfiguration) *Terminology {
+	return &Terminology{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Add terms
-func (s *terminology) Add(ctx context.Context, createTermsRequest shared.CreateTermsRequest, teamID int64, organizationID *int64) (*operations.AddTermsResponse, error) {
+func (s *Terminology) Add(ctx context.Context, createTermsRequest shared.CreateTermsRequest, teamID int64, organizationID *int64) (*operations.AddTermsResponse, error) {
 	request := operations.AddTermsRequest{
 		CreateTermsRequest: createTermsRequest,
 		TeamID:             teamID,
@@ -126,7 +126,7 @@ func (s *terminology) Add(ctx context.Context, createTermsRequest shared.CreateT
 }
 
 // Delete terms
-func (s *terminology) Delete(ctx context.Context, teamID int64, xRequestID *string, ids []int64, organizationID *int64) (*operations.DeleteTermsResponse, error) {
+func (s *Terminology) Delete(ctx context.Context, teamID int64, xRequestID *string, ids []int64, organizationID *int64) (*operations.DeleteTermsResponse, error) {
 	request := operations.DeleteTermsRequest{
 		TeamID:         teamID,
 		XRequestID:     xRequestID,
@@ -223,7 +223,7 @@ func (s *terminology) Delete(ctx context.Context, teamID int64, xRequestID *stri
 }
 
 // Find terms
-func (s *terminology) Find(ctx context.Context, request operations.FindTermsRequest) (*operations.FindTermsResponse, error) {
+func (s *Terminology) Find(ctx context.Context, request operations.FindTermsRequest) (*operations.FindTermsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -311,7 +311,7 @@ func (s *terminology) Find(ctx context.Context, request operations.FindTermsRequ
 }
 
 // Update terms
-func (s *terminology) Update(ctx context.Context, updateTermsRequest shared.UpdateTermsRequest, teamID int64, xRequestID *string, organizationID *int64) (*operations.UpdateTermsResponse, error) {
+func (s *Terminology) Update(ctx context.Context, updateTermsRequest shared.UpdateTermsRequest, teamID int64, xRequestID *string, organizationID *int64) (*operations.UpdateTermsResponse, error) {
 	request := operations.UpdateTermsRequest{
 		UpdateTermsRequest: updateTermsRequest,
 		TeamID:             teamID,

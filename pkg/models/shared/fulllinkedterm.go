@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-type FullLinkedTermPos string
+type Pos string
 
 const (
-	FullLinkedTermPosNoun      FullLinkedTermPos = "noun"
-	FullLinkedTermPosVerb      FullLinkedTermPos = "verb"
-	FullLinkedTermPosAdverb    FullLinkedTermPos = "adverb"
-	FullLinkedTermPosAdjective FullLinkedTermPos = "adjective"
+	PosNoun      Pos = "noun"
+	PosVerb      Pos = "verb"
+	PosAdverb    Pos = "adverb"
+	PosAdjective Pos = "adjective"
 )
 
-func (e FullLinkedTermPos) ToPointer() *FullLinkedTermPos {
+func (e Pos) ToPointer() *Pos {
 	return &e
 }
 
-func (e *FullLinkedTermPos) UnmarshalJSON(data []byte) error {
+func (e *Pos) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,10 +33,10 @@ func (e *FullLinkedTermPos) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = FullLinkedTermPos(v)
+		*e = Pos(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FullLinkedTermPos: %v", v)
+		return fmt.Errorf("invalid value for Pos: %v", v)
 	}
 }
 
@@ -45,7 +45,7 @@ type FullLinkedTerm struct {
 	CaseSensitive         bool                   `json:"caseSensitive"`
 	ID                    *int64                 `json:"id,omitempty"`
 	LinkedTermID          int64                  `json:"linkedTermId"`
-	Pos                   *FullLinkedTermPos     `json:"pos,omitempty"`
+	Pos                   *Pos                   `json:"pos,omitempty"`
 	Term                  string                 `json:"term"`
 	TermID                int64                  `json:"termId"`
 }
@@ -78,7 +78,7 @@ func (o *FullLinkedTerm) GetLinkedTermID() int64 {
 	return o.LinkedTermID
 }
 
-func (o *FullLinkedTerm) GetPos() *FullLinkedTermPos {
+func (o *FullLinkedTerm) GetPos() *Pos {
 	if o == nil {
 		return nil
 	}

@@ -9,21 +9,21 @@ import (
 	"net/http"
 )
 
-type ListTeamDocumentsSortField string
+type ListTeamDocumentsQueryParamSortField string
 
 const (
-	ListTeamDocumentsSortFieldTitle            ListTeamDocumentsSortField = "title"
-	ListTeamDocumentsSortFieldCreationTime     ListTeamDocumentsSortField = "creationTime"
-	ListTeamDocumentsSortFieldModificationTime ListTeamDocumentsSortField = "modificationTime"
-	ListTeamDocumentsSortFieldModifiedByMeTime ListTeamDocumentsSortField = "modifiedByMeTime"
-	ListTeamDocumentsSortFieldOpenedByMeTime   ListTeamDocumentsSortField = "openedByMeTime"
+	ListTeamDocumentsQueryParamSortFieldTitle            ListTeamDocumentsQueryParamSortField = "title"
+	ListTeamDocumentsQueryParamSortFieldCreationTime     ListTeamDocumentsQueryParamSortField = "creationTime"
+	ListTeamDocumentsQueryParamSortFieldModificationTime ListTeamDocumentsQueryParamSortField = "modificationTime"
+	ListTeamDocumentsQueryParamSortFieldModifiedByMeTime ListTeamDocumentsQueryParamSortField = "modifiedByMeTime"
+	ListTeamDocumentsQueryParamSortFieldOpenedByMeTime   ListTeamDocumentsQueryParamSortField = "openedByMeTime"
 )
 
-func (e ListTeamDocumentsSortField) ToPointer() *ListTeamDocumentsSortField {
+func (e ListTeamDocumentsQueryParamSortField) ToPointer() *ListTeamDocumentsQueryParamSortField {
 	return &e
 }
 
-func (e *ListTeamDocumentsSortField) UnmarshalJSON(data []byte) error {
+func (e *ListTeamDocumentsQueryParamSortField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -38,25 +38,25 @@ func (e *ListTeamDocumentsSortField) UnmarshalJSON(data []byte) error {
 	case "modifiedByMeTime":
 		fallthrough
 	case "openedByMeTime":
-		*e = ListTeamDocumentsSortField(v)
+		*e = ListTeamDocumentsQueryParamSortField(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListTeamDocumentsSortField: %v", v)
+		return fmt.Errorf("invalid value for ListTeamDocumentsQueryParamSortField: %v", v)
 	}
 }
 
-type ListTeamDocumentsSortOrder string
+type ListTeamDocumentsQueryParamSortOrder string
 
 const (
-	ListTeamDocumentsSortOrderAsc  ListTeamDocumentsSortOrder = "asc"
-	ListTeamDocumentsSortOrderDesc ListTeamDocumentsSortOrder = "desc"
+	ListTeamDocumentsQueryParamSortOrderAsc  ListTeamDocumentsQueryParamSortOrder = "asc"
+	ListTeamDocumentsQueryParamSortOrderDesc ListTeamDocumentsQueryParamSortOrder = "desc"
 )
 
-func (e ListTeamDocumentsSortOrder) ToPointer() *ListTeamDocumentsSortOrder {
+func (e ListTeamDocumentsQueryParamSortOrder) ToPointer() *ListTeamDocumentsQueryParamSortOrder {
 	return &e
 }
 
-func (e *ListTeamDocumentsSortOrder) UnmarshalJSON(data []byte) error {
+func (e *ListTeamDocumentsQueryParamSortOrder) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -65,21 +65,21 @@ func (e *ListTeamDocumentsSortOrder) UnmarshalJSON(data []byte) error {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = ListTeamDocumentsSortOrder(v)
+		*e = ListTeamDocumentsQueryParamSortOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListTeamDocumentsSortOrder: %v", v)
+		return fmt.Errorf("invalid value for ListTeamDocumentsQueryParamSortOrder: %v", v)
 	}
 }
 
 type ListTeamDocumentsRequest struct {
-	Limit          *int                        `queryParam:"style=form,explode=true,name=limit"`
-	Offset         *int64                      `queryParam:"style=form,explode=true,name=offset"`
-	OrganizationID *int64                      `pathParam:"style=simple,explode=false,name=organizationId"`
-	Search         *string                     `queryParam:"style=form,explode=true,name=search"`
-	SortField      *ListTeamDocumentsSortField `queryParam:"style=form,explode=true,name=sortField"`
-	SortOrder      *ListTeamDocumentsSortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
-	TeamID         int64                       `pathParam:"style=simple,explode=false,name=teamId"`
+	Limit          *int                                  `queryParam:"style=form,explode=true,name=limit"`
+	Offset         *int64                                `queryParam:"style=form,explode=true,name=offset"`
+	OrganizationID *int64                                `pathParam:"style=simple,explode=false,name=organizationId"`
+	Search         *string                               `queryParam:"style=form,explode=true,name=search"`
+	SortField      *ListTeamDocumentsQueryParamSortField `queryParam:"style=form,explode=true,name=sortField"`
+	SortOrder      *ListTeamDocumentsQueryParamSortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
+	TeamID         int64                                 `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
 func (o *ListTeamDocumentsRequest) GetLimit() *int {
@@ -110,14 +110,14 @@ func (o *ListTeamDocumentsRequest) GetSearch() *string {
 	return o.Search
 }
 
-func (o *ListTeamDocumentsRequest) GetSortField() *ListTeamDocumentsSortField {
+func (o *ListTeamDocumentsRequest) GetSortField() *ListTeamDocumentsQueryParamSortField {
 	if o == nil {
 		return nil
 	}
 	return o.SortField
 }
 
-func (o *ListTeamDocumentsRequest) GetSortOrder() *ListTeamDocumentsSortOrder {
+func (o *ListTeamDocumentsRequest) GetSortOrder() *ListTeamDocumentsQueryParamSortOrder {
 	if o == nil {
 		return nil
 	}

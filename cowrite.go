@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// coWrite - Methods related to CoWrite
-type coWrite struct {
+// CoWrite - Methods related to CoWrite
+type CoWrite struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newCoWrite(sdkConfig sdkConfiguration) *coWrite {
-	return &coWrite{
+func newCoWrite(sdkConfig sdkConfiguration) *CoWrite {
+	return &CoWrite{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GenerateContent - Generate content using predefined templates
-func (s *coWrite) GenerateContent(ctx context.Context, generateTemplateRequest shared.GenerateTemplateRequest, teamID int64, organizationID *int64) (*operations.GenerateContentResponse, error) {
+func (s *CoWrite) GenerateContent(ctx context.Context, generateTemplateRequest shared.GenerateTemplateRequest, teamID int64, organizationID *int64) (*operations.GenerateContentResponse, error) {
 	request := operations.GenerateContentRequest{
 		GenerateTemplateRequest: generateTemplateRequest,
 		TeamID:                  teamID,
@@ -126,7 +126,7 @@ func (s *coWrite) GenerateContent(ctx context.Context, generateTemplateRequest s
 }
 
 // ListTemplates - Get a list of your existing CoWrite templates
-func (s *coWrite) ListTemplates(ctx context.Context, teamID int64, templateID string, organizationID *int64) (*operations.ListTemplatesResponse, error) {
+func (s *CoWrite) ListTemplates(ctx context.Context, teamID int64, templateID string, organizationID *int64) (*operations.ListTemplatesResponse, error) {
 	request := operations.ListTemplatesRequest{
 		TeamID:         teamID,
 		TemplateID:     templateID,

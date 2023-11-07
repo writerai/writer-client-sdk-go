@@ -1,5 +1,5 @@
 # Snippet
-(*Snippet*)
+(*.Snippet*)
 
 ## Overview
 
@@ -175,7 +175,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.SnippetWithUsers != nil {
+    if res.Classes != nil {
         // handle response
     }
 }

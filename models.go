@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// models - Methods related to Model
-type models struct {
+// Models - Methods related to Model
+type Models struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newModels(sdkConfig sdkConfiguration) *models {
-	return &models{
+func newModels(sdkConfig sdkConfiguration) *Models {
+	return &Models{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // List available LLM models
-func (s *models) List(ctx context.Context, organizationID *int64) (*operations.ListModelsResponse, error) {
+func (s *Models) List(ctx context.Context, organizationID *int64) (*operations.ListModelsResponse, error) {
 	request := operations.ListModelsRequest{
 		OrganizationID: organizationID,
 	}

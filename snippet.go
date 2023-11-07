@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// snippet - Methods related to Snippets
-type snippet struct {
+// Snippet - Methods related to Snippets
+type Snippet struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSnippet(sdkConfig sdkConfiguration) *snippet {
-	return &snippet{
+func newSnippet(sdkConfig sdkConfiguration) *Snippet {
+	return &Snippet{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Delete snippets
-func (s *snippet) Delete(ctx context.Context, teamID int64, xRequestID *string, ids []string, organizationID *int64) (*operations.DeleteSnippetsResponse, error) {
+func (s *Snippet) Delete(ctx context.Context, teamID int64, xRequestID *string, ids []string, organizationID *int64) (*operations.DeleteSnippetsResponse, error) {
 	request := operations.DeleteSnippetsRequest{
 		TeamID:         teamID,
 		XRequestID:     xRequestID,
@@ -123,7 +123,7 @@ func (s *snippet) Delete(ctx context.Context, teamID int64, xRequestID *string, 
 }
 
 // Find snippets
-func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsRequest) (*operations.FindSnippetsResponse, error) {
+func (s *Snippet) Find(ctx context.Context, request operations.FindSnippetsRequest) (*operations.FindSnippetsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/snippet/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -211,7 +211,7 @@ func (s *snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 }
 
 // Update snippets
-func (s *snippet) Update(ctx context.Context, teamID int64, requestBody []shared.SnippetUpdate, xRequestID *string, organizationID *int64) (*operations.UpdateSnippetsResponse, error) {
+func (s *Snippet) Update(ctx context.Context, teamID int64, requestBody []shared.SnippetUpdate, xRequestID *string, organizationID *int64) (*operations.UpdateSnippetsResponse, error) {
 	request := operations.UpdateSnippetsRequest{
 		TeamID:         teamID,
 		RequestBody:    requestBody,
@@ -276,7 +276,7 @@ func (s *snippet) Update(ctx context.Context, teamID int64, requestBody []shared
 				return nil, err
 			}
 
-			res.SnippetWithUsers = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

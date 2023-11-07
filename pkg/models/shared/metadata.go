@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-type MetaDataTier string
+type Tier string
 
 const (
-	MetaDataTierEnterprise1 MetaDataTier = "enterprise-1"
-	MetaDataTierEnterprise2 MetaDataTier = "enterprise-2"
-	MetaDataTierEnterprise3 MetaDataTier = "enterprise-3"
-	MetaDataTierEnterprise4 MetaDataTier = "enterprise-4"
+	TierEnterprise1 Tier = "enterprise-1"
+	TierEnterprise2 Tier = "enterprise-2"
+	TierEnterprise3 Tier = "enterprise-3"
+	TierEnterprise4 Tier = "enterprise-4"
 )
 
-func (e MetaDataTier) ToPointer() *MetaDataTier {
+func (e Tier) ToPointer() *Tier {
 	return &e
 }
 
-func (e *MetaDataTier) UnmarshalJSON(data []byte) error {
+func (e *Tier) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,10 +33,10 @@ func (e *MetaDataTier) UnmarshalJSON(data []byte) error {
 	case "enterprise-3":
 		fallthrough
 	case "enterprise-4":
-		*e = MetaDataTier(v)
+		*e = Tier(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for MetaDataTier: %v", v)
+		return fmt.Errorf("invalid value for Tier: %v", v)
 	}
 }
 
@@ -48,7 +48,7 @@ type MetaData struct {
 	Styleguide    map[string]string `json:"styleguide"`
 	TeamCount     int64             `json:"teamCount"`
 	TermsCount    int64             `json:"termsCount"`
-	Tier          *MetaDataTier     `json:"tier,omitempty"`
+	Tier          *Tier             `json:"tier,omitempty"`
 }
 
 func (o *MetaData) GetPortal() map[string]string {
@@ -100,7 +100,7 @@ func (o *MetaData) GetTermsCount() int64 {
 	return o.TermsCount
 }
 
-func (o *MetaData) GetTier() *MetaDataTier {
+func (o *MetaData) GetTier() *Tier {
 	if o == nil {
 		return nil
 	}

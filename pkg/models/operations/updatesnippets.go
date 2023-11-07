@@ -44,13 +44,13 @@ func (o *UpdateSnippetsRequest) GetOrganizationID() *int64 {
 
 type UpdateSnippetsResponse struct {
 	// HTTP response content type for this operation
-	ContentType      string
-	Headers          map[string][]string
-	SnippetWithUsers []shared.SnippetWithUser
+	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Classes     []shared.SnippetWithUser
 }
 
 func (o *UpdateSnippetsResponse) GetContentType() string {
@@ -67,13 +67,6 @@ func (o *UpdateSnippetsResponse) GetHeaders() map[string][]string {
 	return o.Headers
 }
 
-func (o *UpdateSnippetsResponse) GetSnippetWithUsers() []shared.SnippetWithUser {
-	if o == nil {
-		return nil
-	}
-	return o.SnippetWithUsers
-}
-
 func (o *UpdateSnippetsResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -86,4 +79,11 @@ func (o *UpdateSnippetsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *UpdateSnippetsResponse) GetClasses() []shared.SnippetWithUser {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

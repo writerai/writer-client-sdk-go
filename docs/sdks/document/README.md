@@ -1,5 +1,5 @@
 # Document
-(*Document*)
+(*.Document*)
 
 ## Overview
 

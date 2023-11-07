@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// user - Methods related to User
-type user struct {
+// User - Methods related to User
+type User struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newUser(sdkConfig sdkConfiguration) *user {
-	return &user{
+func newUser(sdkConfig sdkConfiguration) *User {
+	return &User{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // List users
-func (s *user) List(ctx context.Context, request operations.ListUsersRequest) (*operations.ListUsersResponse, error) {
+func (s *User) List(ctx context.Context, request operations.ListUsersRequest) (*operations.ListUsersResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/user"
 

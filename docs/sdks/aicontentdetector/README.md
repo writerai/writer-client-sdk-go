@@ -1,5 +1,5 @@
 # AIContentDetector
-(*AIContentDetector*)
+(*.AIContentDetector*)
 
 ## Overview
 
@@ -44,7 +44,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.ContentDetectorResponses != nil {
+    if res.Classes != nil {
         // handle response
     }
 }

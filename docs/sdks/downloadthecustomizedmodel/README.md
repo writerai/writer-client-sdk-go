@@ -1,5 +1,5 @@
 # DownloadTheCustomizedModel
-(*DownloadTheCustomizedModel*)
+(*.DownloadTheCustomizedModel*)
 
 ## Overview
 
@@ -44,7 +44,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.FetchCustomizedModelFile200ApplicationOctetStreamBinaryString != nil {
+    if res.Stream != nil {
         // handle response
     }
 }

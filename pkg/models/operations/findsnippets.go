@@ -9,19 +9,19 @@ import (
 	"net/http"
 )
 
-type FindSnippetsSortField string
+type SortField string
 
 const (
-	FindSnippetsSortFieldShortcut         FindSnippetsSortField = "shortcut"
-	FindSnippetsSortFieldCreationTime     FindSnippetsSortField = "creationTime"
-	FindSnippetsSortFieldModificationTime FindSnippetsSortField = "modificationTime"
+	SortFieldShortcut         SortField = "shortcut"
+	SortFieldCreationTime     SortField = "creationTime"
+	SortFieldModificationTime SortField = "modificationTime"
 )
 
-func (e FindSnippetsSortField) ToPointer() *FindSnippetsSortField {
+func (e SortField) ToPointer() *SortField {
 	return &e
 }
 
-func (e *FindSnippetsSortField) UnmarshalJSON(data []byte) error {
+func (e *SortField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -32,25 +32,25 @@ func (e *FindSnippetsSortField) UnmarshalJSON(data []byte) error {
 	case "creationTime":
 		fallthrough
 	case "modificationTime":
-		*e = FindSnippetsSortField(v)
+		*e = SortField(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindSnippetsSortField: %v", v)
+		return fmt.Errorf("invalid value for SortField: %v", v)
 	}
 }
 
-type FindSnippetsSortOrder string
+type SortOrder string
 
 const (
-	FindSnippetsSortOrderAsc  FindSnippetsSortOrder = "asc"
-	FindSnippetsSortOrderDesc FindSnippetsSortOrder = "desc"
+	SortOrderAsc  SortOrder = "asc"
+	SortOrderDesc SortOrder = "desc"
 )
 
-func (e FindSnippetsSortOrder) ToPointer() *FindSnippetsSortOrder {
+func (e SortOrder) ToPointer() *SortOrder {
 	return &e
 }
 
-func (e *FindSnippetsSortOrder) UnmarshalJSON(data []byte) error {
+func (e *SortOrder) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -59,23 +59,23 @@ func (e *FindSnippetsSortOrder) UnmarshalJSON(data []byte) error {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = FindSnippetsSortOrder(v)
+		*e = SortOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindSnippetsSortOrder: %v", v)
+		return fmt.Errorf("invalid value for SortOrder: %v", v)
 	}
 }
 
 type FindSnippetsRequest struct {
-	Limit          *int64                 `queryParam:"style=form,explode=true,name=limit"`
-	Offset         *int64                 `queryParam:"style=form,explode=true,name=offset"`
-	OrganizationID *int64                 `pathParam:"style=simple,explode=false,name=organizationId"`
-	Search         *string                `queryParam:"style=form,explode=true,name=search"`
-	Shortcuts      []string               `queryParam:"style=form,explode=true,name=shortcuts"`
-	SortField      *FindSnippetsSortField `queryParam:"style=form,explode=true,name=sortField"`
-	SortOrder      *FindSnippetsSortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
-	Tags           []string               `queryParam:"style=form,explode=true,name=tags"`
-	TeamID         int64                  `pathParam:"style=simple,explode=false,name=teamId"`
+	Limit          *int64     `queryParam:"style=form,explode=true,name=limit"`
+	Offset         *int64     `queryParam:"style=form,explode=true,name=offset"`
+	OrganizationID *int64     `pathParam:"style=simple,explode=false,name=organizationId"`
+	Search         *string    `queryParam:"style=form,explode=true,name=search"`
+	Shortcuts      []string   `queryParam:"style=form,explode=true,name=shortcuts"`
+	SortField      *SortField `queryParam:"style=form,explode=true,name=sortField"`
+	SortOrder      *SortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
+	Tags           []string   `queryParam:"style=form,explode=true,name=tags"`
+	TeamID         int64      `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
 func (o *FindSnippetsRequest) GetLimit() *int64 {
@@ -113,14 +113,14 @@ func (o *FindSnippetsRequest) GetShortcuts() []string {
 	return o.Shortcuts
 }
 
-func (o *FindSnippetsRequest) GetSortField() *FindSnippetsSortField {
+func (o *FindSnippetsRequest) GetSortField() *SortField {
 	if o == nil {
 		return nil
 	}
 	return o.SortField
 }
 
-func (o *FindSnippetsRequest) GetSortOrder() *FindSnippetsSortOrder {
+func (o *FindSnippetsRequest) GetSortOrder() *SortOrder {
 	if o == nil {
 		return nil
 	}

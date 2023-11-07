@@ -63,34 +63,34 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 }
 
 type Writer struct {
-	// Methods related to AI Content Detector
-	AIContentDetector *aiContentDetector
 	// Methods related to Billing
-	Billing *billing
-	// Methods related to CoWrite
-	CoWrite *coWrite
-	// Methods related to Completions
-	Completions *completions
+	Billing *Billing
+	// Methods related to AI Content Detector
+	AIContentDetector *AIContentDetector
 	// Methods related to Content
-	Content *content
-	// Methods related to Download the customized model
-	DownloadTheCustomizedModel *downloadTheCustomizedModel
+	Content *Content
+	// Methods related to CoWrite
+	CoWrite *CoWrite
 	// Methods related to Files
-	Files *files
-	// Methods related to Model Customization
-	ModelCustomization *modelCustomization
+	Files *Files
 	// Methods related to Model
-	Models *models
-	// Methods related to Snippets
-	Snippet *snippet
-	// Methods related to Styleguide
-	Styleguide *styleguide
-	// Methods related to Terminology
-	Terminology *terminology
-	// Methods related to User
-	User *user
+	Models *Models
+	// Methods related to Completions
+	Completions *Completions
+	// Methods related to Model Customization
+	ModelCustomization *ModelCustomization
+	// Methods related to Download the customized model
+	DownloadTheCustomizedModel *DownloadTheCustomizedModel
 	// Methods related to document
-	Document *document
+	Document *Document
+	// Methods related to Snippets
+	Snippet *Snippet
+	// Methods related to Styleguide
+	Styleguide *Styleguide
+	// Methods related to Terminology
+	Terminology *Terminology
+	// Methods related to User
+	User *User
 
 	sdkConfiguration sdkConfiguration
 }
@@ -171,9 +171,9 @@ func New(opts ...SDKOption) *Writer {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.7",
-			SDKVersion:        "0.20.0",
-			GenVersion:        "2.173.0",
-			UserAgent:         "speakeasy-sdk/go 0.20.0 2.173.0 1.7 github.com/writerai/writer-client-sdk-go",
+			SDKVersion:        "0.21.0",
+			GenVersion:        "2.181.1",
+			UserAgent:         "speakeasy-sdk/go 0.21.0 2.181.1 1.7 github.com/writerai/writer-client-sdk-go",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -195,23 +195,25 @@ func New(opts ...SDKOption) *Writer {
 		}
 	}
 
-	sdk.AIContentDetector = newAIContentDetector(sdk.sdkConfiguration)
-
 	sdk.Billing = newBilling(sdk.sdkConfiguration)
 
-	sdk.CoWrite = newCoWrite(sdk.sdkConfiguration)
-
-	sdk.Completions = newCompletions(sdk.sdkConfiguration)
+	sdk.AIContentDetector = newAIContentDetector(sdk.sdkConfiguration)
 
 	sdk.Content = newContent(sdk.sdkConfiguration)
 
-	sdk.DownloadTheCustomizedModel = newDownloadTheCustomizedModel(sdk.sdkConfiguration)
+	sdk.CoWrite = newCoWrite(sdk.sdkConfiguration)
 
 	sdk.Files = newFiles(sdk.sdkConfiguration)
 
+	sdk.Models = newModels(sdk.sdkConfiguration)
+
+	sdk.Completions = newCompletions(sdk.sdkConfiguration)
+
 	sdk.ModelCustomization = newModelCustomization(sdk.sdkConfiguration)
 
-	sdk.Models = newModels(sdk.sdkConfiguration)
+	sdk.DownloadTheCustomizedModel = newDownloadTheCustomizedModel(sdk.sdkConfiguration)
+
+	sdk.Document = newDocument(sdk.sdkConfiguration)
 
 	sdk.Snippet = newSnippet(sdk.sdkConfiguration)
 
@@ -220,8 +222,6 @@ func New(opts ...SDKOption) *Writer {
 	sdk.Terminology = newTerminology(sdk.sdkConfiguration)
 
 	sdk.User = newUser(sdk.sdkConfiguration)
-
-	sdk.Document = newDocument(sdk.sdkConfiguration)
 
 	return sdk
 }
