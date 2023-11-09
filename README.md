@@ -65,75 +65,75 @@ func main() {
 ## Available Resources and Operations
 
 
-### [.Billing](docs/sdks/billing/README.md)
+### [Billing](docs/sdks/billing/README.md)
 
 * [GetSubscriptionDetails](docs/sdks/billing/README.md#getsubscriptiondetails) - Get your organization subscription details
 
-### [.AIContentDetector](docs/sdks/aicontentdetector/README.md)
+### [AIContentDetector](docs/sdks/aicontentdetector/README.md)
 
 * [Detect](docs/sdks/aicontentdetector/README.md#detect) - Content detector api
 
-### [.Content](docs/sdks/content/README.md)
+### [Content](docs/sdks/content/README.md)
 
 * [Check](docs/sdks/content/README.md#check) - Check your content against your preset styleguide.
 * [Correct](docs/sdks/content/README.md#correct) - Apply the style guide suggestions directly to your content.
 
-### [.CoWrite](docs/sdks/cowrite/README.md)
+### [CoWrite](docs/sdks/cowrite/README.md)
 
 * [GenerateContent](docs/sdks/cowrite/README.md#generatecontent) - Generate content using predefined templates
 * [ListTemplates](docs/sdks/cowrite/README.md#listtemplates) - Get a list of your existing CoWrite templates
 
-### [.Files](docs/sdks/files/README.md)
+### [Files](docs/sdks/files/README.md)
 
 * [Delete](docs/sdks/files/README.md#delete) - Delete file
 * [Get](docs/sdks/files/README.md#get) - Get file
 * [List](docs/sdks/files/README.md#list) - List files
 * [Upload](docs/sdks/files/README.md#upload) - Upload file
 
-### [.Models](docs/sdks/models/README.md)
+### [Models](docs/sdks/models/README.md)
 
 * [List](docs/sdks/models/README.md#list) - List available LLM models
 
-### [.Completions](docs/sdks/completions/README.md)
+### [Completions](docs/sdks/completions/README.md)
 
 * [Create](docs/sdks/completions/README.md#create) - Create completion for LLM model
 * [CreateModelCustomizationCompletion](docs/sdks/completions/README.md#createmodelcustomizationcompletion) - Create completion for LLM customization model
 
-### [.ModelCustomization](docs/sdks/modelcustomization/README.md)
+### [ModelCustomization](docs/sdks/modelcustomization/README.md)
 
 * [Create](docs/sdks/modelcustomization/README.md#create) - Create model customization
 * [Delete](docs/sdks/modelcustomization/README.md#delete) - Delete Model customization
 * [Get](docs/sdks/modelcustomization/README.md#get) - Get model customization
 * [List](docs/sdks/modelcustomization/README.md#list) - List model customizations
 
-### [.DownloadTheCustomizedModel](docs/sdks/downloadthecustomizedmodel/README.md)
+### [DownloadTheCustomizedModel](docs/sdks/downloadthecustomizedmodel/README.md)
 
 * [FetchFile](docs/sdks/downloadthecustomizedmodel/README.md#fetchfile) - Download your fine-tuned model (available only for Palmyra Base and Palmyra Large)
 
-### [.Document](docs/sdks/document/README.md)
+### [Document](docs/sdks/document/README.md)
 
 * [Get](docs/sdks/document/README.md#get) - Get document details
 * [List](docs/sdks/document/README.md#list) - List team documents
 
-### [.Snippet](docs/sdks/snippet/README.md)
+### [Snippet](docs/sdks/snippet/README.md)
 
 * [Delete](docs/sdks/snippet/README.md#delete) - Delete snippets
 * [Find](docs/sdks/snippet/README.md#find) - Find snippets
 * [Update](docs/sdks/snippet/README.md#update) - Update snippets
 
-### [.Styleguide](docs/sdks/styleguide/README.md)
+### [Styleguide](docs/sdks/styleguide/README.md)
 
 * [Get](docs/sdks/styleguide/README.md#get) - Page details
 * [ListPages](docs/sdks/styleguide/README.md#listpages) - List your styleguide pages
 
-### [.Terminology](docs/sdks/terminology/README.md)
+### [Terminology](docs/sdks/terminology/README.md)
 
 * [Add](docs/sdks/terminology/README.md#add) - Add terms
 * [Delete](docs/sdks/terminology/README.md#delete) - Delete terms
 * [Find](docs/sdks/terminology/README.md#find) - Find terms
 * [Update](docs/sdks/terminology/README.md#update) - Update terms
 
-### [.User](docs/sdks/user/README.md)
+### [User](docs/sdks/user/README.md)
 
 * [List](docs/sdks/user/README.md#list) - List users
 <!-- End SDK Available Operations -->
@@ -225,7 +225,12 @@ func main() {
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 
 ## Example
@@ -256,6 +261,11 @@ func main() {
 			log.Fatal(e.Error())
 		}
 
+		var e *sdkerrors.SDKError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
 	}
 }
 
@@ -377,12 +387,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security scheme globally:
+This SDK supports the following security scheme globally:
 
 | Name     | Type     | Scheme   |
 | -------- | -------- | -------- |

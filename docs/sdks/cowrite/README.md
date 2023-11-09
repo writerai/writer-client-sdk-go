@@ -1,5 +1,5 @@
 # CoWrite
-(*.CoWrite*)
+(*CoWrite*)
 
 ## Overview
 
@@ -63,18 +63,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `generateTemplateRequest`                                                        | [shared.GenerateTemplateRequest](../../models/shared/generatetemplaterequest.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `teamID`                                                                         | *int64*                                                                          | :heavy_check_mark:                                                               | N/A                                                                              |
-| `organizationID`                                                                 | **int64*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `ctx`                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                   | :heavy_check_mark:                                                                      | The context to use for the request.                                                     |
+| `generateTemplateRequest`                                                               | [shared.GenerateTemplateRequest](../../../pkg/models/shared/generatetemplaterequest.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `teamID`                                                                                | *int64*                                                                                 | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `organizationID`                                                                        | **int64*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
 
 
 ### Response
 
-**[*operations.GenerateContentResponse](../../models/operations/generatecontentresponse.md), error**
-
+**[*operations.GenerateContentResponse](../../pkg/models/operations/generatecontentresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## ListTemplates
 
@@ -129,5 +132,8 @@ func main() {
 
 ### Response
 
-**[*operations.ListTemplatesResponse](../../models/operations/listtemplatesresponse.md), error**
-
+**[*operations.ListTemplatesResponse](../../pkg/models/operations/listtemplatesresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

@@ -1,5 +1,5 @@
 # Completions
-(*.Completions*)
+(*Completions*)
 
 ## Overview
 
@@ -65,18 +65,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
-| `completionRequest`                                                  | [shared.CompletionRequest](../../models/shared/completionrequest.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `modelID`                                                            | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `organizationID`                                                     | **int64*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `ctx`                                                                       | [context.Context](https://pkg.go.dev/context#Context)                       | :heavy_check_mark:                                                          | The context to use for the request.                                         |
+| `completionRequest`                                                         | [shared.CompletionRequest](../../../pkg/models/shared/completionrequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `modelID`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `organizationID`                                                            | **int64*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 
 
 ### Response
 
-**[*operations.CreateCompletionResponse](../../models/operations/createcompletionresponse.md), error**
-
+**[*operations.CreateCompletionResponse](../../pkg/models/operations/createcompletionresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## CreateModelCustomizationCompletion
 
@@ -135,16 +138,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
-| `completionRequest`                                                  | [shared.CompletionRequest](../../models/shared/completionrequest.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `customizationID`                                                    | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `modelID`                                                            | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `organizationID`                                                     | **int64*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `ctx`                                                                       | [context.Context](https://pkg.go.dev/context#Context)                       | :heavy_check_mark:                                                          | The context to use for the request.                                         |
+| `completionRequest`                                                         | [shared.CompletionRequest](../../../pkg/models/shared/completionrequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `customizationID`                                                           | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `modelID`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `organizationID`                                                            | **int64*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 
 
 ### Response
 
-**[*operations.CreateModelCustomizationCompletionResponse](../../models/operations/createmodelcustomizationcompletionresponse.md), error**
-
+**[*operations.CreateModelCustomizationCompletionResponse](../../pkg/models/operations/createmodelcustomizationcompletionresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

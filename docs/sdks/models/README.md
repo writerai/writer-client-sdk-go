@@ -1,5 +1,5 @@
 # Models
-(*.Models*)
+(*Models*)
 
 ## Overview
 
@@ -56,5 +56,8 @@ func main() {
 
 ### Response
 
-**[*operations.ListModelsResponse](../../models/operations/listmodelsresponse.md), error**
-
+**[*operations.ListModelsResponse](../../pkg/models/operations/listmodelsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

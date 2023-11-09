@@ -1,5 +1,5 @@
 # Styleguide
-(*.Styleguide*)
+(*Styleguide*)
 
 ## Overview
 
@@ -57,8 +57,11 @@ func main() {
 
 ### Response
 
-**[*operations.PageDetailsResponse](../../models/operations/pagedetailsresponse.md), error**
-
+**[*operations.PageDetailsResponse](../../pkg/models/operations/pagedetailsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## ListPages
 
@@ -104,15 +107,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `ctx`                                                   | [context.Context](https://pkg.go.dev/context#Context)   | :heavy_check_mark:                                      | The context to use for the request.                     |
-| `limit`                                                 | **int64*                                                | :heavy_minus_sign:                                      | N/A                                                     |
-| `offset`                                                | **int64*                                                | :heavy_minus_sign:                                      | N/A                                                     |
-| `status`                                                | [*operations.Status](../../models/operations/status.md) | :heavy_minus_sign:                                      | N/A                                                     |
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `limit`                                                        | **int64*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `offset`                                                       | **int64*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `status`                                                       | [*operations.Status](../../../pkg/models/operations/status.md) | :heavy_minus_sign:                                             | N/A                                                            |
 
 
 ### Response
 
-**[*operations.ListPagesResponse](../../models/operations/listpagesresponse.md), error**
-
+**[*operations.ListPagesResponse](../../pkg/models/operations/listpagesresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

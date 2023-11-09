@@ -1,5 +1,5 @@
 # Terminology
-(*.Terminology*)
+(*Terminology*)
 
 ## Overview
 
@@ -88,18 +88,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `ctx`                                                                  | [context.Context](https://pkg.go.dev/context#Context)                  | :heavy_check_mark:                                                     | The context to use for the request.                                    |
-| `createTermsRequest`                                                   | [shared.CreateTermsRequest](../../models/shared/createtermsrequest.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `teamID`                                                               | *int64*                                                                | :heavy_check_mark:                                                     | N/A                                                                    |
-| `organizationID`                                                       | **int64*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |
+| `createTermsRequest`                                                          | [shared.CreateTermsRequest](../../../pkg/models/shared/createtermsrequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| `teamID`                                                                      | *int64*                                                                       | :heavy_check_mark:                                                            | N/A                                                                           |
+| `organizationID`                                                              | **int64*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |
 
 
 ### Response
 
-**[*operations.AddTermsResponse](../../models/operations/addtermsresponse.md), error**
-
+**[*operations.AddTermsResponse](../../pkg/models/operations/addtermsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Delete
 
@@ -159,8 +162,11 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteTermsResponse](../../models/operations/deletetermsresponse.md), error**
-
+**[*operations.DeleteTermsResponse](../../pkg/models/operations/deletetermsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Find
 
@@ -204,16 +210,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [operations.FindTermsRequest](../../models/operations/findtermsrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.FindTermsRequest](../../pkg/models/operations/findtermsrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 
 
 ### Response
 
-**[*operations.FindTermsResponse](../../models/operations/findtermsresponse.md), error**
-
+**[*operations.FindTermsResponse](../../pkg/models/operations/findtermsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Update
 
@@ -294,16 +303,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `ctx`                                                                  | [context.Context](https://pkg.go.dev/context#Context)                  | :heavy_check_mark:                                                     | The context to use for the request.                                    |
-| `updateTermsRequest`                                                   | [shared.UpdateTermsRequest](../../models/shared/updatetermsrequest.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `teamID`                                                               | *int64*                                                                | :heavy_check_mark:                                                     | N/A                                                                    |
-| `xRequestID`                                                           | **string*                                                              | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `organizationID`                                                       | **int64*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |
+| `updateTermsRequest`                                                          | [shared.UpdateTermsRequest](../../../pkg/models/shared/updatetermsrequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| `teamID`                                                                      | *int64*                                                                       | :heavy_check_mark:                                                            | N/A                                                                           |
+| `xRequestID`                                                                  | **string*                                                                     | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `organizationID`                                                              | **int64*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |
 
 
 ### Response
 
-**[*operations.UpdateTermsResponse](../../models/operations/updatetermsresponse.md), error**
-
+**[*operations.UpdateTermsResponse](../../pkg/models/operations/updatetermsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

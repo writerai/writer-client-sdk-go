@@ -1,5 +1,5 @@
 # Content
-(*.Content*)
+(*Content*)
 
 ## Overview
 
@@ -73,18 +73,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
-| `contentRequest`                                               | [shared.ContentRequest](../../models/shared/contentrequest.md) | :heavy_check_mark:                                             | N/A                                                            |
-| `teamID`                                                       | *int64*                                                        | :heavy_check_mark:                                             | N/A                                                            |
-| `organizationID`                                               | **int64*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
+| `contentRequest`                                                      | [shared.ContentRequest](../../../pkg/models/shared/contentrequest.md) | :heavy_check_mark:                                                    | N/A                                                                   |
+| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
+| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
 
 
 ### Response
 
-**[*operations.ContentCheckResponse](../../models/operations/contentcheckresponse.md), error**
-
+**[*operations.ContentCheckResponse](../../pkg/models/operations/contentcheckresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Correct
 
@@ -151,16 +154,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
-| `contentRequest`                                               | [shared.ContentRequest](../../models/shared/contentrequest.md) | :heavy_check_mark:                                             | N/A                                                            |
-| `teamID`                                                       | *int64*                                                        | :heavy_check_mark:                                             | N/A                                                            |
-| `xRequestID`                                                   | **string*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
-| `organizationID`                                               | **int64*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
+| `contentRequest`                                                      | [shared.ContentRequest](../../../pkg/models/shared/contentrequest.md) | :heavy_check_mark:                                                    | N/A                                                                   |
+| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
+| `xRequestID`                                                          | **string*                                                             | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
 
 
 ### Response
 
-**[*operations.ContentCorrectResponse](../../models/operations/contentcorrectresponse.md), error**
-
+**[*operations.ContentCorrectResponse](../../pkg/models/operations/contentcorrectresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

@@ -1,5 +1,5 @@
 # Snippet
-(*.Snippet*)
+(*Snippet*)
 
 ## Overview
 
@@ -69,8 +69,11 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteSnippetsResponse](../../models/operations/deletesnippetsresponse.md), error**
-
+**[*operations.DeleteSnippetsResponse](../../pkg/models/operations/deletesnippetsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Find
 
@@ -117,16 +120,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [operations.FindSnippetsRequest](../../models/operations/findsnippetsrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.FindSnippetsRequest](../../pkg/models/operations/findsnippetsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
 
 
 ### Response
 
-**[*operations.FindSnippetsResponse](../../models/operations/findsnippetsresponse.md), error**
-
+**[*operations.FindSnippetsResponse](../../pkg/models/operations/findsnippetsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Update
 
@@ -183,16 +189,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
-| `teamID`                                                       | *int64*                                                        | :heavy_check_mark:                                             | N/A                                                            |
-| `requestBody`                                                  | [][shared.SnippetUpdate](../../models/shared/snippetupdate.md) | :heavy_minus_sign:                                             | N/A                                                            |
-| `xRequestID`                                                   | **string*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
-| `organizationID`                                               | **int64*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
+| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
+| `requestBody`                                                         | [][shared.SnippetUpdate](../../../pkg/models/shared/snippetupdate.md) | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `xRequestID`                                                          | **string*                                                             | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
 
 
 ### Response
 
-**[*operations.UpdateSnippetsResponse](../../models/operations/updatesnippetsresponse.md), error**
-
+**[*operations.UpdateSnippetsResponse](../../pkg/models/operations/updatesnippetsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

@@ -1,5 +1,5 @@
 # ModelCustomization
-(*.ModelCustomization*)
+(*ModelCustomization*)
 
 ## Overview
 
@@ -61,18 +61,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `createCustomizationRequest`                                                           | [shared.CreateCustomizationRequest](../../models/shared/createcustomizationrequest.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `modelID`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `organizationID`                                                                       | **int64*                                                                               | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
+| `createCustomizationRequest`                                                                  | [shared.CreateCustomizationRequest](../../../pkg/models/shared/createcustomizationrequest.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `modelID`                                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `organizationID`                                                                              | **int64*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 
 
 ### Response
 
-**[*operations.CreateModelCustomizationResponse](../../models/operations/createmodelcustomizationresponse.md), error**
-
+**[*operations.CreateModelCustomizationResponse](../../pkg/models/operations/createmodelcustomizationresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Delete
 
@@ -127,8 +130,11 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteModelCustomizationResponse](../../models/operations/deletemodelcustomizationresponse.md), error**
-
+**[*operations.DeleteModelCustomizationResponse](../../pkg/models/operations/deletemodelcustomizationresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Get
 
@@ -183,8 +189,11 @@ func main() {
 
 ### Response
 
-**[*operations.GetModelCustomizationResponse](../../models/operations/getmodelcustomizationresponse.md), error**
-
+**[*operations.GetModelCustomizationResponse](../../pkg/models/operations/getmodelcustomizationresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## List
 
@@ -236,5 +245,8 @@ func main() {
 
 ### Response
 
-**[*operations.ListModelCustomizationsResponse](../../models/operations/listmodelcustomizationsresponse.md), error**
-
+**[*operations.ListModelCustomizationsResponse](../../pkg/models/operations/listmodelcustomizationsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

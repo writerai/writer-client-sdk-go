@@ -1,5 +1,5 @@
 # DownloadTheCustomizedModel
-(*.DownloadTheCustomizedModel*)
+(*DownloadTheCustomizedModel*)
 
 ## Overview
 
@@ -62,5 +62,8 @@ func main() {
 
 ### Response
 
-**[*operations.FetchCustomizedModelFileResponse](../../models/operations/fetchcustomizedmodelfileresponse.md), error**
-
+**[*operations.FetchCustomizedModelFileResponse](../../pkg/models/operations/fetchcustomizedmodelfileresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

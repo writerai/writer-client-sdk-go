@@ -1,5 +1,5 @@
 # AIContentDetector
-(*.AIContentDetector*)
+(*AIContentDetector*)
 
 ## Overview
 
@@ -52,14 +52,17 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `contentDetectorRequest`                                                       | [shared.ContentDetectorRequest](../../models/shared/contentdetectorrequest.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `organizationID`                                                               | **int64*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `ctx`                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                 | :heavy_check_mark:                                                                    | The context to use for the request.                                                   |
+| `contentDetectorRequest`                                                              | [shared.ContentDetectorRequest](../../../pkg/models/shared/contentdetectorrequest.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `organizationID`                                                                      | **int64*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   |
 
 
 ### Response
 
-**[*operations.DetectContentResponse](../../models/operations/detectcontentresponse.md), error**
-
+**[*operations.DetectContentResponse](../../pkg/models/operations/detectcontentresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

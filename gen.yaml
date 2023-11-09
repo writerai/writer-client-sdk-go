@@ -2,15 +2,15 @@ configVersion: 1.0.0
 management:
   docChecksum: 044ba6ea348a6fb8206cacad6926373d
   docVersion: "1.7"
-  speakeasyVersion: 1.114.1
-  generationVersion: 2.181.1
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
   comments: {}
   sdkClassName: writer
   repoURL: https://github.com/writerai/writer-client-sdk-go.git
 features:
   go:
-    core: 3.1.0
+    core: 3.1.2
     downloadStreams: 0.1.1
     errors: 2.81.7
     flattening: 2.81.1
@@ -19,7 +19,7 @@ features:
     globals: 2.81.1
     nameOverrides: 2.81.1
 go:
-  version: 0.21.0
+  version: 0.21.1
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
@@ -30,8 +30,10 @@ go:
       operations: pkg/models/operations
       shared: pkg/models/shared
       webhooks: pkg/models/webhooks
+  inputModelSuffix: input
   installationURL: https://github.com/writerai/writer-client-sdk-go
   maxMethodParams: 4
+  outputModelSuffix: output
   packageName: github.com/writerai/writer-client-sdk-go
   published: true
   repoSubDirectory: .

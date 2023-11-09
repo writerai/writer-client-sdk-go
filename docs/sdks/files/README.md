@@ -1,5 +1,5 @@
 # Files
-(*.Files*)
+(*Files*)
 
 ## Overview
 
@@ -62,8 +62,11 @@ func main() {
 
 ### Response
 
-**[*operations.DeleteFileResponse](../../models/operations/deletefileresponse.md), error**
-
+**[*operations.DeleteFileResponse](../../pkg/models/operations/deletefileresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Get
 
@@ -115,8 +118,11 @@ func main() {
 
 ### Response
 
-**[*operations.GetFileResponse](../../models/operations/getfileresponse.md), error**
-
+**[*operations.GetFileResponse](../../pkg/models/operations/getfileresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## List
 
@@ -165,8 +171,11 @@ func main() {
 
 ### Response
 
-**[*operations.ListFilesResponse](../../models/operations/listfilesresponse.md), error**
-
+**[*operations.ListFilesResponse](../../pkg/models/operations/listfilesresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Upload
 
@@ -214,14 +223,17 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `uploadModelFileRequest`                                                       | [shared.UploadModelFileRequest](../../models/shared/uploadmodelfilerequest.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `organizationID`                                                               | **int64*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `ctx`                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                 | :heavy_check_mark:                                                                    | The context to use for the request.                                                   |
+| `uploadModelFileRequest`                                                              | [shared.UploadModelFileRequest](../../../pkg/models/shared/uploadmodelfilerequest.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `organizationID`                                                                      | **int64*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   |
 
 
 ### Response
 
-**[*operations.UploadFileResponse](../../models/operations/uploadfileresponse.md), error**
-
+**[*operations.UploadFileResponse](../../pkg/models/operations/uploadfileresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
