@@ -7,7 +7,6 @@ package main
 import (
 	"context"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 	"log"
 )
@@ -15,20 +14,16 @@ import (
 func main() {
 	s := writerclientsdkgo.New(
 		writerclientsdkgo.WithSecurity(""),
-		writerclientsdkgo.WithOrganizationID(496531),
+		writerclientsdkgo.WithOrganizationID(850421),
 	)
 
 	ctx := context.Background()
-	res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
-		ContentDetectorRequest: shared.ContentDetectorRequest{
-			Input: "Bronze Indian",
-		},
-	})
+	res, err := s.Billing.GetSubscriptionDetails(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if res.ContentDetectorResponses != nil {
+	if res.SubscriptionPublicResponseAPI != nil {
 		// handle response
 	}
 }

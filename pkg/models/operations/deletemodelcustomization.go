@@ -33,7 +33,7 @@ func (o *DeleteModelCustomizationRequest) GetOrganizationID() *int64 {
 	return o.OrganizationID
 }
 
-type DeleteModelCustomization200ApplicationJSON struct {
+type DeleteModelCustomizationResponseBody struct {
 }
 
 type DeleteModelCustomizationResponse struct {
@@ -43,8 +43,8 @@ type DeleteModelCustomizationResponse struct {
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
-	RawResponse                                      *http.Response
-	DeleteModelCustomization200ApplicationJSONObject *DeleteModelCustomization200ApplicationJSON
+	RawResponse *http.Response
+	Object      *DeleteModelCustomizationResponseBody
 }
 
 func (o *DeleteModelCustomizationResponse) GetContentType() string {
@@ -75,9 +75,9 @@ func (o *DeleteModelCustomizationResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *DeleteModelCustomizationResponse) GetDeleteModelCustomization200ApplicationJSONObject() *DeleteModelCustomization200ApplicationJSON {
+func (o *DeleteModelCustomizationResponse) GetObject() *DeleteModelCustomizationResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.DeleteModelCustomization200ApplicationJSONObject
+	return o.Object
 }

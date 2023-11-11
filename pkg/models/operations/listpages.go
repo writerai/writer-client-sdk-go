@@ -9,18 +9,18 @@ import (
 	"net/http"
 )
 
-type ListPagesStatus string
+type Status string
 
 const (
-	ListPagesStatusLive    ListPagesStatus = "live"
-	ListPagesStatusOffline ListPagesStatus = "offline"
+	StatusLive    Status = "live"
+	StatusOffline Status = "offline"
 )
 
-func (e ListPagesStatus) ToPointer() *ListPagesStatus {
+func (e Status) ToPointer() *Status {
 	return &e
 }
 
-func (e *ListPagesStatus) UnmarshalJSON(data []byte) error {
+func (e *Status) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,17 +29,17 @@ func (e *ListPagesStatus) UnmarshalJSON(data []byte) error {
 	case "live":
 		fallthrough
 	case "offline":
-		*e = ListPagesStatus(v)
+		*e = Status(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListPagesStatus: %v", v)
+		return fmt.Errorf("invalid value for Status: %v", v)
 	}
 }
 
 type ListPagesRequest struct {
-	Limit  *int64           `queryParam:"style=form,explode=true,name=limit"`
-	Offset *int64           `queryParam:"style=form,explode=true,name=offset"`
-	Status *ListPagesStatus `queryParam:"style=form,explode=true,name=status"`
+	Limit  *int64  `queryParam:"style=form,explode=true,name=limit"`
+	Offset *int64  `queryParam:"style=form,explode=true,name=offset"`
+	Status *Status `queryParam:"style=form,explode=true,name=status"`
 }
 
 func (o *ListPagesRequest) GetLimit() *int64 {
@@ -56,7 +56,7 @@ func (o *ListPagesRequest) GetOffset() *int64 {
 	return o.Offset
 }
 
-func (o *ListPagesRequest) GetStatus() *ListPagesStatus {
+func (o *ListPagesRequest) GetStatus() *Status {
 	if o == nil {
 		return nil
 	}

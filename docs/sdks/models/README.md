@@ -23,7 +23,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -32,8 +31,11 @@ func main() {
         writerclientsdkgo.WithOrganizationID(768578),
     )
 
+
+    var organizationID *int64 = 99895
+
     ctx := context.Background()
-    res, err := s.Models.List(ctx, operations.ListModelsRequest{})
+    res, err := s.Models.List(ctx, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -46,13 +48,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
-| `request`                                                                    | [operations.ListModelsRequest](../../models/operations/listmodelsrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
 
-**[*operations.ListModelsResponse](../../models/operations/listmodelsresponse.md), error**
-
+**[*operations.ListModelsResponse](../../pkg/models/operations/listmodelsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

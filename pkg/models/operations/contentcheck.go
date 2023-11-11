@@ -9,8 +9,8 @@ import (
 
 type ContentCheckRequest struct {
 	ContentRequest shared.ContentRequest `request:"mediaType=application/json"`
-	OrganizationID *int64                `pathParam:"style=simple,explode=false,name=organizationId"`
 	TeamID         int64                 `pathParam:"style=simple,explode=false,name=teamId"`
+	OrganizationID *int64                `pathParam:"style=simple,explode=false,name=organizationId"`
 }
 
 func (o *ContentCheckRequest) GetContentRequest() shared.ContentRequest {
@@ -20,18 +20,18 @@ func (o *ContentCheckRequest) GetContentRequest() shared.ContentRequest {
 	return o.ContentRequest
 }
 
-func (o *ContentCheckRequest) GetOrganizationID() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.OrganizationID
-}
-
 func (o *ContentCheckRequest) GetTeamID() int64 {
 	if o == nil {
 		return 0
 	}
 	return o.TeamID
+}
+
+func (o *ContentCheckRequest) GetOrganizationID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.OrganizationID
 }
 
 type ContentCheckResponse struct {

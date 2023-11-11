@@ -7,18 +7,18 @@ import (
 	"fmt"
 )
 
-type ContentDetectorResponseLabel string
+type Label string
 
 const (
-	ContentDetectorResponseLabelFake ContentDetectorResponseLabel = "fake"
-	ContentDetectorResponseLabelReal ContentDetectorResponseLabel = "real"
+	LabelFake Label = "fake"
+	LabelReal Label = "real"
 )
 
-func (e ContentDetectorResponseLabel) ToPointer() *ContentDetectorResponseLabel {
+func (e Label) ToPointer() *Label {
 	return &e
 }
 
-func (e *ContentDetectorResponseLabel) UnmarshalJSON(data []byte) error {
+func (e *Label) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -27,21 +27,21 @@ func (e *ContentDetectorResponseLabel) UnmarshalJSON(data []byte) error {
 	case "fake":
 		fallthrough
 	case "real":
-		*e = ContentDetectorResponseLabel(v)
+		*e = Label(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ContentDetectorResponseLabel: %v", v)
+		return fmt.Errorf("invalid value for Label: %v", v)
 	}
 }
 
 type ContentDetectorResponse struct {
-	Label ContentDetectorResponseLabel `json:"label"`
-	Score float64                      `json:"score"`
+	Label Label   `json:"label"`
+	Score float64 `json:"score"`
 }
 
-func (o *ContentDetectorResponse) GetLabel() ContentDetectorResponseLabel {
+func (o *ContentDetectorResponse) GetLabel() Label {
 	if o == nil {
-		return ContentDetectorResponseLabel("")
+		return Label("")
 	}
 	return o.Label
 }

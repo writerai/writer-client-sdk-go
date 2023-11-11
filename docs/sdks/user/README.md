@@ -46,13 +46,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [operations.ListUsersRequest](../../models/operations/listusersrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [operations.ListUsersRequest](../../pkg/models/operations/listusersrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 
 
 ### Response
 
-**[*operations.ListUsersResponse](../../models/operations/listusersresponse.md), error**
-
+**[*operations.ListUsersResponse](../../pkg/models/operations/listusersresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

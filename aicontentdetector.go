@@ -14,19 +14,24 @@ import (
 	"net/http"
 )
 
-// aiContentDetector - Methods related to AI Content Detector
-type aiContentDetector struct {
+// AIContentDetector - Methods related to AI Content Detector
+type AIContentDetector struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAIContentDetector(sdkConfig sdkConfiguration) *aiContentDetector {
-	return &aiContentDetector{
+func newAIContentDetector(sdkConfig sdkConfiguration) *AIContentDetector {
+	return &AIContentDetector{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Detect - Content detector api
-func (s *aiContentDetector) Detect(ctx context.Context, request operations.DetectContentRequest) (*operations.DetectContentResponse, error) {
+func (s *AIContentDetector) Detect(ctx context.Context, contentDetectorRequest shared.ContentDetectorRequest, organizationID *int64) (*operations.DetectContentResponse, error) {
+	request := operations.DetectContentRequest{
+		ContentDetectorRequest: contentDetectorRequest,
+		OrganizationID:         organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/content/organization/{organizationId}/detect", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -85,7 +90,7 @@ func (s *aiContentDetector) Detect(ctx context.Context, request operations.Detec
 				return nil, err
 			}
 
-			res.ContentDetectorResponses = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

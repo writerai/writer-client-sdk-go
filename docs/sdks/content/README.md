@@ -24,7 +24,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -33,31 +32,35 @@ func main() {
         writerclientsdkgo.WithOrganizationID(935464),
     )
 
-    ctx := context.Background()
-    res, err := s.Content.Check(ctx, operations.ContentCheckRequest{
-        ContentRequest: shared.ContentRequest{
-            Content: "now",
-            Settings: shared.ContentSettings{
-                AgeAndFamilyStatus: false,
-                Confidence: false,
-                ContentSafeguards: false,
-                Disability: false,
-                GenderIdentitySensitivity: false,
-                GenderInclusiveNouns: false,
-                GenderInclusivePronouns: false,
-                Grammar: false,
-                HealthyCommunication: false,
-                PassiveVoice: false,
-                RaceEthnicityNationalitySensitivity: false,
-                SexualOrientationSensitivity: false,
-                Spelling: false,
-                SubstanceUseSensitivity: false,
-                UnclearReference: false,
-                Wordiness: false,
-            },
+
+    contentRequest := shared.ContentRequest{
+        Content: "string",
+        Settings: shared.ContentSettings{
+            AgeAndFamilyStatus: false,
+            Confidence: false,
+            ContentSafeguards: false,
+            Disability: false,
+            GenderIdentitySensitivity: false,
+            GenderInclusiveNouns: false,
+            GenderInclusivePronouns: false,
+            Grammar: false,
+            HealthyCommunication: false,
+            PassiveVoice: false,
+            RaceEthnicityNationalitySensitivity: false,
+            SexualOrientationSensitivity: false,
+            Spelling: false,
+            SubstanceUseSensitivity: false,
+            UnclearReference: false,
+            Wordiness: false,
         },
-        TeamID: 740907,
-    })
+    }
+
+    var teamID int64 = 38270
+
+    var organizationID *int64 = 919579
+
+    ctx := context.Background()
+    res, err := s.Content.Check(ctx, contentRequest, teamID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -70,16 +73,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [operations.ContentCheckRequest](../../models/operations/contentcheckrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
+| `contentRequest`                                                      | [shared.ContentRequest](../../../pkg/models/shared/contentrequest.md) | :heavy_check_mark:                                                    | N/A                                                                   |
+| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
+| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
 
 
 ### Response
 
-**[*operations.ContentCheckResponse](../../models/operations/contentcheckresponse.md), error**
-
+**[*operations.ContentCheckResponse](../../pkg/models/operations/contentcheckresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Correct
 
@@ -95,7 +103,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -104,31 +111,37 @@ func main() {
         writerclientsdkgo.WithOrganizationID(501355),
     )
 
-    ctx := context.Background()
-    res, err := s.Content.Correct(ctx, operations.ContentCorrectRequest{
-        ContentRequest: shared.ContentRequest{
-            Content: "structure",
-            Settings: shared.ContentSettings{
-                AgeAndFamilyStatus: false,
-                Confidence: false,
-                ContentSafeguards: false,
-                Disability: false,
-                GenderIdentitySensitivity: false,
-                GenderInclusiveNouns: false,
-                GenderInclusivePronouns: false,
-                Grammar: false,
-                HealthyCommunication: false,
-                PassiveVoice: false,
-                RaceEthnicityNationalitySensitivity: false,
-                SexualOrientationSensitivity: false,
-                Spelling: false,
-                SubstanceUseSensitivity: false,
-                UnclearReference: false,
-                Wordiness: false,
-            },
+
+    contentRequest := shared.ContentRequest{
+        Content: "string",
+        Settings: shared.ContentSettings{
+            AgeAndFamilyStatus: false,
+            Confidence: false,
+            ContentSafeguards: false,
+            Disability: false,
+            GenderIdentitySensitivity: false,
+            GenderInclusiveNouns: false,
+            GenderInclusivePronouns: false,
+            Grammar: false,
+            HealthyCommunication: false,
+            PassiveVoice: false,
+            RaceEthnicityNationalitySensitivity: false,
+            SexualOrientationSensitivity: false,
+            Spelling: false,
+            SubstanceUseSensitivity: false,
+            UnclearReference: false,
+            Wordiness: false,
         },
-        TeamID: 267677,
-    })
+    }
+
+    var teamID int64 = 31310
+
+    var xRequestID *string = "string"
+
+    var organizationID *int64 = 383223
+
+    ctx := context.Background()
+    res, err := s.Content.Correct(ctx, contentRequest, teamID, xRequestID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -141,13 +154,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [operations.ContentCorrectRequest](../../models/operations/contentcorrectrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
+| `contentRequest`                                                      | [shared.ContentRequest](../../../pkg/models/shared/contentrequest.md) | :heavy_check_mark:                                                    | N/A                                                                   |
+| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
+| `xRequestID`                                                          | **string*                                                             | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
 
 
 ### Response
 
-**[*operations.ContentCorrectResponse](../../models/operations/contentcorrectresponse.md), error**
-
+**[*operations.ContentCorrectResponse](../../pkg/models/operations/contentcorrectresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

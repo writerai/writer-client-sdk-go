@@ -14,19 +14,25 @@ import (
 	"net/http"
 )
 
-// coWrite - Methods related to CoWrite
-type coWrite struct {
+// CoWrite - Methods related to CoWrite
+type CoWrite struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newCoWrite(sdkConfig sdkConfiguration) *coWrite {
-	return &coWrite{
+func newCoWrite(sdkConfig sdkConfiguration) *CoWrite {
+	return &CoWrite{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GenerateContent - Generate content using predefined templates
-func (s *coWrite) GenerateContent(ctx context.Context, request operations.GenerateContentRequest) (*operations.GenerateContentResponse, error) {
+func (s *CoWrite) GenerateContent(ctx context.Context, generateTemplateRequest shared.GenerateTemplateRequest, teamID int64, organizationID *int64) (*operations.GenerateContentResponse, error) {
+	request := operations.GenerateContentRequest{
+		GenerateTemplateRequest: generateTemplateRequest,
+		TeamID:                  teamID,
+		OrganizationID:          organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/cowrite/organization/{organizationId}/team/{teamId}/generate", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -120,7 +126,13 @@ func (s *coWrite) GenerateContent(ctx context.Context, request operations.Genera
 }
 
 // ListTemplates - Get a list of your existing CoWrite templates
-func (s *coWrite) ListTemplates(ctx context.Context, request operations.ListTemplatesRequest) (*operations.ListTemplatesResponse, error) {
+func (s *CoWrite) ListTemplates(ctx context.Context, teamID int64, templateID string, organizationID *int64) (*operations.ListTemplatesResponse, error) {
+	request := operations.ListTemplatesRequest{
+		TeamID:         teamID,
+		TemplateID:     templateID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/cowrite/organization/{organizationId}/team/{teamId}/template/{templateId}", request, s.sdkConfiguration.Globals)
 	if err != nil {

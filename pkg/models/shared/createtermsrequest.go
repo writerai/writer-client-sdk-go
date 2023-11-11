@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-type CreateTermsRequestFailHandling string
+type FailHandling string
 
 const (
-	CreateTermsRequestFailHandlingAccumulate   CreateTermsRequestFailHandling = "accumulate"
-	CreateTermsRequestFailHandlingValidate     CreateTermsRequestFailHandling = "validate"
-	CreateTermsRequestFailHandlingSkip         CreateTermsRequestFailHandling = "skip"
-	CreateTermsRequestFailHandlingValidateOnly CreateTermsRequestFailHandling = "validateOnly"
+	FailHandlingAccumulate   FailHandling = "accumulate"
+	FailHandlingValidate     FailHandling = "validate"
+	FailHandlingSkip         FailHandling = "skip"
+	FailHandlingValidateOnly FailHandling = "validateOnly"
 )
 
-func (e CreateTermsRequestFailHandling) ToPointer() *CreateTermsRequestFailHandling {
+func (e FailHandling) ToPointer() *FailHandling {
 	return &e
 }
 
-func (e *CreateTermsRequestFailHandling) UnmarshalJSON(data []byte) error {
+func (e *FailHandling) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,19 +33,19 @@ func (e *CreateTermsRequestFailHandling) UnmarshalJSON(data []byte) error {
 	case "skip":
 		fallthrough
 	case "validateOnly":
-		*e = CreateTermsRequestFailHandling(v)
+		*e = FailHandling(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateTermsRequestFailHandling: %v", v)
+		return fmt.Errorf("invalid value for FailHandling: %v", v)
 	}
 }
 
 type CreateTermsRequest struct {
-	FailHandling *CreateTermsRequestFailHandling `json:"failHandling,omitempty"`
-	Models       []TermCreate                    `json:"models,omitempty"`
+	FailHandling *FailHandling `json:"failHandling,omitempty"`
+	Models       []TermCreate  `json:"models,omitempty"`
 }
 
-func (o *CreateTermsRequest) GetFailHandling() *CreateTermsRequestFailHandling {
+func (o *CreateTermsRequest) GetFailHandling() *FailHandling {
 	if o == nil {
 		return nil
 	}

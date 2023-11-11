@@ -9,23 +9,23 @@ import (
 	"net/http"
 )
 
-type ListUsersSortField string
+type ListUsersQueryParamSortField string
 
 const (
-	ListUsersSortFieldID               ListUsersSortField = "id"
-	ListUsersSortFieldName             ListUsersSortField = "name"
-	ListUsersSortFieldCreationTime     ListUsersSortField = "creationTime"
-	ListUsersSortFieldDeleted          ListUsersSortField = "deleted"
-	ListUsersSortFieldModificationTime ListUsersSortField = "modificationTime"
-	ListUsersSortFieldEmail            ListUsersSortField = "email"
-	ListUsersSortFieldLastSeen         ListUsersSortField = "lastSeen"
+	ListUsersQueryParamSortFieldID               ListUsersQueryParamSortField = "id"
+	ListUsersQueryParamSortFieldName             ListUsersQueryParamSortField = "name"
+	ListUsersQueryParamSortFieldCreationTime     ListUsersQueryParamSortField = "creationTime"
+	ListUsersQueryParamSortFieldDeleted          ListUsersQueryParamSortField = "deleted"
+	ListUsersQueryParamSortFieldModificationTime ListUsersQueryParamSortField = "modificationTime"
+	ListUsersQueryParamSortFieldEmail            ListUsersQueryParamSortField = "email"
+	ListUsersQueryParamSortFieldLastSeen         ListUsersQueryParamSortField = "lastSeen"
 )
 
-func (e ListUsersSortField) ToPointer() *ListUsersSortField {
+func (e ListUsersQueryParamSortField) ToPointer() *ListUsersQueryParamSortField {
 	return &e
 }
 
-func (e *ListUsersSortField) UnmarshalJSON(data []byte) error {
+func (e *ListUsersQueryParamSortField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -44,25 +44,25 @@ func (e *ListUsersSortField) UnmarshalJSON(data []byte) error {
 	case "email":
 		fallthrough
 	case "lastSeen":
-		*e = ListUsersSortField(v)
+		*e = ListUsersQueryParamSortField(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListUsersSortField: %v", v)
+		return fmt.Errorf("invalid value for ListUsersQueryParamSortField: %v", v)
 	}
 }
 
-type ListUsersSortOrder string
+type ListUsersQueryParamSortOrder string
 
 const (
-	ListUsersSortOrderAsc  ListUsersSortOrder = "asc"
-	ListUsersSortOrderDesc ListUsersSortOrder = "desc"
+	ListUsersQueryParamSortOrderAsc  ListUsersQueryParamSortOrder = "asc"
+	ListUsersQueryParamSortOrderDesc ListUsersQueryParamSortOrder = "desc"
 )
 
-func (e ListUsersSortOrder) ToPointer() *ListUsersSortOrder {
+func (e ListUsersQueryParamSortOrder) ToPointer() *ListUsersQueryParamSortOrder {
 	return &e
 }
 
-func (e *ListUsersSortOrder) UnmarshalJSON(data []byte) error {
+func (e *ListUsersQueryParamSortOrder) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -71,19 +71,19 @@ func (e *ListUsersSortOrder) UnmarshalJSON(data []byte) error {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = ListUsersSortOrder(v)
+		*e = ListUsersQueryParamSortOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListUsersSortOrder: %v", v)
+		return fmt.Errorf("invalid value for ListUsersQueryParamSortOrder: %v", v)
 	}
 }
 
 type ListUsersRequest struct {
-	Limit     *int64              `queryParam:"style=form,explode=true,name=limit"`
-	Offset    *int64              `queryParam:"style=form,explode=true,name=offset"`
-	Search    *string             `queryParam:"style=form,explode=true,name=search"`
-	SortField *ListUsersSortField `queryParam:"style=form,explode=true,name=sortField"`
-	SortOrder *ListUsersSortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
+	Limit     *int64                        `queryParam:"style=form,explode=true,name=limit"`
+	Offset    *int64                        `queryParam:"style=form,explode=true,name=offset"`
+	Search    *string                       `queryParam:"style=form,explode=true,name=search"`
+	SortField *ListUsersQueryParamSortField `queryParam:"style=form,explode=true,name=sortField"`
+	SortOrder *ListUsersQueryParamSortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
 }
 
 func (o *ListUsersRequest) GetLimit() *int64 {
@@ -107,14 +107,14 @@ func (o *ListUsersRequest) GetSearch() *string {
 	return o.Search
 }
 
-func (o *ListUsersRequest) GetSortField() *ListUsersSortField {
+func (o *ListUsersRequest) GetSortField() *ListUsersQueryParamSortField {
 	if o == nil {
 		return nil
 	}
 	return o.SortField
 }
 
-func (o *ListUsersRequest) GetSortOrder() *ListUsersSortOrder {
+func (o *ListUsersRequest) GetSortOrder() *ListUsersQueryParamSortOrder {
 	if o == nil {
 		return nil
 	}

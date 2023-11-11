@@ -24,7 +24,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -33,21 +32,25 @@ func main() {
         writerclientsdkgo.WithOrganizationID(569932),
     )
 
-    ctx := context.Background()
-    res, err := s.CoWrite.GenerateContent(ctx, operations.GenerateContentRequest{
-        GenerateTemplateRequest: shared.GenerateTemplateRequest{
-            Inputs: []shared.MagicRequestInput{
-                shared.MagicRequestInput{
-                    Name: "er man approach",
-                    Value: []string{
-                        "builder",
-                    },
+
+    generateTemplateRequest := shared.GenerateTemplateRequest{
+        Inputs: []shared.MagicRequestInput{
+            shared.MagicRequestInput{
+                Name: "string",
+                Value: []string{
+                    "string",
                 },
             },
-            TemplateID: "Planner",
         },
-        TeamID: 612911,
-    })
+        TemplateID: "string",
+    }
+
+    var teamID int64 = 888452
+
+    var organizationID *int64 = 926220
+
+    ctx := context.Background()
+    res, err := s.CoWrite.GenerateContent(ctx, generateTemplateRequest, teamID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -60,16 +63,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [operations.GenerateContentRequest](../../models/operations/generatecontentrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `ctx`                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                   | :heavy_check_mark:                                                                      | The context to use for the request.                                                     |
+| `generateTemplateRequest`                                                               | [shared.GenerateTemplateRequest](../../../pkg/models/shared/generatetemplaterequest.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `teamID`                                                                                | *int64*                                                                                 | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `organizationID`                                                                        | **int64*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
 
 
 ### Response
 
-**[*operations.GenerateContentResponse](../../models/operations/generatecontentresponse.md), error**
-
+**[*operations.GenerateContentResponse](../../pkg/models/operations/generatecontentresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## ListTemplates
 
@@ -85,7 +93,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -94,11 +101,15 @@ func main() {
         writerclientsdkgo.WithOrganizationID(380445),
     )
 
+
+    var teamID int64 = 882866
+
+    var templateID string = "string"
+
+    var organizationID *int64 = 55511
+
     ctx := context.Background()
-    res, err := s.CoWrite.ListTemplates(ctx, operations.ListTemplatesRequest{
-        TeamID: 882866,
-        TemplateID: "Soul",
-    })
+    res, err := s.CoWrite.ListTemplates(ctx, teamID, templateID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -111,13 +122,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.ListTemplatesRequest](../../models/operations/listtemplatesrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `teamID`                                              | *int64*                                               | :heavy_check_mark:                                    | N/A                                                   |
+| `templateID`                                          | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
 
-**[*operations.ListTemplatesResponse](../../models/operations/listtemplatesresponse.md), error**
-
+**[*operations.ListTemplatesResponse](../../pkg/models/operations/listtemplatesresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

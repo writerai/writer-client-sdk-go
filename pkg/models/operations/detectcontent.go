@@ -27,7 +27,6 @@ func (o *DetectContentRequest) GetOrganizationID() *int64 {
 }
 
 type DetectContentResponse struct {
-	ContentDetectorResponses []shared.ContentDetectorResponse
 	// HTTP response content type for this operation
 	ContentType string
 	Headers     map[string][]string
@@ -35,13 +34,7 @@ type DetectContentResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-}
-
-func (o *DetectContentResponse) GetContentDetectorResponses() []shared.ContentDetectorResponse {
-	if o == nil {
-		return nil
-	}
-	return o.ContentDetectorResponses
+	Classes     []shared.ContentDetectorResponse
 }
 
 func (o *DetectContentResponse) GetContentType() string {
@@ -70,4 +63,11 @@ func (o *DetectContentResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *DetectContentResponse) GetClasses() []shared.ContentDetectorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

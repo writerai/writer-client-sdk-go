@@ -23,7 +23,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -32,17 +31,20 @@ func main() {
         writerclientsdkgo.WithOrganizationID(496531),
     )
 
+
+    contentDetectorRequest := shared.ContentDetectorRequest{
+        Input: "string",
+    }
+
+    var organizationID *int64 = 592237
+
     ctx := context.Background()
-    res, err := s.AIContentDetector.Detect(ctx, operations.DetectContentRequest{
-        ContentDetectorRequest: shared.ContentDetectorRequest{
-            Input: "Bronze Indian",
-        },
-    })
+    res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.ContentDetectorResponses != nil {
+    if res.Classes != nil {
         // handle response
     }
 }
@@ -50,13 +52,17 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [operations.DetectContentRequest](../../models/operations/detectcontentrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `ctx`                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                 | :heavy_check_mark:                                                                    | The context to use for the request.                                                   |
+| `contentDetectorRequest`                                                              | [shared.ContentDetectorRequest](../../../pkg/models/shared/contentdetectorrequest.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `organizationID`                                                                      | **int64*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   |
 
 
 ### Response
 
-**[*operations.DetectContentResponse](../../models/operations/detectcontentresponse.md), error**
-
+**[*operations.DetectContentResponse](../../pkg/models/operations/detectcontentresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

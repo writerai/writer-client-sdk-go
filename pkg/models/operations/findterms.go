@@ -9,20 +9,20 @@ import (
 	"net/http"
 )
 
-type FindTermsPartOfSpeech string
+type PartOfSpeech string
 
 const (
-	FindTermsPartOfSpeechNoun      FindTermsPartOfSpeech = "noun"
-	FindTermsPartOfSpeechVerb      FindTermsPartOfSpeech = "verb"
-	FindTermsPartOfSpeechAdverb    FindTermsPartOfSpeech = "adverb"
-	FindTermsPartOfSpeechAdjective FindTermsPartOfSpeech = "adjective"
+	PartOfSpeechNoun      PartOfSpeech = "noun"
+	PartOfSpeechVerb      PartOfSpeech = "verb"
+	PartOfSpeechAdverb    PartOfSpeech = "adverb"
+	PartOfSpeechAdjective PartOfSpeech = "adjective"
 )
 
-func (e FindTermsPartOfSpeech) ToPointer() *FindTermsPartOfSpeech {
+func (e PartOfSpeech) ToPointer() *PartOfSpeech {
 	return &e
 }
 
-func (e *FindTermsPartOfSpeech) UnmarshalJSON(data []byte) error {
+func (e *PartOfSpeech) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -35,27 +35,27 @@ func (e *FindTermsPartOfSpeech) UnmarshalJSON(data []byte) error {
 	case "adverb":
 		fallthrough
 	case "adjective":
-		*e = FindTermsPartOfSpeech(v)
+		*e = PartOfSpeech(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsPartOfSpeech: %v", v)
+		return fmt.Errorf("invalid value for PartOfSpeech: %v", v)
 	}
 }
 
-type FindTermsSortField string
+type QueryParamSortField string
 
 const (
-	FindTermsSortFieldTerm             FindTermsSortField = "term"
-	FindTermsSortFieldCreationTime     FindTermsSortField = "creationTime"
-	FindTermsSortFieldModificationTime FindTermsSortField = "modificationTime"
-	FindTermsSortFieldType             FindTermsSortField = "type"
+	QueryParamSortFieldTerm             QueryParamSortField = "term"
+	QueryParamSortFieldCreationTime     QueryParamSortField = "creationTime"
+	QueryParamSortFieldModificationTime QueryParamSortField = "modificationTime"
+	QueryParamSortFieldType             QueryParamSortField = "type"
 )
 
-func (e FindTermsSortField) ToPointer() *FindTermsSortField {
+func (e QueryParamSortField) ToPointer() *QueryParamSortField {
 	return &e
 }
 
-func (e *FindTermsSortField) UnmarshalJSON(data []byte) error {
+func (e *QueryParamSortField) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -68,25 +68,25 @@ func (e *FindTermsSortField) UnmarshalJSON(data []byte) error {
 	case "modificationTime":
 		fallthrough
 	case "type":
-		*e = FindTermsSortField(v)
+		*e = QueryParamSortField(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsSortField: %v", v)
+		return fmt.Errorf("invalid value for QueryParamSortField: %v", v)
 	}
 }
 
-type FindTermsSortOrder string
+type QueryParamSortOrder string
 
 const (
-	FindTermsSortOrderAsc  FindTermsSortOrder = "asc"
-	FindTermsSortOrderDesc FindTermsSortOrder = "desc"
+	QueryParamSortOrderAsc  QueryParamSortOrder = "asc"
+	QueryParamSortOrderDesc QueryParamSortOrder = "desc"
 )
 
-func (e FindTermsSortOrder) ToPointer() *FindTermsSortOrder {
+func (e QueryParamSortOrder) ToPointer() *QueryParamSortOrder {
 	return &e
 }
 
-func (e *FindTermsSortOrder) UnmarshalJSON(data []byte) error {
+func (e *QueryParamSortOrder) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -95,26 +95,26 @@ func (e *FindTermsSortOrder) UnmarshalJSON(data []byte) error {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = FindTermsSortOrder(v)
+		*e = QueryParamSortOrder(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsSortOrder: %v", v)
+		return fmt.Errorf("invalid value for QueryParamSortOrder: %v", v)
 	}
 }
 
-type FindTermsType string
+type Type string
 
 const (
-	FindTermsTypeApproved FindTermsType = "approved"
-	FindTermsTypeBanned   FindTermsType = "banned"
-	FindTermsTypePending  FindTermsType = "pending"
+	TypeApproved Type = "approved"
+	TypeBanned   Type = "banned"
+	TypePending  Type = "pending"
 )
 
-func (e FindTermsType) ToPointer() *FindTermsType {
+func (e Type) ToPointer() *Type {
 	return &e
 }
 
-func (e *FindTermsType) UnmarshalJSON(data []byte) error {
+func (e *Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -125,24 +125,24 @@ func (e *FindTermsType) UnmarshalJSON(data []byte) error {
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = FindTermsType(v)
+		*e = Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FindTermsType: %v", v)
+		return fmt.Errorf("invalid value for Type: %v", v)
 	}
 }
 
 type FindTermsRequest struct {
-	Limit          *int64                 `queryParam:"style=form,explode=true,name=limit"`
-	Offset         *int64                 `queryParam:"style=form,explode=true,name=offset"`
-	OrganizationID *int64                 `pathParam:"style=simple,explode=false,name=organizationId"`
-	PartOfSpeech   *FindTermsPartOfSpeech `queryParam:"style=form,explode=true,name=partOfSpeech"`
-	SortField      *FindTermsSortField    `queryParam:"style=form,explode=true,name=sortField"`
-	SortOrder      *FindTermsSortOrder    `queryParam:"style=form,explode=true,name=sortOrder"`
-	Tags           []string               `queryParam:"style=form,explode=true,name=tags"`
-	TeamID         int64                  `pathParam:"style=simple,explode=false,name=teamId"`
-	Term           *string                `queryParam:"style=form,explode=true,name=term"`
-	Type           *FindTermsType         `queryParam:"style=form,explode=true,name=type"`
+	Limit          *int64               `queryParam:"style=form,explode=true,name=limit"`
+	Offset         *int64               `queryParam:"style=form,explode=true,name=offset"`
+	OrganizationID *int64               `pathParam:"style=simple,explode=false,name=organizationId"`
+	PartOfSpeech   *PartOfSpeech        `queryParam:"style=form,explode=true,name=partOfSpeech"`
+	SortField      *QueryParamSortField `queryParam:"style=form,explode=true,name=sortField"`
+	SortOrder      *QueryParamSortOrder `queryParam:"style=form,explode=true,name=sortOrder"`
+	Tags           []string             `queryParam:"style=form,explode=true,name=tags"`
+	TeamID         int64                `pathParam:"style=simple,explode=false,name=teamId"`
+	Term           *string              `queryParam:"style=form,explode=true,name=term"`
+	Type           *Type                `queryParam:"style=form,explode=true,name=type"`
 }
 
 func (o *FindTermsRequest) GetLimit() *int64 {
@@ -166,21 +166,21 @@ func (o *FindTermsRequest) GetOrganizationID() *int64 {
 	return o.OrganizationID
 }
 
-func (o *FindTermsRequest) GetPartOfSpeech() *FindTermsPartOfSpeech {
+func (o *FindTermsRequest) GetPartOfSpeech() *PartOfSpeech {
 	if o == nil {
 		return nil
 	}
 	return o.PartOfSpeech
 }
 
-func (o *FindTermsRequest) GetSortField() *FindTermsSortField {
+func (o *FindTermsRequest) GetSortField() *QueryParamSortField {
 	if o == nil {
 		return nil
 	}
 	return o.SortField
 }
 
-func (o *FindTermsRequest) GetSortOrder() *FindTermsSortOrder {
+func (o *FindTermsRequest) GetSortOrder() *QueryParamSortOrder {
 	if o == nil {
 		return nil
 	}
@@ -208,7 +208,7 @@ func (o *FindTermsRequest) GetTerm() *string {
 	return o.Term
 }
 
-func (o *FindTermsRequest) GetType() *FindTermsType {
+func (o *FindTermsRequest) GetType() *Type {
 	if o == nil {
 		return nil
 	}

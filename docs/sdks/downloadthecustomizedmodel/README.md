@@ -23,7 +23,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -32,16 +31,20 @@ func main() {
         writerclientsdkgo.WithOrganizationID(501762),
     )
 
+
+    var customizationID string = "string"
+
+    var modelID string = "string"
+
+    var organizationID *int64 = 948692
+
     ctx := context.Background()
-    res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, operations.FetchCustomizedModelFileRequest{
-        CustomizationID: "Racine beyond connecting",
-        ModelID: "invoice Folk",
-    })
+    res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, customizationID, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.FetchCustomizedModelFile200ApplicationOctetStreamBinaryString != nil {
+    if res.Stream != nil {
         // handle response
     }
 }
@@ -49,13 +52,18 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
-| `request`                                                                                                | [operations.FetchCustomizedModelFileRequest](../../models/operations/fetchcustomizedmodelfilerequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `customizationID`                                     | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `modelID`                                             | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
 
-**[*operations.FetchCustomizedModelFileResponse](../../models/operations/fetchcustomizedmodelfileresponse.md), error**
-
+**[*operations.FetchCustomizedModelFileResponse](../../pkg/models/operations/fetchcustomizedmodelfileresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

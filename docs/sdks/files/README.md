@@ -26,7 +26,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -35,15 +34,18 @@ func main() {
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
+
+    var fileID string = "string"
+
+    var organizationID *int64 = 841399
+
     ctx := context.Background()
-    res, err := s.Files.Delete(ctx, operations.DeleteFileRequest{
-        FileID: "Designer complexity gladiolus",
-    })
+    res, err := s.Files.Delete(ctx, fileID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.DeleteFile200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -51,16 +53,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
-| `request`                                                                    | [operations.DeleteFileRequest](../../models/operations/deletefilerequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `fileID`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
 
-**[*operations.DeleteFileResponse](../../models/operations/deletefileresponse.md), error**
-
+**[*operations.DeleteFileResponse](../../pkg/models/operations/deletefileresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Get
 
@@ -76,7 +82,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -85,10 +90,13 @@ func main() {
         writerclientsdkgo.WithOrganizationID(700347),
     )
 
+
+    var fileID string = "string"
+
+    var organizationID *int64 = 90065
+
     ctx := context.Background()
-    res, err := s.Files.Get(ctx, operations.GetFileRequest{
-        FileID: "program",
-    })
+    res, err := s.Files.Get(ctx, fileID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -101,16 +109,20 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `ctx`                                                                  | [context.Context](https://pkg.go.dev/context#Context)                  | :heavy_check_mark:                                                     | The context to use for the request.                                    |
-| `request`                                                              | [operations.GetFileRequest](../../models/operations/getfilerequest.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `fileID`                                              | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
 
-**[*operations.GetFileResponse](../../models/operations/getfileresponse.md), error**
-
+**[*operations.GetFileResponse](../../pkg/models/operations/getfileresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## List
 
@@ -126,7 +138,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -135,8 +146,11 @@ func main() {
         writerclientsdkgo.WithOrganizationID(768578),
     )
 
+
+    var organizationID *int64 = 99895
+
     ctx := context.Background()
-    res, err := s.Files.List(ctx, operations.ListFilesRequest{})
+    res, err := s.Files.List(ctx, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -149,16 +163,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
-| `request`                                                                  | [operations.ListFilesRequest](../../models/operations/listfilesrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `organizationID`                                      | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
 
 
 ### Response
 
-**[*operations.ListFilesResponse](../../models/operations/listfilesresponse.md), error**
-
+**[*operations.ListFilesResponse](../../pkg/models/operations/listfilesresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## Upload
 
@@ -174,7 +191,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -183,15 +199,18 @@ func main() {
         writerclientsdkgo.WithOrganizationID(403654),
     )
 
-    ctx := context.Background()
-    res, err := s.Files.Upload(ctx, operations.UploadFileRequest{
-        UploadModelFileRequest: shared.UploadModelFileRequest{
-            File: shared.UploadModelFileRequestFile{
-                Content: []byte("?SRSKG@^n="),
-                File: "Plastic CLI",
-            },
+
+    uploadModelFileRequest := shared.UploadModelFileRequest{
+        File: shared.File{
+            Content: []byte("0x7cbca97eC6"),
+            FileName: "plastic_cli.gif",
         },
-    })
+    }
+
+    var organizationID *int64 = 360896
+
+    ctx := context.Background()
+    res, err := s.Files.Upload(ctx, uploadModelFileRequest, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -204,13 +223,17 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
-| `request`                                                                    | [operations.UploadFileRequest](../../models/operations/uploadfilerequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `ctx`                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                 | :heavy_check_mark:                                                                    | The context to use for the request.                                                   |
+| `uploadModelFileRequest`                                                              | [shared.UploadModelFileRequest](../../../pkg/models/shared/uploadmodelfilerequest.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `organizationID`                                                                      | **int64*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   |
 
 
 ### Response
 
-**[*operations.UploadFileResponse](../../models/operations/uploadfileresponse.md), error**
-
+**[*operations.UploadFileResponse](../../pkg/models/operations/uploadfileresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

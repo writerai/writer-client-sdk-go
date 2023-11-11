@@ -15,19 +15,23 @@ import (
 	"strings"
 )
 
-// styleguide - Methods related to Styleguide
-type styleguide struct {
+// Styleguide - Methods related to Styleguide
+type Styleguide struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newStyleguide(sdkConfig sdkConfiguration) *styleguide {
-	return &styleguide{
+func newStyleguide(sdkConfig sdkConfiguration) *Styleguide {
+	return &Styleguide{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Get - Page details
-func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequest) (*operations.PageDetailsResponse, error) {
+func (s *Styleguide) Get(ctx context.Context, pageID int64) (*operations.PageDetailsResponse, error) {
+	request := operations.PageDetailsRequest{
+		PageID: pageID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/styleguide/page/{pageId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -111,7 +115,13 @@ func (s *styleguide) Get(ctx context.Context, request operations.PageDetailsRequ
 }
 
 // ListPages - List your styleguide pages
-func (s *styleguide) ListPages(ctx context.Context, request operations.ListPagesRequest) (*operations.ListPagesResponse, error) {
+func (s *Styleguide) ListPages(ctx context.Context, limit *int64, offset *int64, status *operations.Status) (*operations.ListPagesResponse, error) {
+	request := operations.ListPagesRequest{
+		Limit:  limit,
+		Offset: offset,
+		Status: status,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/styleguide/page"
 

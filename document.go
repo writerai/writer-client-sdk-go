@@ -14,19 +14,25 @@ import (
 	"net/http"
 )
 
-// document - Methods related to document
-type document struct {
+// Document - Methods related to document
+type Document struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDocument(sdkConfig sdkConfiguration) *document {
-	return &document{
+func newDocument(sdkConfig sdkConfiguration) *Document {
+	return &Document{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Get document details
-func (s *document) Get(ctx context.Context, request operations.GetDocumentDetailsRequest) (*operations.GetDocumentDetailsResponse, error) {
+func (s *Document) Get(ctx context.Context, documentID int64, teamID int64, organizationID *int64) (*operations.GetDocumentDetailsResponse, error) {
+	request := operations.GetDocumentDetailsRequest{
+		DocumentID:     documentID,
+		TeamID:         teamID,
+		OrganizationID: organizationID,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/organization/{organizationId}/team/{teamId}/document/{documentId}", request, s.sdkConfiguration.Globals)
 	if err != nil {
@@ -110,7 +116,7 @@ func (s *document) Get(ctx context.Context, request operations.GetDocumentDetail
 }
 
 // List team documents
-func (s *document) List(ctx context.Context, request operations.ListTeamDocumentsRequest) (*operations.ListTeamDocumentsResponse, error) {
+func (s *Document) List(ctx context.Context, request operations.ListTeamDocumentsRequest) (*operations.ListTeamDocumentsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/organization/{organizationId}/team/{teamId}/document", request, s.sdkConfiguration.Globals)
 	if err != nil {

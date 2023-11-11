@@ -42,19 +42,19 @@ func (e *FullTermWithUserPos) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type FullTermWithUserType string
+type Type string
 
 const (
-	FullTermWithUserTypeApproved FullTermWithUserType = "approved"
-	FullTermWithUserTypeBanned   FullTermWithUserType = "banned"
-	FullTermWithUserTypePending  FullTermWithUserType = "pending"
+	TypeApproved Type = "approved"
+	TypeBanned   Type = "banned"
+	TypePending  Type = "pending"
 )
 
-func (e FullTermWithUserType) ToPointer() *FullTermWithUserType {
+func (e Type) ToPointer() *Type {
 	return &e
 }
 
-func (e *FullTermWithUserType) UnmarshalJSON(data []byte) error {
+func (e *Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -65,10 +65,10 @@ func (e *FullTermWithUserType) UnmarshalJSON(data []byte) error {
 	case "banned":
 		fallthrough
 	case "pending":
-		*e = FullTermWithUserType(v)
+		*e = Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FullTermWithUserType: %v", v)
+		return fmt.Errorf("invalid value for Type: %v", v)
 	}
 }
 
@@ -90,7 +90,7 @@ type FullTermWithUser struct {
 	Tags                  []TermTagResponse      `json:"tags,omitempty"`
 	Term                  string                 `json:"term"`
 	TermBankID            int64                  `json:"termBankId"`
-	Type                  FullTermWithUserType   `json:"type"`
+	Type                  Type                   `json:"type"`
 }
 
 func (f FullTermWithUser) MarshalJSON() ([]byte, error) {
@@ -223,9 +223,9 @@ func (o *FullTermWithUser) GetTermBankID() int64 {
 	return o.TermBankID
 }
 
-func (o *FullTermWithUser) GetType() FullTermWithUserType {
+func (o *FullTermWithUser) GetType() Type {
 	if o == nil {
-		return FullTermWithUserType("")
+		return Type("")
 	}
 	return o.Type
 }

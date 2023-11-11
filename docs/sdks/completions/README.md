@@ -24,7 +24,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -33,23 +32,27 @@ func main() {
         writerclientsdkgo.WithOrganizationID(486589),
     )
 
-    ctx := context.Background()
-    res, err := s.Completions.Create(ctx, operations.CreateCompletionRequest{
-        CompletionRequest: shared.CompletionRequest{
-            BestOf: writerclientsdkgo.Int64(1),
-            MaxTokens: writerclientsdkgo.Int64(1024),
-            MinTokens: writerclientsdkgo.Int64(1),
-            Prompt: "Configuration Money",
-            Stop: []string{
-                "the",
-                "is",
-                "and",
-            },
-            Temperature: writerclientsdkgo.Float64(0.7),
-            TopP: writerclientsdkgo.Float64(1),
+
+    completionRequest := shared.CompletionRequest{
+        BestOf: writerclientsdkgo.Int64(1),
+        MaxTokens: writerclientsdkgo.Int64(1024),
+        MinTokens: writerclientsdkgo.Int64(1),
+        Prompt: "string",
+        Stop: []string{
+            "the",
+            "is",
+            "and",
         },
-        ModelID: "Cambridgeshire grey technology",
-    })
+        Temperature: writerclientsdkgo.Float64(0.7),
+        TopP: writerclientsdkgo.Float64(1),
+    }
+
+    var modelID string = "string"
+
+    var organizationID *int64 = 489382
+
+    ctx := context.Background()
+    res, err := s.Completions.Create(ctx, completionRequest, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -62,16 +65,21 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
-| `request`                                                                                | [operations.CreateCompletionRequest](../../models/operations/createcompletionrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `ctx`                                                                       | [context.Context](https://pkg.go.dev/context#Context)                       | :heavy_check_mark:                                                          | The context to use for the request.                                         |
+| `completionRequest`                                                         | [shared.CompletionRequest](../../../pkg/models/shared/completionrequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `modelID`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `organizationID`                                                            | **int64*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 
 
 ### Response
 
-**[*operations.CreateCompletionResponse](../../models/operations/createcompletionresponse.md), error**
-
+**[*operations.CreateCompletionResponse](../../pkg/models/operations/createcompletionresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |
 
 ## CreateModelCustomizationCompletion
 
@@ -87,7 +95,6 @@ import(
 	"log"
 	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
@@ -96,24 +103,29 @@ func main() {
         writerclientsdkgo.WithOrganizationID(919503),
     )
 
-    ctx := context.Background()
-    res, err := s.Completions.CreateModelCustomizationCompletion(ctx, operations.CreateModelCustomizationCompletionRequest{
-        CompletionRequest: shared.CompletionRequest{
-            BestOf: writerclientsdkgo.Int64(1),
-            MaxTokens: writerclientsdkgo.Int64(1024),
-            MinTokens: writerclientsdkgo.Int64(1),
-            Prompt: "error",
-            Stop: []string{
-                "the",
-                "is",
-                "and",
-            },
-            Temperature: writerclientsdkgo.Float64(0.7),
-            TopP: writerclientsdkgo.Float64(1),
+
+    completionRequest := shared.CompletionRequest{
+        BestOf: writerclientsdkgo.Int64(1),
+        MaxTokens: writerclientsdkgo.Int64(1024),
+        MinTokens: writerclientsdkgo.Int64(1),
+        Prompt: "string",
+        Stop: []string{
+            "the",
+            "is",
+            "and",
         },
-        CustomizationID: "newton",
-        ModelID: "convergence",
-    })
+        Temperature: writerclientsdkgo.Float64(0.7),
+        TopP: writerclientsdkgo.Float64(1),
+    }
+
+    var customizationID string = "string"
+
+    var modelID string = "string"
+
+    var organizationID *int64 = 41297
+
+    ctx := context.Background()
+    res, err := s.Completions.CreateModelCustomizationCompletion(ctx, completionRequest, customizationID, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
@@ -126,13 +138,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
-| `request`                                                                                                                    | [operations.CreateModelCustomizationCompletionRequest](../../models/operations/createmodelcustomizationcompletionrequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `ctx`                                                                       | [context.Context](https://pkg.go.dev/context#Context)                       | :heavy_check_mark:                                                          | The context to use for the request.                                         |
+| `completionRequest`                                                         | [shared.CompletionRequest](../../../pkg/models/shared/completionrequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `customizationID`                                                           | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `modelID`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `organizationID`                                                            | **int64*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
 
 
 ### Response
 
-**[*operations.CreateModelCustomizationCompletionResponse](../../models/operations/createmodelcustomizationcompletionresponse.md), error**
-
+**[*operations.CreateModelCustomizationCompletionResponse](../../pkg/models/operations/createmodelcustomizationcompletionresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

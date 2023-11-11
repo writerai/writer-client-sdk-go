@@ -43,7 +43,7 @@ type FetchCustomizedModelFileResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	FetchCustomizedModelFile200ApplicationOctetStreamBinaryString io.ReadCloser
+	Stream io.ReadCloser
 }
 
 func (o *FetchCustomizedModelFileResponse) GetContentType() string {
@@ -74,9 +74,9 @@ func (o *FetchCustomizedModelFileResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *FetchCustomizedModelFileResponse) GetFetchCustomizedModelFile200ApplicationOctetStreamBinaryString() io.ReadCloser {
+func (o *FetchCustomizedModelFileResponse) GetStream() io.ReadCloser {
 	if o == nil {
 		return nil
 	}
-	return o.FetchCustomizedModelFile200ApplicationOctetStreamBinaryString
+	return o.Stream
 }

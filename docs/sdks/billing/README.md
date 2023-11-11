@@ -52,5 +52,8 @@ func main() {
 
 ### Response
 
-**[*operations.GetSubscriptionDetailsResponse](../../models/operations/getsubscriptiondetailsresponse.md), error**
-
+**[*operations.GetSubscriptionDetailsResponse](../../pkg/models/operations/getsubscriptiondetailsresponse.md), error**
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
+| sdkerrors.SDKError     | 400-600                | */*                    |

@@ -9,19 +9,19 @@ import (
 	"time"
 )
 
-type BriefDocumentAccess string
+type Access string
 
 const (
-	BriefDocumentAccessPrivate BriefDocumentAccess = "private"
-	BriefDocumentAccessPublic  BriefDocumentAccess = "public"
-	BriefDocumentAccessShared  BriefDocumentAccess = "shared"
+	AccessPrivate Access = "private"
+	AccessPublic  Access = "public"
+	AccessShared  Access = "shared"
 )
 
-func (e BriefDocumentAccess) ToPointer() *BriefDocumentAccess {
+func (e Access) ToPointer() *Access {
 	return &e
 }
 
-func (e *BriefDocumentAccess) UnmarshalJSON(data []byte) error {
+func (e *Access) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -32,24 +32,24 @@ func (e *BriefDocumentAccess) UnmarshalJSON(data []byte) error {
 	case "public":
 		fallthrough
 	case "shared":
-		*e = BriefDocumentAccess(v)
+		*e = Access(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for BriefDocumentAccess: %v", v)
+		return fmt.Errorf("invalid value for Access: %v", v)
 	}
 }
 
 type BriefDocument struct {
-	Access           BriefDocumentAccess `json:"access"`
-	CreatedUser      *SimpleUser         `json:"createdUser,omitempty"`
-	CreationTime     time.Time           `json:"creationTime"`
-	ID               int64               `json:"id"`
-	ModificationTime time.Time           `json:"modificationTime"`
-	ModifiedUser     *SimpleUser         `json:"modifiedUser,omitempty"`
-	OrganizationID   int64               `json:"organizationId"`
-	Score            int64               `json:"score"`
-	TeamID           int64               `json:"teamId"`
-	Title            string              `json:"title"`
+	Access           Access      `json:"access"`
+	CreatedUser      *SimpleUser `json:"createdUser,omitempty"`
+	CreationTime     time.Time   `json:"creationTime"`
+	ID               int64       `json:"id"`
+	ModificationTime time.Time   `json:"modificationTime"`
+	ModifiedUser     *SimpleUser `json:"modifiedUser,omitempty"`
+	OrganizationID   int64       `json:"organizationId"`
+	Score            int64       `json:"score"`
+	TeamID           int64       `json:"teamId"`
+	Title            string      `json:"title"`
 }
 
 func (b BriefDocument) MarshalJSON() ([]byte, error) {
@@ -63,9 +63,9 @@ func (b *BriefDocument) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *BriefDocument) GetAccess() BriefDocumentAccess {
+func (o *BriefDocument) GetAccess() Access {
 	if o == nil {
-		return BriefDocumentAccess("")
+		return Access("")
 	}
 	return o.Access
 }
