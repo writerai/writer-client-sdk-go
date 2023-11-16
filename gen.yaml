@@ -2,15 +2,17 @@ configVersion: 1.0.0
 management:
   docChecksum: 044ba6ea348a6fb8206cacad6926373d
   docVersion: "1.7"
-  speakeasyVersion: 1.116.0
-  generationVersion: 2.185.0
+  speakeasyVersion: 1.120.3
+  generationVersion: 2.192.1
 generation:
   comments: {}
   sdkClassName: writer
   repoURL: https://github.com/writerai/writer-client-sdk-go.git
+  usageSnippets:
+    optionalPropertyRendering: withExample
 features:
   go:
-    core: 3.1.2
+    core: 3.1.5
     downloadStreams: 0.1.1
     errors: 2.81.7
     flattening: 2.81.1
@@ -19,7 +21,7 @@ features:
     globals: 2.81.1
     nameOverrides: 2.81.1
 go:
-  version: 0.21.1
+  version: 0.21.2
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:

@@ -161,7 +161,7 @@ func (o *FindSnippetsResponse) GetContentType() string {
 
 func (o *FindSnippetsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

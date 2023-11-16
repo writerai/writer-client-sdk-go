@@ -38,7 +38,7 @@ func (o *ListFilesResponse) GetContentType() string {
 
 func (o *ListFilesResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

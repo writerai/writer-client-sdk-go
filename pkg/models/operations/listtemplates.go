@@ -54,7 +54,7 @@ func (o *ListTemplatesResponse) GetContentType() string {
 
 func (o *ListTemplatesResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

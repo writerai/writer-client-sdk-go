@@ -19,10 +19,10 @@ Content detector api
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {

@@ -53,7 +53,7 @@ func (o *ListModelCustomizationsResponse) GetCustomizationsResponse() *shared.Cu
 
 func (o *ListModelCustomizationsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

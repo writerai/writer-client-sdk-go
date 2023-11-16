@@ -61,7 +61,7 @@ func (o *GenerateContentResponse) GetDraft() *shared.Draft {
 
 func (o *GenerateContentResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

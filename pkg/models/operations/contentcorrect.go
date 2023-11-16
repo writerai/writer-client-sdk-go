@@ -69,7 +69,7 @@ func (o *ContentCorrectResponse) GetCorrectionResponse() *shared.CorrectionRespo
 
 func (o *ContentCorrectResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

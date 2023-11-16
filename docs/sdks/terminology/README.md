@@ -22,10 +22,10 @@ Add terms
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
@@ -114,10 +114,10 @@ Delete terms
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
@@ -178,11 +178,11 @@ Find terms
 package main
 
 import(
-	"context"
-	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
+	"context"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -234,10 +234,10 @@ Update terms
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {

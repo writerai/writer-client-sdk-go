@@ -235,7 +235,7 @@ func (o *FindTermsResponse) GetContentType() string {
 
 func (o *FindTermsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

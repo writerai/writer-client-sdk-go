@@ -20,10 +20,10 @@ Page details
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
@@ -73,11 +73,11 @@ List your styleguide pages
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {

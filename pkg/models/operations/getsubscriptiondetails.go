@@ -27,7 +27,7 @@ func (o *GetSubscriptionDetailsResponse) GetContentType() string {
 
 func (o *GetSubscriptionDetailsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

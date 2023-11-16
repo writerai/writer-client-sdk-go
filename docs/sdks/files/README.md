@@ -22,10 +22,10 @@ Delete file
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
@@ -78,10 +78,10 @@ Get file
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
@@ -134,10 +134,10 @@ List files
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
@@ -187,10 +187,10 @@ Upload file
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {

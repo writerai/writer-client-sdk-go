@@ -61,7 +61,7 @@ func (o *GetDocumentDetailsResponse) GetDocument() *shared.Document {
 
 func (o *GetDocumentDetailsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }
