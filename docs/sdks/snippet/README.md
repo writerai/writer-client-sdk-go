@@ -29,7 +29,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
@@ -94,7 +94,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(40141),
     )
 
@@ -152,7 +152,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(857478),
     )
 
@@ -189,13 +189,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
-| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
-| `requestBody`                                                         | [][shared.SnippetUpdate](../../../pkg/models/shared/snippetupdate.md) | :heavy_minus_sign:                                                    | N/A                                                                   |
-| `xRequestID`                                                          | **string*                                                             | :heavy_minus_sign:                                                    | N/A                                                                   |
-| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `ctx`                                                              | [context.Context](https://pkg.go.dev/context#Context)              | :heavy_check_mark:                                                 | The context to use for the request.                                |
+| `teamID`                                                           | *int64*                                                            | :heavy_check_mark:                                                 | N/A                                                                |
+| `requestBody`                                                      | [][shared.SnippetUpdate](../../pkg/models/shared/snippetupdate.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `xRequestID`                                                       | **string*                                                          | :heavy_minus_sign:                                                 | N/A                                                                |
+| `organizationID`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
 
 
 ### Response

@@ -128,7 +128,6 @@ pkg/utils/utils.go
 /pkg/models/shared/userpublicresponse.go
 /pkg/models/shared/security.go
 /pkg/models/sdkerrors/failresponse.go
-USAGE.md
 docs/pkg/models/operations/getsubscriptiondetailsresponse.md
 docs/pkg/models/operations/detectcontentrequest.md
 docs/pkg/models/operations/detectcontentresponse.md
@@ -308,5 +307,6 @@ docs/sdks/snippet/README.md
 docs/sdks/styleguide/README.md
 docs/sdks/terminology/README.md
 docs/sdks/user/README.md
+USAGE.md
 pkg/models/operations/options.go
 .gitattributes

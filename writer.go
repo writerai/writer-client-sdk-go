@@ -140,7 +140,6 @@ func withSecurity(security interface{}) func(context.Context) (interface{}, erro
 }
 
 // WithSecurity configures the SDK to use the provided security details
-
 func WithSecurity(apiKey string) SDKOption {
 	return func(sdk *Writer) {
 		security := shared.Security{APIKey: apiKey}
@@ -171,9 +170,9 @@ func New(opts ...SDKOption) *Writer {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.7",
-			SDKVersion:        "0.21.3",
-			GenVersion:        "2.194.1",
-			UserAgent:         "speakeasy-sdk/go 0.21.3 2.194.1 1.7 github.com/writerai/writer-client-sdk-go",
+			SDKVersion:        "0.22.0",
+			GenVersion:        "2.213.3",
+			UserAgent:         "speakeasy-sdk/go 0.22.0 2.213.3 1.7 github.com/writerai/writer-client-sdk-go",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},

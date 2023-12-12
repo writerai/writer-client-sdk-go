@@ -28,7 +28,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(935464),
     )
 
@@ -73,12 +73,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
-| `contentRequest`                                                      | [shared.ContentRequest](../../../pkg/models/shared/contentrequest.md) | :heavy_check_mark:                                                    | N/A                                                                   |
-| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
-| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `ctx`                                                              | [context.Context](https://pkg.go.dev/context#Context)              | :heavy_check_mark:                                                 | The context to use for the request.                                |
+| `contentRequest`                                                   | [shared.ContentRequest](../../pkg/models/shared/contentrequest.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `teamID`                                                           | *int64*                                                            | :heavy_check_mark:                                                 | N/A                                                                |
+| `organizationID`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
 
 
 ### Response
@@ -107,7 +107,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(501355),
     )
 
@@ -154,13 +154,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
-| `contentRequest`                                                      | [shared.ContentRequest](../../../pkg/models/shared/contentrequest.md) | :heavy_check_mark:                                                    | N/A                                                                   |
-| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
-| `xRequestID`                                                          | **string*                                                             | :heavy_minus_sign:                                                    | N/A                                                                   |
-| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `ctx`                                                              | [context.Context](https://pkg.go.dev/context#Context)              | :heavy_check_mark:                                                 | The context to use for the request.                                |
+| `contentRequest`                                                   | [shared.ContentRequest](../../pkg/models/shared/contentrequest.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `teamID`                                                           | *int64*                                                            | :heavy_check_mark:                                                 | N/A                                                                |
+| `xRequestID`                                                       | **string*                                                          | :heavy_minus_sign:                                                 | N/A                                                                |
+| `organizationID`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
 
 
 ### Response

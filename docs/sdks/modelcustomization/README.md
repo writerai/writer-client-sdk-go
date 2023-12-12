@@ -30,7 +30,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(486589),
     )
 
@@ -61,12 +61,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
-| `createCustomizationRequest`                                                                  | [shared.CreateCustomizationRequest](../../../pkg/models/shared/createcustomizationrequest.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `modelID`                                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `organizationID`                                                                              | **int64*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `createCustomizationRequest`                                                               | [shared.CreateCustomizationRequest](../../pkg/models/shared/createcustomizationrequest.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `modelID`                                                                                  | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `organizationID`                                                                           | **int64*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 
 
 ### Response
@@ -95,7 +95,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
@@ -154,7 +154,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(700347),
     )
 
@@ -213,7 +213,7 @@ import(
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(768578),
     )
 

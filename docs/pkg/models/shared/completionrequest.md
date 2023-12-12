@@ -13,6 +13,6 @@
 | `N`                | **int64*           | :heavy_minus_sign: | N/A                |                    |
 | `PresencePenalty`  | **float64*         | :heavy_minus_sign: | N/A                |                    |
 | `Prompt`           | *string*           | :heavy_check_mark: | N/A                |                    |
-| `Stop`             | []*string*         | :heavy_minus_sign: | N/A                | the,is,and         |
+| `Stop`             | []*string*         | :heavy_minus_sign: | N/A                | ["the","is","and"] |
 | `Temperature`      | **float64*         | :heavy_minus_sign: | N/A                | 0.7                |
 | `TopP`             | **float64*         | :heavy_minus_sign: | N/A                | 1                  |
