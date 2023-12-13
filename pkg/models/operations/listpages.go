@@ -83,7 +83,7 @@ func (o *ListPagesResponse) GetContentType() string {
 
 func (o *ListPagesResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

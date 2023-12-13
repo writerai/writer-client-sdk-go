@@ -38,7 +38,7 @@ func (o *PageDetailsResponse) GetContentType() string {
 
 func (o *PageDetailsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

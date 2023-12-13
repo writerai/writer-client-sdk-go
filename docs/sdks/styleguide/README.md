@@ -20,15 +20,15 @@ Page details
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(700347),
     )
 
@@ -73,16 +73,16 @@ List your styleguide pages
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
+	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(763372),
     )
 
@@ -107,12 +107,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
-| `limit`                                                        | **int64*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
-| `offset`                                                       | **int64*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
-| `status`                                                       | [*operations.Status](../../../pkg/models/operations/status.md) | :heavy_minus_sign:                                             | N/A                                                            |
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `ctx`                                                       | [context.Context](https://pkg.go.dev/context#Context)       | :heavy_check_mark:                                          | The context to use for the request.                         |
+| `limit`                                                     | **int64*                                                    | :heavy_minus_sign:                                          | N/A                                                         |
+| `offset`                                                    | **int64*                                                    | :heavy_minus_sign:                                          | N/A                                                         |
+| `status`                                                    | [*operations.Status](../../pkg/models/operations/status.md) | :heavy_minus_sign:                                          | N/A                                                         |
 
 
 ### Response

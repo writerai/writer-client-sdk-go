@@ -22,15 +22,15 @@ Delete file
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
@@ -78,15 +78,15 @@ Get file
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(700347),
     )
 
@@ -134,15 +134,15 @@ List files
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(768578),
     )
 
@@ -187,15 +187,15 @@ Upload file
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(403654),
     )
 
@@ -223,11 +223,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `ctx`                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                 | :heavy_check_mark:                                                                    | The context to use for the request.                                                   |
-| `uploadModelFileRequest`                                                              | [shared.UploadModelFileRequest](../../../pkg/models/shared/uploadmodelfilerequest.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `organizationID`                                                                      | **int64*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
+| `uploadModelFileRequest`                                                           | [shared.UploadModelFileRequest](../../pkg/models/shared/uploadmodelfilerequest.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `organizationID`                                                                   | **int64*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
 
 
 ### Response

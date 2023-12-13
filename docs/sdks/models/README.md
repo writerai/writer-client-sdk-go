@@ -19,15 +19,15 @@ List available LLM models
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(768578),
     )
 

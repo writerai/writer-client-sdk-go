@@ -69,7 +69,7 @@ func (o *CreateModelCustomizationCompletionResponse) GetContentType() string {
 
 func (o *CreateModelCustomizationCompletionResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

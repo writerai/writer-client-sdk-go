@@ -69,7 +69,7 @@ func (o *DeleteSnippetsResponse) GetDeleteResponse() *shared.DeleteResponse {
 
 func (o *DeleteSnippetsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

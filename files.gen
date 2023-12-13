@@ -66,6 +66,7 @@ pkg/utils/utils.go
 /pkg/models/shared/usage.go
 /pkg/models/shared/usageitem.go
 /pkg/models/shared/metadata.go
+/pkg/models/shared/failmessage.go
 /pkg/models/shared/contentdetectorresponse.go
 /pkg/models/shared/contentdetectorrequest.go
 /pkg/models/shared/processedcontent.go
@@ -113,7 +114,6 @@ pkg/utils/utils.go
 /pkg/models/shared/fulllinkedterm.go
 /pkg/models/shared/approvedtermextension.go
 /pkg/models/shared/termexample.go
-/pkg/models/shared/failmessage.go
 /pkg/models/shared/createtermsrequest.go
 /pkg/models/shared/termcreate.go
 /pkg/models/shared/termtagcreate.go
@@ -128,8 +128,6 @@ pkg/utils/utils.go
 /pkg/models/shared/userpublicresponse.go
 /pkg/models/shared/security.go
 /pkg/models/sdkerrors/failresponse.go
-/pkg/models/sdkerrors/failmessage.go
-USAGE.md
 docs/pkg/models/operations/getsubscriptiondetailsresponse.md
 docs/pkg/models/operations/detectcontentrequest.md
 docs/pkg/models/operations/detectcontentresponse.md
@@ -209,6 +207,7 @@ docs/pkg/models/shared/usage.md
 docs/pkg/models/shared/usageitem.md
 docs/pkg/models/shared/tier.md
 docs/pkg/models/shared/metadata.md
+docs/pkg/models/shared/failmessage.md
 docs/pkg/models/shared/label.md
 docs/pkg/models/shared/contentdetectorresponse.md
 docs/pkg/models/shared/contentdetectorrequest.md
@@ -270,7 +269,6 @@ docs/pkg/models/shared/fulllinkedterm.md
 docs/pkg/models/shared/approvedtermextension.md
 docs/pkg/models/shared/termexampletype.md
 docs/pkg/models/shared/termexample.md
-docs/pkg/models/shared/failmessage.md
 docs/pkg/models/shared/failhandling.md
 docs/pkg/models/shared/createtermsrequest.md
 docs/pkg/models/shared/termcreatepos.md
@@ -294,7 +292,6 @@ docs/pkg/models/shared/accountstatus.md
 docs/pkg/models/shared/userpublicresponse.md
 docs/pkg/models/shared/security.md
 docs/pkg/models/sdkerrors/failresponse.md
-docs/pkg/models/sdkerrors/failmessage.md
 docs/sdks/writer/README.md
 docs/sdks/billing/README.md
 docs/sdks/aicontentdetector/README.md
@@ -310,5 +307,6 @@ docs/sdks/snippet/README.md
 docs/sdks/styleguide/README.md
 docs/sdks/terminology/README.md
 docs/sdks/user/README.md
+USAGE.md
 pkg/models/operations/options.go
 .gitattributes

@@ -45,7 +45,7 @@ func (o *ListModelsResponse) GetGenerationModelsResponse() *shared.GenerationMod
 
 func (o *ListModelsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

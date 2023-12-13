@@ -20,15 +20,15 @@ Generate content using predefined templates
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(569932),
     )
 
@@ -63,12 +63,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `ctx`                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                   | :heavy_check_mark:                                                                      | The context to use for the request.                                                     |
-| `generateTemplateRequest`                                                               | [shared.GenerateTemplateRequest](../../../pkg/models/shared/generatetemplaterequest.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `teamID`                                                                                | *int64*                                                                                 | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `organizationID`                                                                        | **int64*                                                                                | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `generateTemplateRequest`                                                            | [shared.GenerateTemplateRequest](../../pkg/models/shared/generatetemplaterequest.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `teamID`                                                                             | *int64*                                                                              | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `organizationID`                                                                     | **int64*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 
 
 ### Response
@@ -89,15 +89,15 @@ Get a list of your existing CoWrite templates
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(380445),
     )
 

@@ -22,15 +22,15 @@ Add terms
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(551477),
     )
 
@@ -88,12 +88,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |
-| `createTermsRequest`                                                          | [shared.CreateTermsRequest](../../../pkg/models/shared/createtermsrequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |
-| `teamID`                                                                      | *int64*                                                                       | :heavy_check_mark:                                                            | N/A                                                                           |
-| `organizationID`                                                              | **int64*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `createTermsRequest`                                                       | [shared.CreateTermsRequest](../../pkg/models/shared/createtermsrequest.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `teamID`                                                                   | *int64*                                                                    | :heavy_check_mark:                                                         | N/A                                                                        |
+| `organizationID`                                                           | **int64*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 
 
 ### Response
@@ -114,15 +114,15 @@ Delete terms
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
@@ -178,16 +178,16 @@ Find terms
 package main
 
 import(
-	"context"
-	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
+	"context"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"log"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(40141),
     )
 
@@ -234,15 +234,15 @@ Update terms
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(857478),
     )
 
@@ -303,13 +303,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |
-| `updateTermsRequest`                                                          | [shared.UpdateTermsRequest](../../../pkg/models/shared/updatetermsrequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |
-| `teamID`                                                                      | *int64*                                                                       | :heavy_check_mark:                                                            | N/A                                                                           |
-| `xRequestID`                                                                  | **string*                                                                     | :heavy_minus_sign:                                                            | N/A                                                                           |
-| `organizationID`                                                              | **int64*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `updateTermsRequest`                                                       | [shared.UpdateTermsRequest](../../pkg/models/shared/updatetermsrequest.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `teamID`                                                                   | *int64*                                                                    | :heavy_check_mark:                                                         | N/A                                                                        |
+| `xRequestID`                                                               | **string*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `organizationID`                                                           | **int64*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 
 
 ### Response

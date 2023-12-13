@@ -46,7 +46,7 @@ func (o *DetectContentResponse) GetContentType() string {
 
 func (o *DetectContentResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

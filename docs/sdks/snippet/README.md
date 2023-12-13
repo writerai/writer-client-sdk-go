@@ -21,15 +21,15 @@ Delete snippets
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(545907),
     )
 
@@ -85,16 +85,16 @@ Find snippets
 package main
 
 import(
-	"context"
-	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
+	"context"
 	"github.com/writerai/writer-client-sdk-go/pkg/models/operations"
+	"log"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(40141),
     )
 
@@ -144,15 +144,15 @@ Update snippets
 package main
 
 import(
+	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
+	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
 	"context"
 	"log"
-	writerclientsdkgo "github.com/writerai/writer-client-sdk-go"
-	"github.com/writerai/writer-client-sdk-go/pkg/models/shared"
 )
 
 func main() {
     s := writerclientsdkgo.New(
-        writerclientsdkgo.WithSecurity(""),
+        writerclientsdkgo.WithSecurity("<YOUR_API_KEY_HERE>"),
         writerclientsdkgo.WithOrganizationID(857478),
     )
 
@@ -189,13 +189,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `ctx`                                                                 | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy_check_mark:                                                    | The context to use for the request.                                   |
-| `teamID`                                                              | *int64*                                                               | :heavy_check_mark:                                                    | N/A                                                                   |
-| `requestBody`                                                         | [][shared.SnippetUpdate](../../../pkg/models/shared/snippetupdate.md) | :heavy_minus_sign:                                                    | N/A                                                                   |
-| `xRequestID`                                                          | **string*                                                             | :heavy_minus_sign:                                                    | N/A                                                                   |
-| `organizationID`                                                      | **int64*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `ctx`                                                              | [context.Context](https://pkg.go.dev/context#Context)              | :heavy_check_mark:                                                 | The context to use for the request.                                |
+| `teamID`                                                           | *int64*                                                            | :heavy_check_mark:                                                 | N/A                                                                |
+| `requestBody`                                                      | [][shared.SnippetUpdate](../../pkg/models/shared/snippetupdate.md) | :heavy_minus_sign:                                                 | N/A                                                                |
+| `xRequestID`                                                       | **string*                                                          | :heavy_minus_sign:                                                 | N/A                                                                |
+| `organizationID`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
 
 
 ### Response

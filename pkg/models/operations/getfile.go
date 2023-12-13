@@ -46,7 +46,7 @@ func (o *GetFileResponse) GetContentType() string {
 
 func (o *GetFileResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }
