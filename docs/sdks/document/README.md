@@ -67,7 +67,7 @@ func main() {
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
 | sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
-| sdkerrors.SDKError     | 400-600                | */*                    |
+| sdkerrors.SDKError     | 4xx-5xx                | */*                    |
 
 ## List
 
@@ -120,4 +120,4 @@ func main() {
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
 | sdkerrors.FailResponse | 400,401,403,404,500    | application/json       |
-| sdkerrors.SDKError     | 400-600                | */*                    |
+| sdkerrors.SDKError     | 4xx-5xx                | */*                    |
