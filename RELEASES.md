@@ -259,3 +259,33 @@ Based on:
 - [go v0.22.1] .
 ### Releases
 - [Go v0.22.1] https://github.com/writerai/writer-client-sdk-go/releases/tag/v0.22.1 - .
+
+## 2024-01-05 00:05:35
+### Changes
+Based on:
+- OpenAPI Doc 1.7 https://raw.githubusercontent.com/speakeasy-sdks/w-ai-openapi/main/openapi.yaml
+- Speakeasy CLI 1.130.1 (2.225.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v0.22.1] .
+### Releases
+- [Go v0.22.1] https://github.com/writerai/writer-client-sdk-go/releases/tag/v0.22.1 - .
+
+## 2024-01-17 00:05:22
+### Changes
+Based on:
+- OpenAPI Doc 1.7 https://raw.githubusercontent.com/speakeasy-sdks/w-ai-openapi/main/openapi.yaml
+- Speakeasy CLI 1.142.1 (2.234.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v0.22.2] .
+### Releases
+- [Go v0.22.2] https://github.com/writerai/writer-client-sdk-go/releases/tag/v0.22.2 - .
+
+## 2024-01-19 00:05:27
+### Changes
+Based on:
+- OpenAPI Doc 1.7 https://raw.githubusercontent.com/speakeasy-sdks/w-ai-openapi/main/openapi.yaml
+- Speakeasy CLI 1.147.0 (2.237.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v0.22.3] .
+### Releases
+- [Go v0.22.3] https://github.com/writerai/writer-client-sdk-go/releases/tag/v0.22.3 - .
