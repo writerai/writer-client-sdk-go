@@ -4,9 +4,9 @@ management:
   docChecksum: 044ba6ea348a6fb8206cacad6926373d
   docVersion: "1.7"
   speakeasyVersion: internal
-  generationVersion: 2.237.2
-  releaseVersion: 0.22.3
-  configChecksum: 5d6112eeb93ad7bec802df68b9f537a2
+  generationVersion: 2.245.1
+  releaseVersion: 0.22.4
+  configChecksum: 746c36606526388f2a39b64ded1efef6
   repoURL: https://github.com/writerai/writer-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/writerai/writer-client-sdk-go
@@ -17,7 +17,7 @@ features:
     downloadStreams: 0.1.1
     errors: 2.81.8
     flattening: 2.81.1
-    globalSecurity: 2.82.4
+    globalSecurity: 2.82.5
     globalServerURLs: 2.82.1
     globals: 2.81.1
     nameOverrides: 2.81.1
