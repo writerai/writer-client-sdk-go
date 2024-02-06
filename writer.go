@@ -179,9 +179,9 @@ func New(opts ...SDKOption) *Writer {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.7",
-			SDKVersion:        "0.22.4",
-			GenVersion:        "2.245.1",
-			UserAgent:         "speakeasy-sdk/go 0.22.4 2.245.1 1.7 github.com/writerai/writer-client-sdk-go",
+			SDKVersion:        "0.23.0",
+			GenVersion:        "2.250.2",
+			UserAgent:         "speakeasy-sdk/go 0.23.0 2.250.2 1.7 github.com/writerai/writer-client-sdk-go",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
