@@ -147,6 +147,15 @@ func WithSecurity(apiKey string) SDKOption {
 	}
 }
 
+// WithSecuritySource configures the SDK to invoke the Security Source function on each method call to determine authentication
+func WithSecuritySource(security func(context.Context) (shared.Security, error)) SDKOption {
+	return func(sdk *Writer) {
+		sdk.sdkConfiguration.Security = func(ctx context.Context) (interface{}, error) {
+			return security(ctx)
+		}
+	}
+}
+
 // WithOrganizationID allows setting the OrganizationID parameter for all supported operations
 func WithOrganizationID(organizationID int64) SDKOption {
 	return func(sdk *Writer) {
@@ -170,9 +179,9 @@ func New(opts ...SDKOption) *Writer {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.7",
-			SDKVersion:        "0.22.3",
-			GenVersion:        "2.237.2",
-			UserAgent:         "speakeasy-sdk/go 0.22.3 2.237.2 1.7 github.com/writerai/writer-client-sdk-go",
+			SDKVersion:        "0.23.0",
+			GenVersion:        "2.250.2",
+			UserAgent:         "speakeasy-sdk/go 0.23.0 2.250.2 1.7 github.com/writerai/writer-client-sdk-go",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
