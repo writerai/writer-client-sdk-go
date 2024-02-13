@@ -37,7 +37,7 @@ func main() {
 
     var fileID string = "string"
 
-    var organizationID *int64 = 841399
+    var organizationID *int64 = writerclientsdkgo.Int64(841399)
 
     ctx := context.Background()
     res, err := s.Files.Delete(ctx, fileID, organizationID)
@@ -93,7 +93,7 @@ func main() {
 
     var fileID string = "string"
 
-    var organizationID *int64 = 90065
+    var organizationID *int64 = writerclientsdkgo.Int64(90065)
 
     ctx := context.Background()
     res, err := s.Files.Get(ctx, fileID, organizationID)
@@ -147,7 +147,7 @@ func main() {
     )
 
 
-    var organizationID *int64 = 99895
+    var organizationID *int64 = writerclientsdkgo.Int64(99895)
 
     ctx := context.Background()
     res, err := s.Files.List(ctx, organizationID)
@@ -207,7 +207,7 @@ func main() {
         },
     }
 
-    var organizationID *int64 = 360896
+    var organizationID *int64 = writerclientsdkgo.Int64(360896)
 
     ctx := context.Background()
     res, err := s.Files.Upload(ctx, uploadModelFileRequest, organizationID)

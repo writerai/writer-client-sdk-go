@@ -36,7 +36,7 @@ func main() {
 
     var modelID string = "string"
 
-    var organizationID *int64 = 948692
+    var organizationID *int64 = writerclientsdkgo.Int64(948692)
 
     ctx := context.Background()
     res, err := s.DownloadTheCustomizedModel.FetchFile(ctx, customizationID, modelID, organizationID)

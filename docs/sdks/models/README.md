@@ -32,7 +32,7 @@ func main() {
     )
 
 
-    var organizationID *int64 = 99895
+    var organizationID *int64 = writerclientsdkgo.Int64(99895)
 
     ctx := context.Background()
     res, err := s.Models.List(ctx, organizationID)

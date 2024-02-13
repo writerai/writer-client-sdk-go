@@ -36,13 +36,13 @@ func main() {
 
     var teamID int64 = 841399
 
-    var xRequestID *string = "string"
+    var xRequestID *string = writerclientsdkgo.String("string")
 
     ids := []string{
         "string",
     }
 
-    var organizationID *int64 = 698486
+    var organizationID *int64 = writerclientsdkgo.Int64(698486)
 
     ctx := context.Background()
     res, err := s.Snippet.Delete(ctx, teamID, xRequestID, ids, organizationID)
@@ -100,12 +100,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Snippet.Find(ctx, operations.FindSnippetsRequest{
-        Shortcuts: []string{
-            "string",
-        },
-        Tags: []string{
-            "string",
-        },
         TeamID: 326883,
     })
     if err != nil {
@@ -163,17 +157,12 @@ func main() {
         shared.SnippetUpdate{
             ID: "<ID>",
             Snippet: "string",
-            Tags: []shared.SnippetTagV2{
-                shared.SnippetTagV2{
-                    Tag: "string",
-                },
-            },
         },
     }
 
-    var xRequestID *string = "string"
+    var xRequestID *string = writerclientsdkgo.String("string")
 
-    var organizationID *int64 = 597129
+    var organizationID *int64 = writerclientsdkgo.Int64(597129)
 
     ctx := context.Background()
     res, err := s.Snippet.Update(ctx, teamID, requestBody, xRequestID, organizationID)

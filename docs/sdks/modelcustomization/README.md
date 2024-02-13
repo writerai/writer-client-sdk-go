@@ -36,16 +36,13 @@ func main() {
 
 
     createCustomizationRequest := shared.CreateCustomizationRequest{
-        AdditionalHyperParameters: &shared.HyperParameters{
-            NumVirtualTokens: 489382,
-        },
         Name: "string",
         TrainingDatasetFileID: "string",
     }
 
     var modelID string = "string"
 
-    var organizationID *int64 = 638424
+    var organizationID *int64 = writerclientsdkgo.Int64(489382)
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Create(ctx, createCustomizationRequest, modelID, organizationID)
@@ -104,7 +101,7 @@ func main() {
 
     var modelID string = "string"
 
-    var organizationID *int64 = 841399
+    var organizationID *int64 = writerclientsdkgo.Int64(841399)
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Delete(ctx, customizationID, modelID, organizationID)
@@ -163,7 +160,7 @@ func main() {
 
     var modelID string = "string"
 
-    var organizationID *int64 = 90065
+    var organizationID *int64 = writerclientsdkgo.Int64(90065)
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Get(ctx, customizationID, modelID, organizationID)
@@ -220,7 +217,7 @@ func main() {
 
     var modelID string = "string"
 
-    var organizationID *int64 = 99895
+    var organizationID *int64 = writerclientsdkgo.Int64(99895)
 
     ctx := context.Background()
     res, err := s.ModelCustomization.List(ctx, modelID, organizationID)

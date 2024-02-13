@@ -4,9 +4,9 @@ management:
   docChecksum: 044ba6ea348a6fb8206cacad6926373d
   docVersion: "1.7"
   speakeasyVersion: internal
-  generationVersion: 2.250.2
-  releaseVersion: 0.23.0
-  configChecksum: 24dd91adb92386fddebc91400b7e2a68
+  generationVersion: 2.253.0
+  releaseVersion: 0.23.1
+  configChecksum: 03d85f7337931252f30ca0824d4724c3
   repoURL: https://github.com/writerai/writer-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/writerai/writer-client-sdk-go

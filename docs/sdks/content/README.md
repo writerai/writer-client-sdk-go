@@ -57,7 +57,7 @@ func main() {
 
     var teamID int64 = 38270
 
-    var organizationID *int64 = 919579
+    var organizationID *int64 = writerclientsdkgo.Int64(919579)
 
     ctx := context.Background()
     res, err := s.Content.Check(ctx, contentRequest, teamID, organizationID)
@@ -136,9 +136,9 @@ func main() {
 
     var teamID int64 = 31310
 
-    var xRequestID *string = "string"
+    var xRequestID *string = writerclientsdkgo.String("string")
 
-    var organizationID *int64 = 383223
+    var organizationID *int64 = writerclientsdkgo.Int64(383223)
 
     ctx := context.Background()
     res, err := s.Content.Correct(ctx, contentRequest, teamID, xRequestID, organizationID)

@@ -49,7 +49,7 @@ func main() {
 
     var modelID string = "string"
 
-    var organizationID *int64 = 489382
+    var organizationID *int64 = writerclientsdkgo.Int64(489382)
 
     ctx := context.Background()
     res, err := s.Completions.Create(ctx, completionRequest, modelID, organizationID)
@@ -122,7 +122,7 @@ func main() {
 
     var modelID string = "string"
 
-    var organizationID *int64 = 41297
+    var organizationID *int64 = writerclientsdkgo.Int64(41297)
 
     ctx := context.Background()
     res, err := s.Completions.CreateModelCustomizationCompletion(ctx, completionRequest, customizationID, modelID, organizationID)

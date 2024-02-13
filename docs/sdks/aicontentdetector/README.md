@@ -36,7 +36,7 @@ func main() {
         Input: "string",
     }
 
-    var organizationID *int64 = 592237
+    var organizationID *int64 = writerclientsdkgo.Int64(592237)
 
     ctx := context.Background()
     res, err := s.AIContentDetector.Detect(ctx, contentDetectorRequest, organizationID)
