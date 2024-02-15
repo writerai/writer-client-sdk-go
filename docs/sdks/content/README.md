@@ -34,7 +34,7 @@ func main() {
 
 
     contentRequest := shared.ContentRequest{
-        Content: "string",
+        Content: "<value>",
         Settings: shared.ContentSettings{
             AgeAndFamilyStatus: false,
             Confidence: false,
@@ -113,7 +113,7 @@ func main() {
 
 
     contentRequest := shared.ContentRequest{
-        Content: "string",
+        Content: "<value>",
         Settings: shared.ContentSettings{
             AgeAndFamilyStatus: false,
             Confidence: false,
@@ -136,7 +136,7 @@ func main() {
 
     var teamID int64 = 31310
 
-    var xRequestID *string = writerclientsdkgo.String("string")
+    var xRequestID *string = writerclientsdkgo.String("<value>")
 
     var organizationID *int64 = writerclientsdkgo.Int64(383223)
 

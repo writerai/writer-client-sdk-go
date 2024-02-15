@@ -33,7 +33,7 @@ func main() {
 
 
     contentDetectorRequest := shared.ContentDetectorRequest{
-        Input: "string",
+        Input: "<value>",
     }
 
     var organizationID *int64 = writerclientsdkgo.Int64(592237)

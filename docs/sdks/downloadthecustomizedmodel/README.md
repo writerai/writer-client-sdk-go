@@ -32,9 +32,9 @@ func main() {
     )
 
 
-    var customizationID string = "string"
+    var customizationID string = "<value>"
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
     var organizationID *int64 = writerclientsdkgo.Int64(948692)
 

@@ -36,11 +36,11 @@ func main() {
 
 
     createCustomizationRequest := shared.CreateCustomizationRequest{
-        Name: "string",
-        TrainingDatasetFileID: "string",
+        Name: "<value>",
+        TrainingDatasetFileID: "<value>",
     }
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
     var organizationID *int64 = writerclientsdkgo.Int64(489382)
 
@@ -97,9 +97,9 @@ func main() {
     )
 
 
-    var customizationID string = "string"
+    var customizationID string = "<value>"
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
     var organizationID *int64 = writerclientsdkgo.Int64(841399)
 
@@ -156,9 +156,9 @@ func main() {
     )
 
 
-    var customizationID string = "string"
+    var customizationID string = "<value>"
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
     var organizationID *int64 = writerclientsdkgo.Int64(90065)
 
@@ -215,7 +215,7 @@ func main() {
     )
 
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
     var organizationID *int64 = writerclientsdkgo.Int64(99895)
 

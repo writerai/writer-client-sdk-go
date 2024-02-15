@@ -96,7 +96,7 @@ func main() {
 
     var teamID int64 = 841399
 
-    var xRequestID *string = writerclientsdkgo.String("string")
+    var xRequestID *string = writerclientsdkgo.String("<value>")
 
     ids := []int64{
         698486,
@@ -215,7 +215,7 @@ func main() {
 
     var teamID int64 = 24555
 
-    var xRequestID *string = writerclientsdkgo.String("string")
+    var xRequestID *string = writerclientsdkgo.String("<value>")
 
     var organizationID *int64 = writerclientsdkgo.Int64(597129)
 

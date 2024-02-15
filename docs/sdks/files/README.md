@@ -35,7 +35,7 @@ func main() {
     )
 
 
-    var fileID string = "string"
+    var fileID string = "<value>"
 
     var organizationID *int64 = writerclientsdkgo.Int64(841399)
 
@@ -91,7 +91,7 @@ func main() {
     )
 
 
-    var fileID string = "string"
+    var fileID string = "<value>"
 
     var organizationID *int64 = writerclientsdkgo.Int64(90065)
 

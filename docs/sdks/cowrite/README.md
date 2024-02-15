@@ -34,7 +34,7 @@ func main() {
 
 
     generateTemplateRequest := shared.GenerateTemplateRequest{
-        TemplateID: "string",
+        TemplateID: "<value>",
     }
 
     var teamID int64 = 888452
@@ -96,7 +96,7 @@ func main() {
 
     var teamID int64 = 882866
 
-    var templateID string = "string"
+    var templateID string = "<value>"
 
     var organizationID *int64 = writerclientsdkgo.Int64(55511)
 
