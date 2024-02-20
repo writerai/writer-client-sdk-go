@@ -55,12 +55,12 @@ func (s *Terminology) Add(ctx context.Context, createTermsRequest shared.CreateT
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -83,7 +83,6 @@ func (s *Terminology) Add(ctx context.Context, createTermsRequest shared.CreateT
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.AddTermsResponse{
@@ -174,12 +173,12 @@ func (s *Terminology) Delete(ctx context.Context, teamID int64, xRequestID *stri
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -202,7 +201,6 @@ func (s *Terminology) Delete(ctx context.Context, teamID int64, xRequestID *stri
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeleteTermsResponse{
@@ -284,12 +282,12 @@ func (s *Terminology) Find(ctx context.Context, request operations.FindTermsRequ
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -312,7 +310,6 @@ func (s *Terminology) Find(ctx context.Context, request operations.FindTermsRequ
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FindTermsResponse{
@@ -405,12 +402,12 @@ func (s *Terminology) Update(ctx context.Context, updateTermsRequest shared.Upda
 
 	utils.PopulateHeaders(ctx, req, request)
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -433,7 +430,6 @@ func (s *Terminology) Update(ctx context.Context, updateTermsRequest shared.Upda
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.UpdateTermsResponse{

@@ -55,12 +55,12 @@ func (s *Content) Check(ctx context.Context, contentRequest shared.ContentReques
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -83,7 +83,6 @@ func (s *Content) Check(ctx context.Context, contentRequest shared.ContentReques
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.ContentCheckResponse{
@@ -176,12 +175,12 @@ func (s *Content) Correct(ctx context.Context, contentRequest shared.ContentRequ
 
 	utils.PopulateHeaders(ctx, req, request)
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -204,7 +203,6 @@ func (s *Content) Correct(ctx context.Context, contentRequest shared.ContentRequ
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.ContentCorrectResponse{

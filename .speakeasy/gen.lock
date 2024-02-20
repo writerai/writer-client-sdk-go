@@ -4,16 +4,16 @@ management:
   docChecksum: 044ba6ea348a6fb8206cacad6926373d
   docVersion: "1.7"
   speakeasyVersion: internal
-  generationVersion: 2.258.0
-  releaseVersion: 0.24.0
-  configChecksum: 88d9f5a4d344684b91700cb17186e50d
+  generationVersion: 2.263.3
+  releaseVersion: 0.24.1
+  configChecksum: cb0f33b522e41d0dad54af8555ffa073
   repoURL: https://github.com/writerai/writer-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/writerai/writer-client-sdk-go
   published: true
 features:
   go:
-    core: 3.4.0
+    core: 3.4.1
     downloadStreams: 0.1.1
     errors: 2.81.8
     flattening: 2.81.1
@@ -38,7 +38,6 @@ generatedFiles:
   - user.go
   - writer.go
   - go.mod
-  - go.sum
   - pkg/models/sdkerrors/sdkerror.go
   - pkg/types/bigint.go
   - pkg/types/date.go

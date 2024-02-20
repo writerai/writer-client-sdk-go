@@ -56,12 +56,12 @@ func (s *Snippet) Delete(ctx context.Context, teamID int64, xRequestID *string, 
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -84,7 +84,6 @@ func (s *Snippet) Delete(ctx context.Context, teamID int64, xRequestID *string, 
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.DeleteSnippetsResponse{
@@ -166,12 +165,12 @@ func (s *Snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -194,7 +193,6 @@ func (s *Snippet) Find(ctx context.Context, request operations.FindSnippetsReque
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.FindSnippetsResponse{
@@ -287,12 +285,12 @@ func (s *Snippet) Update(ctx context.Context, teamID int64, requestBody []shared
 
 	utils.PopulateHeaders(ctx, req, request)
 
-	client := s.sdkConfiguration.SecurityClient
-
 	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
+
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -315,7 +313,6 @@ func (s *Snippet) Update(ctx context.Context, teamID int64, requestBody []shared
 			return nil, err
 		}
 	}
-
 	contentType := httpRes.Header.Get("Content-Type")
 
 	res := &operations.UpdateSnippetsResponse{
