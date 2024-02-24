@@ -28,7 +28,11 @@ func newModelCustomization(sdkConfig sdkConfiguration) *ModelCustomization {
 
 // Create model customization
 func (s *ModelCustomization) Create(ctx context.Context, createCustomizationRequest shared.CreateCustomizationRequest, modelID string, organizationID *int64) (*operations.CreateModelCustomizationResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "createModelCustomization"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "createModelCustomization",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.CreateModelCustomizationRequest{
 		CreateCustomizationRequest: createCustomizationRequest,
@@ -55,12 +59,12 @@ func (s *ModelCustomization) Create(ctx context.Context, createCustomizationRequ
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -70,15 +74,15 @@ func (s *ModelCustomization) Create(ctx context.Context, createCustomizationRequ
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -145,7 +149,11 @@ func (s *ModelCustomization) Create(ctx context.Context, createCustomizationRequ
 
 // Delete Model customization
 func (s *ModelCustomization) Delete(ctx context.Context, customizationID string, modelID string, organizationID *int64) (*operations.DeleteModelCustomizationResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "deleteModelCustomization"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "deleteModelCustomization",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.DeleteModelCustomizationRequest{
 		CustomizationID: customizationID,
@@ -166,12 +174,12 @@ func (s *ModelCustomization) Delete(ctx context.Context, customizationID string,
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -181,15 +189,15 @@ func (s *ModelCustomization) Delete(ctx context.Context, customizationID string,
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -256,7 +264,11 @@ func (s *ModelCustomization) Delete(ctx context.Context, customizationID string,
 
 // Get model customization
 func (s *ModelCustomization) Get(ctx context.Context, customizationID string, modelID string, organizationID *int64) (*operations.GetModelCustomizationResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getModelCustomization"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getModelCustomization",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetModelCustomizationRequest{
 		CustomizationID: customizationID,
@@ -277,12 +289,12 @@ func (s *ModelCustomization) Get(ctx context.Context, customizationID string, mo
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -292,15 +304,15 @@ func (s *ModelCustomization) Get(ctx context.Context, customizationID string, mo
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -367,7 +379,11 @@ func (s *ModelCustomization) Get(ctx context.Context, customizationID string, mo
 
 // List model customizations
 func (s *ModelCustomization) List(ctx context.Context, modelID string, organizationID *int64) (*operations.ListModelCustomizationsResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "listModelCustomizations"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "listModelCustomizations",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.ListModelCustomizationsRequest{
 		ModelID:        modelID,
@@ -387,12 +403,12 @@ func (s *ModelCustomization) List(ctx context.Context, modelID string, organizat
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -402,15 +418,15 @@ func (s *ModelCustomization) List(ctx context.Context, modelID string, organizat
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

@@ -28,7 +28,11 @@ func newCompletions(sdkConfig sdkConfiguration) *Completions {
 
 // Create completion for LLM model
 func (s *Completions) Create(ctx context.Context, completionRequest shared.CompletionRequest, modelID string, organizationID *int64) (*operations.CreateCompletionResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "createCompletion"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "createCompletion",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.CreateCompletionRequest{
 		CompletionRequest: completionRequest,
@@ -55,12 +59,12 @@ func (s *Completions) Create(ctx context.Context, completionRequest shared.Compl
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -70,15 +74,15 @@ func (s *Completions) Create(ctx context.Context, completionRequest shared.Compl
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -145,7 +149,11 @@ func (s *Completions) Create(ctx context.Context, completionRequest shared.Compl
 
 // CreateModelCustomizationCompletion - Create completion for LLM customization model
 func (s *Completions) CreateModelCustomizationCompletion(ctx context.Context, completionRequest shared.CompletionRequest, customizationID string, modelID string, organizationID *int64) (*operations.CreateModelCustomizationCompletionResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "createModelCustomizationCompletion"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "createModelCustomizationCompletion",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.CreateModelCustomizationCompletionRequest{
 		CompletionRequest: completionRequest,
@@ -173,12 +181,12 @@ func (s *Completions) CreateModelCustomizationCompletion(ctx context.Context, co
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -188,15 +196,15 @@ func (s *Completions) CreateModelCustomizationCompletion(ctx context.Context, co
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

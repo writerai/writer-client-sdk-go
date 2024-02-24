@@ -28,7 +28,11 @@ func newTerminology(sdkConfig sdkConfiguration) *Terminology {
 
 // Add terms
 func (s *Terminology) Add(ctx context.Context, createTermsRequest shared.CreateTermsRequest, teamID int64, organizationID *int64) (*operations.AddTermsResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "addTerms"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "addTerms",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.AddTermsRequest{
 		CreateTermsRequest: createTermsRequest,
@@ -55,12 +59,12 @@ func (s *Terminology) Add(ctx context.Context, createTermsRequest shared.CreateT
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -70,15 +74,15 @@ func (s *Terminology) Add(ctx context.Context, createTermsRequest shared.CreateT
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -145,7 +149,11 @@ func (s *Terminology) Add(ctx context.Context, createTermsRequest shared.CreateT
 
 // Delete terms
 func (s *Terminology) Delete(ctx context.Context, teamID int64, xRequestID *string, ids []int64, organizationID *int64) (*operations.DeleteTermsResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "deleteTerms"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "deleteTerms",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.DeleteTermsRequest{
 		TeamID:         teamID,
@@ -173,12 +181,12 @@ func (s *Terminology) Delete(ctx context.Context, teamID int64, xRequestID *stri
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -188,15 +196,15 @@ func (s *Terminology) Delete(ctx context.Context, teamID int64, xRequestID *stri
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -263,7 +271,11 @@ func (s *Terminology) Delete(ctx context.Context, teamID int64, xRequestID *stri
 
 // Find terms
 func (s *Terminology) Find(ctx context.Context, request operations.FindTermsRequest) (*operations.FindTermsResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "findTerms"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "findTerms",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/terminology/organization/{organizationId}/team/{teamId}", request, s.sdkConfiguration.Globals)
@@ -282,12 +294,12 @@ func (s *Terminology) Find(ctx context.Context, request operations.FindTermsRequ
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -297,15 +309,15 @@ func (s *Terminology) Find(ctx context.Context, request operations.FindTermsRequ
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -372,7 +384,11 @@ func (s *Terminology) Find(ctx context.Context, request operations.FindTermsRequ
 
 // Update terms
 func (s *Terminology) Update(ctx context.Context, updateTermsRequest shared.UpdateTermsRequest, teamID int64, xRequestID *string, organizationID *int64) (*operations.UpdateTermsResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "updateTerms"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "updateTerms",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.UpdateTermsRequest{
 		UpdateTermsRequest: updateTermsRequest,
@@ -402,12 +418,12 @@ func (s *Terminology) Update(ctx context.Context, updateTermsRequest shared.Upda
 
 	utils.PopulateHeaders(ctx, req, request)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -417,15 +433,15 @@ func (s *Terminology) Update(ctx context.Context, updateTermsRequest shared.Upda
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

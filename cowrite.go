@@ -28,7 +28,11 @@ func newCoWrite(sdkConfig sdkConfiguration) *CoWrite {
 
 // GenerateContent - Generate content using predefined templates
 func (s *CoWrite) GenerateContent(ctx context.Context, generateTemplateRequest shared.GenerateTemplateRequest, teamID int64, organizationID *int64) (*operations.GenerateContentResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "Generate Content"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "Generate Content",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GenerateContentRequest{
 		GenerateTemplateRequest: generateTemplateRequest,
@@ -55,12 +59,12 @@ func (s *CoWrite) GenerateContent(ctx context.Context, generateTemplateRequest s
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -70,15 +74,15 @@ func (s *CoWrite) GenerateContent(ctx context.Context, generateTemplateRequest s
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -145,7 +149,11 @@ func (s *CoWrite) GenerateContent(ctx context.Context, generateTemplateRequest s
 
 // ListTemplates - Get a list of your existing CoWrite templates
 func (s *CoWrite) ListTemplates(ctx context.Context, teamID int64, templateID string, organizationID *int64) (*operations.ListTemplatesResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "listTemplates"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "listTemplates",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.ListTemplatesRequest{
 		TeamID:         teamID,
@@ -166,12 +174,12 @@ func (s *CoWrite) ListTemplates(ctx context.Context, teamID int64, templateID st
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -181,15 +189,15 @@ func (s *CoWrite) ListTemplates(ctx context.Context, teamID int64, templateID st
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

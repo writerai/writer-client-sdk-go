@@ -28,7 +28,11 @@ func newContent(sdkConfig sdkConfiguration) *Content {
 
 // Check your content against your preset styleguide.
 func (s *Content) Check(ctx context.Context, contentRequest shared.ContentRequest, teamID int64, organizationID *int64) (*operations.ContentCheckResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "contentCheck"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "contentCheck",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.ContentCheckRequest{
 		ContentRequest: contentRequest,
@@ -55,12 +59,12 @@ func (s *Content) Check(ctx context.Context, contentRequest shared.ContentReques
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -70,15 +74,15 @@ func (s *Content) Check(ctx context.Context, contentRequest shared.ContentReques
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -145,7 +149,11 @@ func (s *Content) Check(ctx context.Context, contentRequest shared.ContentReques
 
 // Correct - Apply the style guide suggestions directly to your content.
 func (s *Content) Correct(ctx context.Context, contentRequest shared.ContentRequest, teamID int64, xRequestID *string, organizationID *int64) (*operations.ContentCorrectResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "contentCorrect"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "contentCorrect",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.ContentCorrectRequest{
 		ContentRequest: contentRequest,
@@ -175,12 +183,12 @@ func (s *Content) Correct(ctx context.Context, contentRequest shared.ContentRequ
 
 	utils.PopulateHeaders(ctx, req, request)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -190,15 +198,15 @@ func (s *Content) Correct(ctx context.Context, contentRequest shared.ContentRequ
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
