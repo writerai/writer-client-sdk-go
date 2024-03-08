@@ -10,7 +10,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 go:
-  version: 0.24.2
+  version: 0.25.0
   additionalDependencies: {}
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
@@ -26,3 +26,4 @@ go:
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: github.com/writerai/writer-client-sdk-go
+  responseFormat: envelope

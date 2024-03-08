@@ -46,7 +46,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateTermsResponse != nil {
         // handle response
     }
@@ -109,7 +108,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteResponse != nil {
         // handle response
     }
@@ -165,7 +163,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.PaginatedResultFullTermWithUser != nil {
         // handle response
     }
@@ -224,7 +221,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateTermsResponse != nil {
         // handle response
     }

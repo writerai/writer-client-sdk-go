@@ -40,7 +40,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.PageWithSectionResponse != nil {
         // handle response
     }
@@ -98,7 +97,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.PaginatedResultPagePublicAPIResponse != nil {
         // handle response
     }

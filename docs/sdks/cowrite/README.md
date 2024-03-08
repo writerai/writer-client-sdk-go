@@ -46,7 +46,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Draft != nil {
         // handle response
     }
@@ -105,7 +104,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.TemplateDetailsResponse != nil {
         // handle response
     }

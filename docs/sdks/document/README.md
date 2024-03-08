@@ -44,7 +44,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Document != nil {
         // handle response
     }
@@ -99,7 +98,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.BriefDocuments != nil {
         // handle response
     }

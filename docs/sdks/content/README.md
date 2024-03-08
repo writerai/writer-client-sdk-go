@@ -64,7 +64,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ProcessedContent != nil {
         // handle response
     }
@@ -145,7 +144,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CorrectionResponse != nil {
         // handle response
     }
