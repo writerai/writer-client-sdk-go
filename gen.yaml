@@ -6,8 +6,12 @@ generation:
   fixes:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
 go:
-  version: 0.23.0
+  version: 0.26.1
+  additionalDependencies: {}
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
@@ -22,3 +26,4 @@ go:
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: github.com/writerai/writer-client-sdk-go
+  responseFormat: envelope

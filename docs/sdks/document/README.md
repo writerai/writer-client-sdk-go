@@ -37,14 +37,13 @@ func main() {
 
     var teamID int64 = 558834
 
-    var organizationID *int64 = 844199
+    var organizationID *int64 = writerclientsdkgo.Int64(844199)
 
     ctx := context.Background()
     res, err := s.Document.Get(ctx, documentID, teamID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Document != nil {
         // handle response
     }
@@ -99,7 +98,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.BriefDocuments != nil {
         // handle response
     }

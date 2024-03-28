@@ -36,20 +36,19 @@ func main() {
 
     var teamID int64 = 841399
 
-    var xRequestID *string = "string"
+    var xRequestID *string = writerclientsdkgo.String("<value>")
 
     ids := []string{
-        "string",
+        "<value>",
     }
 
-    var organizationID *int64 = 698486
+    var organizationID *int64 = writerclientsdkgo.Int64(698486)
 
     ctx := context.Background()
     res, err := s.Snippet.Delete(ctx, teamID, xRequestID, ids, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteResponse != nil {
         // handle response
     }
@@ -100,18 +99,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Snippet.Find(ctx, operations.FindSnippetsRequest{
-        Shortcuts: []string{
-            "string",
-        },
-        Tags: []string{
-            "string",
-        },
         TeamID: 326883,
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.PaginatedResultSnippetWithUser != nil {
         // handle response
     }
@@ -161,26 +153,20 @@ func main() {
 
     requestBody := []shared.SnippetUpdate{
         shared.SnippetUpdate{
-            ID: "<ID>",
-            Snippet: "string",
-            Tags: []shared.SnippetTagV2{
-                shared.SnippetTagV2{
-                    Tag: "string",
-                },
-            },
+            ID: "<id>",
+            Snippet: "<value>",
         },
     }
 
-    var xRequestID *string = "string"
+    var xRequestID *string = writerclientsdkgo.String("<value>")
 
-    var organizationID *int64 = 597129
+    var organizationID *int64 = writerclientsdkgo.Int64(597129)
 
     ctx := context.Background()
     res, err := s.Snippet.Update(ctx, teamID, requestBody, xRequestID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Classes != nil {
         // handle response
     }

@@ -36,23 +36,19 @@ func main() {
 
 
     createCustomizationRequest := shared.CreateCustomizationRequest{
-        AdditionalHyperParameters: &shared.HyperParameters{
-            NumVirtualTokens: 489382,
-        },
-        Name: "string",
-        TrainingDatasetFileID: "string",
+        Name: "<value>",
+        TrainingDatasetFileID: "<value>",
     }
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
-    var organizationID *int64 = 638424
+    var organizationID *int64 = writerclientsdkgo.Int64(489382)
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Create(ctx, createCustomizationRequest, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ModelCustomization != nil {
         // handle response
     }
@@ -100,18 +96,17 @@ func main() {
     )
 
 
-    var customizationID string = "string"
+    var customizationID string = "<value>"
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
-    var organizationID *int64 = 841399
+    var organizationID *int64 = writerclientsdkgo.Int64(841399)
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Delete(ctx, customizationID, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Object != nil {
         // handle response
     }
@@ -159,18 +154,17 @@ func main() {
     )
 
 
-    var customizationID string = "string"
+    var customizationID string = "<value>"
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
-    var organizationID *int64 = 90065
+    var organizationID *int64 = writerclientsdkgo.Int64(90065)
 
     ctx := context.Background()
     res, err := s.ModelCustomization.Get(ctx, customizationID, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ModelCustomization != nil {
         // handle response
     }
@@ -218,16 +212,15 @@ func main() {
     )
 
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
-    var organizationID *int64 = 99895
+    var organizationID *int64 = writerclientsdkgo.Int64(99895)
 
     ctx := context.Background()
     res, err := s.ModelCustomization.List(ctx, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CustomizationsResponse != nil {
         // handle response
     }

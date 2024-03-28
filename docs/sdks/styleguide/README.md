@@ -40,7 +40,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.PageWithSectionResponse != nil {
         // handle response
     }
@@ -87,18 +86,17 @@ func main() {
     )
 
 
-    var limit *int64 = 760116
+    var limit *int64 = writerclientsdkgo.Int64(760116)
 
-    var offset *int64 = 303332
+    var offset *int64 = writerclientsdkgo.Int64(303332)
 
-    var status *operations.Status = operations.StatusLive
+    var status *operations.Status = operations.StatusLive.ToPointer()
 
     ctx := context.Background()
     res, err := s.Styleguide.ListPages(ctx, limit, offset, status)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.PaginatedResultPagePublicAPIResponse != nil {
         // handle response
     }

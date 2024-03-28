@@ -3,24 +3,25 @@ id: 08ab8717-d646-4f6d-9ae0-e5ddf9d11d85
 management:
   docChecksum: 044ba6ea348a6fb8206cacad6926373d
   docVersion: "1.7"
-  speakeasyVersion: internal
-  generationVersion: 2.250.2
-  releaseVersion: 0.23.0
-  configChecksum: 24dd91adb92386fddebc91400b7e2a68
+  speakeasyVersion: 1.228.1
+  generationVersion: 2.292.0
+  releaseVersion: 0.26.1
+  configChecksum: 9979d378f424962c4cbfa23f81a73e07
   repoURL: https://github.com/writerai/writer-client-sdk-go.git
   repoSubDirectory: .
   installationURL: https://github.com/writerai/writer-client-sdk-go
   published: true
 features:
   go:
-    core: 3.3.2
+    core: 3.4.5
     downloadStreams: 0.1.1
     errors: 2.81.8
     flattening: 2.81.1
-    globalSecurity: 2.82.6
-    globalServerURLs: 2.82.1
-    globals: 2.81.1
+    globalSecurity: 2.82.9
+    globalServerURLs: 2.82.2
+    globals: 2.82.1
     nameOverrides: 2.81.1
+    responseFormat: 0.1.0
 generatedFiles:
   - billing.go
   - aicontentdetector.go
@@ -38,7 +39,6 @@ generatedFiles:
   - user.go
   - writer.go
   - go.mod
-  - go.sum
   - pkg/models/sdkerrors/sdkerror.go
   - pkg/types/bigint.go
   - pkg/types/date.go
@@ -333,3 +333,4 @@ generatedFiles:
   - USAGE.md
   - pkg/models/operations/options.go
   - .gitattributes
+  - internal/hooks/hooks.go

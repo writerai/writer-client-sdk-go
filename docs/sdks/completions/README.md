@@ -37,7 +37,7 @@ func main() {
         BestOf: writerclientsdkgo.Int64(1),
         MaxTokens: writerclientsdkgo.Int64(1024),
         MinTokens: writerclientsdkgo.Int64(1),
-        Prompt: "string",
+        Prompt: "<value>",
         Stop: []string{
             "the",
             "is",
@@ -47,16 +47,15 @@ func main() {
         TopP: writerclientsdkgo.Float64(1),
     }
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
-    var organizationID *int64 = 489382
+    var organizationID *int64 = writerclientsdkgo.Int64(489382)
 
     ctx := context.Background()
     res, err := s.Completions.Create(ctx, completionRequest, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CompletionResponse != nil {
         // handle response
     }
@@ -108,7 +107,7 @@ func main() {
         BestOf: writerclientsdkgo.Int64(1),
         MaxTokens: writerclientsdkgo.Int64(1024),
         MinTokens: writerclientsdkgo.Int64(1),
-        Prompt: "string",
+        Prompt: "<value>",
         Stop: []string{
             "the",
             "is",
@@ -118,18 +117,17 @@ func main() {
         TopP: writerclientsdkgo.Float64(1),
     }
 
-    var customizationID string = "string"
+    var customizationID string = "<value>"
 
-    var modelID string = "string"
+    var modelID string = "<value>"
 
-    var organizationID *int64 = 41297
+    var organizationID *int64 = writerclientsdkgo.Int64(41297)
 
     ctx := context.Background()
     res, err := s.Completions.CreateModelCustomizationCompletion(ctx, completionRequest, customizationID, modelID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CompletionResponse != nil {
         // handle response
     }

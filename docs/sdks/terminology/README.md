@@ -35,51 +35,17 @@ func main() {
     )
 
 
-    createTermsRequest := shared.CreateTermsRequest{
-        Models: []shared.TermCreate{
-            shared.TermCreate{
-                ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
-                    Capitalize: false,
-                    FixCase: false,
-                    FixCommonMistakes: false,
-                },
-                CaseSensitive: false,
-                Examples: []shared.TermExampleCreate{
-                    shared.TermExampleCreate{
-                        Example: "string",
-                        Type: shared.TermExampleCreateTypeBad,
-                    },
-                },
-                LinkedTerms: []shared.LinkedTermCreate{
-                    shared.LinkedTermCreate{},
-                },
-                Mistakes: []shared.TermMistakeCreate{
-                    shared.TermMistakeCreate{
-                        CaseSensitive: false,
-                        Mistake: "string",
-                    },
-                },
-                Tags: []shared.TermTagCreate{
-                    shared.TermTagCreate{
-                        Tag: "string",
-                    },
-                },
-                Term: "string",
-                Type: shared.TermCreateTypeBanned,
-            },
-        },
-    }
+    createTermsRequest := shared.CreateTermsRequest{}
 
-    var teamID int64 = 623445
+    var teamID int64 = 823436
 
-    var organizationID *int64 = 822001
+    var organizationID *int64 = writerclientsdkgo.Int64(554561)
 
     ctx := context.Background()
     res, err := s.Terminology.Add(ctx, createTermsRequest, teamID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateTermsResponse != nil {
         // handle response
     }
@@ -129,20 +95,19 @@ func main() {
 
     var teamID int64 = 841399
 
-    var xRequestID *string = "string"
+    var xRequestID *string = writerclientsdkgo.String("<value>")
 
     ids := []int64{
         698486,
     }
 
-    var organizationID *int64 = 557937
+    var organizationID *int64 = writerclientsdkgo.Int64(557937)
 
     ctx := context.Background()
     res, err := s.Terminology.Delete(ctx, teamID, xRequestID, ids, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteResponse != nil {
         // handle response
     }
@@ -193,15 +158,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Terminology.Find(ctx, operations.FindTermsRequest{
-        Tags: []string{
-            "string",
-        },
         TeamID: 326883,
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.PaginatedResultFullTermWithUser != nil {
         // handle response
     }
@@ -247,54 +208,19 @@ func main() {
     )
 
 
-    updateTermsRequest := shared.UpdateTermsRequest{
-        Models: []shared.TermUpdate{
-            shared.TermUpdate{
-                ApprovedTermExtension: &shared.ApprovedTermExtensionCreate{
-                    Capitalize: false,
-                    FixCase: false,
-                    FixCommonMistakes: false,
-                },
-                CaseSensitive: false,
-                Examples: []shared.TermExampleCreate{
-                    shared.TermExampleCreate{
-                        Example: "string",
-                        Type: shared.TermExampleCreateTypeGood,
-                    },
-                },
-                ID: 597129,
-                LinkedTerms: []shared.LinkedTermCreate{
-                    shared.LinkedTermCreate{},
-                },
-                Mistakes: []shared.TermMistakeCreate{
-                    shared.TermMistakeCreate{
-                        CaseSensitive: false,
-                        Mistake: "string",
-                    },
-                },
-                Tags: []shared.TermTagCreate{
-                    shared.TermTagCreate{
-                        Tag: "string",
-                    },
-                },
-                Term: "string",
-                Type: shared.TermUpdateTypeApproved,
-            },
-        },
-    }
+    updateTermsRequest := shared.UpdateTermsRequest{}
 
-    var teamID int64 = 344620
+    var teamID int64 = 24555
 
-    var xRequestID *string = "string"
+    var xRequestID *string = writerclientsdkgo.String("<value>")
 
-    var organizationID *int64 = 708455
+    var organizationID *int64 = writerclientsdkgo.Int64(597129)
 
     ctx := context.Background()
     res, err := s.Terminology.Update(ctx, updateTermsRequest, teamID, xRequestID, organizationID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateTermsResponse != nil {
         // handle response
     }
